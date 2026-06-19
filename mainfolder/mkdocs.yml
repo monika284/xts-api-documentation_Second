@@ -1,0 +1,70 @@
+site_name: RMoney API Documentation
+
+theme:
+  name: material
+  logo: images/logo.png
+  features:
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - toc.follow
+    - content.code.copy
+
+  palette:
+    - scheme: default
+      primary: white
+      accent: deep orange
+
+    - scheme: slate
+      primary: black
+      accent: deep orange
+
+nav:
+  - Home: index.md
+
+  - Getting Started:
+      - Introducton: GS/intro.md
+
+  - Interactive API:
+      - Overview: interactive/overview.md
+      - Authentication: interactive/Authentication.md
+      - Base URL & Endpoints: interactive/baseurl.md
+      - Error Codes: interactive/errors.md
+
+  - Market Data API:
+      - Overview: market/overview.md
+      - Instruments: market/instruments.md
+      - Quotes: market/quotes.md
+      - OHLC Data: market/ohlc.md
+      - Market Depth: market/depth.md
+
+  - Orders:
+      - Overview: orders/overview.md
+      - Place Order: orders/place_order.md
+      - Modify Order: orders/modify_order.md
+      - Cancel Order: orders/cancel_order.md
+  - Tradebook & Orderbook:
+      - Order History: tradebook/history.md
+
+  - Portfolio:
+      - Overview: portfolio/overview.md
+      - Holdings: portfolio/holdings.md
+      - Positions: portfolio/positions.md
+      - Funds: portfolio/funds.md
+
+  - WebSocket:
+      - Overview: websocket/overview.md
+      - Connection: websocket/connection.md
+      - Events: websocket/events.md
+
+  - Reference:
+      - Overview: references/overview.md
+      - Enums: references/enums.md
+      - Constants: references/constants.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/home.js

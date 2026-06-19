@@ -1,0 +1,1965 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ohlc/">
+      
+      
+        <link rel="next" href="../../orders/overview/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Market Depth - RMoney API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RMoney API Documentation" class="md-header__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RMoney API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Market Depth
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RMoney API Documentation" class="md-nav__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    RMoney API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GS/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/baseurl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base URL & Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Codes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Data API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Market Data API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instruments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quotes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quotes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ohlc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OHLC Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Orders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/place_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Place Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/modify_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../orders/cancel_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook & Orderbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradebook & Orderbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tradebook/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Order History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portfolio/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portfolio/holdings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Holdings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portfolio/positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Positions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portfolio/funds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="dep-wrap">
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="dep-hero">
+  <h1 class="dep-hero-title">Market Depth</h1>
+  <p class="dep-hero-sub">Market Depth provides <strong>real-time visibility into the full order book</strong> — all pending buy and sell orders at every price level. It shows market liquidity, supply and demand, and potential price pressure far beyond the last traded price.</p>
+  <div class="dep-use-chips">
+    <span>Trading Terminals</span>
+    <span>Liquidity Analysis</span>
+    <span>Support &amp; Resistance</span>
+    <span>Algorithmic Trading</span>
+    <span>Order Flow Analysis</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ BASIC ═══════════════════ -->
+<div class="dep-level-badge">Basic</div>
+
+<h2 id="what-is-market-depth" class="dep-section-title">What is Market Depth?</h2>
+<p class="dep-text">The <strong>order book</strong> is a real-time list of every pending buy and sell order for an instrument. Market Depth shows you the top 5 levels on each side — price, quantity waiting at that price, and how many individual orders are queued there.</p>
+<div class="dep-concepts-row">
+  <div class="dep-concept-card dep-cc-bids">
+    <div class="dep-cc-icon dep-ci-bids"></div>
+    <h4>Bids (Buy Orders)</h4>
+    <p>Pending orders from buyers. Listed from highest to lowest price. The top bid is the highest a buyer will pay right now.</p>
+    <div class="dep-cc-pill dep-pill-green">Green Side</div>
+  </div>
+  <div class="dep-concept-card dep-cc-spread">
+    <div class="dep-cc-icon dep-ci-spread"></div>
+    <h4>Spread</h4>
+    <p>The gap between the best ask and the best bid. A smaller spread means more buyers and sellers are actively trading.</p>
+    <div class="dep-cc-pill dep-pill-gray">Center Gap</div>
+  </div>
+  <div class="dep-concept-card dep-cc-asks">
+    <div class="dep-cc-icon dep-ci-asks"></div>
+    <h4>Asks (Sell Orders)</h4>
+    <p>Pending orders from sellers. Listed from lowest to highest price. The top ask is the minimum price a seller will accept.</p>
+    <div class="dep-cc-pill dep-pill-red">Red Side</div>
+  </div>
+</div>
+
+<h2 id="order-book" class="dep-section-title">Live Order Book (RELIANCE)</h2>
+<div class="dep-orderbook">
+  <div class="dep-ob-header">
+    <span>Qty</span>
+    <span>Orders</span>
+    <span>Price</span>
+    <span class="dep-ob-spacer"></span>
+    <span>Price</span>
+    <span>Orders</span>
+    <span>Qty</span>
+  </div>
+  <div class="dep-ob-asks">
+    <div class="dep-ob-row dep-ask-row">
+      <span class="dep-qty">500</span>
+      <span class="dep-orders">4</span>
+      <span class="dep-price dep-ask-price">2966.00</span>
+      <span class="dep-bar-wrap dep-bar-left"><span class="dep-bar dep-ask-bar" style="width:33%"></span></span>
+    </div>
+    <div class="dep-ob-row dep-ask-row">
+      <span class="dep-qty">700</span>
+      <span class="dep-orders">5</span>
+      <span class="dep-price dep-ask-price">2965.90</span>
+      <span class="dep-bar-wrap dep-bar-left"><span class="dep-bar dep-ask-bar" style="width:47%"></span></span>
+    </div>
+    <div class="dep-ob-row dep-ask-row">
+      <span class="dep-qty">1,200</span>
+      <span class="dep-orders">9</span>
+      <span class="dep-price dep-ask-price">2965.80</span>
+      <span class="dep-bar-wrap dep-bar-left"><span class="dep-bar dep-ask-bar" style="width:80%"></span></span>
+    </div>
+    <div class="dep-ob-row dep-ask-row">
+      <span class="dep-qty">1,500</span>
+      <span class="dep-orders">11</span>
+      <span class="dep-price dep-ask-price">2965.70</span>
+      <span class="dep-bar-wrap dep-bar-left"><span class="dep-bar dep-ask-bar" style="width:100%"></span></span>
+    </div>
+    <div class="dep-ob-row dep-ask-row dep-best-ask">
+      <span class="dep-qty">900</span>
+      <span class="dep-orders">6</span>
+      <span class="dep-price dep-ask-price">2965.60</span>
+      <span class="dep-bar-wrap dep-bar-left"><span class="dep-bar dep-ask-bar" style="width:60%"></span></span>
+    </div>
+  </div>
+  <div class="dep-ob-spread">
+    <span class="dep-spread-ltp">LTP &#8377;2965.50</span>
+    <span class="dep-spread-val">Spread &#8377;0.20</span>
+  </div>
+  <div class="dep-ob-bids">
+    <div class="dep-ob-row dep-bid-row dep-best-bid">
+      <span class="dep-bar-wrap dep-bar-right"><span class="dep-bar dep-bid-bar" style="width:80%"></span></span>
+      <span class="dep-price dep-bid-price">2965.40</span>
+      <span class="dep-orders">8</span>
+      <span class="dep-qty">1,200</span>
+    </div>
+    <div class="dep-ob-row dep-bid-row">
+      <span class="dep-bar-wrap dep-bar-right"><span class="dep-bar dep-bid-bar" style="width:100%"></span></span>
+      <span class="dep-price dep-bid-price">2965.30</span>
+      <span class="dep-orders">13</span>
+      <span class="dep-qty">1,800</span>
+    </div>
+    <div class="dep-ob-row dep-bid-row">
+      <span class="dep-bar-wrap dep-bar-right"><span class="dep-bar dep-bid-bar" style="width:60%"></span></span>
+      <span class="dep-price dep-bid-price">2965.20</span>
+      <span class="dep-orders">10</span>
+      <span class="dep-qty">850</span>
+    </div>
+    <div class="dep-ob-row dep-bid-row">
+      <span class="dep-bar-wrap dep-bar-right"><span class="dep-bar dep-bid-bar" style="width:40%"></span></span>
+      <span class="dep-price dep-bid-price">2965.10</span>
+      <span class="dep-orders">6</span>
+      <span class="dep-qty">600</span>
+    </div>
+    <div class="dep-ob-row dep-bid-row">
+      <span class="dep-bar-wrap dep-bar-right"><span class="dep-bar dep-bid-bar" style="width:27%"></span></span>
+      <span class="dep-price dep-bid-price">2965.00</span>
+      <span class="dep-orders">4</span>
+      <span class="dep-qty">400</span>
+    </div>
+  </div>
+  <div class="dep-ob-footer">
+    <span class="dep-ob-label-bids">Bids (Buy Orders)</span>
+    <span class="dep-ob-label-asks">Asks (Sell Orders)</span>
+  </div>
+</div>
+
+<!-- ════════════════ INTERMEDIATE ════════════════ -->
+<div class="dep-level-badge">Intermediate</div>
+
+<h2 id="endpoint" class="dep-section-title">API Endpoint</h2>
+<div class="dep-ep-card">
+  <div class="dep-ep-row">
+    <span class="dep-ep-method">POST</span>
+    <code class="dep-ep-path">/apimarketdata/instruments/quotes</code>
+    <span class="dep-ep-badge">xtsMessageCode: 1502</span>
+  </div>
+  <p class="dep-ep-desc">Market Depth data uses the same quotes endpoint as touchline data — pass <code>xtsMessageCode: 1502</code> to receive the 5-level order book instead of just LTP and OHLC.</p>
+</div>
+
+<h2 id="request-response" class="dep-section-title">Request and Response</h2>
+<div class="dep-req-row">
+  <div class="dep-req-block">
+    <div class="dep-req-label">Request</div>
+    <div class="dep-code-block"><pre>POST /apimarketdata/instruments/quotes
+Authorization: &lt;market-token&gt;
+
+{
+  "instruments": [
+    {
+      "exchangeInstrumentID": 2885,
+      "exchangeSegment":      1
+    }
+  ],
+  "xtsMessageCode": 1502,
+  "publishFormat":  "JSON"
+}</pre></div>
+  </div>
+  <div class="dep-req-block">
+    <div class="dep-req-label">Response</div>
+    <div class="dep-code-block"><pre>{
+  "type": "success",
+  "result": {
+    "listQuotes": [
+      {
+        "ExchangeInstrumentID": 2885,
+        "Bids": [
+          { "Price": 2965.40, "Size": 1200, "TotalOrders": 8 },
+          { "Price": 2965.30, "Size": 1800, "TotalOrders": 13 }
+        ],
+        "Asks": [
+          { "Price": 2965.60, "Size": 900,  "TotalOrders": 6 },
+          { "Price": 2965.70, "Size": 1500, "TotalOrders": 11 }
+        ],
+        "Touchline": {
+          "LastTradedPrice": 2965.50,
+          "BidPrice": 2965.40,
+          "AskPrice": 2965.60
+        }
+      }
+    ]
+  }
+}</pre></div>
+  </div>
+</div>
+
+<h2 id="response-fields" class="dep-section-title">Response Fields</h2>
+<div class="dep-fields-row">
+  <div class="dep-field-group dep-fg-bids">
+    <div class="dep-fg-header">Bids[ ] — Buy Side</div>
+    <table class="dep-fields-table">
+      <thead><tr><th>Field</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>Price</code></td><td>Bid price at this level</td></tr>
+        <tr><td><code>Size</code></td><td>Total quantity waiting at this price</td></tr>
+        <tr><td><code>TotalOrders</code></td><td>Number of individual orders at this price</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dep-field-group dep-fg-asks">
+    <div class="dep-fg-header">Asks[ ] — Sell Side</div>
+    <table class="dep-fields-table">
+      <thead><tr><th>Field</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>Price</code></td><td>Ask price at this level</td></tr>
+        <tr><td><code>Size</code></td><td>Total quantity available at this price</td></tr>
+        <tr><td><code>TotalOrders</code></td><td>Number of individual sellers at this price</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2 id="bid-ask-spread" class="dep-section-title">Bid, Ask, and Spread</h2>
+<div class="dep-spread-row">
+  <div class="dep-spread-card dep-sc-bid">
+    <div class="dep-sc-label">Bid Price</div>
+    <div class="dep-sc-value dep-sv-green">&#8377;2965.40</div>
+    <div class="dep-sc-desc">The highest price buyers currently want to pay. If you sell at market, you get this price.</div>
+    <div class="dep-sc-tag">Best Buy Order</div>
+  </div>
+  <div class="dep-spread-card dep-sc-spread">
+    <div class="dep-sc-label">Spread</div>
+    <div class="dep-sc-formula">
+      <span>Ask</span>
+      <span class="dep-minus">&#8722;</span>
+      <span>Bid</span>
+      <span class="dep-eq">=</span>
+      <span class="dep-result">&#8377;0.20</span>
+    </div>
+    <div class="dep-sc-desc">Tighter spread = more liquid. Wider spread = fewer active traders, higher cost to trade.</div>
+    <div class="dep-sc-tag">Liquidity Signal</div>
+  </div>
+  <div class="dep-spread-card dep-sc-ask">
+    <div class="dep-sc-label">Ask Price</div>
+    <div class="dep-sc-value dep-sv-red">&#8377;2965.60</div>
+    <div class="dep-sc-desc">The lowest price sellers are willing to accept. If you buy at market, you pay this price.</div>
+    <div class="dep-sc-tag">Best Sell Order</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ADVANCED ════════════════ -->
+<div class="dep-level-badge">Advanced</div>
+
+<h2 id="liquidity" class="dep-section-title">Reading Market Liquidity</h2>
+<p class="dep-text">The depth and size of the order book tells you how easily you can execute a large order without moving the market price.</p>
+<div class="dep-liquidity-row">
+  <div class="dep-liq-card dep-liq-high">
+    <div class="dep-liq-indicator">
+      <div class="dep-liq-bar" style="height:80%"></div>
+      <div class="dep-liq-bar" style="height:95%"></div>
+      <div class="dep-liq-bar" style="height:70%"></div>
+      <div class="dep-liq-bar" style="height:85%"></div>
+      <div class="dep-liq-bar" style="height:60%"></div>
+    </div>
+    <div class="dep-liq-body">
+      <strong>High Liquidity</strong>
+      <span>Large quantities on both bid and ask sides. Tight spread. Orders fill quickly at the expected price. Ideal for large orders.</span>
+      <div class="dep-liq-signs">
+        <div class="dep-liq-sign">Tight spread (&#8377;0.05 &#8211; &#8377;0.20)</div>
+        <div class="dep-liq-sign">High total bid/ask quantity</div>
+        <div class="dep-liq-sign">Many orders per level</div>
+      </div>
+    </div>
+  </div>
+  <div class="dep-liq-card dep-liq-low">
+    <div class="dep-liq-indicator">
+      <div class="dep-liq-bar dep-liq-low-bar" style="height:20%"></div>
+      <div class="dep-liq-bar dep-liq-low-bar" style="height:10%"></div>
+      <div class="dep-liq-bar dep-liq-low-bar" style="height:30%"></div>
+      <div class="dep-liq-bar dep-liq-low-bar" style="height:15%"></div>
+      <div class="dep-liq-bar dep-liq-low-bar" style="height:5%"></div>
+    </div>
+    <div class="dep-liq-body">
+      <strong>Low Liquidity</strong>
+      <span>Thin order book with small quantities. Wide spread. Large orders can move the price significantly. Risky for big trades.</span>
+      <div class="dep-liq-signs dep-liq-signs-warn">
+        <div class="dep-liq-sign">Wide spread (&#8377;1 &#8211; &#8377;5+)</div>
+        <div class="dep-liq-sign">Low total bid/ask quantity</div>
+        <div class="dep-liq-sign">Few orders per level</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 id="support-resistance" class="dep-section-title">Identifying Support and Resistance</h2>
+<p class="dep-text">Large concentrations of orders at specific price levels can act as <strong>support</strong> (large buy orders) or <strong>resistance</strong> (large sell orders).</p>
+<div class="dep-sr-row">
+  <div class="dep-sr-card dep-sr-support">
+    <div class="dep-sr-title">Support Level</div>
+    <div class="dep-sr-desc">A price where a significant number of buy orders are stacked. The market often bounces back up when it reaches this level because buyers absorb selling pressure.</div>
+    <div class="dep-sr-example">
+      <div class="dep-sre-row dep-sre-light">2965.30 — 1,800 qty</div>
+      <div class="dep-sre-row dep-sre-light">2965.20 — 850 qty</div>
+      <div class="dep-sre-highlight dep-sre-support">2965.00 — 12,000 qty &larr; Support</div>
+    </div>
+  </div>
+  <div class="dep-sr-card dep-sr-resistance">
+    <div class="dep-sr-title">Resistance Level</div>
+    <div class="dep-sr-desc">A price where a significant number of sell orders are stacked. The market often struggles to break above this level because sellers keep absorbing buying pressure.</div>
+    <div class="dep-sr-example">
+      <div class="dep-sre-highlight dep-sre-resistance">2970.00 — 15,000 qty &larr; Resistance</div>
+      <div class="dep-sre-row dep-sre-light">2969.50 — 600 qty</div>
+      <div class="dep-sre-row dep-sre-light">2969.00 — 900 qty</div>
+    </div>
+  </div>
+</div>
+
+<h2 id="data-flow" class="dep-section-title">Data Flow</h2>
+<div class="dep-flow-wrap">
+  <div class="dep-flow-step">
+    <div class="dep-flow-num">1</div>
+    <div class="dep-flow-body">
+      <strong>Client Application</strong>
+      <span>Sends instrument token with xtsMessageCode 1502</span>
+    </div>
+  </div>
+  <div class="dep-flow-arrow"></div>
+  <div class="dep-flow-step">
+    <div class="dep-flow-num">2</div>
+    <div class="dep-flow-body">
+      <strong>Market Depth API</strong>
+      <span>Routes to the exchange order book data feed</span>
+    </div>
+  </div>
+  <div class="dep-flow-arrow"></div>
+  <div class="dep-flow-step">
+    <div class="dep-flow-num">3</div>
+    <div class="dep-flow-body">
+      <strong>Exchange Order Book</strong>
+      <span>Real-time snapshot of top 5 bid and ask levels</span>
+    </div>
+  </div>
+  <div class="dep-flow-arrow"></div>
+  <div class="dep-flow-step">
+    <div class="dep-flow-num">4</div>
+    <div class="dep-flow-body">
+      <strong>Depth Response</strong>
+      <span>Bids[ ] and Asks[ ] arrays — price, size, order count</span>
+    </div>
+  </div>
+  <div class="dep-flow-arrow"></div>
+  <div class="dep-flow-step">
+    <div class="dep-flow-num">5</div>
+    <div class="dep-flow-body">
+      <strong>Trading Terminal</strong>
+      <span>Renders order book, spread, and liquidity visualization</span>
+    </div>
+  </div>
+</div>
+
+<h2 id="best-practices" class="dep-section-title">Best Practices</h2>
+<div class="dep-practices-grid">
+  <div class="dep-practice">
+    <h4>Combine with Quote Data</h4>
+    <p>Use market depth alongside the last traded price and OHLC to get the complete market picture before placing an order.</p>
+  </div>
+  <div class="dep-practice">
+    <h4>Check Liquidity Before Large Orders</h4>
+    <p>Before placing a large order, verify there is enough quantity at the top levels. Thin books can cause significant slippage.</p>
+  </div>
+  <div class="dep-practice">
+    <h4>Use WebSocket for Live Updates</h4>
+    <p>Subscribe to event code <code>1502</code> via WebSocket instead of polling. Order books update many times per second.</p>
+  </div>
+  <div class="dep-practice">
+    <h4>Watch for Order Book Imbalance</h4>
+    <p>A large imbalance in total bid vs ask quantity often signals short-term price direction — more bids = buy pressure, more asks = sell pressure.</p>
+  </div>
+</div>
+
+<h2 id="common-errors" class="dep-section-title">Common Errors</h2>
+<div class="dep-errors-row">
+  <div class="dep-error-card">
+    <div class="dep-err-pill dep-err-amber">404</div>
+    <strong>Instrument Not Found</strong>
+    <span>The instrument token does not exist in the specified exchange segment.</span>
+  </div>
+  <div class="dep-error-card">
+    <div class="dep-err-pill dep-err-red">401</div>
+    <strong>Unauthorized</strong>
+    <span>Market data token is missing, expired, or invalid.</span>
+  </div>
+  <div class="dep-error-card">
+    <div class="dep-err-pill dep-err-red">429</div>
+    <strong>Rate Limit Exceeded</strong>
+    <span>Too many depth requests. Use WebSocket streaming for continuous updates.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ SUMMARY ════════════════ -->
+<h2 id="summary" class="dep-section-title">Summary</h2>
+<div class="dep-summary-wrap">
+  <table class="dep-sum-table">
+    <thead><tr><th>Term</th><th>Meaning</th><th>Used For</th></tr></thead>
+    <tbody>
+      <tr><td>Bids</td><td>Pending buy orders in the order book</td><td>Identifying buy pressure and support</td></tr>
+      <tr><td>Asks</td><td>Pending sell orders in the order book</td><td>Identifying sell pressure and resistance</td></tr>
+      <tr><td>Bid Price</td><td>Best (highest) price buyers will pay</td><td>Market sell execution price</td></tr>
+      <tr><td>Ask Price</td><td>Best (lowest) price sellers will accept</td><td>Market buy execution price</td></tr>
+      <tr><td>Spread</td><td>Ask minus Bid price</td><td>Liquidity measurement</td></tr>
+      <tr><td>Size</td><td>Total quantity at a price level</td><td>Order flow and liquidity analysis</td></tr>
+      <tr><td>TotalOrders</td><td>Count of individual orders at a level</td><td>Market participation analysis</td></tr>
+    </tbody>
+  </table>
+  <div class="dep-related">
+    <div class="dep-related-label">Related APIs</div>
+    <div class="dep-related-chips">
+      <span>Instruments API</span>
+      <span>Quotes API</span>
+      <span>OHLC Data API</span>
+      <span>WebSocket API</span>
+      <span>Orders API</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/home.js"></script>
+      
+    
+  </body>
+</html>
