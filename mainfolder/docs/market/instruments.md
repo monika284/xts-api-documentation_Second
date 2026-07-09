@@ -154,13 +154,13 @@
   <table class="api-table">
     <thead><tr><th>Field</th><th>Type</th><th>Description</th><th>Example</th></tr></thead>
     <tbody>
-      <tr><td><code>ExchangeInstrumentID</code></td><td>Integer</td><td>Unique numeric identifier for the instrument</td><td><code>2885</code></td></tr>
-      <tr><td><code>ExchangeSegment</code></td><td>Integer</td><td>Exchange segment code (1=NSECM, 2=NSEFO…)</td><td><code>1</code></td></tr>
-      <tr><td><code>TradingSymbol</code></td><td>String</td><td>Symbol used in orders and market data</td><td><code>RELIANCE</code></td></tr>
-      <tr><td><code>Name</code></td><td>String</td><td>Full company or instrument name</td><td><code>Reliance Industries Ltd</code></td></tr>
-      <tr><td><code>Series</code></td><td>String</td><td>Instrument series — EQ, FUT, CE, PE</td><td><code>EQ</code></td></tr>
-      <tr><td><code>LotSize</code></td><td>Integer</td><td>Minimum quantity for derivatives</td><td><code>75</code></td></tr>
-      <tr><td><code>TickSize</code></td><td>Decimal</td><td>Minimum price movement allowed</td><td><code>0.05</code></td></tr>
+      <tr><td><span class="enum-badge">ExchangeInstrumentID</span></td><td>Integer</td><td>Unique numeric identifier for the instrument</td><td><span class="enum-badge">2885</span></td></tr>
+      <tr><td><span class="enum-badge">ExchangeSegment</span></td><td>Integer</td><td>Exchange segment code (1=NSECM, 2=NSEFO…)</td><td><span class="enum-badge">1</span></td></tr>
+      <tr><td><span class="enum-badge">TradingSymbol</span></td><td>String</td><td>Symbol used in orders and market data</td><td><span class="enum-badge">RELIANCE</span></td></tr>
+      <tr><td><span class="enum-badge">Name</span></td><td>String</td><td>Full company or instrument name</td><td><span class="enum-badge">Reliance Industries Ltd</span></td></tr>
+      <tr><td><span class="enum-badge">Series</span></td><td>String</td><td>Instrument series — EQ, FUT, CE, PE</td><td><span class="enum-badge">EQ</span></td></tr>
+      <tr><td><span class="enum-badge">LotSize</span></td><td>Integer</td><td>Minimum quantity for derivatives</td><td><span class="enum-badge">75</span></td></tr>
+      <tr><td><span class="enum-badge">TickSize</span></td><td>Decimal</td><td>Minimum price movement allowed</td><td><span class="enum-badge">0.05</span></td></tr>
     </tbody>
   </table>
 </div>
@@ -402,12 +402,12 @@
     <thead><tr><th>Term</th><th>Meaning</th><th>Used For</th></tr></thead>
     <tbody>
       <tr><td>Instrument</td><td>Any tradable financial asset</td><td>Foundation for all API calls</td></tr>
-      <tr><td><code>ExchangeInstrumentID</code></td><td>Unique numeric token</td><td>Quotes, OHLC, WebSocket</td></tr>
-      <tr><td><code>TradingSymbol</code></td><td>Exchange-recognized symbol</td><td>Order placement</td></tr>
-      <tr><td><code>ExchangeSegment</code></td><td>Exchange + asset class code</td><td>All API calls</td></tr>
-      <tr><td><code>Series</code></td><td>Contract type (EQ/FUT/CE/PE)</td><td>Filtering instruments</td></tr>
-      <tr><td><code>LotSize</code></td><td>Minimum trade quantity</td><td>Derivative order validation</td></tr>
-      <tr><td><code>TickSize</code></td><td>Minimum price movement</td><td>Limit order price validation</td></tr>
+      <tr><td><span class="enum-badge">ExchangeInstrumentID</span></td><td>Unique numeric token</td><td>Quotes, OHLC, WebSocket</td></tr>
+      <tr><td><span class="enum-badge">TradingSymbol</span></td><td>Exchange-recognized symbol</td><td>Order placement</td></tr>
+      <tr><td><span class="enum-badge">ExchangeSegment</span></td><td>Exchange + asset class code</td><td>All API calls</td></tr>
+      <tr><td><span class="enum-badge">Series</span></td><td>Contract type (EQ/FUT/CE/PE)</td><td>Filtering instruments</td></tr>
+      <tr><td><span class="enum-badge">LotSize</span></td><td>Minimum trade quantity</td><td>Derivative order validation</td></tr>
+      <tr><td><span class="enum-badge">TickSize</span></td><td>Minimum price movement</td><td>Limit order price validation</td></tr>
     </tbody>
   </table>
 </div>

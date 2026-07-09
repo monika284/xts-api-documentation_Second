@@ -393,6 +393,13 @@
     padding-left: 12px !important;
 }
 
+/* Active state for orange section headings — solid fill so scroll position is clearly visible */
+.custom-toc .toc-orange-h > a.toc-active {
+    background: #ff6b00 !important;
+    color: #fff !important;
+    border-left: 4px solid #cc4500 !important;
+}
+
 /* =========================
    CONTENT AREA
 ========================= */
@@ -731,6 +738,37 @@
 .md-main__inner{
     max-width:100% !important;
     margin:0 !important;
+}
+
+/* ── In Simple Words boxes ── */
+.isw-box {
+    background: linear-gradient(135deg, #fff3e6, #ff9500) !important;
+    border-radius: 12px !important;
+    padding: 18px 22px !important;
+    margin-bottom: 24px !important;
+    border: none !important;
+}
+.isw-box p, .isw-box strong, .isw-box * {
+    color: #3d1a00 !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    margin: 0 !important;
+}
+.isw-box strong {
+    font-weight: 700 !important;
+}
+
+/* ── Home page: hide both sidebars ── */
+body.hm-no-sidebar .md-sidebar--primary,
+body.hm-no-sidebar .md-sidebar--secondary {
+    display: none !important;
+}
+body.hm-no-sidebar .md-main__inner {
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+body.hm-no-sidebar .md-content {
+    max-width: 100% !important;
 }
 
 
@@ -1269,7 +1307,7 @@
 /* API Categories */
 .hm-cat-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin: 20px 0 8px;
 }
@@ -1567,7 +1605,7 @@
 
 /* Responsive */
 @media (max-width: 1100px) {
-    .hm-cat-grid { grid-template-columns: repeat(3, 1fr); }
+    .hm-cat-grid { grid-template-columns: repeat(2, 1fr); }
     .hm-stats    { grid-template-columns: repeat(2, 1fr); }
     .hm-stat     { border-bottom: 1px solid #f3f4f6; }
 }
@@ -1991,17 +2029,144 @@
 }
 
 .custom-toc .toc-orange-h > a {
-    border-left: 3px solid #ff6b00;
-    padding-left: 8px;
-    font-weight: 700;
-    color: #ff6b00;
-    background: #fff8f3;
-    border-radius: 0 4px 4px 0;
+    border-left: 3px solid #ff6b00 !important;
+    padding-left: 10px !important;
+    font-weight: 700 !important;
+    color: #ff6b00 !important;
+    background: #fff0e5 !important;
+    border-radius: 0 6px 6px 0 !important;
+    margin-top: 4px;
 }
 
 .custom-toc .toc-orange-h > a:hover {
-    background: #fff0e5;
-    color: #cc4e00;
+    background: #ffe5cc !important;
+    color: #cc4e00 !important;
+}
+
+/* CSS fallback: orange heading highlight — all pages, all known orange heading IDs */
+/* Market Data — instruments.md */
+.custom-toc a[href="#modify-bracket-order"],
+.custom-toc a[href="#Quote"],
+.custom-toc a[href="#GetIndexList"],
+.custom-toc a[href="#GetSeries"],
+.custom-toc a[href="#GetEquitySymbol"],
+.custom-toc a[href="#GetExpiryDate"],
+.custom-toc a[href="#GetFutureSymbol"],
+.custom-toc a[href="#GetOptionType"],
+.custom-toc a[href="#GetStrikePrice"],
+.custom-toc a[href="#GetOptionSymbol"],
+/* Market Data — Search.md */
+.custom-toc a[href="#srch-byid"],
+.custom-toc a[href="#srch-bystr"],
+/* Market Data — CC.md */
+.custom-toc a[href="#cc-get"],
+/* Interactive — BracketOrders.md */
+.custom-toc a[href="#Bracket-Orders"],
+.custom-toc a[href="#place-bracket-order"],
+.custom-toc a[href="#exit-bracket-order"],
+/* Interactive — CoverOrders.md */
+.custom-toc a[href="#what-is-cover-order"],
+.custom-toc a[href="#Cancel-Cover-order"],
+/* Interactive — SpreadOrders.md */
+.custom-toc a[href="#Pread-Order"],
+.custom-toc a[href="#modify-spread-order"],
+.custom-toc a[href="#Cancel-spread-order"],
+/* Interactive — ES.md & EM.md */
+.custom-toc a[href="#exchange-status"],
+.custom-toc a[href="#es-get"],
+.custom-toc a[href="#exchange-messages"],
+.custom-toc a[href="#em-get"],
+/* Interactive — GTT, Margin, MTM, RateLimit, SocketStreaming */
+.custom-toc a[href="#Rate-Limit"],
+.custom-toc a[href="#socket-streaming"],
+.custom-toc a[href="#margin-calculator"],
+.custom-toc a[href="#mtm-calculation"],
+/* Interactive — Orders, Portfolio, Tradebook */
+.custom-toc a[href="#Orders-API"],
+.custom-toc a[href="#positions"],
+.custom-toc a[href="#position-convert"],
+.custom-toc a[href="#holdings"],
+.custom-toc a[href="#tradebook"],
+.custom-toc a[href="#orderbook"],
+.custom-toc a[href="#order-history"],
+/* Interactive — Enums, DataTypes */
+.custom-toc a[href="#Enums"],
+.custom-toc a[href="#Dtat-Types"],
+/* Auto-generated IDs (headings without explicit id) */
+.custom-toc a[href="#toc-search-api"],
+.custom-toc a[href="#toc-authentication"],
+.custom-toc a[href="#toc-client-configuration"],
+.custom-toc a[href="#toc-socket-streaming"],
+.custom-toc a[href="#toc-socket-subscription"],
+.custom-toc a[href="#toc-enums-with-numeric-constants"],
+.custom-toc a[href="#toc-data-types-business-rules"],
+.custom-toc a[href="#toc-cancel-all-orders"],
+.custom-toc a[href="#toc-gtt-good-till-triggered-orders"] {
+    border-left: 3px solid #ff6b00 !important;
+    padding-left: 10px !important;
+    font-weight: 700 !important;
+    color: #ff6b00 !important;
+    background: #fff0e5 !important;
+    border-radius: 0 6px 6px 0 !important;
+    display: block !important;
+    font-size: 13px !important;
+    margin-top: 2px !important;
+}
+
+/* ── Active (scroll-spy) state for orange headings — must come AFTER fallback block ── */
+.custom-toc .toc-orange-h > a.toc-active,
+.custom-toc a.toc-active[href="#modify-bracket-order"],
+.custom-toc a.toc-active[href="#Quote"],
+.custom-toc a.toc-active[href="#GetIndexList"],
+.custom-toc a.toc-active[href="#GetSeries"],
+.custom-toc a.toc-active[href="#GetEquitySymbol"],
+.custom-toc a.toc-active[href="#GetExpiryDate"],
+.custom-toc a.toc-active[href="#GetFutureSymbol"],
+.custom-toc a.toc-active[href="#GetOptionType"],
+.custom-toc a.toc-active[href="#GetStrikePrice"],
+.custom-toc a.toc-active[href="#GetOptionSymbol"],
+.custom-toc a.toc-active[href="#srch-byid"],
+.custom-toc a.toc-active[href="#srch-bystr"],
+.custom-toc a.toc-active[href="#cc-get"],
+.custom-toc a.toc-active[href="#Bracket-Orders"],
+.custom-toc a.toc-active[href="#place-bracket-order"],
+.custom-toc a.toc-active[href="#exit-bracket-order"],
+.custom-toc a.toc-active[href="#what-is-cover-order"],
+.custom-toc a.toc-active[href="#Cancel-Cover-order"],
+.custom-toc a.toc-active[href="#Pread-Order"],
+.custom-toc a.toc-active[href="#modify-spread-order"],
+.custom-toc a.toc-active[href="#Cancel-spread-order"],
+.custom-toc a.toc-active[href="#exchange-status"],
+.custom-toc a.toc-active[href="#es-get"],
+.custom-toc a.toc-active[href="#exchange-messages"],
+.custom-toc a.toc-active[href="#em-get"],
+.custom-toc a.toc-active[href="#Rate-Limit"],
+.custom-toc a.toc-active[href="#socket-streaming"],
+.custom-toc a.toc-active[href="#margin-calculator"],
+.custom-toc a.toc-active[href="#mtm-calculation"],
+.custom-toc a.toc-active[href="#Orders-API"],
+.custom-toc a.toc-active[href="#positions"],
+.custom-toc a.toc-active[href="#position-convert"],
+.custom-toc a.toc-active[href="#holdings"],
+.custom-toc a.toc-active[href="#tradebook"],
+.custom-toc a.toc-active[href="#orderbook"],
+.custom-toc a.toc-active[href="#order-history"],
+.custom-toc a.toc-active[href="#Enums"],
+.custom-toc a.toc-active[href="#Dtat-Types"],
+.custom-toc a.toc-active[href="#toc-search-api"],
+.custom-toc a.toc-active[href="#toc-authentication"],
+.custom-toc a.toc-active[href="#toc-client-configuration"],
+.custom-toc a.toc-active[href="#toc-socket-streaming"],
+.custom-toc a.toc-active[href="#toc-socket-subscription"],
+.custom-toc a.toc-active[href="#toc-enums-with-numeric-constants"],
+.custom-toc a.toc-active[href="#toc-data-types-business-rules"],
+.custom-toc a.toc-active[href="#toc-cancel-all-orders"],
+.custom-toc a.toc-active[href="#toc-gtt-good-till-triggered-orders"] {
+    background: #ff6b00 !important;
+    color: #ffffff !important;
+    border-left: 4px solid #cc4500 !important;
+    font-weight: 700 !important;
+    padding-left: 10px !important;
 }
 
 .custom-toc .toc-h3 a {
@@ -4425,10 +4590,10 @@
     letter-spacing: 0.04em;
     font-family: 'Fira Code', 'Consolas', monospace;
 }
-.burl-get    { background: #dcfce7; color: #14532d; }
-.burl-post   { background: #fff4ec; color: #9a3412; }
-.burl-put    { background: #eff6ff; color: #1e3a8a; }
-.burl-delete { background: #fff7ed; color: #9a3412; }
+.burl-get    { background: #fff3e6; color: #d35400; }
+.burl-post   { background: #fff3e6; color: #d35400; }
+.burl-put    { background: #fff3e6; color: #d35400; }
+.burl-delete { background: #fff3e6; color: #d35400; }
 
 /* ── Hero ── */
 .burl-hero {
@@ -4740,12 +4905,13 @@
 
 .burl-ep-table tr:last-child td { border-bottom: none; }
 .burl-ep-table tr:hover td { background: #fafbff; }
+.burl-ep-table td:nth-child(3) { color: #d35400 !important; }
 
 .burl-ep-table td:nth-child(2) code {
     font-family: 'Fira Code', 'Consolas', monospace;
     font-size: 12.5px;
-    color: #111827;
-    background: #f3f4f6;
+    color: #d35400 !important;
+    background: #fff3e6 !important;
     border-radius: 4px;
     padding: 2px 7px;
     border: none;
@@ -6947,7 +7113,7 @@
     display: flex;
     gap: 0;
     background: #fff;
-    border: 1px solid #f0f0f0;
+    border: 1.5px solid #f0e6d8;
     border-radius: 14px;
     overflow: hidden;
 }
@@ -6960,9 +7126,9 @@
     gap: 4px;
 }
 
-.qt-sv-bid   { background: #f0fdf4; border-right: 1px solid #f0f0f0; }
-.qt-sv-spread{ background: #fafafa; border-right: 1px solid #f0f0f0; text-align: center; align-items: center; }
-.qt-sv-ask   { background: #fff7ed; }
+.qt-sv-bid   { background: #fff8f0; border-right: 1px solid #f0e6d8; }
+.qt-sv-spread{ background: #fafafa; border-right: 1px solid #f0e6d8; text-align: center; align-items: center; }
+.qt-sv-ask   { background: #fff8f0; }
 
 .qt-sv-label {
     font-size: 10.5px;
@@ -6984,8 +7150,8 @@
     margin: 4px 0;
 }
 
-.qt-price-green { color: #059669; }
-.qt-price-red   { color: #ea580c; }
+.qt-price-green { color: #ff6b00; }
+.qt-price-red   { color: #c2410c; }
 .qt-price-gray  { color: #374151; }
 
 .qt-sv-bar {
@@ -6994,8 +7160,8 @@
     margin-top: 4px;
 }
 
-.qt-bar-green { background: linear-gradient(90deg, #059669, #34d399); }
-.qt-bar-red   { background: linear-gradient(90deg, #fb923c, #ea580c); }
+.qt-bar-green { background: linear-gradient(90deg, #ff6b00, #ff9500); }
+.qt-bar-red   { background: linear-gradient(90deg, #c2410c, #ea580c); }
 
 .qt-bid-ask-cards {
     display: flex;
@@ -7006,8 +7172,8 @@
 .qt-ba-card {
     flex: 1;
     min-width: 180px;
-    background: #fff;
-    border: 1px solid #f0f0f0;
+    background: #fff8f0;
+    border: 1.5px solid #f0e6d8;
     border-radius: 12px;
     padding: 14px;
     display: flex;
@@ -7015,9 +7181,9 @@
     gap: 5px;
 }
 
-.qt-ba-bid   { border-top: 2px solid #059669; }
-.qt-ba-ask   { border-top: 2px solid #ea580c; }
-.qt-ba-spread{ border-top: 2px solid #6366f1; }
+.qt-ba-bid   { border-top: 3px solid #ff6b00; }
+.qt-ba-ask   { border-top: 3px solid #c2410c; }
+.qt-ba-spread{ border-top: 3px solid #9ca3af; }
 
 .qt-ba-label {
     font-size: 11px;
@@ -7026,9 +7192,9 @@
     letter-spacing: 0.1em;
 }
 
-.qt-ba-bid .qt-ba-label   { color: #059669; }
-.qt-ba-ask .qt-ba-label   { color: #ea580c; }
-.qt-ba-spread .qt-ba-label{ color: #4338ca; }
+.qt-ba-bid .qt-ba-label   { color: #ff6b00; }
+.qt-ba-ask .qt-ba-label   { color: #c2410c; }
+.qt-ba-spread .qt-ba-label{ color: #6b7280; }
 
 .qt-ba-name {
     font-size: 13.5px;
@@ -7058,8 +7224,8 @@
     padding: 16px;
 }
 
-.qt-ds-bids { background: #fafffe; }
-.qt-ds-asks { background: #fff8f8; }
+.qt-ds-bids { background: #fff8f0; }
+.qt-ds-asks { background: #fdf3ee; }
 
 .qt-ds-header {
     font-size: 11px;
@@ -7071,8 +7237,8 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
-.qt-ds-bids .qt-ds-header { color: #059669; }
-.qt-ds-asks .qt-ds-header { color: #ea580c; }
+.qt-ds-bids .qt-ds-header { color: #ff6b00; }
+.qt-ds-asks .qt-ds-header { color: #c2410c; }
 
 .qt-depth-row {
     display: flex;
@@ -7822,8 +7988,8 @@
 }
 
 .ohlc-req-yes {
-    background: #dcfce7;
-    color: #14532d;
+    background: #fff3e6;
+    color: #d35400;
     border-radius: 4px;
     padding: 2px 8px;
     font-size: 11px;
@@ -8281,18 +8447,16 @@
     gap: 8px;
 }
 
-.dep-cc-bids   { border-top: 3px solid #059669; }
-.dep-cc-spread { border-top: 3px solid #6366f1; }
-.dep-cc-asks   { border-top: 3px solid #f97316; }
+.dep-cc-bids   { border-top: 3px solid #ff6b00; }
+.dep-cc-spread { border-top: 3px solid #9ca3af; }
+.dep-cc-asks   { border-top: 3px solid #c2410c; }
 
 .dep-cc-icon {
     width: 28px; height: 28px;
     background-size: contain; background-repeat: no-repeat;
 }
 
-.dep-ci-bids  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M20 18l-4.59-4.59L11 17.83V4H9v13.83l-4.41-4.41L3 15l9 9 9-9z'/%3E%3C/svg%3E"); }
-.dep-ci-spread{ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E"); }
-.dep-ci-asks  { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ef4444'%3E%3Cpath d='M4 6l4.59 4.59L13 6.17V20h2V6.17l4.41 4.41L21 9 12 0 3 9z'/%3E%3C/svg%3E"); }
+
 
 .dep-concept-card h4 {
     font-size: 13.5px !important;
@@ -8317,8 +8481,8 @@
     font-weight: 700;
 }
 
-.dep-pill-green { background: #dcfce7; color: #14532d; }
-.dep-pill-red   { background: #fff7ed; color: #9a3412; }
+.dep-pill-green { background: #fff3e6; color: #d35400; }
+.dep-pill-red   { background: #fff3e6; color: #c2410c; }
 .dep-pill-gray  { background: #f3f4f6; color: #374151; }
 
 /* ── Order Book ── */
@@ -9133,9 +9297,49 @@
     box-shadow: 0 4px 14px rgba(255,107,0,0.06) !important;
 }
 
-/* ── All page-level tables ───────────── */
-.md-typeset table:not([class]) { box-shadow: none !important; }
-.md-typeset table:not([class]) th { background: #fafafa !important; }
+/* ── Site-wide table style ───────────── */
+.site-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 13px !important;
+    table-layout: auto !important;
+    display: table !important;
+}
+.site-table th {
+    background: #ff6b00 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 10px 14px !important;
+    text-align: left !important;
+}
+.site-table td {
+    padding: 9px 14px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    vertical-align: middle !important;
+    color: #1f2937 !important;
+}
+.site-table tr:nth-child(even) td { background: #f9fafb !important; }
+.site-table tr:hover td { background: #fff3e0 !important; transition: background .15s; }
+.site-table-wrap { overflow-x: auto; width: 100%; margin: 10px 0 18px; }
+
+/* ── All page-level tables (no class) ── */
+.md-typeset table:not([class]) {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    box-shadow: none !important;
+}
+.md-typeset table:not([class]) th {
+    background: #ff6b00 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 10px 14px !important;
+}
+.md-typeset table:not([class]) td {
+    padding: 9px 14px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+.md-typeset table:not([class]) tr:nth-child(even) td { background: #f9fafb !important; }
+.md-typeset table:not([class]) tr:hover td { background: #fff3e0 !important; }
 
 /* ── Dividers ────────────────────────── */
 hr { border-color: #f0f0f0 !important; }
@@ -9695,11 +9899,11 @@ body{
     font-size:13px;
 }
 .dt{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:600;font-family:monospace}
-.dt-integer{background:#d1fae5;color:#065f46}
-.dt-long{background:#1f2937;color:#f9fafb}
-.dt-string{background:#dbeafe;color:#1e40af}
-.dt-double{background:#ffedd5;color:#c2410c}
-.dt-boolean{background:#fff7ed;color:#9a3412}
+.dt-integer{background:#fff3e6;color:#d35400}
+.dt-long{background:#ffe8cc;color:#b84d00}
+.dt-string{background:#fff3e6;color:#d35400}
+.dt-double{background:#ffe8cc;color:#b84d00}
+.dt-boolean{background:#fff3e6;color:#d35400}
 
 /* ===========================
    API Documentation Theme
@@ -10038,6 +10242,121 @@ button:active,
 .arf-size { color:#6b7280; font-family:'Consolas','Monaco',monospace; font-size:12px; white-space:nowrap; }
 .arf-desc { color:#374151; line-height:1.55; }
 .arf-desc code { font-size:11px; background:#f3f4f6; padding:1px 5px; border-radius:3px; color:#111827; }
+
+/* ═══════════════════════════════════════════
+   UNIFIED TABLE STYLE — matches reference design
+   ═══════════════════════════════════════════ */
+
+/* ── Orange header on every table ── */
+.api-table th,
+.api-table thead tr,
+.param-table th,
+.burl-ep-table th,
+.burl-sum-table th,
+.auth-sum-table th,
+.auth-expiry-table th,
+.ohlc-params-table th,
+.ohlc-sum-table th,
+.qt-fields-table th,
+.qt-sum-table th,
+.dep-fields-table th,
+.dep-sum-table th,
+.inst-sum-table th,
+.inst-attrs-table th,
+.enum-table th,
+.exchange-table th,
+.oov-table th,
+.ord-table th,
+.rl-table thead th,
+.arf-table th,
+.site-table th,
+.md-typeset table:not([class]) th {
+    background: #ff6b00 !important;
+    background-image: none !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+}
+
+/* ── Warm alternating rows ── */
+.api-table tbody tr:nth-child(even) td,
+.param-table tr:nth-child(even) td,
+.burl-ep-table tr:nth-child(even) td,
+.burl-sum-table tr:nth-child(even) td,
+.auth-sum-table tr:nth-child(even) td,
+.ohlc-params-table tr:nth-child(even) td,
+.ohlc-sum-table tr:nth-child(even) td,
+.qt-fields-table tr:nth-child(even) td,
+.qt-sum-table tr:nth-child(even) td,
+.dep-fields-table tr:nth-child(even) td,
+.dep-sum-table tr:nth-child(even) td,
+.inst-sum-table tr:nth-child(even) td,
+.enum-table tr:nth-child(even) td,
+.exchange-table tr:nth-child(even) td,
+.oov-table tr:nth-child(even) td,
+.ord-table tr:nth-child(even) td,
+.arf-table tbody tr:nth-child(even) td,
+.site-table tr:nth-child(even) td,
+.md-typeset table:not([class]) tr:nth-child(even) td {
+    background: #fff8f0 !important;
+}
+
+/* ── Odd rows — white ── */
+.api-table tbody tr:nth-child(odd) td,
+.param-table tr:nth-child(odd) td,
+.burl-ep-table tr:nth-child(odd) td,
+.site-table tr:nth-child(odd) td,
+.md-typeset table:not([class]) tr:nth-child(odd) td {
+    background: #ffffff !important;
+}
+
+/* ── Hover — slightly deeper orange tint ── */
+.api-table tbody tr:hover td,
+.param-table tr:hover td,
+.burl-ep-table tr:hover td,
+.burl-sum-table tr:hover td,
+.auth-sum-table tr:hover td,
+.ohlc-params-table tr:hover td,
+.ohlc-sum-table tr:hover td,
+.qt-fields-table tr:hover td,
+.qt-sum-table tr:hover td,
+.dep-fields-table tr:hover td,
+.dep-sum-table tr:hover td,
+.inst-sum-table tr:hover td,
+.enum-table tr:hover td,
+.exchange-table tr:hover td,
+.oov-table tr:hover td,
+.ord-table tr:hover td,
+.arf-table tbody tr:hover td,
+.site-table tr:hover td,
+.md-typeset table:not([class]) tr:hover td {
+    background: #ffe8cc !important;
+    transition: background .15s;
+}
+
+/* ── Cell padding & border ── */
+.api-table td,
+.param-table td,
+.burl-ep-table td,
+.burl-sum-table td,
+.auth-sum-table td,
+.ohlc-params-table td,
+.qt-fields-table td,
+.qt-sum-table td,
+.dep-fields-table td,
+.inst-sum-table td,
+.enum-table td,
+.exchange-table td,
+.oov-table td,
+.ord-table td,
+.site-table td,
+.md-typeset table:not([class]) td {
+    padding: 11px 16px !important;
+    border-bottom: 1px solid #f0e6d8 !important;
+    vertical-align: middle !important;
+    font-size: 13px !important;
+}
 
 .arf-empty { display:none; flex-direction:column; align-items:center; justify-content:center; padding:36px 20px; color:#9ca3af; font-size:14px; gap:8px; }
 .arf-empty svg { width:32px; height:32px; opacity:.35; }

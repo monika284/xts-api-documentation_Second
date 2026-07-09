@@ -354,7 +354,7 @@
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> socketio</span><br>
 <br>
 <span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://developers.symphonyfintech.in"</span><span style="color:#6a9955">&nbsp;&nbsp;&nbsp;&nbsp;# base url</span><br>
-<span style="color:#9cdcfe">userID</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"SYMP"</span><span style="color:#6a9955">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#userID received from login api</span><br>
+<span style="color:#9cdcfe">userID</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"RM"</span><span style="color:#6a9955">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#userID received from login api</span><br>
 <span style="color:#9cdcfe">token</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#6a9955">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Token generated from login api</span><br>
 <span style="color:#9cdcfe">apiType</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"INTERACTIVE"</span><br>
 <span style="color:#9cdcfe">socketio_path</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"/1interactive/socket.io"</span><span style="color:#6a9955">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#note:- /1interactive is endpoint you have recieved from hostlookup load balance step</span><br>
@@ -467,8 +467,8 @@
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:300px;overflow:hidden;transition:max-height .4s ease;" id="ss-ord-json-box" data-cbupgraded="1">
 <span style="color:#ffd700">{</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"AppOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">648468730</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"OrderReferenceID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"GeneratedBy"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"WSAPI"</span><span style="color:#d4d4d4">,</span><br>
@@ -588,8 +588,8 @@
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:300px;overflow:hidden;transition:max-height .4s ease;" id="ss-pos-json-box" data-cbupgraded="1">
 <span style="color:#ffd700">{</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"AccountID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"AccountID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"TradingSymbol"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ACC"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"22"</span><span style="color:#d4d4d4">,</span><br>
@@ -644,8 +644,8 @@
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:300px;overflow:hidden;transition:max-height .4s ease;" id="ss-trconv-json-box" data-cbupgraded="1">
 <span style="color:#ffd700">{</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"Success"</span><span style="color:#d4d4d4">: </span><span style="color:#569cd6">true</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ErrorMessage"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"OriginalProduct"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"MIS"</span><span style="color:#d4d4d4">,</span><br>
@@ -655,7 +655,7 @@
 &nbsp;&nbsp;<span style="color:#9cdcfe">"EntityType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Client"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentId"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"TargetEntityId"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"TargetEntityId"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"NetValue"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">-2587.5</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"Status"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"PositionConverted"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"RejectionReason"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">,</span><br>
@@ -695,8 +695,8 @@
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:300px;overflow:hidden;transition:max-height .4s ease;" id="ss-gttord-json-box" data-cbupgraded="1">
 <span style="color:#ffd700">{</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"LoginID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"AppOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1311100040"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"OrderReferenceID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"GeneratedBy"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Web"</span><span style="color:#d4d4d4">,</span><br>
@@ -761,8 +761,8 @@
 &nbsp;&nbsp;<span style="color:#9cdcfe">"Type"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">783</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"Data"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"ErrorString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Gateway:Freeze Quantity: Required Limit[1000000] Freeze Quantity Limit[6]"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"UserID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"UserID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RM1"</span><br>
 <span style="color:#ffd700">}</span>
   </div>
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">

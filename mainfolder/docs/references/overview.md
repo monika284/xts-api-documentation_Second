@@ -68,12 +68,12 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:12px 0 24px">
   <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">📋 Constants</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Constants</div>
     <p style="font-size:13px;color:#374151;margin:0">Exchange segments, product types, order types, and validity values used across all API calls.</p>
     <a href="constants.md" style="font-size:12px;color:#ff6b00;text-decoration:none;font-weight:600;display:inline-block;margin-top:8px">View Constants →</a>
   </div>
   <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px">🔢 Enums</div>
+    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px"> Enums</div>
     <p style="font-size:13px;color:#374151;margin:0">Status values, event codes, and enumeration definitions for interpreting API responses.</p>
     <a href="enums.md" style="font-size:12px;color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-block;margin-top:8px">View Enums →</a>
   </div>
@@ -192,27 +192,27 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🔍 Instrument Search</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Instrument Search</div>
     <p style="font-size:12px;color:#374151;margin:0">Search for instruments by symbol name or keyword.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🆔 Get Instrument ID</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Get Instrument ID</div>
     <p style="font-size:12px;color:#374151;margin:0">Retrieve Exchange Instrument IDs required by other APIs.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">✅ Validate Symbols</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Validate Symbols</div>
     <p style="font-size:12px;color:#374151;margin:0">Confirm trading symbols before placing orders.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📈 F&amp;O Details</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> F&amp;O Details</div>
     <p style="font-size:12px;color:#374151;margin:0">Fetch derivative contract details like expiry, strike, and option type.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📡 Market Data Sub</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Market Data Sub</div>
     <p style="font-size:12px;color:#374151;margin:0">Get the details needed to subscribe to live market feeds.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📋 Order Placement</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Order Placement</div>
     <p style="font-size:12px;color:#374151;margin:0">Use instrument details as input when placing trades.</p>
   </div>
 </div>

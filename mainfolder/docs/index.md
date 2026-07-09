@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 <h1><strong> RMoney API Documentation</h1>
 
 <div class="hm-hero">
@@ -32,19 +38,14 @@
     <p>Get quotes, instruments, market depth and more.</p>
     <span class="hm-explore">Explore &#8594;</span>
   </a>
-  <a href="/orders/overview/" class="hm-cat-card">
-    <h3>Orders</h3>
-    <p>Place, modify, cancel and track your orders.</p>
-    <span class="hm-explore">Explore &#8594;</span>
-  </a>
-  <a href="/portfolio/overview/" class="hm-cat-card">
-    <h3>Portfolio</h3>
-    <p>View holdings, positions, funds and reports.</p>
-    <span class="hm-explore">Explore &#8594;</span>
-  </a>
   <a href="/websocket/overview/" class="hm-cat-card">
     <h3>WebSocket</h3>
     <p>Subscribe to real-time market data streams.</p>
+    <span class="hm-explore">Explore &#8594;</span>
+  </a>
+  <a href="/references/overview/" class="hm-cat-card">
+    <h3>References</h3>
+    <p>Enums, constants and API reference data.</p>
     <span class="hm-explore">Explore &#8594;</span>
   </a>
 </div>

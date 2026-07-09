@@ -14,28 +14,25 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="dep-level-badge">Basic</div>
+
 
 <h2 id="what-is-market-depth" class="dep-section-title">What is Market Depth?</h2>
 <p class="dep-text">The <strong>order book</strong> is a real-time list of every pending buy and sell order for an instrument. Market Depth shows you the top 5 levels on each side — price, quantity waiting at that price, and how many individual orders are queued there.</p>
 <div class="dep-concepts-row">
   <div class="dep-concept-card dep-cc-bids">
-    <div class="dep-cc-icon dep-ci-bids"></div>
     <h4>Bids (Buy Orders)</h4>
     <p>Pending orders from buyers. Listed from highest to lowest price. The top bid is the highest a buyer will pay right now.</p>
-    <div class="dep-cc-pill dep-pill-green">Green Side</div>
+    <div class="dep-cc-pill dep-pill-green">Buy Side</div>
   </div>
   <div class="dep-concept-card dep-cc-spread">
-    <div class="dep-cc-icon dep-ci-spread"></div>
     <h4>Spread</h4>
     <p>The gap between the best ask and the best bid. A smaller spread means more buyers and sellers are actively trading.</p>
     <div class="dep-cc-pill dep-pill-gray">Center Gap</div>
   </div>
   <div class="dep-concept-card dep-cc-asks">
-    <div class="dep-cc-icon dep-ci-asks"></div>
     <h4>Asks (Sell Orders)</h4>
     <p>Pending orders from sellers. Listed from lowest to highest price. The top ask is the minimum price a seller will accept.</p>
-    <div class="dep-cc-pill dep-pill-red">Red Side</div>
+    <div class="dep-cc-pill dep-pill-red">Sell Side</div>
   </div>
 </div>
 
@@ -125,7 +122,7 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="dep-level-badge">Intermediate</div>
+
 
 <h2 id="endpoint" class="dep-section-title">API Endpoint</h2>
 <div class="dep-ep-card">
@@ -238,7 +235,7 @@ Authorization: &lt;market-token&gt;
 </div>
 
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="dep-level-badge">Advanced</div>
+
 
 <h2 id="liquidity" class="dep-section-title">Reading Market Liquidity</h2>
 <p class="dep-text">The depth and size of the order book tells you how easily you can execute a large order without moving the market price.</p>

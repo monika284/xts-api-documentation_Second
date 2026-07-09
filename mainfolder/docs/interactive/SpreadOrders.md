@@ -398,7 +398,7 @@ function soShowCode(lang, btn) {
 &nbsp;&nbsp;<span style="color:#9cdcfe">"leg2ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">48772</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"spreadExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">12836740</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"apiOrderSource"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"WEB"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"clientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMPH"</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"clientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"RMH"</span><br>
 <span style="color:#ffd700">}</span>
   </div>
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
@@ -636,7 +636,7 @@ function socShowCode(lang, btn) {
 <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px;background:#f9fafb;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 24px">
   <span style="background:#ffffff;border:1.5px solid #fed7aa;color:#ff6b00;font-weight:700;font-size:12px;padding:4px 12px;border-radius:6px;flex-shrink:0">GET</span>
   <code style="flex:1;font-size:13px;color:#1d4ed8;background:transparent;word-break:break-all">https://xts.rmoneyindia.co.in:3000/interactive/orders/spread?clientID=RM&amp;userID=RMTEST</code>
-  <button onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/orders/spread?clientID=SYMP&userID=RMTEST').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:7px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0">Copy</button>
+  <button onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/orders/spread?clientID=RM&userID=RMTEST').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:7px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0">Copy</button>
 </div>
 
 ### Request Body Parameters
@@ -759,7 +759,7 @@ function socShowCode(lang, btn) {
     <div id="sob-code-python" style="display:none">
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/orders/spread?accountID=SYMPH"</span><br>
+<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/orders/spread?accountID=RMH"</span><br>
 <br>
 <span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = {}</span><br>
 <span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>

@@ -190,27 +190,27 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">💹 Live Market Quotes</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Live Market Quotes</div>
     <p style="font-size:12px;color:#374151;margin:0">Stream real-time bid/ask prices for any instrument.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📈 Touchline Streaming</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Touchline Streaming</div>
     <p style="font-size:12px;color:#374151;margin:0">Receive LTP, open, high, low, close, and volume updates.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📋 Market Depth</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Market Depth</div>
     <p style="font-size:12px;color:#374151;margin:0">View best 5 buy/sell prices and quantities in real time.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📊 Index Updates</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Index Updates</div>
     <p style="font-size:12px;color:#374151;margin:0">Track NIFTY, SENSEX, BANKNIFTY live index values.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🔔 Trade Notifications</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Trade Notifications</div>
     <p style="font-size:12px;color:#374151;margin:0">Get instant alerts when trades are executed in the market.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📂 Order &amp; Position</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px"> Order &amp; Position</div>
     <p style="font-size:12px;color:#374151;margin:0">Real-time order status and position change tracking.</p>
   </div>
 </div>

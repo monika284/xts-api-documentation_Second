@@ -190,15 +190,19 @@ function injectToc() {
             label = labelSpan ? labelSpan.textContent.trim() : h.textContent.trim();
         }
         var liCls = "";
+        var aStyle = "";
         var inlineStyle = h.getAttribute("style") || "";
         var isOrange = /color\s*:\s*#ff6b00/i.test(inlineStyle);
         if (h.tagName === "H3") {
             liCls = isOrange ? "toc-orange-h" : "toc-h3";
-        } else if (h.tagName === "H2") {
+        } else if (h.tagName === "H2" || h.tagName === "H1") {
             liCls = isOrange ? "toc-orange-h" : "";
         }
+        if (isOrange) {
+            aStyle = ' style="border-left:3px solid #ff6b00;padding-left:10px;font-weight:700;color:#ff6b00;background:#fff0e5;border-radius:0 6px 6px 0;display:block;"';
+        }
         html += '<li class="' + liCls + '">'
-             +  '<a href="#' + h.id + '">' + label + '</a></li>';
+             +  '<a href="#' + h.id + '"' + aStyle + '>' + label + '</a></li>';
     });
     html += '</ul></div>';
     sidebar.innerHTML = html;
@@ -262,9 +266,11 @@ function upgradeCodeBoxes() {
         btn.addEventListener('click', function() {
             if (box.style.maxHeight === 'none') {
                 box.style.maxHeight = '220px';
+                box.style.overflow  = 'auto';
                 btn.textContent = 'Show Full';
             } else {
                 box.style.maxHeight = 'none';
+                box.style.overflow  = 'auto';
                 btn.textContent = 'Show Less';
             }
         });
@@ -283,7 +289,7 @@ function upgradeCodeBoxes() {
 
         if (needsSF) {
             box.style.maxHeight = '220px';
-            box.style.overflow  = 'hidden';
+            box.style.overflow  = 'auto';
             box.style.transition = 'max-height .4s ease';
         }
 
@@ -328,12 +334,13 @@ function upgradeCodeBoxes() {
 
         if (hasExternalRow) {
             box.dataset.cbupgraded = '1';
+            box.style.overflow = 'auto'; /* enable scroll on all boxes with external buttons */
             /* Already has Collapse/Expand/ShowFull → leave it alone */
             if (/Show Full|Show Less|Collapse|Expand/.test(next.textContent)) return;
             /* Has only Copy → inject Show Full into the row if content > 5 lines */
             if (needsSF) {
                 box.style.maxHeight = '220px';
-                box.style.overflow  = 'hidden';
+                box.style.overflow  = 'auto';
                 box.style.transition = 'max-height .4s ease';
                 next.appendChild(makeShowFull(box));
             }
@@ -343,14 +350,81 @@ function upgradeCodeBoxes() {
         /* No external row at all → add full button set */
         addButtons(box);
     });
+
+    /* 3. Nested json-box pattern (outer #1e1e1e wrapper → inner .json-box with max-height) */
+    document.querySelectorAll('[style*="background:#1e1e1e"]').forEach(function(outer) {
+        var inner = outer.querySelector('.json-box');
+        if (!inner) return;
+        if (inner.dataset.cbupgraded) return;
+        inner.dataset.cbupgraded = '1';
+        inner.style.overflow = 'auto';
+    });
+
+    /* 4. Tabbed code boxes with internal Copy button — add Show Full externally, no extra Copy */
+    document.querySelectorAll('[style*="background:#1e1e1e"]').forEach(function(box) {
+        if (box.dataset.cbupgraded) return;
+        if (box.classList.contains('json-box')) return;
+        if (!box.querySelector('button')) return; /* only targets boxes with internal buttons */
+
+        box.dataset.cbupgraded = '1';
+        box.style.overflow = 'auto';
+
+        var needsSF = brLines(box) > 5;
+        if (!needsSF) return;
+
+        box.style.maxHeight = '220px';
+        box.style.transition = 'max-height .4s ease';
+
+        var next = box.nextElementSibling;
+        var hasExternalSF = next && next.querySelector && next.querySelector('button') &&
+                            /Show Full|Show Less|Collapse|Expand/.test(next.textContent);
+        if (hasExternalSF) return;
+
+        var btnRow = document.createElement('div');
+        btnRow.style.cssText = 'display:flex;justify-content:flex-end;gap:8px;margin-top:6px';
+        btnRow.appendChild(makeShowFull(box));
+        box.parentNode.insertBefore(btnRow, box.nextSibling);
+    });
+
+    /* Final sweep: fix any remaining overflow:hidden on ALL #1e1e1e boxes (incl. pre-marked) */
+    document.querySelectorAll('[style*="background:#1e1e1e"]').forEach(function(box) {
+        if (box.style.overflow === 'hidden') box.style.overflow = 'auto';
+        var inner = box.querySelector('.json-box');
+        if (inner && inner.style.overflow === 'hidden') inner.style.overflow = 'auto';
+    });
+}
+
+function hideHomeSidebars() {
+    var path = window.location.pathname;
+    var isHome = path === '/' || path === '/index.html';
+    if (isHome) {
+        document.body.classList.add('hm-no-sidebar');
+    } else {
+        document.body.classList.remove('hm-no-sidebar');
+    }
+}
+
+function styleSimpleWordsBoxes() {
+    document.querySelectorAll('strong, b').forEach(function(el) {
+        var txt = el.textContent.trim();
+        if (txt === 'In Simple Words' || txt === 'In Simple Words:') {
+            var box = el.closest('div');
+            if (box && !box.classList.contains('isw-box')) {
+                box.classList.add('isw-box');
+            }
+        }
+    });
 }
 
 function boot() {
+    hideHomeSidebars();
     setTimeout(function () {
+        hideHomeSidebars();
         injectToc();
         enhanceSidebar();
         upgradeCodeBoxes();   /* must run before upgradeCopyButtons */
         upgradeCopyButtons();
+        styleSimpleWordsBoxes();
     }, 150);
 }
 

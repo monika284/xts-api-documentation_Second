@@ -310,7 +310,7 @@
 <p style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">URL</p>
 <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden;margin-bottom:20px">
   <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:13px;padding:9px 16px;border-right:1.5px solid #e5e7eb;white-space:nowrap">GET</span>
-  <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="em-get-url">https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM</span>
+  <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="em-get-url">https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM</span>
   <button onclick="navigator.clipboard.writeText(document.getElementById('em-get-url').innerText).then(function(btn){var b=document.getElementById('em-get-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="em-get-url-c" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Copy</button>
 </div>
 
@@ -405,7 +405,7 @@
 
 <div id="emg-code-curl" style="position:relative;margin:0 0 6px;display:block">
   <div style="background:#1e1e1e;border-radius:10px;padding:20px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="emg-curl-box">
-<span style="color:#dcdcaa">curl</span><span style="color:#d4d4d4"> --location </span><span style="color:#ce9178">"https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#dcdcaa">curl</span><span style="color:#d4d4d4"> --location </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
   </div>
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
@@ -417,7 +417,7 @@
   <div style="background:#1e1e1e;border-radius:10px;padding:20px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:220px;overflow:hidden;transition:max-height .4s ease" id="emg-python-box">
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM"</span><br>
+<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM"</span><br>
 <br>
 <span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">""</span><br>
 <span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
@@ -444,7 +444,7 @@
 <span style="color:#d4d4d4">)</span><br>
 <br>
 <span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> := </span><span style="color:#ce9178">"https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM"</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> := </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM"</span><br>
 <br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">client</span><span style="color:#d4d4d4"> := &amp;http.Client{}</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"GET"</span><span style="color:#d4d4d4">, url, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
@@ -468,7 +468,7 @@
 <br>
 <span style="color:#c586c0">const</span><span style="color:#d4d4d4"> config = {</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">method</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'get'</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM'</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM'</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">: {</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><br>
 &nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
@@ -488,7 +488,7 @@
   <div style="background:#1e1e1e;border-radius:10px;padding:20px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;max-height:220px;overflow:hidden;transition:max-height .4s ease" id="emg-csharp-box">
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> request = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpRequestMessage(HttpMethod.Get,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4">);</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4">);</span><br>
 <span style="color:#d4d4d4">request.Headers.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
 <br>
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">SendAsync</span><span style="color:#d4d4d4">(request);</span><br>
@@ -506,7 +506,7 @@
 <span style="color:#d4d4d4">OkHttpClient client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> OkHttpClient();</span><br>
 <br>
 <span style="color:#d4d4d4">Request request = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.Builder()</span><br>
-&nbsp;&nbsp;<span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://developers.symphonyfintech.in/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/messages/exchange?exchangeSegment=NSECM"</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
 <br>

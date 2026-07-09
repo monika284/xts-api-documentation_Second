@@ -13,7 +13,7 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="err-level-badge">Basic</div>
+
 
 <h2 id="how-errors-work" class="err-section-title">How Errors Work</h2>
 <div class="err-flow-wrap">
@@ -74,7 +74,7 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="err-level-badge">Intermediate</div>
+
 
 <h2 id="2xx" class="err-section-title">2xx — Success Responses</h2>
 <div class="err-cat-header err-cat-green">
@@ -265,7 +265,7 @@
 </div>
 
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="err-level-badge">Advanced</div>
+
 
 <h2 id="trading-errors" class="err-section-title">Common Trading API Errors</h2>
 <div class="err-trading-grid">

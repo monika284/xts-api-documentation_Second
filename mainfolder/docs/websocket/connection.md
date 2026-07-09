@@ -195,27 +195,27 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin:12px 0 16px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
-    <div style="font-size:22px;margin-bottom:6px">⚡</div>
+    <div style="font-size:22px;margin-bottom:6px"></div>
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Real-time</div>
     <p style="font-size:12px;color:#374151;margin:0">Instant data on market change</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
-    <div style="font-size:22px;margin-bottom:6px">🚀</div>
+    <div style="font-size:22px;margin-bottom:6px"></div>
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Low Latency</div>
     <p style="font-size:12px;color:#374151;margin:0">Minimal delay in delivery</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
-    <div style="font-size:22px;margin-bottom:6px">🔗</div>
+    <div style="font-size:22px;margin-bottom:6px"></div>
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Continuous</div>
     <p style="font-size:12px;color:#374151;margin:0">Stays open throughout session</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
-    <div style="font-size:22px;margin-bottom:6px">📉</div>
+    <div style="font-size:22px;margin-bottom:6px"></div>
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Fewer Calls</div>
     <p style="font-size:12px;color:#374151;margin:0">No repeated REST polling</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
-    <div style="font-size:22px;margin-bottom:6px">🔄</div>
+    <div style="font-size:22px;margin-bottom:6px"></div>
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Auto-Reconnect</div>
     <p style="font-size:12px;color:#374151;margin:0">Handles drops gracefully</p>
   </div>

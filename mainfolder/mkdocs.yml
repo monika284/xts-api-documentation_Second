@@ -71,7 +71,6 @@ nav:
       - Client Config: market/CC.md
       - Search: market/Search.md
       - Instruments: market/instruments.md
-      - Quotes: market/quotes.md
       - OHLC Data: market/ohlc.md 
       - Market Depth: market/depth.md
       - Socket Streaming: market/SS.md
@@ -94,3 +93,4 @@ extra_javascript:
   - javascripts/lightbox.js
   - javascripts/toc-highlight.js
   - javascripts/float-cards.js
+  - javascripts/toc-orange.js

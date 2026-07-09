@@ -14,7 +14,7 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="ohlc-level-badge">Basic</div>
+
 
 <h2 id="what-is-ohlc" class="ohlc-section-title">What is OHLC?</h2>
 <p class="ohlc-text">OHLC stands for <strong>Open, High, Low, Close</strong>. Each value describes a different price point within a fixed time window — whether that window is 1 minute or 1 day.</p>
@@ -118,7 +118,7 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="ohlc-level-badge">Intermediate</div>
+
 
 <h2 id="endpoint" class="ohlc-section-title">API Endpoint</h2>
 <div class="ohlc-ep-card">
@@ -261,8 +261,75 @@ Authorization: &lt;market-token&gt;
   </div>
 </div>
 
+<!-- ═══════════════ INTRADAY CANDLE OHLC (GET) ═══════════════ -->
+<h2 id="intraday-candle-ohlc" class="ohlc-section-title">Intraday Candle OHLC</h2>
+
+<p class="ohlc-text">The XTS Front-end API provides intraday archived OHLC (candlestick) data from the date of access for Equity segments of NSECM and BSECM. For FO segments, OHLC data is available only for currently traded contracts, and expired contracts are not supported.</p>
+<p class="ohlc-text">The response is delivered in candle format, including timestamp (epoch time since 1970), <strong>Open, High, Low, Close, Volume, and Open Interest (OI)</strong>. The minimum supported interval is <strong>60 seconds (1 minute)</strong>, with additional supported intervals for the GET OHLC request detailed in the table below.</p>
+
+<p class="ohlc-text"><strong>Compression Value Table</strong></p>
+<div class="ohlc-params-wrap">
+  <table class="ohlc-params-table">
+    <thead><tr><th>Expected Timeframe</th><th>Compression</th></tr></thead>
+    <tbody>
+      <tr><td>1 minute</td><td>60</td></tr>
+      <tr><td>2 minutes</td><td>120</td></tr>
+      <tr><td>3 minutes</td><td>180</td></tr>
+      <tr><td>4 minutes</td><td>240</td></tr>
+      <tr><td>5 minutes</td><td>300</td></tr>
+      <tr><td>7 minutes</td><td>420</td></tr>
+      <tr><td>10 minutes</td><td>600</td></tr>
+      <tr><td>15 minutes</td><td>900</td></tr>
+      <tr><td>30 minutes</td><td>1800</td></tr>
+      <tr><td>1 hour</td><td>3600</td></tr>
+      <tr><td>2 hours</td><td>7200</td></tr>
+      <tr><td>3 hours</td><td>10800</td></tr>
+      <tr><td>4 hours</td><td>14400</td></tr>
+      <tr><td>1 day</td><td>D</td></tr>
+      <tr><td>1 week</td><td>W</td></tr>
+      <tr><td>1 month</td><td>M</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin:8px 0 18px">
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#fff7ed;color:#c2410c;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #fed7aa;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="ohlc-intraday-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/ohlc?exchangeSegment=1&amp;exchangeInstrumentID=2885&amp;startTime=Jan 27 2025 090000&amp;endTime=Jan 28 2025 153000&amp;compressionValue=D</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('ohlc-intraday-url').innerText).then(function(){var b=document.getElementById('ohlc-intraday-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="ohlc-intraday-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280;font-size:13px;font-weight:600">Copy</button>
+  </div>
+</div>
+
+<p class="ohlc-text"><strong>Request Body Parameters</strong></p>
+<div class="ohlc-params-wrap">
+  <table class="ohlc-params-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>exchangeSegment</code></td><td>ExchangeSegment</td><td><span class="ohlc-req-yes">Y</span></td><td>Exchange segment.</td></tr>
+      <tr><td><code>exchangeInstrumentID</code></td><td>ExchangeInstrumentID</td><td><span class="ohlc-req-yes">Y</span></td><td>Exchange Scrip code or Symbol Token is unique identifier.</td></tr>
+      <tr><td><code>startTime</code></td><td>StartTime</td><td><span class="ohlc-req-yes">Y</span></td><td>Date and time in MMM DD YYYY HHMMSS format. Default value is Jan 27 2025 090000</td></tr>
+      <tr><td><code>endTime</code></td><td>EndTime</td><td><span class="ohlc-req-yes">Y</span></td><td>Date and time in MMM DD YYYY HHMMSS format. Default value is Jan 28 2025 153000</td></tr>
+      <tr><td><code>compressionValue</code></td><td>CompressionValue</td><td><span class="ohlc-req-yes">Y</span></td><td>String value representing time interval. Default value is D. Allowed values are In1Minute (60), In2Minute (120), In3Minute (180), In5Minute (300), In10Minute (600), In15Minute (900), In30Minute (1800), In60Minute (3600)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ohlc-text"><strong>Response Body JSON</strong></p>
+<div class="ohlc-code-block"><pre>[
+  {
+    "type": "success",
+    "code": "s-ohlc-0001",
+    "description": "Data found",
+    "result": {
+      "exchangeSegment": "NSECM",
+      "exchangeInstrumentID": "22",
+      "dataResponse": "1737331200|1316|1316|1300.25|1305.45|14040244|0|"
+    }
+  }
+]</pre></div>
+
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="ohlc-level-badge">Advanced</div>
+
 
 <h2 id="technical-analysis" class="ohlc-section-title">Technical Analysis with OHLC</h2>
 <p class="ohlc-text">Every major technical indicator is derived from OHLC values. Here are the most commonly computed using this data:</p>

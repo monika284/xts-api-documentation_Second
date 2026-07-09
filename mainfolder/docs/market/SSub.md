@@ -142,3 +142,183 @@
     <p style="font-size:12px;color:#374151;margin:0">Smooth, responsive app experience</p>
   </div>
 </div>
+
+---
+
+## Subscribe to Socket
+
+<p>This API request is used to subscribe to market data over a WebSocket connection for specified exchange instruments and message codes provided in the request. Upon successful subscription, the user receives an acknowledgment response containing the latest quote data along with the remaining subscription count, which is AppKey-specific and configurable via the API dashboard. Once subscribed, real-time market data for the specified instrument(s) will be continuously streamed on the market data WebSocket.</p>
+
+<p><strong>URL</strong></p>
+<div style="display:flex;align-items:center;background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:8px 14px;gap:10px;margin:6px 0 18px 0;">
+  <span style="flex-shrink:0;background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:700;">PUT</span>
+  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription</code>
+  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
+</div>
+
+<p><strong>Request Body Parameters</strong></p>
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Parameter Name</th>
+        <th style="padding:10px 14px;text-align:left;">Type</th>
+        <th style="padding:10px 14px;text-align:left;">Mandatory</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #e5e7eb;">
+        <td style="padding:10px 14px;">instruments</td>
+        <td style="padding:10px 14px;">Array</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">Array of instrument objects</td>
+      </tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;">
+        <td style="padding:10px 14px;">exchangeSegment</td>
+        <td style="padding:10px 14px;">ExchangeSegment</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">ExchangeSegment</td>
+      </tr>
+      <tr style="border-bottom:1px solid #e5e7eb;">
+        <td style="padding:10px 14px;">exchangeInstrumentID</td>
+        <td style="padding:10px 14px;">ExchangeInstrumentID</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">Exchange Scrip code or Symbol Token is unique identifier</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:10px 14px;">MessageCode</td>
+        <td style="padding:10px 14px;">Integer</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">It is system generated message code</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>Request Body JSON</strong></p>
+<div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
+<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"instruments"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">22</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">],</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1582</span><br>
+<span style="color:#d4d4d4">}</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="navigator.clipboard.writeText('{\"instruments\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"xtsMessageCode\":1582}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p><strong>Response Body JSON</strong></p>
+<div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
+<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-session-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Instrument subscribed successfully!"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"mdp"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1501</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"quotesList"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">22</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">],</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"listQuotes"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"{\"MessageCode\":1501,\"ExchangeSegment\":1,\"ExchangeInstrumentID\":\"22\",\"LastTradedPrice\":1723,\"LastTradedQunatity\":15,\"TotalBuyQuantity\":18446,\"TotalSellQuantity\":25283,\"TotalTradedQuantity\":189238,\"Average...\"}"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">],</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Remaining_Subscription_Count"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">48</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+<span style="color:#d4d4d4">}</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="navigator.clipboard.writeText('{\"type\":\"success\",\"code\":\"s-session-0001\",\"description\":\"Instrument subscribed successfully!\",\"result\":{\"mdp\":1501,\"quotesList\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"listQuotes\":[\"...\"],\"Remaining_Subscription_Count\":48}}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+---
+
+## Unsubscribe to Socket
+
+<p>This API request is used to unsubscribe from market data streaming for instruments that are already subscribed. Upon successful unsubscription, the server sends an acknowledgment confirming the unsubscription, stops sending market data for the specified instrument(s) on the WebSocket, and releases the corresponding subscription count, making it available for future subscriptions.</p>
+
+<p><strong>URL</strong></p>
+<div style="display:flex;align-items:center;background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:8px 14px;gap:10px;margin:6px 0 18px 0;">
+  <span style="flex-shrink:0;background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:700;">PUT</span>
+  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription</code>
+  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
+</div>
+
+<p><strong>Request Body Parameters</strong></p>
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Parameter Name</th>
+        <th style="padding:10px 14px;text-align:left;">Type</th>
+        <th style="padding:10px 14px;text-align:left;">Mandatory</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #e5e7eb;">
+        <td style="padding:10px 14px;">instruments</td>
+        <td style="padding:10px 14px;">Array</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">Array of instrument objects</td>
+      </tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;">
+        <td style="padding:10px 14px;">exchangeSegment</td>
+        <td style="padding:10px 14px;">ExchangeSegment</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">ExchangeSegment</td>
+      </tr>
+      <tr style="border-bottom:1px solid #e5e7eb;">
+        <td style="padding:10px 14px;">exchangeInstrumentID</td>
+        <td style="padding:10px 14px;">ExchangeInstrumentID</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">Exchange Scrip code or Symbol Token is unique identifier</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:10px 14px;">xtsMessageCode</td>
+        <td style="padding:10px 14px;">xtsMessageCode</td>
+        <td style="padding:10px 14px;">Y</td>
+        <td style="padding:10px 14px;">It is system generated message code</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>Request Body JSON</strong></p>
+<div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
+<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"instruments"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">22</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">],</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><br>
+<span style="color:#d4d4d4">}</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="navigator.clipboard.writeText('{\"instruments\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"xtsMessageCode\":1502}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p><strong>Response Body JSON</strong></p>
+<div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
+<span style="color:#d4d4d4">[</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Instrument subscription deleted!"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Remaining_Subscription_Count"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
+<span style="color:#d4d4d4">]</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="navigator.clipboard.writeText('[{\"type\":\"success\",\"code\":\"s-response-0001\",\"description\":\"Instrument subscription deleted!\",\"result\":{\"Remaining_Subscription_Count\":4}}]').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>

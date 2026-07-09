@@ -210,3 +210,379 @@
     <p style="font-size:12px;color:#374151;margin:0">Smooth, responsive trading application experience</p>
   </div>
 </div>
+
+---
+
+## Introduction
+
+<p>To receive streaming Market Data events, you must use the Socket.IO library. For more information, visit: <a href="https://socket.io/" target="_blank">https://socket.io/</a>.</p>
+
+<p><strong>Real-Time Streaming Flow</strong></p>
+<p style="color:#e65100;">Once the connection is established, real-time streaming data can be obtained by listening to the socket on the relevant market data ports. The streaming data will be received on these ports, and upon receiving the data, you are free to process it as required.</p>
+
+<p>Below are the steps to follow to correctly implement the real-time streaming flow:</p>
+<ol style="font-size:14px;color:#374151;line-height:2.2;margin:4px 0 0 20px;padding:0;">
+  <li>Establish the socket connection</li>
+  <li>Listen to real-time streaming events</li>
+</ol>
+
+---
+
+## Establishment of Socket Connection
+
+<p>You can connect to the server by sending the userID, token, source, and broadcastMode as query parameters. The token is available only after a successful RESTful login request, as described in the RESTful section of the documentation.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;">
+<span style="color:#569cd6">import</span> <span style="color:#d4d4d4">socketio</span><br><br>
+<span style="color:#6a9955"># Base URL of the ApiMarketdata API server</span><br>
+<span style="color:#9cdcfe">url</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000"</span><br><br>
+<span style="color:#6a9955"># Required credentials</span><br>
+<span style="color:#9cdcfe">userID</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">""</span><br>
+<span style="color:#9cdcfe">token</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">""</span><br><br>
+<span style="color:#9cdcfe">broadcastMode</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"Full"</span> <span style="color:#6a9955"># "Partial"</span><br>
+<span style="color:#9cdcfe">publishFormat</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"JSON"</span><br>
+<span style="color:#9cdcfe">socketio_path</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"/apibinarymarketdata/socketio"</span><br>
+<span style="color:#9cdcfe">logger</span> <span style="color:#d4d4d4">= </span><span style="color:#569cd6">False</span> <span style="color:#6a9955"># True</span><br><br>
+<span style="color:#6a9955"># Create Socket.IO client</span><br>
+<span style="color:#9cdcfe">sio</span> <span style="color:#d4d4d4">= socketio.</span><span style="color:#dcdcaa">Client</span><span style="color:#d4d4d4">()</span><br><br>
+<span style="color:#9cdcfe">connectionString</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">f"{url}?token={token}&amp;userID={userID}&amp;publishFormat={publishFormat}&amp;broadcastMode={broadcastMode}"</span><br><br>
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"connect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Connection Established"</span><span style="color:#d4d4d4">)</span><br><br>
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"disconnect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">disconnect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Disconnected"</span><span style="color:#d4d4d4">)</span><br><br>
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"joined"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">joined</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Socket Joined"</span><span style="color:#d4d4d4">, data)</span><br><br>
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"error"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">error</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('import socketio\n\nurl = \"https://xts.rmoneyindia.co.in:3000\"\nuserID = \"\"\ntoken = \"\"\nbroadcastMode = \"Full\"\npublishFormat = \"JSON\"\nsocketio_path = \"/apibinarymarketdata/socketio\"\nlogger = False\nsio = socketio.Client()').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+## Listening to Real-Time Streaming
+
+<p>Once the socket connection is successfully established, you can listen to real-time streaming data by subscribing to the attached market data ports. The complete market data will be received as a string.</p>
+
+---
+
+## Connect
+
+<p>The user needs to connect to the server via a socket (i.e., WebSocket). It is important to set the path parameter value as <code>/socket.io</code> during the connection. The token will only be available after a successful login, so make sure you log in first before connecting to the server via socket.</p>
+<p>Here, the URL is the REST API address used to connect to the interactive server (e.g., www.test.example.com). Once connected to the server, you can listen to the following events: SocketEvents. An example of a connect event is given below</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"connect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Connection Established"</span><span style="color:#d4d4d4">)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"connect\")\ndef connect():\n    print(\"Connection Established\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+---
+
+## Joined
+
+<p>If a successful connection is established with the server, this event will be raised to indicate that the user has been connected.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"joined"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_joined</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Socket Joined"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"joined\")\ndef on_joined(data):\n    print(\"Socket Joined\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+---
+
+## Error
+
+<p>In case of any error with the server, this event will be raised along with the cause of the error. For example, if you send an incorrect token while connecting, the server will raise this event and disconnect your socket connection.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"error"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_error</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"error\")\ndef on_error(data):\n    print(\"Error\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+---
+
+## Disconnect
+
+<p>In case a socket disconnection occurs with the server, this event will be raised to indicate the disconnection.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"disconnect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_disconnect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Disconnected"</span><span style="color:#d4d4d4">)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"disconnect\")\ndef on_disconnect():\n    print(\"Disconnected\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+---
+
+## Binary Marketdata Event
+
+<p><strong style="color:#1a73e8;">BinaryData</strong><br>
+Binary data event</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"xts-binary-packet"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_binary_full</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Binary data Full:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"xts-binary-packet\")\ndef on_binary_full(data):\n    print(\"Binary data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p><strong>Note</strong></p>
+<ul style="font-size:13px;color:#374151;line-height:2.1;margin:0 0 16px 20px;padding:0;">
+  <li>If the packet is compressed, decompress it using <strong>zlib</strong>, and then deserialize the final packet.</li>
+  <li>If the packet is not compressed, you can directly deserialize the packet.</li>
+  <li>The <strong>isGzipCompressed</strong> flag is present in the parent header of the received packet. The final packet must be iterated accordingly.</li>
+  <li>Further deserialization should be performed based on the <strong>message code</strong>.</li>
+</ul>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Header</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">isGzipCompressed</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Indicates whether the packet is gzip compressed. (1 = compressed, 2 = not compressed)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">messageCode</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Header frame message code</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique identifier of the instrument within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">isInstrumentType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">marketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market Type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">uncompressedPacketSize</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Size of the packet after decompression</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">compressedPacketSize</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Size of the compressed packet</td></tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-size:12px;color:#374151;margin:4px 0 16px 0;">If <strong>isGzipCompressed</strong> is 1 (one) it is a compressed packet — deserialize using zlib. If <strong>isGzipCompressed</strong> is 0 (zero) it is a non-compressed packet.</p>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Touchline event (1501)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">publisherType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Application type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">A sequential response number used for ordering messages</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Number of bytes reserved for forward compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by the exchange for live updates</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Bid &amp; Ask)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Bid)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Bid quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Bid)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Bid total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Bid)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of buy orders at the last bid level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Bid)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the bid side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Ask quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Ask)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Ask total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total number of sell orders at the last ask level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Ask)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the ask side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastUpdatedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the latest market data update</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Price at which the last trade occurred</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Quantity traded in the last transaction</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalBuyQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total buy quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalSellQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total sell quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total quantity traded for the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">AverageTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Weighted average traded price</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Time/timestamp of the last trade</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">perCentChange</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Percent change compared to the previous close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Open</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Opening price of the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">High</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Highest traded price of the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Low</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Lowest traded price of the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Close</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Closing price of the previous trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalValueTraded</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Total trade value for the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalQuantityTraded</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total trade quantity from the previous session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">initialDebt</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total debt quantity from the previous session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">BasicType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Event (1502)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">applicationType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Identifies the application type generating the message</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Required sequence number used to maintain message ordering</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Reserved memory bytes for future compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by exchange for live updates</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">askCount</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Total number of bids &amp; asks in message</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Bid)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Bid)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Bid quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Bid)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Bid total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Bid)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of buy orders at the last bid level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Bid)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the bid side</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Ask)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Ask quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Ask)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Ask total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Ask)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of sell orders at the last ask level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Ask)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the ask side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastUpdatedPrice</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the latest market data available</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Price at which the most recent market data event occurred</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Quantity traded in the last transaction</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalBuyQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total buy quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalSellQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total sell quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total quantity traded during the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">AverageTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Weighted average price of all shares traded in the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the last traded data details</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">perCentChange</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Percentage change compared to the previous close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Open</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Opening price of the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">High</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Highest traded price during the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Low</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Lowest traded price during the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Close</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Closing price of the current trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalValueTraded</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Total trade value for the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">VolatilityBuy</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Selling quantity from the previous market session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">VolatilitySell</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total sell quantity from the previous trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">BasicType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">OpenInterest Event (1512)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">applicationType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Application type generating the message</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Required sequence number used to maintain message ordering</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Bytes reserved for forward compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by exchange for live updates</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">underlyingInstrumentSegment (if padding = 0)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment of the underlying instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">underlyingInstrumentID (if padding = 0)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique identifier of the underlying instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isGzipIndex (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Indicates whether the underlying index name is streaming (0 = yes, 2 = no)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">stringLength (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Length of the underlying index string</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">UnderlyingIndexName (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">string</td><td style="padding:9px 14px;">Name of the underlying index</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalComponents (if totalComponents &gt; 0)</td><td style="padding:9px 14px;">uint64</td><td style="padding:9px 14px;">Total number of elements/components in the message</td></tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## Candle Data Event
+
+<p>Candle Data Event message for 1505 Full Parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"1505_json-full"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_full</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData data Full:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:8px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json-full\")\ndef on_1505_json_full(data):\n    print(\"CandleData data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 json-parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;">
+<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1505</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"TokenID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"BarTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1737752700</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"BarOpenTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1641031502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Open"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1287.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Close"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"OpenInterest"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#d4d4d4">}</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('{\"MessageCode\":1505,\"MessageVersion\":4,\"TokenID\":4,\"ExchangeSegment\":1,\"ExchangeInstrumentID\":2885,\"BarTime\":1737752700,\"BarOpenTime\":1641031502,\"Open\":1288,\"High\":1288,\"Low\":1287.05,\"Close\":1288.05,\"OpenInterest\":0,\"xtsMessageCode\":0}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 Partial Parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"1505_json_partial"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_partial</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData Partial:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:8px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json_partial\")\ndef on_1505_json_partial(data):\n    print(\"CandleData Partial:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<p style="font-size:13px;color:#374151;">Response for 1505 json-partial</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;white-space:nowrap;">
+<span style="color:#ce9178">t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+  <button onclick="var t=this;navigator.clipboard.writeText('t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
+</div>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Symbol</th>
+        <th style="padding:10px 14px;text-align:left;">Explanation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">t</td><td style="padding:9px 14px;">ExchangeSegment_InstrumentID (the exchangeSegment along with InstrumentID are combined and separated by _ followed by the InstrumentID)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">s</td><td style="padding:9px 14px;">Open</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">h</td><td style="padding:9px 14px;">High</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">l</td><td style="padding:9px 14px;">Low</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">c</td><td style="padding:9px 14px;">Close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">w</td><td style="padding:9px 14px;">Weighted Average Traded Price (VWAP)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">oe</td><td style="padding:9px 14px;">Bar Volume</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">oi</td><td style="padding:9px 14px;">OpenInterest (Futures/Options)</td></tr>
+    </tbody>
+  </table>
+</div>
