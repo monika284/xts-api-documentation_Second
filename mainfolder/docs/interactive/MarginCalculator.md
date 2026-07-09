@@ -1,0 +1,438 @@
+<h1 id="margin-calculator" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Margin Calculator</h1>
+<p style="color:#6b7280;font-size:15px;margin-bottom:18px">Estimate the margin required before placing a trade — based on exchange, product type, quantity, and price — to ensure you have sufficient funds in your account.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
+  <div style="display:flex;align-items:center;gap:7px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    Instant Calculation
+  </div>
+  <div style="display:flex;align-items:center;gap:7px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#15803d">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    All Segments
+  </div>
+  <div style="display:flex;align-items:center;gap:7px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#1d4ed8">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Risk Management
+  </div>
+  <div style="display:flex;align-items:center;gap:7px;background:#fdf4ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#7c3aed">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    Pre-trade Margin
+  </div>
+</div>
+
+---
+
+<h2 id="mc-what" style="color:#1e293b;font-weight:700;margin:28px 0 10px">What is Margin?</h2>
+
+<div style="background:#fff7ed;border-left:4px solid #ff6b00;border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:20px;font-size:14px;color:#374151;line-height:1.8">
+<strong>Margin</strong> is the <strong>minimum amount of funds required in your account to place or hold a trade</strong>. It acts as a security deposit to cover potential losses. The exchange sets margin requirements based on the instrument, product type, and market volatility.
+</div>
+
+<h3 id="mc-simple-example" style="color:#1e293b;font-weight:700;margin:20px 0 10px;font-size:15px">Simple Example — RELIANCE MIS Trade</h3>
+
+<div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:20px 24px;margin-bottom:20px">
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px">
+    <div style="background:#fff7ed;border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.05em;margin-bottom:4px">INSTRUMENT</div>
+      <div style="font-size:14px;font-weight:800;color:#ff6b00">RELIANCE</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.05em;margin-bottom:4px">EXCHANGE</div>
+      <div style="font-size:14px;font-weight:800;color:#374151">NSECM</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.05em;margin-bottom:4px">QUANTITY</div>
+      <div style="font-size:14px;font-weight:800;color:#374151">100</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.05em;margin-bottom:4px">PRICE</div>
+      <div style="font-size:14px;font-weight:800;color:#374151">₹2,850</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.05em;margin-bottom:4px">PRODUCT</div>
+      <div style="font-size:14px;font-weight:800;color:#374151">MIS</div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#fff7ed,#fff);border:1.5px solid #fed7aa;border-radius:8px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:13px;font-weight:600;color:#374151">Estimated Required Margin</span>
+    <span style="font-size:22px;font-weight:800;color:#ff6b00">₹57,000</span>
+  </div>
+  <p style="margin:10px 0 0;font-size:12px;color:#6b7280">The calculated amount is an estimate of the funds required to place this trade successfully.</p>
+</div>
+
+---
+
+<h2 id="mc-types" style="color:#1e293b;font-weight:700;margin:28px 0 14px">Types of Margin</h2>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:24px">
+
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#ff7b00,#ff9500);padding:12px 16px;display:flex;align-items:center;gap:10px">
+      <div style="background:rgba(255,255,255,.2);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff">S</div>
+      <strong style="color:#fff;font-size:13px">SPAN Margin</strong>
+    </div>
+    <div style="padding:14px 16px;font-size:13px;color:#374151;line-height:1.7">Standard Portfolio Analysis of Risk. The <strong>minimum margin</strong> required by the exchange for F&amp;O positions, calculated based on the worst possible loss scenario.</div>
+  </div>
+
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#ff7b00,#ff9500);padding:12px 16px;display:flex;align-items:center;gap:10px">
+      <div style="background:rgba(255,255,255,.2);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff">E</div>
+      <strong style="color:#fff;font-size:13px">Exposure Margin</strong>
+    </div>
+    <div style="padding:14px 16px;font-size:13px;color:#374151;line-height:1.7">An <strong>additional buffer</strong> collected by the exchange over SPAN margin to cover mark-to-market losses and other risks not captured by SPAN.</div>
+  </div>
+
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#ff7b00,#ff9500);padding:12px 16px;display:flex;align-items:center;gap:10px">
+      <div style="background:rgba(255,255,255,.2);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff">V</div>
+      <strong style="color:#fff;font-size:13px">VAR Margin</strong>
+    </div>
+    <div style="padding:14px 16px;font-size:13px;color:#374151;line-height:1.7">Value at Risk margin applies to <strong>equity cash (CNC/MIS)</strong> positions. Computed based on the stock's historical price volatility over a defined period.</div>
+  </div>
+
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#ff7b00,#ff9500);padding:12px 16px;display:flex;align-items:center;gap:10px">
+      <div style="background:rgba(255,255,255,.2);border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff">E</div>
+      <strong style="color:#fff;font-size:13px">ELM Margin</strong>
+    </div>
+    <div style="padding:14px 16px;font-size:13px;color:#374151;line-height:1.7">Extreme Loss Margin is collected to cover <strong>losses beyond VAR</strong>. It is a fixed percentage set by the exchange for each security.</div>
+  </div>
+
+</div>
+
+---
+
+<h2 id="mc-flow" style="color:#1e293b;font-weight:700;margin:28px 0 14px">How Margin Calculation Works</h2>
+
+<div style="display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-bottom:24px">
+  <div style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border-radius:8px;padding:12px 18px;font-size:12px;font-weight:700;text-align:center;min-width:110px">
+    <div style="font-size:18px;margin-bottom:4px">👤</div>
+    Select Instrument
+  </div>
+  <div style="color:#ff6b00;font-size:20px;font-weight:700;padding:0 8px">→</div>
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:12px 18px;font-size:12px;font-weight:600;color:#374151;text-align:center;min-width:110px">
+    <div style="font-size:18px;margin-bottom:4px">⚙️</div>
+    Enter Trade Details
+  </div>
+  <div style="color:#ff6b00;font-size:20px;font-weight:700;padding:0 8px">→</div>
+  <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:12px 18px;font-size:12px;font-weight:600;color:#374151;text-align:center;min-width:110px">
+    <div style="font-size:18px;margin-bottom:4px">🧮</div>
+    Margin Calculation
+  </div>
+  <div style="color:#ff6b00;font-size:20px;font-weight:700;padding:0 8px">→</div>
+  <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:12px 18px;font-size:12px;font-weight:700;color:#15803d;text-align:center;min-width:110px">
+    <div style="font-size:18px;margin-bottom:4px">💰</div>
+    Required Margin
+  </div>
+</div>
+
+---
+
+<h2 id="mc-why" style="color:#1e293b;font-weight:700;margin:28px 0 14px">Why Margin Matters</h2>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px">
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151;font-weight:600">Avoid insufficient margin errors before placing orders</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151;font-weight:600">Plan trades by knowing exact fund requirements upfront</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151;font-weight:600">Supports Equity, F&amp;O, Currency, and Commodity</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151;font-weight:600">Saves time with instant pre-trade estimates</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151;font-weight:600">Helps manage risk across multiple positions</div>
+  <div style="background:#fff7ed;border:1px solid #fed7aa;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#c2410c;font-weight:600">Improves overall trading discipline and planning</div>
+</div>
+
+<div style="background:linear-gradient(135deg, #fad1c4, #ff9500);border-radius:12px;padding:18px 22px;margin-bottom:32px">
+  <p style="margin:0;font-size:14px;color: #0a0a0a;line-height:1.8"><strong>In Simple Words:</strong> Margin is the security deposit you must have in your account before placing a trade. The Margin Calculator API lets you check this requirement instantly before submitting any order.</p>
+</div>
+
+---
+
+<h2 id="mc-order-margin" style="color:#1e293b;font-weight:700;margin:28px 0 10px">Order Margin Details</h2>
+<p style="color:#6b7280;font-size:13px;margin:-4px 0 16px">Calculate the margin required for a new order before placing it.</p>
+
+<div class="aec-card">
+  <div class="aec-top">
+    <span class="aec-label">ENDPOINT</span>
+    <span class="aec-badge-post">POST</span>
+  </div>
+  <div class="aec-url-row">
+    <span class="aec-base">https://xts.rmoneyindia.co.in:3000</span><span class="aec-path">/interactive/orders/margindetails</span>
+  </div>
+  <div class="aec-footer">
+    <span class="aec-auth">Requires: valid <code>Authorization</code> token</span>
+    <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/orders/margindetails');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+  </div>
+</div>
+
+<h3 id="mc-req-params" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Request Body Parameters</h3>
+
+<table class="api-table">
+  <thead>
+    <tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="enum-badge">exchangeSegment</span></td><td>ExchangeSegment</td><td><strong>Y</strong></td><td>Exchange segment (e.g., NSECM, NSEFO, BSECM)</td></tr>
+    <tr><td><span class="enum-badge">exchangeInstrumentID</span></td><td>ExchangeInstrumentID</td><td><strong>Y</strong></td><td>Token ID of the instrument</td></tr>
+    <tr><td><span class="enum-badge">productType</span></td><td>ProductType</td><td><strong>Y</strong></td><td>Product type — MIS, CNC, NRML</td></tr>
+    <tr><td><span class="enum-badge">orderType</span></td><td>OrderType</td><td><strong>Y</strong></td><td>Order type — MARKET, LIMIT, STOPLIMIT, STOPMARKET</td></tr>
+    <tr><td><span class="enum-badge">orderSide</span></td><td>OrderSide</td><td><strong>Y</strong></td><td>BUY or SELL</td></tr>
+    <tr><td><span class="enum-badge">orderQuantity</span></td><td>Quantity</td><td><strong>Y</strong></td><td>Number of shares or lots</td></tr>
+    <tr><td><span class="enum-badge">limitPrice</span></td><td>Price</td><td><strong>Y</strong></td><td>Limit price for the order (use 0 for market orders)</td></tr>
+    <tr><td><span class="enum-badge">stopPrice</span></td><td>Price</td><td>N</td><td>Stop-loss trigger price (for SL orders)</td></tr>
+    <tr><td><span class="enum-badge">clientID</span></td><td>ClientID</td><td>N</td><td>Client ID — mandatory for dealer accounts</td></tr>
+  </tbody>
+</table>
+
+<h3 id="mc-req-json" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Request Body JSON</h3>
+
+<div style="position:relative;margin:8px 0 24px">
+  <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8" id="mc-req-box">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"productType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"MIS"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"orderType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"LIMIT"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"orderSide"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"BUY"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"orderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">100</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"limitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2850.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"stopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var t=document.getElementById('mc-req-box').innerText;navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('mc-req-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-req-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<h3 id="mc-res-params" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Response Body Parameters</h3>
+
+<table class="api-table">
+  <thead>
+    <tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="enum-badge">type</span></td><td>String</td><td>Response status — <code>success</code> or <code>error</code></td></tr>
+    <tr><td><span class="enum-badge">code</span></td><td>String</td><td>Response code (e.g., s-margin-0001)</td></tr>
+    <tr><td><span class="enum-badge">description</span></td><td>String</td><td>Human-readable response message</td></tr>
+    <tr><td><span class="enum-badge">InitialMargin</span></td><td>Amount</td><td>Total initial margin required for the order</td></tr>
+    <tr><td><span class="enum-badge">MarginUsed</span></td><td>Amount</td><td>Margin already utilised from the account</td></tr>
+    <tr><td><span class="enum-badge">MarginUsedTrade</span></td><td>Amount</td><td>Margin that will be used for this specific trade</td></tr>
+    <tr><td><span class="enum-badge">MarginAvailable</span></td><td>Amount</td><td>Available margin balance after placing this order</td></tr>
+    <tr><td><span class="enum-badge">SpanMargin</span></td><td>Amount</td><td>SPAN margin component (applicable for F&amp;O)</td></tr>
+    <tr><td><span class="enum-badge">ExposureMargin</span></td><td>Amount</td><td>Exposure margin component (applicable for F&amp;O)</td></tr>
+    <tr><td><span class="enum-badge">VarMargin</span></td><td>Amount</td><td>VAR margin component (applicable for equity)</td></tr>
+    <tr><td><span class="enum-badge">ELMMargin</span></td><td>Amount</td><td>Extreme Loss Margin component</td></tr>
+  </tbody>
+</table>
+
+<h3 id="mc-res-json" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Response Body JSON</h3>
+
+<div style="position:relative;margin:8px 0 24px">
+  <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:260px;overflow:hidden;transition:max-height .4s ease" id="mc-res-box">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-margin-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Margin Details"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InitialMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">57000.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarginUsed"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">12000.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarginUsedTrade"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">57000.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarginAvailable"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">93000.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"SpanMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExposureMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"VarMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">45600.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ELMMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">11400.00</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var t=document.getElementById('mc-res-box').innerText;navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('mc-res-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-res-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    <button onclick="(function(){var b=document.getElementById('mc-res-box');var btn=document.getElementById('mc-res-show');if(b.style.maxHeight==='none'){b.style.maxHeight='260px';btn.textContent='Show Full'}else{b.style.maxHeight='none';btn.textContent='Show Less'}})()" id="mc-res-show" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
+  </div>
+</div>
+
+<h3 id="mc-code-ex" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
+
+<div style="margin:8px 0 32px">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
+    <button onclick="mcShowCode('curl',this)" id="mc-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="mcShowCode('python',this)" id="mc-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+  </div>
+  <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="mc-ce-box">
+    <div id="mc-code-curl">
+<span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/margindetails'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{'</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"exchangeSegment": "NSECM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"exchangeInstrumentID": 2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"productType": "MIS"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderType": "LIMIT"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderSide": "BUY"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderQuantity": 100</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"limitPrice": 2850.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"stopPrice": 0</span><br>
+<span style="color:#ce9178">'}'</span>
+    </div>
+    <div id="mc-code-python" style="display:none">
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> json</span><br>
+<br>
+<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/margindetails"</span><br>
+<br>
+<span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = json.</span><span style="color:#dcdcaa">dumps</span><span style="color:#d4d4d4">({</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"productType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"MIS"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"LIMIT"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderSide"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"BUY"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">100</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"limitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2850.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"stopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#d4d4d4">})</span><br>
+<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">'Content-Type'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'application/json'</span><br>
+<span style="color:#d4d4d4">}</span><br>
+<br>
+<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = requests.</span><span style="color:#dcdcaa">request</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"POST"</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">url</span><span style="color:#d4d4d4">, headers=</span><span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">, data=</span><span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">.</span><span style="color:#9cdcfe">text</span><span style="color:#d4d4d4">)</span>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var a=document.querySelector('[id^=mc-code-]:not([style*=none])');if(!a)return;navigator.clipboard.writeText(a.innerText).then(function(){var b=document.getElementById('mc-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    <button onclick="(function(){var b=document.getElementById('mc-ce-box');var btn=document.getElementById('mc-ce-show');if(b.style.maxHeight==='none'){b.style.maxHeight='320px';btn.textContent='Show Full'}else{b.style.maxHeight='none';btn.textContent='Show Less'}})()" id="mc-ce-show" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
+  </div>
+</div>
+
+---
+
+<h2 id="mc-modify-margin" style="color:#1e293b;font-weight:700;margin:28px 0 10px">Modify Order Margin Details</h2>
+<p style="color:#6b7280;font-size:13px;margin:-4px 0 16px">Calculate the margin impact when modifying an existing open order — quantity or price change.</p>
+
+<div class="aec-card">
+  <div class="aec-top">
+    <span class="aec-label">ENDPOINT</span>
+    <span class="aec-badge-post">POST</span>
+  </div>
+  <div class="aec-url-row">
+    <span class="aec-base">https://xts.rmoneyindia.co.in:3000</span><span class="aec-path">/interactive/orders/modifyordermargindetails</span>
+  </div>
+  <div class="aec-footer">
+    <span class="aec-auth">Requires: valid <code>Authorization</code> token</span>
+    <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/orders/modifyordermargindetails');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+  </div>
+</div>
+
+<h3 id="mc-mod-req-params" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Request Body Parameters</h3>
+
+<table class="api-table">
+  <thead>
+    <tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="enum-badge">appOrderID</span></td><td>AppOrderID</td><td><strong>Y</strong></td><td>Unique order ID of the existing order to modify</td></tr>
+    <tr><td><span class="enum-badge">orderQuantity</span></td><td>Quantity</td><td><strong>Y</strong></td><td>New quantity for the order</td></tr>
+    <tr><td><span class="enum-badge">limitPrice</span></td><td>Price</td><td><strong>Y</strong></td><td>New limit price (use 0 for market orders)</td></tr>
+    <tr><td><span class="enum-badge">stopPrice</span></td><td>Price</td><td>N</td><td>New stop-loss trigger price</td></tr>
+    <tr><td><span class="enum-badge">clientID</span></td><td>ClientID</td><td>N</td><td>Client ID — mandatory for dealer accounts</td></tr>
+  </tbody>
+</table>
+
+<h3 id="mc-mod-req-json" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Request Body JSON</h3>
+
+<div style="position:relative;margin:8px 0 24px">
+  <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8" id="mc-mod-req-box">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1234567890</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"orderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">150</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"limitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2870.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"stopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var t=document.getElementById('mc-mod-req-box').innerText;navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('mc-mod-req-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-mod-req-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<h3 id="mc-mod-res-json" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Response Body JSON</h3>
+
+<div style="position:relative;margin:8px 0 24px">
+  <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8" id="mc-mod-res-box">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-margin-0002"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Modify Order Margin Details"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InitialMargin"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">85500.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarginUsedTrade"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">85500.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarginAvailable"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">64500.00</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var t=document.getElementById('mc-mod-res-box').innerText;navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('mc-mod-res-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-mod-res-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<h3 id="mc-mod-code-ex" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
+
+<div style="margin:8px 0 24px">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
+    <button onclick="mcModShowCode('curl',this)" id="mc-mod-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="mcModShowCode('python',this)" id="mc-mod-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+  </div>
+  <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="mc-mod-ce-box">
+    <div id="mc-mod-code-curl">
+<span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/modifyordermargindetails'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{'</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"appOrderID": 1234567890</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderQuantity": 150</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"limitPrice": 2870.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"stopPrice": 0</span><br>
+<span style="color:#ce9178">'}'</span>
+    </div>
+    <div id="mc-mod-code-python" style="display:none">
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> json</span><br>
+<br>
+<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/modifyordermargindetails"</span><br>
+<br>
+<span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = json.</span><span style="color:#dcdcaa">dumps</span><span style="color:#d4d4d4">({</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1234567890</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"orderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">150</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"limitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2870.00</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"stopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#d4d4d4">})</span><br>
+<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">'Content-Type'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'application/json'</span><br>
+<span style="color:#d4d4d4">}</span><br>
+<br>
+<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = requests.</span><span style="color:#dcdcaa">request</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"POST"</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">url</span><span style="color:#d4d4d4">, headers=</span><span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">, data=</span><span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">.</span><span style="color:#9cdcfe">text</span><span style="color:#d4d4d4">)</span>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var a=document.querySelector('[id^=mc-mod-code-]:not([style*=none])');if(!a)return;navigator.clipboard.writeText(a.innerText).then(function(){var b=document.getElementById('mc-mod-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="mc-mod-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    <button onclick="(function(){var b=document.getElementById('mc-mod-ce-box');var btn=document.getElementById('mc-mod-ce-show');if(b.style.maxHeight==='none'){b.style.maxHeight='320px';btn.textContent='Show Full'}else{b.style.maxHeight='none';btn.textContent='Show Less'}})()" id="mc-mod-ce-show" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
+  </div>
+</div>
+
+<script>
+function mcShowCode(lang, btn) {
+  ['curl','python'].forEach(function(l) {
+    document.getElementById('mc-code-' + l).style.display = 'none';
+    document.getElementById('mc-tab-' + l).style.background = '#374151';
+  });
+  document.getElementById('mc-code-' + lang).style.display = 'block';
+  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
+}
+function mcModShowCode(lang, btn) {
+  ['curl','python'].forEach(function(l) {
+    document.getElementById('mc-mod-code-' + l).style.display = 'none';
+    document.getElementById('mc-mod-tab-' + l).style.background = '#374151';
+  });
+  document.getElementById('mc-mod-code-' + lang).style.display = 'block';
+  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
+}
+</script>

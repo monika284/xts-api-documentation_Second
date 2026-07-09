@@ -1,4 +1,4 @@
-<h1 style="color: #111827;"><strong> Interactive API Overview </h1>
+<h1 style="color: #111827;"><strong>Interactive API Overview</strong></h1>
 
 <p class="iov-subtitle">The Interactive API allows developers to connect their applications with the RMoney trading platform. Using these APIs, you can authenticate users, retrieve account information, place and manage orders, access portfolio details, and build custom trading applications.</p>
 
@@ -44,7 +44,7 @@
 
 ---
 
-## What is Interactive API?
+## What  is Interactive API?
 
 <p class="iov-lead">Interactive APIs enable two-way communication between your application and the RMoney trading system. Unlike Market Data APIs that only provide information, Interactive APIs allow you to perform actions such as placing orders, modifying trades, and managing portfolios.</p>
 
@@ -142,7 +142,7 @@
   <div class="iov-wf-arrow">&rarr;</div>
   <div class="iov-wf-step">
     <div class="iov-wf-icon iov-wf-orange">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5"/><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <span>RMoney Trading System</span>
   </div>
@@ -227,8 +227,4 @@
   </div>
 </div>
 
-## Next Steps
 
-- [Authentication Guide](Authentication.md) — Set up API access and generate your token
-- [Base URL & Endpoints](baseurl.md) — Understand the API structure and request formats
-- [Error Codes Reference](errors.md) — Handle errors and troubleshoot responses

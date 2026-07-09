@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script>
+    /* Force light mode as default for new visitors (runs before Material's palette.js) */
+    (function () {
+      try {
+        if (!localStorage.getItem('__palette')) {
+          localStorage.setItem('__palette', JSON.stringify({ index: 0 }));
+        }
+      } catch (e) {}
+    }());
+  </script>
+{% endblock %}

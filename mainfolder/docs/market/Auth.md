@@ -1,0 +1,189 @@
+﻿<h1 style="color:#ff6b00;font-weight:800;margin-bottom:6px">Authentication</h1>
+<p class="iov-subtitle"><strong>Authentication (Auth)</strong> is the process of verifying a user's identity before allowing access to Market Data APIs — the security check that confirms you are an authorized user.</p>
+
+<div class="iov-features">
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a5 5 0 0 0-5-5z"/></svg></div><span>Secure access</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><span>Prevents unauthorized use</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Account protection</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg></div><span>API usage control</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-yellow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Request tracking</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Valid users only</span></div>
+</div>
+
+---
+
+## How Authentication Works
+
+<div class="iov-workflow" style="flex-wrap:wrap">
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div><span>Send Login Request</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><span>Server Validates</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a5 5 0 0 0-5-5z"/></svg></div><span>Token Generated</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Token Returned</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>API Access Granted</span></div>
+</div>
+
+---
+
+## Step 1 — Send Login Request
+
+The user provides credentials:
+
+<div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:14px;line-height:1.8;margin:12px 0">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"secretKey"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxx"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"appKey"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxx"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"source"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"WebAPI"</span><br>
+<span style="color:#ffd700">}</span>
+</div>
+
+---
+
+## Step 2 — Server Validates Credentials
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
+  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ App Key valid?</div>
+    <p style="font-size:12px;color:#374151;margin:0">Checks if the App Key exists and is active.</p>
+  </div>
+  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ Secret Key valid?</div>
+    <p style="font-size:12px;color:#374151;margin:0">Matches the Secret Key against stored records.</p>
+  </div>
+  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ Access rights?</div>
+    <p style="font-size:12px;color:#374151;margin:0">Confirms the user has permission to access data.</p>
+  </div>
+</div>
+
+---
+
+## Step 3 — Token Generated & Returned
+
+If validation succeeds, the server returns an access token:
+
+<div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:14px;line-height:1.8;margin:12px 0">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"token"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"eyJhbGciOiJIUzI1Ni..."</span><br>
+<span style="color:#ffd700">}</span>
+</div>
+
+---
+
+## Step 4 — Use Token in Future Requests
+
+Include the token in every API request header:
+
+<div style="background:#1e1e1e;border-radius:10px;padding:16px 20px;font-family:Consolas,monospace;font-size:14px;margin:12px 0">
+<span style="color:#4fc3f7">Authorization</span><span style="color:#d4d4d4">: Bearer </span><span style="color:#ce9178">&lt;token&gt;</span>
+</div>
+
+---
+
+## What is an Access Token?
+
+<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin:16px 0 24px;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
+  <div style="padding:16px 20px;background:#ffffff">
+    <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:6px">WITHOUT TOKEN</div>
+    <code style="font-size:13px;color:#9a3412">Login every single API call</code>
+  </div>
+  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;align-self:stretch;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background:#f0fdf4">
+    <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:6px">WITH TOKEN</div>
+    <code style="font-size:13px;color:#166534">Login once → use token for all calls</code>
+  </div>
+</div>
+
+---
+
+## Authentication Failure Errors
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:12px 0 24px">
+  <div style="border:1.5px solid #fdba74;border-radius:10px;overflow:hidden">
+    <div style="background:#ea580c;padding:10px 16px;color: #fff;font-weight:700;font-size:13px">Invalid Credentials</div>
+    <div style="padding:12px 16px;background: #ffffff;font-family:Consolas,monospace;font-size:12px;color:#374151;line-height:1.8">
+      <span style="color: #013a24">"type"</span>: <span style="color: #ce9178">"error"</span>,<br>
+      <span style="color: #013b1b">"description"</span>: <span style="color: #ce9178">"Invalid App Key"</span>
+    </div>
+  </div>
+  <div style="border:1.5px solid #fdba74;border-radius:10px;overflow:hidden">
+    <div style="background:#ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Expired Token</div>
+    <div style="padding:12px 16px;background:#ffffff;font-family:Consolas,monospace;font-size:12px;color:#374151;line-height:1.8">
+      <span style="color:#013b1b">"type"</span>: <span style="color:#ce9178">"error"</span>,<br>
+      <span style="color:#013b1b">"description"</span>: <span style="color:#ce9178">"Session Expired"</span>
+    </div>
+  </div>
+  <div style="border:1.5px solid #fdba74;border-radius:10px;overflow:hidden">
+    <div style="background:#ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Unauthorized Access</div>
+    <div style="padding:12px 16px;background:#ffffff;font-family:Consolas,monospace;font-size:12px;color:#374151;line-height:1.8">
+      <span style="color:#013b1b">"type"</span>: <span style="color:#ce9178">"error"</span>,<br>
+      <span style="color:#013b1b">"description"</span>: <span style="color:#ce9178">"Authentication Failed"</span>
+    </div>
+  </div>
+</div>
+
+---
+
+## APIs That Require Authentication
+
+Authentication is the **first API call** before accessing any of these:
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0 24px">
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c"> Real-time Quotes</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c">OHLC Data</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c"> Market Depth</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c"> Instruments</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c"> WebSocket</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff;font-size:13px;font-weight:600;color:#c2410c"> Historical Data</div>
+</div>
+
+---
+
+## Security Best Practices
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:12px 0 24px">
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Keep Keys Private</div>
+    <p style="font-size:13px;color:#374151;margin:0">Never expose App Key, Secret Key, or Access Token in public code or repositories.</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Use HTTPS</div>
+    <p style="font-size:13px;color:#374151;margin:0">Always communicate through secure encrypted connections.</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Store Tokens Securely</div>
+    <p style="font-size:13px;color:#374151;margin:0">Avoid storing tokens in client-side code or public repositories.</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Refresh Expired Sessions</div>
+    <p style="font-size:13px;color:#374151;margin:0">Generate a new token when the current session expires.</p>
+  </div>
+</div>
+
+---
+
+## Real-Life Analogy
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0 24px">
+  <div style="border:2px solid #fed7aa;border-radius:14px;overflow:hidden">
+    <div style="background:#ff6b00;padding:12px 18px;color:#fff;font-weight:700;font-size:14px"> Office Building</div>
+    <div style="padding:14px 18px;background:#ffffff">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+        <li>Building = Market Data API</li>
+        <li>ID Card Check = Authentication</li>
+        <li>Access Card = Token</li>
+        <li>Office Entry = API Access</li>
+      </ul>
+    </div>
+  </div>
+  <div style="border:2px solid #bbf7d0;border-radius:14px;overflow:hidden">
+    <div style="background: #16a34a;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">✔ Key Takeaway</div>
+    <div style="padding:14px 18px;background: #fff;font-size:13px;color:#374151;line-height:2">
+      Without the ID card, you cannot enter the building.<br><br>
+      Similarly, without authentication, you <strong>cannot access market data</strong>.
+    </div>
+  </div>
+</div>

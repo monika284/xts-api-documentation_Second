@@ -2,7 +2,7 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="burl-hero">
-  <h1 class="burl-hero-title">Base URL &amp; Endpoints</h1>
+  <h1 id="Base-url-endpoints" class="burl-hero-title">Base URL &amp; Endpoints</h1>
   <p class="burl-hero-sub">Before making any API request, you need to know <strong>where the API lives</strong> and <strong>which path to call</strong>. This page explains the building blocks of every RMoney API call.</p>
   <div class="burl-formula-row">
     <div class="burl-formula-part">
@@ -23,8 +23,6 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="burl-level-badge">Basic</div>
-
 <h2 id="what-is-base-url" class="burl-section-title">What is a Base URL?</h2>
 <div class="burl-concept-row">
   <div class="burl-concept-card">
@@ -43,8 +41,12 @@
     <h3 class="burl-concept-title">Endpoint</h3>
     <p class="burl-concept-desc">A specific path that accesses a particular resource or action. Think of it as the room number inside the building.</p>
     <div class="burl-concept-example">
-      <div class="burl-ce-label">Login</div>
+      <div class="burl-ce-label">Login — Interactive</div>
       <code>/interactive/user/session</code>
+    </div>
+    <div class="burl-concept-example">
+      <div class="burl-ce-label">Login — Market Data</div>
+      <code>/apimarketdata/auth/login</code>
     </div>
     <div class="burl-concept-example">
       <div class="burl-ce-label">Place Order</div>
@@ -75,8 +77,6 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="burl-level-badge">Intermediate</div>
-
 <h2 id="api-categories" class="burl-section-title">Available API Categories</h2>
 <div class="burl-categories">
   <div class="burl-cat-item">
@@ -159,8 +159,6 @@
 </div>
 
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="burl-level-badge">Advanced</div>
-
 <h2 id="http-methods" class="burl-section-title">HTTP Methods Explained</h2>
 <div class="burl-methods-grid">
   <div class="burl-method-card">

@@ -8,6 +8,22 @@
   <p class="mo-subtitle">The Market Data API provides real-time and historical market information for a wide range of financial instruments.</p>
 </div>
 
+<!-- API Environment URLs -->
+<div style="margin:20px 0 28px">
+  <h2 style="color:#1d4ed8;font-weight:700;font-size:16px;margin-bottom:12px">API Environment URLs</h2>
+  <div class="aec-card">
+    <div class="aec-top">
+      <span class="aec-label">BASE URL</span>
+    </div>
+    <div class="aec-url-row">
+      <span class="aec-base">https://developers.symphonyfintech.in/apibinarymarketdata</span>
+    </div>
+    <div class="aec-footer">
+      <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://developers.symphonyfintech.in/apibinarymarketdata');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+    </div>
+  </div>
+</div>
+
 <!-- Two-column body -->
 <div class="mo-body">
 
@@ -148,199 +164,3 @@
 </aside>
 <section class="market-data-details">
 
-<h2 id="realtime-quotes"> Real-time Quotes</h2>
-
-<p>
-Real-time Quotes provide the current market price of a stock or instrument instantly.
-This helps traders and investors monitor live market movements and make timely decisions.
-</p>
-
-<h4>Information Available</h4>
-<ul>
-    <li>Last Traded Price (LTP)</li>
-    <li>Open Price</li>
-    <li>High Price</li>
-    <li>Low Price</li>
-    <li>Previous Close</li>
-    <li>Volume</li>
-</ul>
-
-<div class="feature-example">
-<strong>Example</strong><br>
-Reliance<br>
-Current Price: ₹2,950
-</div>
-
-<p>
-Think of it like checking a live cricket score instead of yesterday's score.
-</p>
-
-<hr>
-
-<h2 id="historical-data"> Historical Data</h2>
-
-<p>
-Historical Data provides market information from the past. It allows developers and traders to analyze trends, build charts, and test trading strategies using previous market records.
-</p>
-
-<h4>Information Available</h4>
-
-<ul>
-    <li>Open Price</li>
-    <li>High Price</li>
-    <li>Low Price</li>
-    <li>Close Price</li>
-    <li>Volume</li>
-</ul>
-
-<div class="feature-example">
-Show Reliance prices from<br>
-1 Jan 2026 to 31 Jan 2026
-</div>
-
-<p>
-Historical data is commonly used for chart analysis, backtesting, and trend identification.
-</p>
-
-<hr>
-
-<h2 id="ohlc-data"> OHLC Data</h2>
-
-<p>
-OHLC stands for Open, High, Low and Close. It summarizes price movement for a specific time interval.
-</p>
-
-<table>
-<tr>
-<th>Term</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>Open</td>
-<td>First traded price</td>
-</tr>
-<tr>
-<td>High</td>
-<td>Highest traded price</td>
-</tr>
-<tr>
-<td>Low</td>
-<td>Lowest traded price</td>
-</tr>
-<tr>
-<td>Close</td>
-<td>Last traded price</td>
-</tr>
-</table>
-
-<div class="feature-example">
-Open : ₹100<br>
-High : ₹120<br>
-Low : ₹95<br>
-Close : ₹115
-</div>
-
-<p>
-OHLC data is the foundation of candlestick charts and technical analysis.
-</p>
-
-<hr>
-
-<h2 id="market-depth"> Market Depth</h2>
-
-<p>
-Market Depth shows active buy and sell orders available in the market. It is also known as the Order Book.
-</p>
-
-<h4>Example</h4>
-
-<table>
-<tr>
-<th>Buy Price</th>
-<th>Quantity</th>
-</tr>
-<tr>
-<td>₹100</td>
-<td>500</td>
-</tr>
-<tr>
-<td>₹99</td>
-<td>1000</td>
-</tr>
-</table>
-
-<br>
-
-<table>
-<tr>
-<th>Sell Price</th>
-<th>Quantity</th>
-</tr>
-<tr>
-<td>₹101</td>
-<td>700</td>
-</tr>
-<tr>
-<td>₹102</td>
-<td>400</td>
-</tr>
-</table>
-
-<p>
-Market depth helps traders understand liquidity, demand, supply and buying or selling pressure.
-</p>
-
-<hr>
-
-<h2 id="instrument-information"> Instrument Information</h2>
-
-<p>
-Instrument Information provides complete details about a tradable security or derivative contract.
-</p>
-
-<ul>
-    <li>Trading Symbol</li>
-    <li>Exchange</li>
-    <li>Instrument Token</li>
-    <li>Lot Size</li>
-    <li>Tick Size</li>
-    <li>Expiry Date</li>
-    <li>Strike Price</li>
-    <li>Option Type</li>
-</ul>
-
-<div class="feature-example">
-Symbol: NIFTY25JUN25000CE<br>
-Lot Size: 75<br>
-Expiry: 25-Jun-2026
-</div>
-
-<p>
-This information is required before placing orders or identifying instruments correctly.
-</p>
-
-<hr>
-
-<h2 id="live-historical-data"> Live & Historical Data</h2>
-
-<p>
-This feature combines both live market data and historical market data through a single service.
-</p>
-
-<ul>
-    <li>Real-time Price Updates</li>
-    <li>Historical Records</li>
-    <li>Trend Analysis</li>
-    <li>Research & Backtesting</li>
-</ul>
-
-<div class="feature-example">
-Current Price : ₹2950<br>
-Past 1 Year Historical Trend
-</div>
-
-<p>
-Applications such as trading platforms, analytics dashboards and algorithmic trading systems commonly use both live and historical data together.
-</p>
-
-</section>

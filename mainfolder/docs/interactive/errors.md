@@ -2,7 +2,7 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="err-hero">
-  <h1 class="err-hero-title">Error Codes</h1>
+  <h1 id="Erroe-codes" class="err-hero-title">Error Codes</h1>
   <p class="err-hero-sub">When an API request fails, RMoney returns an error code with a message so you can identify the problem and fix it fast. Understanding error codes is essential to building reliable trading applications.</p>
   <div class="err-why-grid">
     <div class="err-why-item"><span>Identify problems quickly without guessing</span></div>

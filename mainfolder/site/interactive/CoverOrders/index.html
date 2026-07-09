@@ -1,0 +1,3619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../SpreadOrders/">
+      
+      
+        <link rel="next" href="../BracketOrders/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Cover Orders - RMoney API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <script>
+    /* Force light mode as default for new visitors (runs before Material's palette.js) */
+    (function () {
+      try {
+        if (!localStorage.getItem('__palette')) {
+          localStorage.setItem('__palette', JSON.stringify({ index: 0 }));
+        }
+      } catch (e) {}
+    }());
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#endpoint" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RMoney API Documentation" class="md-header__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RMoney API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cover Orders
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RMoney API Documentation" class="md-nav__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    RMoney API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GS/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../baseurl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base URL & Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-cover-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Cover Order?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works — Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cover-order-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cover Order Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-vs-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantages vs Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#place-cover-order-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Place Cover Order (POST)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-cover-order-put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Cover Order (PUT)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataTypes%26BussinessRules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Business Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EnumsWithNumericConstants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Codes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GTT Orders.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GTT Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MarginCalculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Margin Calculator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MTMCalculation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTM Calculation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Orders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standard Orders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orders/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orders/cancel_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orders/modify_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orders/place_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Place Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolio/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolio/funds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolio/holdings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Holdings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolio/position_convert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position Convert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolio/positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Positions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RateLimit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rate Limit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SocketStreaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SpreadOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spread Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-cover-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Cover Order?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works — Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cover-order-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cover Order Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-vs-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantages vs Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#place-cover-order-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Place Cover Order (POST)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-cover-order-put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Cover Order (PUT)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BracketOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bracket Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_20" id="__nav_3_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook & Orderbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_20">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradebook & Orderbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tradebook/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Order History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tradebook/orderbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orderbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tradebook/tradebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Data API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Market Data API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/Auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/Data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Bussiness Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/Enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/CC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/Search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/instruments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/quotes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quotes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/ohlc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OHLC Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/depth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/SS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../market/SSub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    socket Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-cover-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is a Cover Order?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works — Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cover-order-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cover Order Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-vs-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advantages vs Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#place-cover-order-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Place Cover Order (POST)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-cover-order-put" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit Cover Order (PUT)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#request-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Request Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-body-json_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response Body JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../overview/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Interactive API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 style="color:#ff6b00;font-weight:800;margin-bottom:6px">Cover Orders</h1>
+<p class="iov-subtitle">A <strong>Cover Order (CO)</strong> is a special order that combines a main order with a compulsory stop-loss — giving you built-in risk protection and higher leverage in a single placement.</p>
+
+<div class="iov-features">
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><span>Built-in stop-loss</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div><span>Higher leverage</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Automatic risk management</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg></div><span>Intraday trading</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-yellow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Reduced monitoring</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Faster execution</span></div>
+</div>
+
+<hr />
+<h2 id="endpoint">Endpoint</h2>
+<p><strong>URL</strong></p>
+<div class="api-url-box">
+  <div class="method post">POST</div>
+  <div class="api-url">https://developers.symphonyfintech.in/1interactive/orders/cover</div>
+  <button class="copy-btn" onclick="navigator.clipboard.writeText('https://developers.symphonyfintech.in/1interactive/orders/cover').then(()=>{this.textContent='✔ Copied!';this.style.background='#16a34a';setTimeout(()=>{this.textContent='⧉ Copy';this.style.background=''},2000)})">⧉ Copy</button>
+</div>
+
+<hr />
+<h2 id="what-is-a-cover-order">What is a Cover Order?</h2>
+<p class="iov-lead">A Cover Order lets you enter a trade with a mandatory stop-loss baked in. Because the broker knows your maximum possible loss upfront, they offer higher leverage — making CO ideal for active intraday traders who want capital efficiency without manual exit monitoring.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px">
+  <div style="border:2px solid #fed7aa;border-radius:14px;overflow:hidden">
+    <div style="background:#ff6b00;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">Main Order</div>
+    <div style="padding:14px 18px;background:#fff7ed">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+        <li>Buys or sells the stock</li>
+        <li>Executed immediately at market</li>
+        <li>Entry price defined here</li>
+      </ul>
+    </div>
+  </div>
+  <div style="border:2px solid #fca5a5;border-radius:14px;overflow:hidden">
+    <div style="background:#dc2626;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">Stop-Loss Order</div>
+    <div style="padding:14px 18px;background:#fff1f2">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+        <li>Placed automatically alongside</li>
+        <li>Triggers if price moves against you</li>
+        <li>Exits position to cap the loss</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h2 id="how-it-works-example">How It Works — Example</h2>
+<div style="border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;margin:12px 0 24px">
+  <div style="background:#f9fafb;padding:10px 18px;font-size:12px;font-weight:700;color:#6b7280;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #e5e7eb">RELIANCE — BUY Cover Order</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;font-size:13px">
+    <div style="padding:14px 18px;border-right:1px solid #e5e7eb">
+      <div style="color:#9ca3af;font-size:11px;font-weight:700;margin-bottom:8px">ORDER DETAILS</div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:4px 16px;line-height:2">
+        <span style="color:#6b7280">Buy Price</span><span style="font-weight:700;color:#ff6b00">₹2,850</span>
+        <span style="color:#6b7280">Stop Loss</span><span style="font-weight:700;color:#dc2626">₹2,830</span>
+        <span style="color:#6b7280">Quantity</span><span style="font-weight:700">100 shares</span>
+        <span style="color:#6b7280">Max Risk</span><span style="font-weight:700;color:#dc2626">₹20 × 100 = ₹2,000</span>
+      </div>
+    </div>
+    <div style="padding:14px 18px">
+      <div style="color:#9ca3af;font-size:11px;font-weight:700;margin-bottom:8px">OUTCOMES</div>
+      <div style="background:#f0fdf4;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:13px;color:#166534"><strong>Price rises → ₹2,900</strong><br>Profit = ₹50 × 100 = <strong>₹5,000</strong></div>
+      <div style="background:#fff1f2;border-radius:8px;padding:10px 14px;font-size:13px;color:#991b1b"><strong>Price drops → ₹2,830</strong><br>SL triggered — Loss capped at <strong>₹2,000</strong></div>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h2 id="cover-order-workflow">Cover Order Workflow</h2>
+<div class="iov-workflow" style="flex-wrap:wrap">
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div><span>User Places Order</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Main Order Executed</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg></div><span>Stop-Loss Created</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Market Moves</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg></div><span>Profit or SL Triggered</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7l-2 4h8l-2-4h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H3V4h18v12z"/></svg></div><span>Position Closed</span></div>
+</div>
+
+<hr />
+<h2 id="features">Features</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 24px">
+  <div style="border:1.5px solid #fd8b09;border-radius:12px;padding:16px;background:#fed7aa">
+    <div style="font-weight:700;color: #110101;font-size:13px;margin-bottom:6px"><bold>Mandatory Stop Loss</div>
+    <p style="font-size:13px;color:#374151;margin:0">Every CO must have a stop-loss. It cannot be placed without one.</p>
+  </div>
+  <div style="border:1.5px solid #fa8c0e;border-radius:12px;padding:16px;background:#fed7aa">
+    <div style="font-weight:700;color: #050000;font-size:13px;margin-bottom:6px"><bold>Higher Margin Benefit</div>
+    <p style="font-size:13px;color:#374151;margin:0">Because risk is predefined, brokers offer more leverage for Cover Orders.</p>
+  </div>
+  <div style="border:1.5px solid #f88b0e;border-radius:12px;padding:16px;background:#fed7aa">
+    <div style="font-weight:700;color: #020100;font-size:13px;margin-bottom:6px"><bold>Automatic Risk Management</div>
+    <p style="font-size:13px;color:#374151;margin:0">Stop-loss triggers automatically — no need to manually watch the market.</p>
+  </div>
+  <div style="border:1.5px solid #ff8f0e;border-radius:12px;padding:16px;background:#fed7aa">
+    <div style="font-weight:700;color: #0a0501;font-size:13px;margin-bottom:6px">Intraday Only</div>
+    <p style="font-size:13px;color:#374151;margin:0">Cover Orders are squared off automatically before market close.</p>
+  </div>
+  <div style="border:1.5px solid #f78a0e;border-radius:12px;padding:16px;background:#fed7aa">
+    <div style="font-weight:700;color: #080101;font-size:13px;margin-bottom:6px">Faster Execution</div>
+    <p style="font-size:13px;color:#374151;margin:0">Predefined risk parameters allow the system to execute orders more efficiently.</p>
+  </div>
+</div>
+
+<hr />
+<h2 id="advantages-vs-limitations">Advantages vs Limitations</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px">
+  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
+    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Advantages</div>
+    <div style="padding:14px 18px;background:#f0fdf4">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+        <li>Reduced risk with automatic protection</li>
+        <li>Higher leverage from broker</li>
+        <li>Better capital utilisation</li>
+        <li>No manual exit needed for losses</li>
+        <li>Suitable for active traders</li>
+      </ul>
+    </div>
+  </div>
+  <div style="border:1.5px solid #fca5a5;border-radius:12px;overflow:hidden">
+    <div style="background:#dc2626;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Limitations</div>
+    <div style="padding:14px 18px;background:#fff1f2">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+        <li>Stop-loss is mandatory — cannot skip</li>
+        <li>Available for intraday trading only</li>
+        <li>Main order and SL are linked</li>
+        <li>SL rejection may force broker square-off</li>
+        <li>Not supported on all instruments</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr />
+<h2 id="common-use-cases">Common Use Cases</h2>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intraday Trading</td>
+<td>Open and close positions within the same day with protection</td>
+</tr>
+<tr>
+<td>Risk Management</td>
+<td>Prevent large losses using automatic stop-loss</td>
+</tr>
+<tr>
+<td>Leveraged Trading</td>
+<td>Trade larger positions with lower margin requirement</td>
+</tr>
+<tr>
+<td>Volatile Markets</td>
+<td>Protect positions during sudden or sharp price movements</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="place-cover-order-post">Place Cover Order (POST)</h2>
+<hr />
+<h2 id="request-body-parameters">Request Body Parameters</h2>
+<table class="param-table">
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Type</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>exchangeSegment</strong></td>
+      <td>ExchangeSegment</td>
+      <td>Y</td>
+      <td>Exchange segment identifier (e.g. NSECM, NSEFO)</td>
+    </tr>
+    <tr>
+      <td><strong>exchangeInstrumentID</strong></td>
+      <td>ExchangeInstrumentID</td>
+      <td>Y</td>
+      <td>Exchange Scrip code or Symbol Token is unique identifier</td>
+    </tr>
+    <tr>
+      <td><strong>orderType</strong></td>
+      <td>OrderType</td>
+      <td>Y</td>
+      <td>Type of order (e.g. MARKET, LIMIT, STOPMARKET, STOPLIMIT)</td>
+    </tr>
+    <tr>
+      <td><strong>orderSide</strong></td>
+      <td>OrderSide</td>
+      <td>Y</td>
+      <td>Direction of trade — BUY or SELL</td>
+    </tr>
+    <tr>
+      <td><strong>disclosedQuantity</strong></td>
+      <td>DisclosedQuantity</td>
+      <td>Y</td>
+      <td>Quantity to disclose (for equity)</td>
+    </tr>
+    <tr>
+      <td><strong>orderQuantity</strong></td>
+      <td>Quantity</td>
+      <td>Y</td>
+      <td>Quantity to transact. In terms of Lots</td>
+    </tr>
+    <tr>
+      <td><strong>limitPrice</strong></td>
+      <td>Price</td>
+      <td>Y</td>
+      <td>The price to execute the order at</td>
+    </tr>
+    <tr>
+      <td><strong>stopPrice</strong></td>
+      <td>Price</td>
+      <td>Y</td>
+      <td>The price at which an order should be triggered (SL, SL-M)</td>
+    </tr>
+    <tr>
+      <td><strong>orderUniqueIdentifier</strong></td>
+      <td>OrderUniqueIdentifier</td>
+      <td>N</td>
+      <td>Echo back to identify order</td>
+    </tr>
+    <tr>
+      <td><strong>apiOrderSource</strong></td>
+      <td>ApiOrderSource</td>
+      <td>N</td>
+      <td>API Order Source can be third party application name which you want to give to your order, which will be used to track your order with particular source.</td>
+    </tr>
+    <tr>
+      <td><strong>clientID</strong></td>
+      <td>ClientID</td>
+      <td>N</td>
+      <td>ClientID Mandatory in case of Dealer</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="request-body-json">Request Body JSON</h2>
+<div style="background:#1e1e1e;border-radius:10px;overflow:hidden">
+  <div class="json-box" id="co-json-box" style="max-height:220px"><span style="color:#ffd700">{</span>
+  <span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3045</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"orderSide"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"BUY"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"orderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">15</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"disclosedQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"limitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">254.55</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"stopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">251.5</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"orderType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"LIMIT"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"orderUniqueIdentifier"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"123abc"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"clientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"apiOrderSource"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ThirdPartyAppName"</span>
+<span style="color:#ffd700">}</span></div>
+  <div class="json-actions" style="padding:10px 16px;background:#2d2d2d">
+    <button style="background:#ff6b00;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var t='{\n  &quot;exchangeSegment&quot;: &quot;NSECM&quot;,\n  &quot;exchangeInstrumentID&quot;: 3045,\n  &quot;orderSide&quot;: &quot;BUY&quot;,\n  &quot;orderQuantity&quot;: 15,\n  &quot;disclosedQuantity&quot;: 0,\n  &quot;limitPrice&quot;: 254.55,\n  &quot;stopPrice&quot;: 251.5,\n  &quot;orderType&quot;: &quot;LIMIT&quot;,\n  &quot;orderUniqueIdentifier&quot;: &quot;123abc&quot;,\n  &quot;clientID&quot;: &quot;SYMP1&quot;,\n  &quot;apiOrderSource&quot;: &quot;ThirdPartyAppName&quot;\n}';navigator.clipboard.writeText(t.replace(/&quot;/g,String.fromCharCode(34))).then(function(){b.innerHTML='&#10003; Copied!';b.style.background='#16a34a';setTimeout(function(){b.innerHTML='&#128203; Copy';b.style.background='#ff6b00'},2000)})})(this)">&#128203; Copy</button>
+    <button id="co-show-full-btn" style="background:transparent;color:#d4d4d4;border:1.5px solid #4b5563;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var box=document.getElementById('co-json-box');if(box.style.maxHeight==='none'){box.style.maxHeight='220px';b.innerHTML='&#8645; Show Full'}else{box.style.maxHeight='none';b.innerHTML='&#8645; Collapse'}})(this)">&#8645; Show Full</button>
+  </div>
+</div>
+
+<hr />
+<h2 id="response-body-parameters">Response Body Parameters</h2>
+<table class="param-table">
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>EntryAppOrderID</strong></td>
+      <td>EntryAppOrderID</td>
+      <td>The unique order ID for the <strong>main/entry order</strong></td>
+    </tr>
+    <tr>
+      <td><strong>ExitAppOrderID</strong></td>
+      <td>ExitAppOrderID</td>
+      <td>The unique order ID for the <strong>linked exit order</strong> (Stop-Loss or Target)</td>
+    </tr>
+    <tr>
+      <td><strong>OrderUniqueIdentifier</strong></td>
+      <td>OrderUniqueIdentifier</td>
+      <td>Echo back to identify order</td>
+    </tr>
+    <tr>
+      <td><strong>ClientID</strong></td>
+      <td>ClientID</td>
+      <td>ClientID which is send in request body</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="response-body-json">Response Body JSON</h2>
+<div style="background:#1e1e1e;border-radius:10px;overflow:hidden">
+  <div class="json-box" id="co-res-json-box" style="max-height:220px"><span style="color:#ffd700">{</span>
+  <span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-orders-0001"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Request sent"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span>
+    <span style="color:#9cdcfe">"EntryAppOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1323797170</span><span style="color:#d4d4d4">,</span>
+    <span style="color:#9cdcfe">"ExitAppOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3727296468</span><span style="color:#d4d4d4">,</span>
+    <span style="color:#9cdcfe">"OrderUniqueIdentifier"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"123abc"</span><span style="color:#d4d4d4">,</span>
+    <span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span>
+  <span style="color:#ffd700">}</span>
+<span style="color:#ffd700">}</span></div>
+  <div class="json-actions" style="padding:10px 16px;background:#2d2d2d">
+    <button style="background:#ff6b00;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var q=String.fromCharCode(34);var t='{'+String.fromCharCode(10)+'  '+q+'type'+q+': '+q+'success'+q+','+String.fromCharCode(10)+'  '+q+'code'+q+': '+q+'s-orders-0001'+q+','+String.fromCharCode(10)+'  '+q+'description'+q+': '+q+'Request sent'+q+','+String.fromCharCode(10)+'  '+q+'result'+q+': {'+String.fromCharCode(10)+'    '+q+'EntryAppOrderID'+q+': 1323797170,'+String.fromCharCode(10)+'    '+q+'ExitAppOrderID'+q+': 3727296468,'+String.fromCharCode(10)+'    '+q+'OrderUniqueIdentifier'+q+': '+q+'123abc'+q+','+String.fromCharCode(10)+'    '+q+'ClientID'+q+': '+q+'SYMP1'+q+String.fromCharCode(10)+'  }'+String.fromCharCode(10)+'}';navigator.clipboard.writeText(t).then(function(){b.innerHTML='&#10003; Copied!';b.style.background='#16a34a';setTimeout(function(){b.innerHTML='&#128203; Copy';b.style.background='#ff6b00'},2000)})})(this)">&#128203; Copy</button>
+    <button style="background:transparent;color:#d4d4d4;border:1.5px solid #4b5563;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var box=document.getElementById('co-res-json-box');if(box.style.maxHeight==='none'){box.style.maxHeight='220px';b.innerHTML='&#8645; Show Full'}else{box.style.maxHeight='none';b.innerHTML='&#8645; Collapse'}})(this)">&#8645; Show Full</button>
+  </div>
+</div>
+
+<hr />
+<h2 id="code-examples">Code Examples</h2>
+<div class="co-code-wrap">
+<div class="tabs">
+  <button class="tab active" onclick="coTab(this,'curl')">CURL</button>
+  <button class="tab" onclick="coTab(this,'python')">Python</button>
+</div>
+
+<div id="co-block-curl">
+<pre class="code-block"><code class="language-bash">curl --location 'https://developers.symphonyfintech.in/1interactive/orders/cover' \
+--header 'Authorization: xxxxxx' \
+--header 'Content-Type: application/json' \
+--data '{
+  "exchangeSegment": "NSECM",
+  "exchangeInstrumentID": 3045,
+  "orderSide": "BUY",
+  "orderQuantity": 15,
+  "disclosedQuantity": 0,
+  "limitPrice": 254.55,
+  "stopPrice": 251.5,
+  "orderType": "LIMIT",
+  "orderUniqueIdentifier": "123abc",
+  "clientID": "SYMP1",
+  "apiOrderSource": "ThirdPartyAppName"
+}'</code></pre>
+</div>
+
+<div id="co-block-python" style="display:none">
+<pre class="code-block"><code class="language-python">import os
+from dotenv import load_dotenv
+load_dotenv()
+
+API_key    = os.getenv("XTS_API_KEY_1_client")
+API_secret = os.getenv("XTS_API_SECRET_1_client")
+API_source = os.getenv("XTS_SOURCE")
+API_root   = os.getenv("XTS_API_URL")
+
+from xts_api_client.xts_connect_async import XTSConnect
+import asyncio
+
+async def main():
+    xt = XTSConnect(apiKey=API_key, secretKey=API_secret, source=API_source, root=API_root)
+    await xt.interactive_login()
+    resp = await xt.place_cover_order(
+        exchangeSegment="NSECM",
+        exchangeInstrumentID=3045,
+        orderType="LIMIT",
+        orderSide="BUY",
+        disclosedQuantity=0,
+        orderQuantity=15,
+        limitPrice=254.55,
+        stopPrice=251.5,
+        orderUniqueIdentifier="123abc",
+        clientID="SYMP1"
+    )
+    print(resp)
+
+asyncio.run(main())</code></pre>
+</div>
+
+<div style="display:flex;justify-content:flex-end;gap:10px;padding:10px 12px;background:#2d2d2d;border-radius:0 0 10px 10px">
+  <button id="co-copy-btn" style="background:#ff6b00;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer" onclick="coCopy(this)">&#128203; Copy</button>
+  <button id="co-sf-btn" style="background:transparent;color:#d4d4d4;border:1.5px solid #4b5563;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer" onclick="coShowFull(this)">&#8645; Show Full</button>
+</div>
+</div>
+
+<script>
+var _coTexts = {
+  curl: [
+    "curl --location 'https://developers.symphonyfintech.in/1interactive/orders/cover' \\",
+    "--header 'Authorization: xxxxxx' \\",
+    "--header 'Content-Type: application/json' \\",
+    "--data '{",
+    '  "exchangeSegment": "NSECM",',
+    '  "exchangeInstrumentID": 3045,',
+    '  "orderSide": "BUY",',
+    '  "orderQuantity": 15,',
+    '  "disclosedQuantity": 0,',
+    '  "limitPrice": 254.55,',
+    '  "stopPrice": 251.5,',
+    '  "orderType": "LIMIT",',
+    '  "orderUniqueIdentifier": "123abc",',
+    '  "clientID": "SYMP1",',
+    '  "apiOrderSource": "ThirdPartyAppName"',
+    "}'"
+  ].join('\n'),
+  python: [
+    "import os",
+    "from dotenv import load_dotenv",
+    "load_dotenv()",
+    "",
+    "API_key    = os.getenv('XTS_API_KEY_1_client')",
+    "API_secret = os.getenv('XTS_API_SECRET_1_client')",
+    "API_source = os.getenv('XTS_SOURCE')",
+    "API_root   = os.getenv('XTS_API_URL')",
+    "",
+    "from xts_api_client.xts_connect_async import XTSConnect",
+    "import asyncio",
+    "",
+    "async def main():",
+    "    xt = XTSConnect(apiKey=API_key, secretKey=API_secret, source=API_source, root=API_root)",
+    "    await xt.interactive_login()",
+    "    resp = await xt.place_cover_order(",
+    "        exchangeSegment='NSECM',",
+    "        exchangeInstrumentID=3045,",
+    "        orderType='LIMIT',",
+    "        orderSide='BUY',",
+    "        disclosedQuantity=0,",
+    "        orderQuantity=15,",
+    "        limitPrice=254.55,",
+    "        stopPrice=251.5,",
+    "        orderUniqueIdentifier='123abc',",
+    "        clientID='SYMP1'",
+    "    )",
+    "    print(resp)",
+    "",
+    "asyncio.run(main())"
+  ].join('\n')
+};
+var _coActiveLang = 'curl';
+
+function coCopy(btn) {
+    var t = _coTexts[_coActiveLang] || '';
+    navigator.clipboard.writeText(t).then(function() {
+        btn.innerHTML = '&#10003; Copied!';
+        btn.style.background = '#16a34a';
+        setTimeout(function() { btn.innerHTML = '&#128203; Copy'; btn.style.background = '#ff6b00'; }, 2000);
+    });
+}
+function coShowFull(btn) {
+    var el = document.getElementById('co-block-' + _coActiveLang);
+    var pre = el ? el.querySelector('pre') : null;
+    if (!pre) return;
+    if (pre.style.maxHeight === 'none') {
+        pre.style.maxHeight = '220px';
+        btn.innerHTML = '&#8645; Show Full';
+    } else {
+        pre.style.maxHeight = 'none';
+        btn.innerHTML = '&#8645; Collapse';
+    }
+}
+function coTab(btn, lang) {
+    _coActiveLang = lang;
+    var langs = ['curl','python'];
+    langs.forEach(function(l) {
+        var el = document.getElementById('co-block-' + l);
+        if (el) el.style.setProperty('display', l === lang ? 'block' : 'none', 'important');
+    });
+    var wrap = btn.closest('.co-code-wrap');
+    if (wrap) wrap.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    var sfBtn = document.getElementById('co-sf-btn');
+    if (sfBtn) sfBtn.innerHTML = '&#8645; Show Full';
+    var activeBlock = document.getElementById('co-block-' + lang);
+    if (activeBlock) { var pre = activeBlock.querySelector('pre'); if (pre) pre.style.maxHeight = '220px'; }
+}
+(function() {
+    var curl = document.getElementById('co-block-curl');
+    var py   = document.getElementById('co-block-python');
+    if (curl) curl.style.setProperty('display', 'block', 'important');
+    if (py)   py.style.setProperty('display',   'none',  'important');
+    if (typeof hljs !== 'undefined') {
+        document.querySelectorAll('.co-code-wrap .code-block code').forEach(function(el) {
+            hljs.highlightElement(el);
+        });
+    }
+}());
+</script>
+
+<hr />
+<h2 id="exit-cover-order-put">Exit Cover Order (PUT)</h2>
+<p>The Exit Cover API allows the user to easily exit an open stop-loss order by converting it into an exit order.</p>
+<p><strong>URL</strong></p>
+<div class="api-url-box">
+  <div class="method put">PUT</div>
+  <div class="api-url">https://developers.symphonyfintech.in/1interactive/orders/cover</div>
+  <button class="copy-btn" onclick="navigator.clipboard.writeText('https://developers.symphonyfintech.in/1interactive/orders/cover').then(()=>{this.textContent='✔ Copied!';this.style.background='#16a34a';setTimeout(()=>{this.textContent='⧉ Copy';this.style.background=''},2000)})">⧉ Copy</button>
+</div>
+
+<h2 id="request-body-parameters_1">Request Body Parameters</h2>
+<table class="param-table">
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Type</th>
+      <th>Mandatory</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>appOrderID</strong></td>
+      <td>AppOrderID</td>
+      <td>Y</td>
+      <td>Unique order ID</td>
+    </tr>
+    <tr>
+      <td><strong>orderUniqueIdentifier</strong></td>
+      <td>OrderUniqueIdentifier</td>
+      <td>N</td>
+      <td>Echo back to identify order</td>
+    </tr>
+    <tr>
+      <td><strong>clientID</strong></td>
+      <td>ClientID</td>
+      <td>N</td>
+      <td>Client ID Mandatory in case of Dealer</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="request-body-json_1">Request Body JSON</h2>
+<div style="background:#1e1e1e;border-radius:10px;overflow:hidden">
+  <div class="json-box" id="eco-req-json-box" style="max-height:220px"><span style="color:#ffd700">{</span>
+  <span style="color:#9cdcfe">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3727296468</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"OrderUniqueIdentifier"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"123abc"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span>
+<span style="color:#ffd700">}</span></div>
+  <div class="json-actions" style="padding:10px 16px;background:#2d2d2d">
+    <button style="background:#ff6b00;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var q=String.fromCharCode(34);var n=String.fromCharCode(10);var t='{'+n+'  '+q+'appOrderID'+q+': 3727296468,'+n+'  '+q+'OrderUniqueIdentifier'+q+': '+q+'123abc'+q+','+n+'  '+q+'ClientID'+q+': '+q+'SYMP1'+q+n+'}';navigator.clipboard.writeText(t).then(function(){b.innerHTML='&#10003; Copied!';b.style.background='#16a34a';setTimeout(function(){b.innerHTML='&#128203; Copy';b.style.background='#ff6b00'},2000)})})(this)">&#128203; Copy</button>
+    <button style="background:transparent;color:#d4d4d4;border:1.5px solid #4b5563;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var box=document.getElementById('eco-req-json-box');if(box.style.maxHeight==='none'){box.style.maxHeight='220px';b.innerHTML='&#8645; Show Full'}else{box.style.maxHeight='none';b.innerHTML='&#8645; Collapse'}})(this)">&#8645; Show Full</button>
+  </div>
+</div>
+
+<hr />
+<h2 id="response-body-parameters_1">Response Body Parameters</h2>
+<table class="param-table">
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>AppOrderID</strong></td>
+      <td>AppOrderID</td>
+      <td>Unique order ID</td>
+    </tr>
+    <tr>
+      <td><strong>OrderUniqueIdentifier</strong></td>
+      <td>OrderUniqueIdentifier</td>
+      <td>Echo back to identify order</td>
+    </tr>
+    <tr>
+      <td><strong>ClientID</strong></td>
+      <td>ClientID</td>
+      <td>ClientID which is send in request body</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="response-body-json_1">Response Body JSON</h2>
+<div style="background:#1e1e1e;border-radius:10px;overflow:hidden">
+  <div class="json-box" id="eco-res-json-box" style="max-height:220px"><span style="color:#ffd700">{</span>
+  <span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-orders-0001"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Request sent"</span><span style="color:#d4d4d4">,</span>
+  <span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span>
+    <span style="color:#9cdcfe">"AppOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3727296468</span><span style="color:#d4d4d4">,</span>
+    <span style="color:#9cdcfe">"ClientID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"SYMP1"</span>
+  <span style="color:#ffd700">}</span>
+<span style="color:#ffd700">}</span></div>
+  <div class="json-actions" style="padding:10px 16px;background:#2d2d2d">
+    <button style="background:#ff6b00;color:#fff;border:none;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var q=String.fromCharCode(34);var n=String.fromCharCode(10);var t='{'+n+'  '+q+'type'+q+': '+q+'success'+q+','+n+'  '+q+'code'+q+': '+q+'s-orders-0001'+q+','+n+'  '+q+'description'+q+': '+q+'Request sent'+q+','+n+'  '+q+'result'+q+': {'+n+'    '+q+'AppOrderID'+q+': 3727296468,'+n+'    '+q+'ClientID'+q+': '+q+'SYMP1'+q+n+'  }'+n+'}';navigator.clipboard.writeText(t).then(function(){b.innerHTML='&#10003; Copied!';b.style.background='#16a34a';setTimeout(function(){b.innerHTML='&#128203; Copy';b.style.background='#ff6b00'},2000)})})(this)">&#128203; Copy</button>
+    <button style="background:transparent;color:#d4d4d4;border:1.5px solid #4b5563;padding:8px 20px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px" onclick="(function(b){var box=document.getElementById('eco-res-json-box');if(box.style.maxHeight==='none'){box.style.maxHeight='220px';b.innerHTML='&#8645; Show Full'}else{box.style.maxHeight='none';b.innerHTML='&#8645; Collapse'}})(this)">&#8645; Show Full</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "navigation.path", "search.suggest", "search.highlight", "toc.follow", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/home.js"></script>
+      
+        <script src="../../javascripts/lightbox.js"></script>
+      
+    
+  </body>
+</html>

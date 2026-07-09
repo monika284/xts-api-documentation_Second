@@ -15,7 +15,7 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="inst-level-badge">Basic</div>
+
 
 <h2 id="what-is-instrument" class="inst-section-title">What is an Instrument?</h2>
 <p class="inst-text">An instrument is any financial asset that can be traded in a market. Every security — whether it is a stock, derivative, or currency pair — is represented as an instrument in the RMoney API.</p>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="inst-level-badge">Intermediate</div>
+
 
 <h2 id="instrument-types" class="inst-section-title">Instrument Types</h2>
 <div class="inst-types-grid">
@@ -150,8 +150,8 @@
 </div>
 
 <h2 id="instrument-attributes" class="inst-section-title">Instrument Attributes</h2>
-<div class="inst-attrs-wrap">
-  <table class="inst-attrs-table">
+<div style="overflow-x:auto">
+  <table class="api-table">
     <thead><tr><th>Field</th><th>Type</th><th>Description</th><th>Example</th></tr></thead>
     <tbody>
       <tr><td><code>ExchangeInstrumentID</code></td><td>Integer</td><td>Unique numeric identifier for the instrument</td><td><code>2885</code></td></tr>
@@ -165,55 +165,10 @@
   </table>
 </div>
 
-<h2 id="api-endpoints" class="inst-section-title">API Endpoints</h2>
-<div class="inst-ep-cards">
-  <div class="inst-ep-card">
-    <div class="inst-ep-top">
-      <span class="inst-ep-method inst-get">GET</span>
-      <code class="inst-ep-path">/apimarketdata/instruments/master</code>
-    </div>
-    <div class="inst-ep-desc">Download the full instruments master file for one or more exchange segments. Returns pipe-separated CSV data.</div>
-  </div>
-  <div class="inst-ep-card">
-    <div class="inst-ep-top">
-      <span class="inst-ep-method inst-get">GET</span>
-      <code class="inst-ep-path">/apimarketdata/instruments/search</code>
-    </div>
-    <div class="inst-ep-desc">Search for instruments by name or symbol. Returns a list of matching instruments with tokens and exchange details.</div>
-  </div>
-</div>
 
-<h2 id="sample-request" class="inst-section-title">Sample Request and Response</h2>
-<div class="inst-req-row">
-  <div class="inst-req-block">
-    <div class="inst-req-label">Search Request</div>
-    <div class="inst-code-block"><pre>GET /apimarketdata/instruments/search
-    ?searchString=Reliance
-    &amp;exchangeSegment=1
-
-Authorization: &lt;market-data-token&gt;</pre></div>
-  </div>
-  <div class="inst-req-block">
-    <div class="inst-req-label">Response</div>
-    <div class="inst-code-block"><pre>{
-  "type": "success",
-  "result": [
-    {
-      "ExchangeInstrumentID": 2885,
-      "ExchangeSegment":      1,
-      "TradingSymbol":        "RELIANCE",
-      "Name":                 "Reliance Industries Ltd",
-      "Series":               "EQ",
-      "LotSize":              1,
-      "TickSize":             0.05
-    }
-  ]
-}</pre></div>
-  </div>
-</div>
 
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="inst-level-badge">Advanced</div>
+
 
 <h2 id="key-fields" class="inst-section-title">Understanding Key Fields</h2>
 <div class="inst-fields-grid">
@@ -442,19 +397,826 @@ Authorization: &lt;market-data-token&gt;</pre></div>
 
 <!-- ═══════════════════ SUMMARY ════════════════ -->
 <h2 id="summary" class="inst-section-title">Summary</h2>
-<div class="inst-summary-wrap">
-  <table class="inst-sum-table">
+<div style="overflow-x:auto">
+  <table class="api-table">
     <thead><tr><th>Term</th><th>Meaning</th><th>Used For</th></tr></thead>
     <tbody>
       <tr><td>Instrument</td><td>Any tradable financial asset</td><td>Foundation for all API calls</td></tr>
-      <tr><td>ExchangeInstrumentID</td><td>Unique numeric token</td><td>Quotes, OHLC, WebSocket</td></tr>
-      <tr><td>TradingSymbol</td><td>Exchange-recognized symbol</td><td>Order placement</td></tr>
-      <tr><td>ExchangeSegment</td><td>Exchange + asset class code</td><td>All API calls</td></tr>
-      <tr><td>Series</td><td>Contract type (EQ/FUT/CE/PE)</td><td>Filtering instruments</td></tr>
-      <tr><td>LotSize</td><td>Minimum trade quantity</td><td>Derivative order validation</td></tr>
-      <tr><td>TickSize</td><td>Minimum price movement</td><td>Limit order price validation</td></tr>
+      <tr><td><code>ExchangeInstrumentID</code></td><td>Unique numeric token</td><td>Quotes, OHLC, WebSocket</td></tr>
+      <tr><td><code>TradingSymbol</code></td><td>Exchange-recognized symbol</td><td>Order placement</td></tr>
+      <tr><td><code>ExchangeSegment</code></td><td>Exchange + asset class code</td><td>All API calls</td></tr>
+      <tr><td><code>Series</code></td><td>Contract type (EQ/FUT/CE/PE)</td><td>Filtering instruments</td></tr>
+      <tr><td><code>LotSize</code></td><td>Minimum trade quantity</td><td>Derivative order validation</td></tr>
+      <tr><td><code>TickSize</code></td><td>Minimum price movement</td><td>Limit order price validation</td></tr>
     </tbody>
   </table>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ Master POST ═══ -->
+<h3 id="modify-bracket-order" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Master</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:12px">XTS provides an API call to fetch all tradable instruments as well as additional data in a single structure. This call can be made once per day, and the response can be persisted in local storage or a file based on your application design. You can then fetch instruments or symbols from this dataset throughout the day.</p>
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">The structure of the response is as follows. The pipe (|) and line-separated values can be easily tokenized and bulk-loaded into your storage of choice.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#fff7ed;color:#c2410c;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #fed7aa;white-space:nowrap">POST</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-master-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/master</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-master-url').innerText).then(function(){var b=document.getElementById('inst-master-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-master-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegmentList</strong></td><td>Array</td><td>Y</td><td>Array of exchange segments</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-master-json-box" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegmentList"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NSECD"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NSEFO"</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">]</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-master-json-box');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-master-json-box').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 10px">Terminology</h3>
+<div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:10px;padding:22px 24px;margin-bottom:24px;display:flex;flex-direction:column;gap:18px">
+
+  <div>
+    <p style="font-weight:700;font-size:13px;color:#1e293b;margin-bottom:8px">If InstrumentType is Equities then use below header format:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11.5px;color:#374151;word-break:break-all;line-height:1.8;margin-bottom:8px">ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvIndicator|CautionIndicator|GSMIndicator</div>
+    <p style="font-size:12px;color:#ff6b00;font-weight:600;margin-bottom:4px">Example:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11px;color:#374151;word-break:break-all;line-height:1.8">NSECM|2885|8|RELIANCE|RELIANCE-EQ|EQ|RELIANCE-EQ|11001000002885|1598|1307.6|6766210.1|1|1|1|RELIANCE|INE002A01018|1|1|RELIANCE INDUSTRIES LTD-EQ|0|1|1</div>
+  </div>
+
+  <div>
+    <p style="font-weight:700;font-size:13px;color:#1e293b;margin-bottom:8px">If InstrumentType is Options then use below header format:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11.5px;color:#374151;word-break:break-all;line-height:1.8;margin-bottom:8px">ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|StrikePrice|OptionType|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription</div>
+    <p style="font-size:12px;color:#ff6b00;font-weight:600;margin-bottom:4px">Example:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11px;color:#374151;word-break:break-all;line-height:1.8">NSEFO|48225|2|INIFTY|NIFTY2621725700PE|OPTIDX|NIFTY-OPTIDX|26048000048225|588|114.5|180|10.05|65|1|-1|Nifty 50|2026-02-17T14:30:00|25700|4|NIFTY 17FEB2026 PE 25700|1|1|NIFTY2621725700PE</div>
+  </div>
+
+  <div>
+    <p style="font-weight:700;font-size:13px;color:#1e293b;margin-bottom:8px">If InstrumentType is Futures, spread then use below header format:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11.5px;color:#374151;word-break:break-all;line-height:1.8;margin-bottom:8px">ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription</div>
+    <p style="font-size:12px;color:#ff6b00;font-weight:600;margin-bottom:4px">Example:</p>
+    <div style="background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:Consolas,monospace;font-size:11px;color:#374151;word-break:break-all;line-height:1.8">NSEFO|49229|1|NIFTY|NIFTY|NIFTY26JANFUT|FUTIDX|NIFTY-FUTIDX|26002700049229|28369.8|23211.8|180|10.1|65|1|-1|Nifty 50|2026-01-27T14:30:00|NIFTY 27JAN2026|1|1|NIFTY26JANFUT</div>
+  </div>
+
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ Quote POST ═══ -->
+<h3 id="Quote" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Quote</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can fetch the quote details by using the POST /instruments/quotes request. In the response, you will receive the quote details based on the exchangeSegment and instrumentID, along with the publishFormat provided in the request. The request body must have the content type application/json and should be valid JSON.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#fff7ed;color:#c2410c;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #fed7aa;white-space:nowrap">POST</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-quote-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/quotes</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-quote-url').innerText).then(function(){var b=document.getElementById('inst-quote-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-quote-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>instruments</strong></td><td>Array</td><td>Y</td><td>Array of instrument objects</td></tr>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>exchangeInstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeInstrumentID 👁</a></td><td>Y</td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
+      <tr><td><strong>xtsMessageCode</strong></td><td><a href="../Enums/#4-xts-message-code" style="color:#0a49c7;text-decoration:none">xtsMessageCode ↗</a></td><td>Y</td><td>It is system generated message code</td></tr>
+      <tr><td><strong>publishFormat</strong></td><td><a href="../Enums/#10-publishformat" style="color:#0a49c7;text-decoration:none">PublishFormat ↗</a></td><td>Y</td><td>PublishFormat</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-quote-req-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"instruments"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">22</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">],</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"publishFormat"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"JSON"</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-quote-req-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-quote-req-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>mdp</strong></td><td><a style="color:#010816;text-decoration:none">mdp 👁</a></td><td>xtsMessageCode</td></tr>
+      <tr><td><strong>quotesList</strong></td><td>Object</td><td>Response of subscribed instrument</td></tr>
+      <tr><td><strong>listQuotes</strong></td><td>Object</td><td>Market data for the list of requested instruments</td></tr>
+      <tr><td><strong>MessageCode</strong></td><td><a style="color:#010816;text-decoration:none">MessageCode 👁</a></td><td>It is system generated message code</td></tr>
+      <tr><td><strong>MessageVersion</strong></td><td><a style="color:#010816;text-decoration:none">MessageVersion 👁</a></td><td>It is system generated message version</td></tr>
+      <tr><td><strong>ApplicationType</strong></td><td><a style="color:#010816;text-decoration:none">ApplicationType 👁</a></td><td>It is system generated ApplicationType</td></tr>
+      <tr><td><strong>TokenID</strong></td><td><a style="color:#010816;text-decoration:none">TokenID 👁</a></td><td>It is system generated TokenID</td></tr>
+      <tr><td><strong>ExchangeSegment</strong></td><td></td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>ExchangeInstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeInstrumentID 👁</a></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
+      <tr><td><strong>ExchangeTimeStamp</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeTimeStamp 👁</a></td><td>A timestamp represents the time at which an event occurred, as recorded by the exchange.</td></tr>
+      <tr><td><strong>Bids</strong></td><td>Object</td><td>The bid price displayed in most quote services is the highest bid price in the market. The ask or offer price on the other hand is the lowest price a seller of a particular stock is willing to sell a share of that given stock.</td></tr>
+      <tr><td><strong>Asks</strong></td><td>Object</td><td>The ask price is the lowest price a seller is willing to accept for a share/unit of a stock.</td></tr>
+      <tr><td><strong>Size</strong></td><td><a style="color:#010816;text-decoration:none">Size 👁</a></td><td>Total quantity available at the Ask or Bid price</td></tr>
+      <tr><td><strong>Price</strong></td><td><a style="color:#010816;text-decoration:none">Price 👁</a></td><td>Highest price at which buyers are willing to purchase the instrument</td></tr>
+      <tr><td><strong>TotalOrders</strong></td><td><a style="color:#010816;text-decoration:none">TotalOrders 👁</a></td><td>Total number of buy orders placed at the bid or ask price.</td></tr>
+      <tr><td><strong>BuyBackMarketMaker</strong></td><td><a style="color:#010816;text-decoration:none">BuyBackMarketMaker 👁</a></td><td>Indicates whether the bid is placed by a buy back market maker.</td></tr>
+      <tr><td><strong>Touchline</strong></td><td>Object</td><td>Touchline represents the best Bid and best ask prices for a security at any given time during the trading day.</td></tr>
+      <tr><td><strong>BidInfo</strong></td><td>Object</td><td>The bid price displayed in most quote services represents the highest price a buyer is willing to pay in the market.</td></tr>
+      <tr><td><strong>AskInfo</strong></td><td>Object</td><td>The ask price is the lowest price at which a seller is willing to accept for a share of a given stock.</td></tr>
+      <tr><td><strong>LastTradedPrice</strong></td><td><a style="color:#010816;text-decoration:none">LastTradedPrice 👁</a></td><td>The price at which the most recent trade for the instrument was executed.</td></tr>
+      <tr><td><strong>LastTradedQuantity</strong></td><td><a style="color:#010816;text-decoration:none">LastTradedQuantity 👁</a></td><td>The quantity traded in the most recent transaction.</td></tr>
+      <tr><td><strong>TotalBuyQuantity</strong></td><td><a style="color:#010816;text-decoration:none">TotalBuyQuantity 👁</a></td><td>The total quantity of buy orders currently available in the market.</td></tr>
+      <tr><td><strong>TotalSellQuantity</strong></td><td><a style="color:#010816;text-decoration:none">TotalSellQuantity 👁</a></td><td>The total quantity of sell orders currently available in the market.</td></tr>
+      <tr><td><strong>TotalTradedQuantity</strong></td><td><a style="color:#010816;text-decoration:none">TotalTradedQuantity 👁</a></td><td>The cumulative quantity of the instrument traded during the trading session.</td></tr>
+      <tr><td><strong>AverageTradedPrice</strong></td><td><a style="color:#010816;text-decoration:none">AverageTradedPrice 👁</a></td><td>The volume weighted average price (VWAP) of all trades executed during the trading session.</td></tr>
+      <tr><td><strong>LastTradedTime</strong></td><td><a style="color:#010816;text-decoration:none">LastTradedTime 👁</a></td><td>The timestamp at which the most recent trade occurred (exchange time).</td></tr>
+      <tr><td><strong>LastUpdateTime</strong></td><td><a style="color:#010816;text-decoration:none">LastUpdateTime 👁</a></td><td>The timestamp of the latest market data update received from the exchange.</td></tr>
+      <tr><td><strong>PercentChange</strong></td><td><a style="color:#010816;text-decoration:none">PercentChange 👁</a></td><td>The percentage change in price compared to the previous close.</td></tr>
+      <tr><td><strong>Open</strong></td><td><a style="color:#010816;text-decoration:none">Open 👁</a></td><td>The price at which the instrument first traded when the market opened for the session.</td></tr>
+      <tr><td><strong>High</strong></td><td><a style="color:#010816;text-decoration:none">High 👁</a></td><td>The highest traded price of the instrument during the trading session.</td></tr>
+      <tr><td><strong>Low</strong></td><td><a style="color:#010816;text-decoration:none">Low 👁</a></td><td>The lowest traded price of the instrument during the trading session.</td></tr>
+      <tr><td><strong>Close</strong></td><td><a style="color:#010816;text-decoration:none">Close 👁</a></td><td>The most recent traded price or the official closing price of the session.</td></tr>
+      <tr><td><strong>TotalValueTraded</strong></td><td><a style="color:#010816;text-decoration:none">TotalValueTraded 👁</a></td><td>The total traded value during the session, calculated as price × quantity for all trades.</td></tr>
+      <tr><td><strong>BuyBackTotalBuy</strong></td><td><a style="color:#010816;text-decoration:none">BuyBackTotalBuy 👁</a></td><td>The total buy quantity placed under buy back activity (exchange specific).</td></tr>
+      <tr><td><strong>BuyBackTotalSell</strong></td><td><a style="color:#010816;text-decoration:none">BuyBackTotalSell 👁</a></td><td>The total sell quantity placed under buy back activity (exchange specific).</td></tr>
+      <tr><td><strong>BookType</strong></td><td><a style="color:#010816;text-decoration:none">BookType 👁</a></td><td>BookType</td></tr>
+      <tr><td><strong>XMarketType</strong></td><td><a style="color:#010816;text-decoration:none">XMarketType 👁</a></td><td>XMarketType</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-quote-res-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Instrument subscribed successfully!"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"mdp"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"quotesList"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"listQuotes"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ApplicationType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TokenID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeTimeStamp"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1305682353</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Bids"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><span style="color:#9cdcfe"> "Size"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"Price"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"TotalOrders"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"BuyBackMarketMaker"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#ffd700"> }</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Asks"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><span style="color:#9cdcfe"> "Size"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">14016</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"Price"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.05</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"TotalOrders"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">10</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"BuyBackMarketMaker"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#ffd700"> }</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Touchline"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BidInfo"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><span style="color:#9cdcfe"> "Size"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"Price"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"TotalOrders"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"BuyBackMarketMaker"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#ffd700"> }</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"AskInfo"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><span style="color:#9cdcfe"> "Size"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">14016</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"Price"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.05</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"TotalOrders"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">10</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">"BuyBackMarketMaker"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#ffd700"> }</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LastTradedPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LastTradedQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TotalBuyQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TotalSellQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">14016</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TotalTradedQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">14005561</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"AverageTradedPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.01</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LastTradedTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1305682353</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LastUpdateTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1305687353</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"PercentChange"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Open"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.7</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Close"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">900.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TotalValueTraded"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1805602348</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BuyBackTotalBuy"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">30125</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BuyBackTotalSell"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">16983</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BookType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"XMarketType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-quote-res-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-quote-res-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetIndexList GET ═══ -->
+<h3 id="GetIndexList" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetIndexList</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can retrieve the list of indices by using the GET /instruments/indexlist request. In the response, you will receive the names of all indices that belong to the specified <strong>exchangeSegment</strong>.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-indexlist-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/indexlist?exchangeSegment=1</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-indexlist-url').innerText).then(function(){var b=document.getElementById('inst-indexlist-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-indexlist-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>indexList</strong></td><td>Array</td><td>IndexList</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-indexlist-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">[</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"indexList"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY 50_26007"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY BANK_26001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"INDIA VIX_26007"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY IT_26007"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY 100_26007"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY MIDCAP 50_26005"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY GS 11 15YR_26006"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"NIFTY INFRA_26007"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">]</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">]</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-indexlist-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-indexlist-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetSeries GET ═══ -->
+<h3 id="GetSeries" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetSeries</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the series by using the GET /instruments/instrument/series request. In the response, you will receive the series that you searched for based on the <strong>exchangeSegment</strong> sent in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-series-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/series?exchangeSegment=1</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-series-url').innerText).then(function(){var b=document.getElementById('inst-series-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-series-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>series</strong></td><td>Array</td><td>The series field represents to the trading category or segment under which an instrument is listed on the exchange.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-series-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"series"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"BL"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"BT"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"EQ"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"SM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"W1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"MF"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"SL"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"W"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">]</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-series-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-series-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetEquitySymbol GET ═══ -->
+<h3 id="GetEquitySymbol" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetEquitySymbol</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the equity symbol by using the GET /instruments/instrument/symbol request. In the response, you will receive the equity symbol information based on the <strong>exchangeSegment</strong>, <strong>series</strong>, and <strong>symbol</strong> provided in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-eqsym-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/symbol?exchangeSegment=1&amp;series=EQ&amp;symbol=Acc</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-eqsym-url').innerText).then(function(){var b=document.getElementById('inst-eqsym-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-eqsym-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ExchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>ExchangeInstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeInstrumentID 👁</a></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
+      <tr><td><strong>InstrumentType</strong></td><td><a href="../Enums/#3-instrumenttype" style="color:#0a49c7;text-decoration:none">InstrumentType ↗</a></td><td>InstrumentType</td></tr>
+      <tr><td><strong>Name</strong></td><td><a style="color:#010816;text-decoration:none">Name 👁</a></td><td>The official symbol or short name of the instrument as defined by the exchange.</td></tr>
+      <tr><td><strong>DisplayName</strong></td><td><a style="color:#010816;text-decoration:none">DisplayName 👁</a></td><td>A user-friendly name of the instrument used for display purposes in applications.</td></tr>
+      <tr><td><strong>Description</strong></td><td><a style="color:#010816;text-decoration:none">Description 👁</a></td><td>A detailed description of the instrument, including company or contract details.</td></tr>
+      <tr><td><strong>Series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>NameWithSeries</strong></td><td><a style="color:#010816;text-decoration:none">NameWithSeries 👁</a></td><td>The instrument name appended with its series (e.g., RELIANCE EQ).</td></tr>
+      <tr><td><strong>InstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">InstrumentID 👁</a></td><td>A unique system-generated identifier assigned to the instrument by the exchange or trading system.</td></tr>
+      <tr><td><strong>PriceBand</strong></td><td>Object</td><td>The permitted price range within which the instrument can trade during a session.</td></tr>
+      <tr><td><strong>High</strong></td><td><a style="color:#010816;text-decoration:none">High 👁</a></td><td>The upper limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>Low</strong></td><td><a style="color:#010816;text-decoration:none">Low 👁</a></td><td>The lower limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>CreditRating</strong></td><td><a style="color:#010816;text-decoration:none">CreditRating 👁</a></td><td>The credit rating assigned to the instrument, if applicable (typically for debt instruments).</td></tr>
+      <tr><td><strong>FreezeQty</strong></td><td><a style="color:#010816;text-decoration:none">FreezeQty 👁</a></td><td>The maximum order quantity allowed per order for the instrument.</td></tr>
+      <tr><td><strong>TickSize</strong></td><td><a style="color:#010816;text-decoration:none">TickSize 👁</a></td><td>The minimum price movement allowed for the instrument.</td></tr>
+      <tr><td><strong>LotSize</strong></td><td><a style="color:#010816;text-decoration:none">LotSize 👁</a></td><td>The minimum tradable quantity for the instrument.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-eqsym-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">22</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Name"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ACC"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"DisplayName"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ACC"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ACC LIMITED"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Series"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"EQ"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NameWithSeries"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"ACC-EQ"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1100100000022</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"PriceBand"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1804.2</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1476.0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"CreditRating"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1476.00-1804.00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"HighString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1804.00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LowString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1476.00"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"FreezeQty"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">66476</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TickSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LotSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-eqsym-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-eqsym-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetExpiryDate GET ═══ -->
+<h3 id="GetExpiryDate" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetExpiryDate</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the expiry date by using the GET /instruments/instrument/expiryDate request. In the response, you will receive the expiry date based on the <strong>exchangeSegment</strong>, <strong>series</strong>, and <strong>symbol</strong> provided in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-expiry-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/expiryDate?exchangeSegment=2&amp;series=FUTIDX&amp;symbol=NIFTY</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-expiry-url').innerText).then(function(){var b=document.getElementById('inst-expiry-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-expiry-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>Y</td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>symbol</strong></td><td><a style="color:#010816;text-decoration:none">Symbol 👁</a></td><td>Y</td><td>Exchange defined trading code used to identify an instrument.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-expiry-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"2025-01-30T14:30:00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"2025-02-27T14:30:00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"2025-03-27T14:30:00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"2025-06-26T14:30:00"</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">]</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-expiry-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-expiry-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetFutureSymbol GET ═══ -->
+<h3 id="GetFutureSymbol" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetFutureymbol</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the future symbol by using the GET /instruments/instrument/futureSymbol request. In the response, you will receive the future symbol based on the <strong>exchangeSegment</strong>, <strong>series</strong>, <strong>symbol</strong>, and <strong>expiryDate</strong> provided in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-futsym-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/futureSymbol?exchangeSegment=2&amp;series=FUTIDX&amp;symbol=NIFTY&amp;expiryDate=30Jan2025</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-futsym-url').innerText).then(function(){var b=document.getElementById('inst-futsym-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-futsym-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>Y</td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>symbol</strong></td><td><a style="color:#010816;text-decoration:none">Symbol 👁</a></td><td>Y</td><td>Exchange defined trading code used to identify an instrument.</td></tr>
+      <tr><td><strong>expiryDate</strong></td><td><a style="color:#010816;text-decoration:none">ExpiryDate 👁</a></td><td>Y</td><td>ExpiryDate represents the date on which a derivative contract expires and is settled as per exchange rules.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ExchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>ExchangeInstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeInstrumentID 👁</a></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
+      <tr><td><strong>InstrumentType</strong></td><td><a href="../Enums/#3-instrumenttype" style="color:#0a49c7;text-decoration:none">InstrumentType ↗</a></td><td>InstrumentType</td></tr>
+      <tr><td><strong>Name</strong></td><td><a style="color:#010816;text-decoration:none">Name 👁</a></td><td>The official symbol or short name of the instrument as defined by the exchange.</td></tr>
+      <tr><td><strong>DisplayName</strong></td><td><a style="color:#010816;text-decoration:none">DisplayName 👁</a></td><td>A user-friendly name of the instrument used for display purposes in applications.</td></tr>
+      <tr><td><strong>Description</strong></td><td><a style="color:#010816;text-decoration:none">Description 👁</a></td><td>A detailed description of the instrument, including company or contract details.</td></tr>
+      <tr><td><strong>Series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>NameWithSeries</strong></td><td><a style="color:#010816;text-decoration:none">NameWithSeries 👁</a></td><td>The instrument name appended with its series (e.g., NIFTY FUT).</td></tr>
+      <tr><td><strong>InstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">InstrumentID 👁</a></td><td>A unique system-generated identifier assigned to the instrument by the exchange or trading system.</td></tr>
+      <tr><td><strong>PriceBand</strong></td><td>Object</td><td>The permitted price range within which the instrument can trade during a session.</td></tr>
+      <tr><td><strong>High</strong></td><td><a style="color:#010816;text-decoration:none">High 👁</a></td><td>The upper limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>Low</strong></td><td><a style="color:#010816;text-decoration:none">Low 👁</a></td><td>The lower limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>CreditRating</strong></td><td><a style="color:#010816;text-decoration:none">CreditRating 👁</a></td><td>The credit rating assigned to the instrument, if applicable (typically for debt instruments).</td></tr>
+      <tr><td><strong>HighString</strong></td><td><a style="color:#010816;text-decoration:none">HighString 👁</a></td><td>Upper price band represented as a formatted string.</td></tr>
+      <tr><td><strong>LowString</strong></td><td><a style="color:#010816;text-decoration:none">LowString 👁</a></td><td>Lower price band represented as a formatted string.</td></tr>
+      <tr><td><strong>HighExecBandString</strong></td><td><a style="color:#010816;text-decoration:none">HighExecBandString 👁</a></td><td>Upper execution price band displayed as a formatted string.</td></tr>
+      <tr><td><strong>LowExecBandString</strong></td><td><a style="color:#010816;text-decoration:none">LowExecBandString 👁</a></td><td>Lower execution price band displayed as a formatted string.</td></tr>
+      <tr><td><strong>FreezeQty</strong></td><td><a style="color:#010816;text-decoration:none">FreezeQty 👁</a></td><td>The maximum order quantity allowed per order for the instrument.</td></tr>
+      <tr><td><strong>TickSize</strong></td><td><a style="color:#010816;text-decoration:none">TickSize 👁</a></td><td>The minimum price movement allowed for the instrument.</td></tr>
+      <tr><td><strong>LotSize</strong></td><td><a style="color:#010816;text-decoration:none">LotSize 👁</a></td><td>The minimum tradable quantity for the instrument.</td></tr>
+      <tr><td><strong>UnderlyingInstrumentId</strong></td><td><a style="color:#010816;text-decoration:none">UnderlyingInstrumentId 👁</a></td><td>The unique instrument identifier of the underlying asset for a derivative contract.</td></tr>
+      <tr><td><strong>UnderlyingIndexName</strong></td><td><a style="color:#010816;text-decoration:none">UnderlyingIndexName 👁</a></td><td>The name of the underlying index on which the derivative contract is based.</td></tr>
+      <tr><td><strong>ContractExpiration</strong></td><td><a style="color:#010816;text-decoration:none">ContractExpiration 👁</a></td><td>The date on which a derivative contract expires and is settled as per exchange rules.</td></tr>
+      <tr><td><strong>ContractExpirationString</strong></td><td><a style="color:#010816;text-decoration:none">ContractExpirationString 👁</a></td><td>The contract expiration date represented as a formatted string.</td></tr>
+      <tr><td><strong>RemainingExpiryDays</strong></td><td><a style="color:#010816;text-decoration:none">RemainingExpiryDays 👁</a></td><td>The number of calendar days remaining until the contract expires.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-futsym-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">49229</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Name"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY26JANFUT"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Series"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"FUTIDX"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NameWithSeries"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY-FUTIDX"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">26002700049229</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"PriceBand"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">28369.8</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">23211.8</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"CreditRating"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"23211.80-28369.80"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"HighString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"28369.80"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LowString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"23211.80"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"HighExecBandString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"28369.80"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LowExecBandString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"23211.80"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"FreezeQty"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1800</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TickSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LotSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">25</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"UnderlyingInstrumentId"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">26000</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"UnderlyingIndexName"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Nifty 50"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ContractExpiration"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"2026-01-27T14:30:00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ContractExpirationString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"27JAN2026"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"RemainingExpiryDays"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">8</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-futsym-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-futsym-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetOptionType GET ═══ -->
+<h3 id="GetOptionType" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetOptionType</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the option type by using the GET /instruments/instrument/optionType request. In the response, you will receive the option types based on the <strong>exchangeSegment</strong>, <strong>series</strong>, <strong>symbol</strong>, and <strong>expiryDate</strong> provided in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-opttype-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/optionType?exchangeSegment=2&amp;series=OPTIDX&amp;symbol=NIFTY&amp;expiryDate=30Jan2025</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-opttype-url').innerText).then(function(){var b=document.getElementById('inst-opttype-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-opttype-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>Y</td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>symbol</strong></td><td><a style="color:#010816;text-decoration:none">Symbol 👁</a></td><td>Y</td><td>Exchange defined trading code used to identify an instrument.</td></tr>
+      <tr><td><strong>expiryDate</strong></td><td><a style="color:#010816;text-decoration:none">ExpiryDate 👁</a></td><td>Y</td><td>ExpiryDate represents the date on which a derivative contract expires.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>series</strong></td><td>Array</td><td>Array of option types (CE, PE) available for the given expiry.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-opttype-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"series"</span><span style="color:#d4d4d4">: [</span><span style="color:#ce9178">"CE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"PE"</span><span style="color:#d4d4d4">]</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-opttype-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-opttype-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetStrikePrice GET ═══ -->
+<h3 id="GetStrikePrice" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetStrikePrice</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the strike prices by using the GET /instruments/instrument/strikePrice request. In the response, you will receive all strike prices available for the specified <strong>exchangeSegment</strong>, <strong>series</strong>, <strong>symbol</strong>, <strong>expiryDate</strong>, and <strong>optionType</strong>.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-strike-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/strikePrice?exchangeSegment=2&amp;series=OPTIDX&amp;symbol=NIFTY&amp;expiryDate=30Jan2025&amp;optionType=CE</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-strike-url').innerText).then(function(){var b=document.getElementById('inst-strike-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-strike-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>Y</td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>symbol</strong></td><td><a style="color:#010816;text-decoration:none">Symbol 👁</a></td><td>Y</td><td>Exchange defined trading code used to identify an instrument.</td></tr>
+      <tr><td><strong>expiryDate</strong></td><td><a style="color:#010816;text-decoration:none">ExpiryDate 👁</a></td><td>Y</td><td>ExpiryDate represents the date on which a derivative contract expires.</td></tr>
+      <tr><td><strong>optionType</strong></td><td><a href="../Enums/#9-optiontype" style="color:#0a49c7;text-decoration:none">OptionType ↗</a></td><td>Y</td><td>OptionType</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-strike-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: [</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"22000"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"22500"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"23000"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"23500"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"24000"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"24500"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"25000"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"25500"</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">]</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-strike-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-strike-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
+</div>
+
+<hr style="border:none;border-top:2px dashed #e5e7eb;margin:40px 0">
+
+<!-- ═══ GetOptionSymbol GET ═══ -->
+<h3 id="GetOptionSymbol" style="color:#ff6b00;font-weight:800;margin-bottom:6px">GetOptionSymbol</h3>
+
+<p style="color:#374151;font-size:13px;line-height:1.8;margin-bottom:18px">You can search for the option symbol by using the GET /instruments/instrument/optionSymbol request. In the response, you will receive the option symbol based on the <strong>exchangeSegment</strong>, <strong>series</strong>, <strong>symbol</strong>, <strong>expiryDate</strong>, <strong>optionType</strong>, and <strong>strikePrice</strong> provided in the request.</p>
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-optsym-url">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/instrument/optionSymbol?exchangeSegment=2&amp;series=OPTIDX&amp;symbol=NIFTY&amp;expiryDate=30Jan2025&amp;optionType=CE&amp;strikePrice=25000</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-optsym-url').innerText).then(function(){var b=document.getElementById('inst-optsym-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-optsym-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Request Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>Y</td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>Y</td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>symbol</strong></td><td><a style="color:#010816;text-decoration:none">Symbol 👁</a></td><td>Y</td><td>Exchange defined trading code used to identify an instrument.</td></tr>
+      <tr><td><strong>expiryDate</strong></td><td><a style="color:#010816;text-decoration:none">ExpiryDate 👁</a></td><td>Y</td><td>ExpiryDate represents the date on which a derivative contract expires.</td></tr>
+      <tr><td><strong>optionType</strong></td><td><a href="../Enums/#9-optiontype" style="color:#0a49c7;text-decoration:none">OptionType ↗</a></td><td>Y</td><td>OptionType</td></tr>
+      <tr><td><strong>strikePrice</strong></td><td><a style="color:#010816;text-decoration:none">StrikePrice 👁</a></td><td>Y</td><td>The strike price is the predetermined price at which the buyer of a call option can exercise their rights to buy the underlying asset.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body Parameters</h3>
+<div style="overflow-x:auto;margin-bottom:20px">
+  <table class="api-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ExchangeSegment</strong></td><td><a href="../Enums/#1-exchangesegments" style="color:#0a49c7;text-decoration:none">ExchangeSegments ↗</a></td><td>ExchangeSegment</td></tr>
+      <tr><td><strong>ExchangeInstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">ExchangeInstrumentID 👁</a></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
+      <tr><td><strong>InstrumentType</strong></td><td><a href="../Enums/#3-instrumenttype" style="color:#0a49c7;text-decoration:none">InstrumentType ↗</a></td><td>InstrumentType</td></tr>
+      <tr><td><strong>Name</strong></td><td><a style="color:#010816;text-decoration:none">Name 👁</a></td><td>The official symbol or short name of the instrument as defined by the exchange.</td></tr>
+      <tr><td><strong>DisplayName</strong></td><td><a style="color:#010816;text-decoration:none">DisplayName 👁</a></td><td>A user-friendly name of the instrument used for display purposes in applications.</td></tr>
+      <tr><td><strong>Description</strong></td><td><a style="color:#010816;text-decoration:none">Description 👁</a></td><td>A detailed description of the instrument, including company or contract details.</td></tr>
+      <tr><td><strong>Series</strong></td><td><a style="color:#010816;text-decoration:none">Series 👁</a></td><td>The exchange defined series under which the instrument is listed (eg. EQ, SL, A).</td></tr>
+      <tr><td><strong>NameWithSeries</strong></td><td><a style="color:#010816;text-decoration:none">NameWithSeries 👁</a></td><td>The instrument name appended with its series.</td></tr>
+      <tr><td><strong>InstrumentID</strong></td><td><a style="color:#010816;text-decoration:none">InstrumentID 👁</a></td><td>A unique system-generated identifier assigned to the instrument by the exchange or trading system.</td></tr>
+      <tr><td><strong>PriceBand</strong></td><td>Object</td><td>The permitted price range within which the instrument can trade during a session.</td></tr>
+      <tr><td><strong>High</strong></td><td><a style="color:#010816;text-decoration:none">High 👁</a></td><td>The upper limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>Low</strong></td><td><a style="color:#010816;text-decoration:none">Low 👁</a></td><td>The lower limit of the price band for the instrument.</td></tr>
+      <tr><td><strong>CreditRating</strong></td><td><a style="color:#010816;text-decoration:none">CreditRating 👁</a></td><td>The credit rating assigned to the instrument, if applicable.</td></tr>
+      <tr><td><strong>HighString</strong></td><td><a style="color:#010816;text-decoration:none">HighString 👁</a></td><td>Upper price band represented as a formatted string.</td></tr>
+      <tr><td><strong>LowString</strong></td><td><a style="color:#010816;text-decoration:none">LowString 👁</a></td><td>Lower price band represented as a formatted string.</td></tr>
+      <tr><td><strong>HighExecBandString</strong></td><td><a style="color:#010816;text-decoration:none">HighExecBandString 👁</a></td><td>Upper execution price band displayed as a formatted string.</td></tr>
+      <tr><td><strong>LowExecBandString</strong></td><td><a style="color:#010816;text-decoration:none">LowExecBandString 👁</a></td><td>Lower execution price band displayed as a formatted string.</td></tr>
+      <tr><td><strong>FreezeQty</strong></td><td><a style="color:#010816;text-decoration:none">FreezeQty 👁</a></td><td>The maximum order quantity allowed per order for the instrument.</td></tr>
+      <tr><td><strong>TickSize</strong></td><td><a style="color:#010816;text-decoration:none">TickSize 👁</a></td><td>The minimum price movement allowed for the instrument.</td></tr>
+      <tr><td><strong>LotSize</strong></td><td><a style="color:#010816;text-decoration:none">LotSize 👁</a></td><td>The minimum tradable quantity for the instrument.</td></tr>
+      <tr><td><strong>UnderlyingInstrumentId</strong></td><td><a style="color:#010816;text-decoration:none">UnderlyingInstrumentId 👁</a></td><td>The unique instrument identifier of the underlying asset for a derivative contract.</td></tr>
+      <tr><td><strong>UnderlyingIndexName</strong></td><td><a style="color:#010816;text-decoration:none">UnderlyingIndexName 👁</a></td><td>The name of the underlying index on which the derivative contract is based.</td></tr>
+      <tr><td><strong>ContractExpiration</strong></td><td><a style="color:#010816;text-decoration:none">ContractExpiration 👁</a></td><td>The date on which a derivative contract expires and is settled as per exchange rules.</td></tr>
+      <tr><td><strong>ContractExpirationString</strong></td><td><a style="color:#010816;text-decoration:none">ContractExpirationString 👁</a></td><td>The contract expiration date represented as a formatted string.</td></tr>
+      <tr><td><strong>RemainingExpiryDays</strong></td><td><a style="color:#010816;text-decoration:none">RemainingExpiryDays 👁</a></td><td>The number of calendar days remaining until the contract expires.</td></tr>
+      <tr><td><strong>StrikePrice</strong></td><td><a style="color:#010816;text-decoration:none">StrikePrice 👁</a></td><td>The strike price is the predetermined price at which the option can be exercised.</td></tr>
+      <tr><td><strong>OptionType</strong></td><td><a href="../Enums/#9-optiontype" style="color:#0a49c7;text-decoration:none">OptionType ↗</a></td><td>OptionType</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;font-size:13px;margin:18px 0 6px">Response Body JSON</h3>
+<div style="position:relative;margin-bottom:24px">
+  <div id="inst-optsym-json" style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;overflow:hidden;max-height:220px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Record Found"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">48225</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentType"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Name"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY2621725000CE"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Series"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"OPTIDX"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NameWithSeries"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NIFTY-OPTIDX"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"InstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">26048000048225</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"PriceBand"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">588.0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"CreditRating"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"0.05-588.00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"HighString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"588.00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LowString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"0.05"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"HighExecBandString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"588.00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LowExecBandString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"0.05"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"FreezeQty"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1800</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TickSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"LotSize"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">25</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"UnderlyingInstrumentId"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">26000</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"UnderlyingIndexName"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Nifty 50"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ContractExpiration"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"2025-01-30T14:30:00"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ContractExpirationString"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"30JAN2025"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"RemainingExpiryDays"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"StrikePrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">25000</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"OptionType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"CE"</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;background:#2d2d2d;border-radius:0 0 10px 10px">
+    <button data-cbupgraded="1" onclick="(function(btn){var box=document.getElementById('inst-optsym-json');var exp=box.style.maxHeight==='none';box.style.maxHeight=exp?'220px':'none';btn.textContent=exp?'Show Full':'Collapse';})(this)" style="background:#3a3a3a;color:#d4d4d4;border:1px solid #555;padding:5px 14px;border-radius:6px;font-size:12px;cursor:pointer">Show Full</button>
+    <button data-cbupgraded="1" onclick="navigator.clipboard.writeText(document.getElementById('inst-optsym-json').innerText)" style="background:#ff6b00;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Copy</button>
+  </div>
 </div>
 
 </div>

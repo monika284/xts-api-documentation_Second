@@ -2,22 +2,22 @@ site_name: RMoney API Documentation
 
 theme:
   name: material
+  custom_dir: overrides
   logo: images/logo.png
   features:
     - navigation.top
     - navigation.indexes
+    - navigation.path
+    - navigation.expand
     - search.suggest
     - search.highlight
     - toc.follow
     - content.code.copy
+    - content.tabs.link
 
   palette:
     - scheme: default
       primary: white
-      accent: deep orange
-
-    - scheme: slate
-      primary: black
       accent: deep orange
 
 nav:
@@ -28,31 +28,55 @@ nav:
 
   - Interactive API:
       - Overview: interactive/overview.md
+      - User: interactive/user/user.md
       - Authentication: interactive/Authentication.md
       - Base URL & Endpoints: interactive/baseurl.md
+      - Data Types & Business Rules: interactive/DataTypes&BussinessRules.md
+      - Rate Limit: interactive/RateLimit.md
+
+      - Enums With Numeric Constants: interactive/EnumsWithNumericConstants.md
+      - Standard Orders:
+        - Overview: interactive/orders/overview.md
+        - Place Order: interactive/orders/place_order.md
+        - Cancel Order: interactive/orders/cancel_order.md
+        - Cancel All Orders: interactive/orders/cancelall.md
+        - Modify Order: interactive/orders/modify_order.md
+      - Cover Orders: interactive/CoverOrders.md
+      - Bracket Orders: interactive/BracketOrders.md
+      - Spread Orders: interactive/SpreadOrders.md
+      - Portfolio:
+        - Overview: interactive/portfolio/overview.md
+        - Holdings: interactive/portfolio/holdings.md
+        - Positions: interactive/portfolio/positions.md
+        - Position Convert: interactive/portfolio/position_convert.md
+        - Funds: interactive/portfolio/funds.md
+      - Tradebook & Orderbook:
+        - Order History: interactive/tradebook/history.md
+        - Orderbook: interactive/tradebook/orderbook.md
+        - Tradebook: interactive/tradebook/tradebook.md
+      - GTT Orders: interactive/GTTOrders.md
+      - Margin Calculator: interactive/MarginCalculator.md
+      - MTM Calculation: interactive/MTMCalculation.md
       - Error Codes: interactive/errors.md
+      - Socket Streaming: interactive/SocketStreaming.md
+      - Exchange Messages: interactive/EM.md
+      - Exchange Status: interactive/ES.md
+
 
   - Market Data API:
       - Overview: market/overview.md
+      - Auth: market/Auth.md
+      - Data Types & Bussiness Rules: market/Data.md
+      - Enums With Numeric Constants: market/Enums.md
+      - Client Config: market/CC.md
+      - Search: market/Search.md
       - Instruments: market/instruments.md
       - Quotes: market/quotes.md
-      - OHLC Data: market/ohlc.md
+      - OHLC Data: market/ohlc.md 
       - Market Depth: market/depth.md
-
-  - Orders:
-      - Overview: orders/overview.md
-      - Place Order: orders/place_order.md
-      - Modify Order: orders/modify_order.md
-      - Cancel Order: orders/cancel_order.md
-  - Tradebook & Orderbook:
-      - Order History: tradebook/history.md
-
-  - Portfolio:
-      - Overview: portfolio/overview.md
-      - Holdings: portfolio/holdings.md
-      - Positions: portfolio/positions.md
-      - Funds: portfolio/funds.md
-
+      - Socket Streaming: market/SS.md
+      - Socket Subscription: market/SSub.md
+      
   - WebSocket:
       - Overview: websocket/overview.md
       - Connection: websocket/connection.md
@@ -62,9 +86,11 @@ nav:
       - Overview: references/overview.md
       - Enums: references/enums.md
       - Constants: references/constants.md
-
 extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/home.js
+  - javascripts/lightbox.js
+  - javascripts/toc-highlight.js
+  - javascripts/float-cards.js

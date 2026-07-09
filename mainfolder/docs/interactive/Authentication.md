@@ -2,7 +2,7 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="auth-hero">
-  <h1 class="auth-hero-title">Authentication</h1>
+  <h1 id="Authentication" class="auth-hero-title">Authentication</h1>
   <p class="auth-hero-sub">Authentication is the process of verifying <strong>who is making an API request</strong> before granting access to trading data and operations. Think of it like entering a secured building.</p>
   <div class="auth-analogy-row">
     <div class="auth-ana-card">
@@ -21,7 +21,7 @@
 </div>
 
 <!-- ═══════════════════ BASIC ═══════════════════ -->
-<div class="auth-level-badge">Basic</div>
+
 
 <h2 id="why-authentication" class="auth-section-title">Why Authentication is Required</h2>
 <div class="auth-why-grid">
@@ -63,7 +63,7 @@
 </div>
 
 <!-- ════════════════ INTERMEDIATE ════════════════ -->
-<div class="auth-level-badge">Intermediate</div>
+
 
 <h2 id="auth-flow" class="auth-section-title">Authentication Flow</h2>
 <div class="auth-two-col">
@@ -94,7 +94,7 @@
 <h2 id="login-request" class="auth-section-title">Login Request and Response</h2>
 <div class="auth-req-row">
   <div class="auth-req-block">
-    <div class="auth-req-label">Request</div>
+    <div class="auth-req-label">Demo Request</div>
     <div class="auth-code-block"><pre>POST /interactive/user/session
 
 {
@@ -103,7 +103,7 @@
 }</pre></div>
   </div>
   <div class="auth-req-block">
-    <div class="auth-req-label">Response</div>
+    <div class="auth-req-label">Demo Response</div>
     <div class="auth-code-block"><pre>{
   "type": "success",
   "result": {
@@ -115,7 +115,7 @@
   </div>
 </div>
 
-<h2 id="using-token" class="auth-section-title">Using the Access Token</h2>
+<h2 id="using-token" class="auth-section-title">Using the Token</h2>
 <p class="auth-text">Include the token in the <code>Authorization</code> header of every protected API call. No <code>Bearer</code> prefix is needed — send the raw token value.</p>
 <div class="auth-code-block"><pre>GET /interactive/portfolio/holdings
 
@@ -127,36 +127,6 @@ GET /interactive/orders
 Authorization: eyJhbGciOiJIUzI1NiIs...</pre></div>
 
 <!-- ═══════════════════ ADVANCED ════════════════ -->
-<div class="auth-level-badge">Advanced</div>
-
-<h2 id="token-expiry" class="auth-section-title">Token Expiration and Refresh</h2>
-<div class="auth-expiry-row">
-  <div class="auth-expiry-left">
-    <table class="auth-expiry-table">
-      <thead>
-        <tr><th>Token Type</th><th>Validity</th><th>Usage</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Access Token</td><td>24 Hours</td><td>Every API request header</td></tr>
-        <tr><td>Refresh Token</td><td>30 Days</td><td>Generate a new access token</td></tr>
-      </tbody>
-    </table>
-    <div class="auth-expired-box">
-      <strong>Expired token response:</strong>
-      <code>{ "error": "Token Expired" }</code>
-    </div>
-  </div>
-  <div class="auth-refresh-col">
-    <p class="auth-col-label">Refresh token flow</p>
-    <div class="auth-refresh-steps">
-      <div class="auth-refresh-step"><span>User logs in</span></div>
-      <div class="auth-refresh-step"><span>Receive Access Token</span></div>
-      <div class="auth-refresh-step"><span>Access Token expires (24h)</span></div>
-      <div class="auth-refresh-step"><span>Send Refresh Token to server</span></div>
-      <div class="auth-refresh-step"><span>Receive new Access Token</span></div>
-    </div>
-  </div>
-</div>
 
 <h2 id="auth-errors" class="auth-section-title">Authentication Errors</h2>
 <div class="auth-errors-grid">
@@ -207,7 +177,7 @@ Authorization: eyJhbGciOiJIUzI1NiIs...</pre></div>
     <tbody>
       <tr><td>API Key</td><td>Identifies your application</td><td>Login request body</td></tr>
       <tr><td>API Secret</td><td>Proves application authenticity</td><td>Login request body</td></tr>
-      <tr><td>Access Token</td><td>Identifies the logged-in user</td><td>Authorization header on every request</td></tr>
+      <tr><td>Token</td><td>Identifies the logged-in user</td><td>Authorization header on every request</td></tr>
       <tr><td>Refresh Token</td><td>Generates a new access token without re-login</td><td>Token refresh endpoint</td></tr>
     </tbody>
   </table>

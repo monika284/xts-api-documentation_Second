@@ -1,0 +1,554 @@
+<h1 style="color:#ff6b00;font-weight:800;margin-bottom:6px">Enums with Numeric Constants</h1>
+<p class="iov-subtitle"><strong>Enums</strong> are predefined sets of values used by the Market Data API to represent options, states, or configurations — using compact numeric codes for speed and consistency.</p>
+
+---
+
+## 1. ExchangeSegments
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">NSECM</span></td>
+      <td>1</td>
+      <td>- <strong>NSE Cash Market</strong> segment for trading equity shares.<br>- Used to buy and sell stocks listed on NSE.<br>- Example: Reliance, TCS, Infosys shares.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NSEFO</span></td>
+      <td>2</td>
+      <td>- <strong>NSE Futures &amp; Options</strong> segment.<br>- Used for trading futures and options contracts.<br>- Example: NIFTY Futures, BANKNIFTY Options.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NSECD</span></td>
+      <td>3</td>
+      <td> - <strong>NSE Currency Derivatives</strong> segment.<br>- Used for trading currency futures and options.<br>- Example: USD/INR, EUR/INR contracts.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NSECO</span></td>
+      <td>4</td>
+      <td>- <strong>NSE Commodity</strong> segment.<br>- Used for commodity derivative trading on NSE.<br>- Example: Gold, Silver, Crude Oil contracts.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">BSECM</span></td>
+      <td>11</td>
+      <td> - <strong>BSE Cash Market</strong> segment for equity trading.<br>- Used to buy and sell stocks listed on BSE.<br>- Example: Stocks traded on the Bombay Stock Exchange.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">BSEFO</span></td>
+      <td>12</td>
+      <td>- <strong>BSE Futures &amp; Options</strong> segment.<br>- Used for trading derivative contracts on BSE.<br>- Example: SENSEX Futures and Options.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">BSECD</span></td>
+      <td>13</td>
+      <td> - <strong>BSE Currency Derivatives</strong> segment.<br>- Used for trading currency-based derivative contracts.<br>- Example: USD/INR currency futures.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">MCXFO</span></td>
+      <td>51</td>
+      <td> - <strong>MCX Futures &amp; Options</strong> segment.<br>- Used for commodity derivatives trading.<br>- Example: Gold, Silver, Crude Oil Futures.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NCDEX</span></td>
+      <td>21</td>
+      <td> - <strong>National Commodity &amp; Derivatives Exchange</strong> segment.<br>- Used mainly for agricultural commodity trading.<br>- Example: Cotton, Soybean, Chana Futures.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 2. MarketType
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">Normal</span></td>
+      <td>1</td>
+      <td>- <strong>Represents the regular trading session of the exchange.</strong><br>- Market data is received for normal buy and sell activities.<br>- Most stock and derivative trading happens in this market type.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Oddlot</span></td>
+      <td>2</td>
+      <td>- <strong>Used for trades involving quantities smaller than the standard market lot.</strong><br>- Commonly used when the quantity does not meet the regular lot size.<br>- Market data is published separately from normal trades.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Retaildebt</span></td>
+      <td>3</td>
+      <td>- <strong>Represents the retail debt market segment.</strong><br>- Used for trading bonds and other debt securities by retail investors.<br>- Market data includes prices and trades of debt instruments.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Auction</span></td>
+      <td>4</td>
+      <td>- <strong>Represents the auction market session.</strong><br>- Used for special auction-based trading conducted by the exchange.<br>- Orders are matched through an auction process instead of continuous trading.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction1</span></td>
+      <td>5</td>
+      <td>- <strong>Represents the first type of call auction market session.</strong><br>- Orders are collected first and then executed together at a single price.<br>- Commonly used during special auction periods.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction2</span></td>
+      <td>6</td>
+      <td>- <strong>Represents the second type of call auction market session.</strong><br>- Similar to CallAuction1, orders are matched in a batch at one price.<br>- Used for specific exchange-defined auction sessions.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 3. InstrumentType
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">Futures</span></td>
+      <td>1</td>
+      <td>- <strong>A Futures contract is an agreement to buy or sell an asset at a fixed price on a future date.</strong><br>- Traders use it to earn profit from price movements without owning the asset immediately.<br>- It is commonly used for stocks, commodities, currencies, and market indices.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Options</span></td>
+      <td>2</td>
+      <td>- <strong>An Option gives the buyer the right, but not the obligation, to buy or sell an asset at a fixed price.</strong><br>- It helps traders manage risk or profit from expected price changes.<br>- The buyer pays a small fee called a premium to get this right.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Spread</span></td>
+      <td>4</td>
+      <td>- <strong>A Spread means taking two related trading positions at the same time.</strong><br>- One position is bought and the other is sold to reduce risk.<br>- Profit comes from the difference in price movement between the two positions.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Equity</span></td>
+      <td>8</td>
+      <td>- <strong>Equity represents ownership in a company through shares or stocks.</strong><br>- When you buy equity shares, you become a part-owner of that company.<br>- Your profit can come from share price growth and dividends.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Spot</span></td>
+      <td>16</td>
+      <td>- <strong>Spot trading means buying or selling an asset immediately at the current market price.</strong><br>- The ownership and payment are usually settled right away.<br>- It is the simplest form of trading used in stocks, currencies, and commodities.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PreferenceShares</span></td>
+      <td>32</td>
+      <td>- <strong>Preference Shares are special shares that give fixed dividends before equity shareholders are paid.</strong><br>- They usually have lower risk compared to ordinary shares.<br>- However, preference shareholders often have limited or no voting rights.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Debentures</span></td>
+      <td>64</td>
+      <td>- <strong>Debentures are a type of loan given by investors to a company.</strong><br>- The company promises to pay regular interest and return the money after a fixed period.<br>- Debenture holders are creditors, not owners of the company.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Warrants</span></td>
+      <td>128</td>
+      <td>- <strong>A Warrant gives the holder the right to buy company shares at a fixed price in the future.</strong><br>- It is usually valid for a longer period than options.<br>- Investors use warrants when they expect the company's share price to rise.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Miscellaneous</span></td>
+      <td>256</td>
+      <td>- <strong>Miscellaneous includes financial instruments that do not fit into common categories.</strong><br>- These may have unique features, purposes, or trading rules.<br>- Examples can vary depending on the market or financial institution.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">MutualFund</span></td>
+      <td>512</td>
+      <td>- <strong>A Mutual Fund collects money from many investors and invests it in different assets.</strong><br>- Professional fund managers make investment decisions on behalf of investors.<br>- It helps people diversify investments and reduce individual investment risk.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 4. XTS Message Code
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">TouchLineEvent</span></td>
+      <td>1501</td>
+      <td>- <strong>A TouchLineEvent occurs whenever the latest market price (Last Traded Price) changes.</strong><br>- It provides quick updates about the current trading activity of a stock or instrument.<br>- Traders use it to monitor real-time price movements and market direction.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">MarketDepthEvent</span></td>
+      <td>1502</td>
+      <td>- <strong>A MarketDepthEvent shows the list of buy and sell orders currently available in the market.</strong><br>- It helps traders see demand, supply, and liquidity at different price levels.<br>- This information is useful for understanding market strength and planning trades.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CandleDataEvent</span></td>
+      <td>1505</td>
+      <td>- <strong>A CandleDataEvent provides price data in candlestick format for a specific time period.</strong><br>- Each candle contains Open, High, Low, and Close (OHLC) prices.<br>- Traders use candlestick data to analyze trends, patterns, and market behavior.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">OpenInterestEvent</span></td>
+      <td>1510</td>
+      <td>- <strong>An OpenInterestEvent shows the total number of active futures or options contracts in the market.</strong><br>- It indicates how much money and participation are present in a particular contract.<br>- Rising open interest often suggests stronger market activity and trader interest.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 5. Exchange Trading Session
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">PreOpenStart</span></td>
+      <td>0</td>
+      <td>- <strong>This is the beginning of the pre-open market session before regular trading starts.</strong><br>- During this time, traders can place, modify, or cancel orders.<br>- The exchange collects orders to determine the opening price.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PreOpenEnd</span></td>
+      <td>1</td>
+      <td>- <strong>This marks the end of the pre-open session.</strong><br>- The exchange processes all collected orders and calculates the opening market price.<br>- Regular trading is about to begin after this phase.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NormalStart</span></td>
+      <td>2</td>
+      <td>- <strong>This is the start of the normal trading session.</strong><br>- Buy and sell orders are matched continuously in real time.<br>- Most market trading activity happens during this period.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">NormalEnd</span></td>
+      <td>4</td>
+      <td>- <strong>This indicates the end of the regular trading session.</strong><br>- New trades under normal market rules stop after this point.<br>- The market then moves to the next session, such as post-closing.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PostClosingStart</span></td>
+      <td>8</td>
+      <td>- <strong>This is the beginning of the post-closing session after normal trading ends.</strong><br>- Certain order types may still be accepted depending on exchange rules.<br>- It helps complete settlement-related or closing-price activities.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PostClosingEnd</span></td>
+      <td>16</td>
+      <td>- <strong>This marks the end of the post-closing session.</strong><br>- All special post-market activities are completed.<br>- The market prepares to move into the closed state.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Closed</span></td>
+      <td>32</td>
+      <td>- <strong>The market is completely closed for trading.</strong><br>- No new buy or sell transactions can be executed.<br>- This usually occurs after market hours, weekends, or holidays.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">None</span></td>
+      <td>256</td>
+      <td>- <strong>This means no market session status is currently assigned or available.</strong><br>- It may be used as a default or placeholder value in the system.<br>- Applications often show this when session information is unavailable.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 6. Exchange Market Type
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">Normal</span></td>
+      <td>1</td>
+      <td>- <strong>Regular trading process jahan exchange ke standard rules follow hote hain.</strong><br>- Sabhi orders normal market timings mein execute kiye jaate hain.<br>- Daily buying aur selling ke liye sabse commonly used category hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">OddLot</span></td>
+      <td>2</td>
+      <td>- <strong>Jab quantity standard trading lot se kam ya alag hoti hai tab use kiya jaata hai.</strong><br>- Aise orders special handling ke saath process hote hain.<br>- Small quantity transactions ke liye suitable hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">RetailDebt</span></td>
+      <td>3</td>
+      <td>- <strong>Retail investors ke liye debt instruments (Bonds, NCDs, etc.) ki trading.</strong><br>- Ismein fixed-income securities ko buy ya sell kiya ja sakta hai.<br>- Regular equity trading se alag debt market transactions ke liye use hota hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Auction</span></td>
+      <td>4</td>
+      <td>- <strong>Auction session mein pending ya unsettled positions ko resolve karne ke liye use hota hai.</strong><br>- Exchange required securities ki buying ya selling auction process se karwata hai.<br>- Settlement obligations complete karne mein madad karta hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction1</span></td>
+      <td>5</td>
+      <td>- <strong>Pre-defined auction window jahan orders collect kiye jaate hain.</strong><br>- Matching ek fixed time par hoti hai, continuously nahi.<br>- Price discovery aur fair order execution ke liye use kiya jaata hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction2</span></td>
+      <td>6</td>
+      <td>- <strong>Call Auction ka doosra phase ya session.</strong><br>- Collected orders ko match karke final execution kiya jaata hai.<br>- Market mein transparency aur efficient price determination ensure karta hai.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 7. CallAuction Type
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">NonCallAuction</span></td>
+      <td>0</td>
+      <td>- <strong>Regular market segment jahan trading continuous basis par hoti hai.</strong><br>- Orders aate hi matching rules ke according execute hote hain.<br>- Call Auction mechanism is segment mein apply nahi hota.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PreOpen</span></td>
+      <td>1</td>
+      <td>- <strong>Market open hone se pehle orders collect aur match kiye jaate hain.</strong><br>- Is session ka purpose opening price determine karna hota hai.<br>- Trading start hone se pehle fair price discovery ensure karta hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">IPOPreOpen</span></td>
+      <td>2</td>
+      <td>- <strong>Naye IPO listed stock ke liye special pre-open session.</strong><br>- Orders collect karke initial listing price discover ki jaati hai.<br>- Listing day par smooth aur transparent market opening mein madad karta hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">RelistPreOpen</span></td>
+      <td>3</td>
+      <td>- <strong>Relisted security ke liye market open hone se pehle ka session.</strong><br>- Orders collect karke opening price determine ki jaati hai.<br>- Relisting ke baad fair trading start karne mein help karta hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Illiquid</span></td>
+      <td>4</td>
+      <td>- <strong>Kam trading volume aur low market activity wali securities.</strong><br>- Inmein buyers aur sellers ki availability limited ho sakti hai.<br>- Price movements comparatively zyada volatile ho sakte hain.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">SME</span></td>
+      <td>5</td>
+      <td>- <strong>Small and Medium Enterprises ki listed securities ka segment.</strong><br>- Yeh platform growing businesses ko capital raise karne ka mauka deta hai.<br>- SME companies ke shares ki trading ke liye use kiya jaata hai.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">SCAS</span></td>
+      <td>6</td>
+      <td>- <strong>Special Call Auction Session ke under aane wali securities.</strong><br>- Orders ek fixed auction process ke through collect aur match kiye jaate hain.<br>- Price discovery aur controlled trading environment provide karta hai.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 8. BookType
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">None</span></td>
+      <td>0</td>
+      <td>- <strong>No special order condition is applied to the trade.</strong><br>- The order follows the default market trading process.<br>- Used for standard buy and sell transactions.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Regular</span></td>
+      <td>1</td>
+      <td>- <strong>Order is placed in the normal trading market segment.</strong><br>- It follows standard exchange rules and timings.<br>- Most day-to-day trading activities use this category.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">SpecialTerms</span></td>
+      <td>2</td>
+      <td>- <strong>Order is subject to specific exchange-defined conditions.</strong><br>- Execution may follow additional settlement or trading rules.<br>- Used when standard trading terms do not apply.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">StopLoss</span></td>
+      <td>3</td>
+      <td>- <strong>Order is triggered only when a specified price is reached.</strong><br>- Helps limit potential losses in volatile markets.<br>- Commonly used for risk management and capital protection.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Negotiated</span></td>
+      <td>4</td>
+      <td>- <strong>Trade is executed based on terms agreed between parties.</strong><br>- Price and quantity are decided before execution.<br>- Typically used for special or large-value transactions.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">OddLot</span></td>
+      <td>5</td>
+      <td>- <strong>Order quantity is smaller than the standard market lot size.</strong><br>- It allows trading of non-standard share quantities.<br>- Commonly used for small holdings or partial transactions.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Spot</span></td>
+      <td>6</td>
+      <td>- <strong>Trade settlement is completed on the same day or immediately.</strong><br>- Ownership transfer happens faster than regular settlement.<br>- Used when quick settlement is required.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Auction</span></td>
+      <td>7</td>
+      <td>- <strong>Order participates in an exchange auction session.</strong><br>- Matching occurs through an auction-based price discovery process.<br>- Used for special market events and settlement requirements.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction1</span></td>
+      <td>11</td>
+      <td>- <strong>Orders are collected during the first call auction session.</strong><br>- Execution happens at a single price after order collection.<br>- Helps determine a fair market price before trading.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CallAuction2</span></td>
+      <td>12</td>
+      <td>- <strong>Orders are collected during the second call auction session.</strong><br>- Matching is performed at a calculated auction price.<br>- Provides additional price discovery and orderly execution.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 9. OptionType
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">CA</span></td>
+      <td>1</td>
+      <td>- <strong>CA — Corporate Action</strong><br>- Provides information about company actions such as dividends, stock splits, bonus issues, and mergers.<br>- Helps track changes that can affect a stock's value and shareholder holdings.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PA</span></td>
+      <td>2</td>
+      <td>- <strong>PA — Price Action</strong><br>- Provides data about how a stock's price moves over time.<br>- Includes trends, price changes, highs, lows, and market movement patterns.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">CE</span></td>
+      <td>3</td>
+      <td>- <strong>CE — Corporate Event</strong><br>- Provides details about important company-related events.<br>- Includes earnings announcements, board meetings, annual meetings, and disclosures.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">PE</span></td>
+      <td>4</td>
+      <td>- <strong>PE — Price Event</strong><br>- Provides alerts or records of significant price-related movements.<br>- Includes sharp price increases, decreases, or predefined price threshold triggers.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">None</span></td>
+      <td>5</td>
+      <td>- <strong>No specific event type is selected.</strong><br>- Data will not be filtered by any event category.<br>- Use this option when you want the default or unfiltered market data.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 10. PublishFormat
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">Binary</span></td>
+      <td>1</td>
+      <td>- <strong>Returns market data in a compact binary format for faster processing and lower bandwidth usage.</strong><br>- Optimized for high-performance applications that require maximum speed and efficiency.<br>- Best suited for systems that can parse and decode binary data formats.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">JSON</span></td>
+      <td>2</td>
+      <td>- <strong>Returns market data in a human-readable JSON format.</strong><br>- Easy to integrate, debug, and use across most programming languages and applications.<br>- Best suited for development, testing, and standard API integrations.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 11. BroadCastMode
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Numeric Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">Full</span></td>
+      <td>1</td>
+      <td>- <strong>Returns the complete set of available market data for the requested instrument or event.</strong><br>- Includes all relevant fields and details without any data reduction.<br>- Best suited when comprehensive information is required for analysis or reporting.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">Partial</span></td>
+      <td>2</td>
+      <td>- <strong>Returns only a subset of the available market data.</strong><br>- Includes essential fields to reduce response size and improve performance.<br>- Best suited when only key information is needed for faster processing.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 12. Socket Event
+
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Enum Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">joined</span></td>
+      <td>- <strong>WebSocket Joined</strong><br>- Sent when a client successfully connects and joins the WebSocket channel.<br>- Confirms that the real-time data stream is active and ready.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">error</span></td>
+      <td>- <strong>Error Event</strong><br>- Indicates a failure during WebSocket connection or request processing.<br>- Includes invalid request, authentication failure, or system error.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">warning</span></td>
+      <td>- <strong>Warning Message</strong><br>- Non-critical advisory message from the server.<br>- Example: rate limit approaching or deprecated API usage detected.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">success</span></td>
+      <td>- <strong>Success Response</strong><br>- Confirms that a client request was processed successfully.<br>- Example: subscription to an instrument acknowledged.</td>
+    </tr>
+  </tbody>
+</table>
