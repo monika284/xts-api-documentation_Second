@@ -69,8 +69,22 @@ nav:
       - Data Types & Bussiness Rules: market/Data.md
       - Enums With Numeric Constants: market/Enums.md
       - Client Config: market/CC.md
-      - Search: market/Search.md
-      - Instruments: market/instruments.md
+      - Search:
+        - Search: market/Search/Search.md
+        - Instrument By ID: market/Search/instrumentbyid.md
+        - Instrument By Search String: market/Search/instrumentbysearchstring.md
+      - Instruments:
+        - Instruments: market/Instruments/instruments.md
+        - Master: market/Instruments/master.md
+        - Quote: market/Instruments/quote.md
+        - GetIndexList: market/Instruments/GetIndexList.md
+        - GetSeries: market/Instruments/GetSeries.md
+        - GetEquitySymbol: market/Instruments/GetEquitySymbol.md
+        - GetExpiryDate: market/Instruments/GetExpiryDate.md
+        - GetFutureSymbol: market/Instruments/GetFutureSymbol.md
+        - GetOptionType: market/Instruments/GetOptionType.md
+        - GetStrikePrice: market/Instruments/GetStrikePrice.md
+        - GetOptionSymbol: market/Instruments/GetOptionSymbol.md
       - OHLC Data: market/ohlc.md 
       - Market Depth: market/depth.md
       - Socket Streaming: market/SS.md
