@@ -124,7 +124,7 @@
     <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
     <tbody>
       <tr><td><span class="burl-post">POST</span></td><td><code>/apimarketdata/instruments/quotes</code></td><td>Get live quotes</td></tr>
-      <tr><td><span class="burl-get">GET</span></td><td><code>/apimarketdata/instruments/master</code></td><td>Full instrument list</td></tr>
+      <tr><td><span class="burl-get">POST</span></td><td><code>/apimarketdata/instruments/master</code></td><td>Full instrument list</td></tr>
       <tr><td><span class="burl-post">POST</span></td><td><code>/apimarketdata/instruments/ohlc</code></td><td>Historical OHLC candles</td></tr>
       <tr><td><span class="burl-get">GET</span></td><td><code>/apimarketdata/instruments/search</code></td><td>Search instruments by name</td></tr>
     </tbody>
@@ -152,7 +152,7 @@
     <tbody>
       <tr><td><span class="burl-get">GET</span></td><td><code>/interactive/portfolio/holdings</code></td><td>Demat holdings</td></tr>
       <tr><td><span class="burl-get">GET</span></td><td><code>/interactive/portfolio/positions</code></td><td>Open positions</td></tr>
-      <tr><td><span class="burl-get">GET</span></td><td><code>/interactive/user/balance</code></td><td>Account funds and margin</td></tr>
+      <tr><td><span class="burl-get">POST</span></td><td><code>/interactive/user/balance</code></td><td>Account funds and margin</td></tr>
       <tr><td><span class="burl-put">PUT</span></td><td><code>/interactive/portfolio/positions</code></td><td>Convert position product type</td></tr>
     </tbody>
   </table>
