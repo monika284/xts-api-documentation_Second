@@ -2,7 +2,7 @@
 <h1>RMoney (XTS)</h1>
 
 <h2> RMoney - (Raghunandan Capital Pvt Ltd) Broker Integration </h2>
-<p>RMoney is a Gandhinagar(Gujarat)-based deep discount broker that provides API access via the XTS (Symphony Fintech) platform. This guide will help you integrate RMoney with OpenAlgo.
+<p>RMoney is a Gandhinagar(Gujarat)-based deep discount broker that provides API access via the XTS (Symphony Fintech) platform.
 </p>
 <h3><bold>Step 1: Create API Applications</h3>
 <p>
@@ -31,11 +31,11 @@ Let's start by :
 </div>
 <p>Details to Fill:</p>
 <ul>
-    <li>App Name: OpenAlgo</li>
-    <li>App Description: OpenAlgo</li>
+    <li>App Name: Demo</li>
+    <li>App Description: For demo purpose</li>
     <li>Redirect URL: (leave it empty)</li>
-    <li>Company Name: OpenAlgo (or your own)</li>
-    <li>Choose the correct API Package depending on the app (Order or Market Data).</li>
+    <li>Company Name: (leave it empty or your own)</li>
+    <li>Choose the correct API Package depending on the app (Interactive order or Market Data).</li>
 </ul>
 <div  style="text-align:center;" class="sm-image4">
 <img src="../photos/5th.png" alt="login">
