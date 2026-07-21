@@ -191,6 +191,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NSECM"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NSEFO"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NSECD"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">3</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NSECO"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"SLBM"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">5</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"NIFSC"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">7</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BSECM"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">11</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BSEFO"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">12</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"BSECD"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">13</span><span style="color:#d4d4d4">,</span><br>
@@ -205,8 +208,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"TouchLineEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1501</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MarketDepthEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"indexDataEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1504</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"CandleDataEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1505</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"OpenInterestEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1510</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"instrumentPropertyChangeEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1510</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"OpenInterestEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1105</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"ltpEvent"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1512</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><span style="color:#d4d4d4">,</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"publishFormat"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">[</span><br>
@@ -215,8 +221,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">]</span><span style="color:#d4d4d4">,</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"broadCastMode"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">[</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"Binary"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"JSON"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"Full"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"Partial"</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">]</span><span style="color:#d4d4d4">,</span><br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"instrumentType"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
@@ -229,6 +235,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Debentures"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">64</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Warrants"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">128</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Miscellaneous"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">256</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MutualFund"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">512</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Futures"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Options"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Spread"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Equity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">8</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Spot"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">16</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"PreferenceShares"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">32</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Debentures"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">64</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Warrants"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">128</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"Miscellaneous"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">256</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"MutualFund"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">512</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
 <br>

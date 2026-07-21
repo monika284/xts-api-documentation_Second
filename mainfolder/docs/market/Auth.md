@@ -28,6 +28,126 @@
 
 ---
 
+## Login &amp; Logout APIs
+
+<div style="border:1.5px solid #f78d23;border-radius:14px;overflow:hidden;margin:16px 0 24px">
+  <div style="background: #f86c08;padding:12px 20px;color:#fff;font-weight:700;font-size:15px">Login (POST)</div>
+  <div style="padding:18px 20px;background: #faf9f9">
+    <p style="font-size:13px;color:#374151;margin:0 0 14px">You are logging in to the authentication using the <strong>POST</strong> method request. You will receive a token parameter in the response which is used to authenticate subsequent requests. All request headers should have the content type set to <code>application/json</code>.</p>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">URL</div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">
+      <div style="flex:1;background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:10px 14px;font-family:Consolas,monospace;font-size:12.5px;overflow-x:auto;white-space:nowrap">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/auth/login</div>
+      
+    </div>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body Parameters</div>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px">
+      <thead>
+        <tr style="background:#ff6b00;color:#fff">
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Parameter Name</th>
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Type</th>
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Mandatory</th>
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#ffffff;border-bottom:1px solid #fed7aa">
+          <td style="padding:8px 12px;color:#374151">secretKey</td>
+          <td style="padding:8px 12px;color:#374151">RawString</td>
+          <td style="padding:8px 12px;color:#374151">Y</td>
+          <td style="padding:8px 12px;color:#374151">The predefined secret key assigned to the client</td>
+        </tr>
+        <tr style="background:#fffaf5;border-bottom:1px solid #fed7aa">
+          <td style="padding:8px 12px;color:#374151">appKey</td>
+          <td style="padding:8px 12px;color:#374151">RawString</td>
+          <td style="padding:8px 12px;color:#374151">Y</td>
+          <td style="padding:8px 12px;color:#374151">The App Key issued for the client</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body JSON</div>
+    <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;margin-bottom:16px">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"secretKey"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxxxxxxxxx"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"appKey"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxxxxxxxxx"</span><br>
+<span style="color:#ffd700">}</span>
+    </div>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body Parameters</div>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px">
+      <thead>
+        <tr style="background:#ff6b00;color:#fff">
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Parameter Name</th>
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Type</th>
+          <th style="text-align:left;padding:8px 12px;font-weight:700">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#ffffff;border-bottom:1px solid #fed7aa">
+          <td style="padding:8px 12px;color:#374151">token</td>
+          <td style="padding:8px 12px;color:#374151">Token</td>
+          <td style="padding:8px 12px;color:#374151">The authentication token used to authorize every subsequent request</td>
+        </tr>
+        <tr style="background:#fffaf5;border-bottom:1px solid #fed7aa">
+          <td style="padding:8px 12px;color:#374151">userID</td>
+          <td style="padding:8px 12px;color:#374151">UserID</td>
+          <td style="padding:8px 12px;color:#374151">UserID of the logged-in client</td>
+        </tr>
+        <tr style="background:#ffffff;border-bottom:1px solid #fed7aa">
+          <td style="padding:8px 12px;color:#374151">appVersion</td>
+          <td style="padding:8px 12px;color:#374151">AppVersion</td>
+          <td style="padding:8px 12px;color:#374151">Market Data App version</td>
+        </tr>
+        <tr style="background:#fffaf5">
+          <td style="padding:8px 12px;color:#374151">application_expiry_date</td>
+          <td style="padding:8px 12px;color:#374151">ApplicationExpiryDate</td>
+          <td style="padding:8px 12px;color:#374151">Application key expiry date</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body JSON</div>
+    <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Provided Valid Credentials"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"token"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"userID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"AB1"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"appVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1.0.19"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"application_expiry_date"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"29-08-2026"</span><br>
+&nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
+<span style="color:#ffd700">}</span>
+    </div>
+  </div>
+</div>
+
+<div style="border:1.5px solid #eb820b;border-radius:14px;overflow:hidden;margin:0 0 24px">
+  <div style="background: #ff6b00;padding:12px 20px;color:#fff;font-weight:700;font-size:15px">Logout (DELETE)</div>
+  <div style="padding:18px 20px;background: #faf9f9">
+    <p style="font-size:13px;color:#374151;margin:0 0 14px">You are logging out of the application using the <strong>DELETE</strong> method request. You will need to pass the Token/Authorization value in the request header. You will receive a success/failure message in the response.</p>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">URL</div>
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">
+      <div style="flex:1;background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:10px 14px;font-family:Consolas,monospace;font-size:12.5px;overflow-x:auto;white-space:nowrap">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/auth/logout</div>
+    </div>
+
+    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body JSON</div>
+    <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
+<span style="color:#ffd700">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"successfully logged out"</span><br>
+<span style="color:#ffd700">}</span>
+    </div>
+  </div>
+</div>
+
+---
+
 ## Step 1 — Send Login Request
 
 The user provides credentials:

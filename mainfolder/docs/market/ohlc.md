@@ -318,10 +318,10 @@ Authorization: &lt;market-token&gt;
 <div class="ohlc-code-block"><pre>[
   {
     "type": "success",
-    "code": "s-ohlc-0001",
+    "code": "s-instrument-0002",
     "description": "Data found",
     "result": {
-      "exchangeSegment": "NSECM",
+      "exchangeSegment": 1,
       "exchangeInstrumentID": "22",
       "dataResponse": "1737331200|1316|1316|1300.25|1305.45|14040244|0|"
     }
