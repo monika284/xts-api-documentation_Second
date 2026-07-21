@@ -35,13 +35,13 @@
   <div style="padding:18px 20px;background: #faf9f9">
     <p style="font-size:13px;color:#374151;margin:0 0 14px">You are logging in to the authentication using the <strong>POST</strong> method request. You will receive a token parameter in the response which is used to authenticate subsequent requests. All request headers should have the content type set to <code>application/json</code>.</p>
 
-    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">URL</div>
+  <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">URL</div>
     <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">
       <div style="flex:1;background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:10px 14px;font-family:Consolas,monospace;font-size:12.5px;overflow-x:auto;white-space:nowrap">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/auth/login</div>
       
-    </div>
+  </div>
 
-    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body Parameters</div>
+  <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body Parameters</div>
     <table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px">
       <thead>
         <tr style="background:#ff6b00;color:#fff">
@@ -67,7 +67,7 @@
       </tbody>
     </table>
 
-    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body JSON</div>
+  <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Request Body JSON</div>
     <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;margin-bottom:16px">
 <span style="color:#ffd700">{</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"secretKey"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxxxxxxxxx"</span><span style="color:#d4d4d4">,</span><br>
@@ -75,7 +75,7 @@
 <span style="color:#ffd700">}</span>
     </div>
 
-    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body Parameters</div>
+  <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body Parameters</div>
     <table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12.5px">
       <thead>
         <tr style="background:#ff6b00;color:#fff">
@@ -108,17 +108,17 @@
       </tbody>
     </table>
 
-    <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body JSON</div>
+  <div style="font-weight:700;color:#c2410c;font-size:12px;margin-bottom:6px">Response Body JSON</div>
     <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
 <span style="color:#ffd700">{</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0010"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"Provided Valid Credentials"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ffd700">{</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"token"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"userID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"AB1"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"appVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1.0.19"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"application_expiry_date"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"29-08-2026"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"userID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"DVJ8588"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"appVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"5.0.15"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">"application_expiry_date"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"30-12-2028"</span><br>
 &nbsp;&nbsp;<span style="color:#ffd700">}</span><br>
 <span style="color:#ffd700">}</span>
     </div>
@@ -139,8 +139,9 @@
     <div style="background:#1e1e1e;border-radius:10px;padding:18px 20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
 <span style="color:#ffd700">{</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-response-0001"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"successfully logged out"</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"code"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"s-login-0005"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"description"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"successfully logged out"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"result"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">{}</span><br>
 <span style="color:#ffd700">}</span>
     </div>
   </div>
