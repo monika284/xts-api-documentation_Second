@@ -1,16 +1,16 @@
 ''' """""""""""""""""""""""""""""""""""""""
       |DataFrame for Cash Market|
 """"""""""""""""""""""""""""""""""""""" '''
-'''import os
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
 API_key = os.getenv("XTS_MARKETDATA_API_KEY")
 API_secret = os.getenv("XTS_MARKETDATA_SECRET_KEY")
 API_source = os.getenv("XTS_SOURCE")
-API_root = os.getenv("XTS_API_URL") '''
+API_root = os.getenv("XTS_API_URL") 
 
-''' from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
 import asyncio
 
@@ -31,8 +31,9 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 
-"""""""""""""""""""""""""""""""""""""""""" '''
-''' """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""" 
+
+"""""""""""""""""""""""""""""""""""""""
       |DataFrame for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -51,9 +52,9 @@ exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well
 )
 
 print(cm_master_string_to_df(market_data_get_master['result']))
-"""""""""""""""""""""""""""""""""""""""""" '''
+"""""""""""""""""""""""""""""""""""""""""" 
 
-''' """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
    |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
@@ -85,9 +86,9 @@ async def main():
     print((fo_master_string_to_df(market_data_get_master['result'])))
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
    |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -118,9 +119,10 @@ print(fut_spread_df[2]) # This will give DataFrame for Options.
 
 print(fo_master_string_to_df(market_data_get_master['result'])) 
 
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
+""" next """
 
-''' """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 |List of InstrumentID for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
@@ -149,9 +151,11 @@ async def main():
     print(cm_instrument_list)
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""
 |List of InstrumentID for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -176,9 +180,11 @@ cm_instrument_list=cm_master_df_to_xts_cm_instrument_list(
     series_list_to_include = ["EQ","BE","BZ","SM","A","B"] # "EQ","BE","BZ" Are for NSE & "SM","A","B" are for BSE.
 )
 print(cm_instrument_list)
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""""""""
 |List of Instrument Id for Future Contracts|
 """""""""""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
@@ -207,9 +213,11 @@ async def main():
     print(future_instrument_list)
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""""""""
 |List of Instrument Id for Options Contracts|
 """""""""""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
@@ -239,9 +247,11 @@ async def main():
     print(options_instrument_list)
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""""""""
 |List of Instrument Id for Options Contracts|
 """""""""""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -267,9 +277,11 @@ options_instrument_list = fo_master_df_to_xts_options_instrument_list(fo_master_
     )
 
 print(options_instrument_list)
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""
         |OHLC for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
@@ -298,9 +310,11 @@ async def main():
     print(ohlc_df)
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""
         |OHLC for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -325,9 +339,11 @@ market_data_get_ohlc = xt_market_data.get_ohlc(
 
 ohlc_df = ohlc_to_df(market_data_get_ohlc)
 print(ohlc_df)
-"""""""""""""""""""""""""""""""""""""""""" '''
+""""""""""""""""""""""""""""""""""""""""""
 
-''' """""""""""""""""""""""""""""""""""""""""""""""""""
+""" next """
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 |Ticker:ExchangeInstrumentId Dict for Cash Market|
 """""""""""""""""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
@@ -347,13 +363,16 @@ cm_master_df = cm_master_string_to_df(market_data_get_master['result'])
 ticker_exchInstrumentID_dict = equityticker_exchangeInstrumentId_dict(cm_master_df)
 print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print "ticker_exchInstrumentID_dict" for full data.
 
-""""""""""""""""""""""""""""""""""""""""""''' 
+""""""""""""""""""""""""""""""""""""""""""
 
-''' from xts_api_client.helper.helper import dostime_secomds_to_unixtime
+""" next """
 
-print(dostime_secomds_to_unixtime(1420378549, "UTC")) '''
+from xts_api_client.helper.helper import dostime_secomds_to_unixtime
 
-'''
+print(dostime_secomds_to_unixtime(1420378549, "UTC"))
+
+""" next """
+
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.market_data_socket_client import MarketDataSocketClient
 from xts_api_client.market_data_socket import MDSocket_io
@@ -497,9 +516,11 @@ async def main():
 
 
 # Execute the async main function
-asyncio.run(main()) '''
+asyncio.run(main())
 
-''' import os
+""" next """
+
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -530,7 +551,10 @@ async def main():
       print((cm_master_string_to_df(market_data_get_master['result'])))
 if __name__ == "__main__":
     asyncio.run(main())
-"""""""""""""""""""""""""""""""""""""""""" ''' 
+"""""""""""""""""""""""""""""""""""""""""" 
+
+""" next """
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
