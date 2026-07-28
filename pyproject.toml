@@ -12,3 +12,5 @@ dependencies = [
     "mkdocs-swagger-ui-tag>=0.8.0",
     "xts-api-client>=0.1.24"
 ]
+[tool.setuptools]
+packages = []
