@@ -1,0 +1,5 @@
+mkdocs>=1.6.1
+mkdocs-material>=9.7.6
+mkdocs-glightbox>=0.5.2
+mkdocs-swagger-ui-tag>=0.8.0
+xts-api-client>=0.1.24
