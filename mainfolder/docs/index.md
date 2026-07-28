@@ -16,6 +16,7 @@ hide:
         <a href="https://xts.rmoneyindia.co.in:3000/dashboard#!/login" class="hm-btn-orange">Get API Key</a>
         <a href="QS/guide/" class="hm-btn-outline">Quick Start </a>
          <a href="GS/intro/" class="hm-btn-outline">Introduction </a>
+         <a href="Library/lib/" class="hm-btn-outline">Library Installation </a>
       </div>
     </div>
     <div class="hm-hero-image">
