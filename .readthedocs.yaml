@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
 =======
 >>>>>>> 68d7d10 (new updates of filr toml and yaml)
+=======
+>>>>>>> 68d7d105c7fc2ef7d5338741c992f7675be4e36e
 version: 2
 
 build:
@@ -13,6 +16,7 @@ build:
 
 python:
   install:
+<<<<<<< HEAD
 <<<<<<< HEAD
     - method: pip
       path: .
@@ -25,3 +29,9 @@ mkdocs:
 mkdocs:
   configuration: mainfolder/mkdocs.yml
 >>>>>>> 68d7d10 (new updates of filr toml and yaml)
+=======
+    - requirements: requirements.txt
+
+mkdocs:
+  configuration: mainfolder/mkdocs.yml
+>>>>>>> 68d7d105c7fc2ef7d5338741c992f7675be4e36e
