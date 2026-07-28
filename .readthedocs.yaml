@@ -11,8 +11,6 @@ build:
 
 python:
   install:
-<<<<<<< HEAD
-<<<<<<< HEAD
     - method: pip
       path: .
 
