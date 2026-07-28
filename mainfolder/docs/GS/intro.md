@@ -141,7 +141,7 @@
 <p class="hp-lead">RMoney APIs are divided into different categories based on functionality.</p>
 <div class="hp-cat-grid">
 
-  <a href="/market/overview/" class="hp-cat-card">
+  <a href="market/overview/" class="hp-cat-card">
     <h3>Market Data APIs</h3>
     <p>Access live and historical market information for stocks, derivatives, and more. Commonly used in charting applications, watchlists, screeners, and analytics platforms.</p>
     <ul>
@@ -155,7 +155,7 @@
     <span class="hp-cat-link">Explore Market Data APIs &rarr;</span>
   </a>
 
-  <a href="/orders/overview/" class="hp-cat-card">
+  <a href="orders/overview/" class="hp-cat-card">
     <h3>Trading APIs</h3>
     <p>Place and manage orders directly through your application. The foundation of automated trading systems and trading platforms.</p>
     <ul>
@@ -169,7 +169,7 @@
     <span class="hp-cat-link">Explore Trading APIs &rarr;</span>
   </a>
 
-  <a href="/portfolio/overview/" class="hp-cat-card">
+  <a href="portfolio/overview/" class="hp-cat-card">
     <h3>Portfolio APIs</h3>
     <p>Monitor investments and trading activity with detailed account information. Useful for portfolio management systems and investment dashboards.</p>
     <ul>
@@ -182,7 +182,7 @@
     <span class="hp-cat-link">Explore Portfolio APIs &rarr;</span>
   </a>
 
-  <a href="/websocket/overview/" class="hp-cat-card">
+  <a href="websocket/overview/" class="hp-cat-card">
     <h3>WebSocket APIs</h3>
     <p>Receive real-time streaming data with persistent WebSocket connections. Ideal for low-latency trading applications.</p>
     <ul>
