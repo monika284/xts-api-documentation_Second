@@ -13,8 +13,8 @@ Let's start by :
 <img src="../photos/7th.png" alt="login">
 </div>
 <div  style="text-align:center;"class="sage2m-image3">
-<img src="../photos/<p><strong> After click you see like this :- </strong></p>
-1st.png" alt="login">
+<p><strong> After click you see like this :- </strong></p>
+<img src="../photos/1st.png" alt="login">
 </div>
 <p><bold>Once logged in: </p>
 <ol>
