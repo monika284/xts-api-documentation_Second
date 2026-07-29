@@ -68,7 +68,7 @@
       <li>Session management</li>
       <li>Secure API access</li>
     </ul>
-    <a href="/interactive/Authentication/" class="iov-mod-link iov-link-orange">View Authentication &rarr;</a>
+    <a href="../../interactive/Authentication/" class="iov-mod-link iov-link-orange">View Authentication &rarr;</a>
   </div>
 
   <div class="iov-module-card">
@@ -85,7 +85,7 @@
       <li>Response formats</li>
       <li>HTTP methods support</li>
     </ul>
-    <a href="/interactive/baseurl/" class="iov-mod-link iov-link-blue">View Endpoints &rarr;</a>
+    <a href="../../interactive/baseurl/" class="iov-mod-link iov-link-blue">View Endpoints &rarr;</a>
   </div>
 
   <div class="iov-module-card">
@@ -102,7 +102,7 @@
       <li>Order rejection messages</li>
       <li>System error responses</li>
     </ul>
-    <a href="/interactive/errors/" class="iov-mod-link iov-link-green">View Error Codes &rarr;</a>
+    <a href="../../interactive/errors/" class="iov-mod-link iov-link-green">View Error Codes &rarr;</a>
   </div>
 
 </div>
