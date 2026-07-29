@@ -146,7 +146,7 @@
       <p>Market data changes continuously during market hours. For real-time updates, consider using WebSocket APIs.</p>
     </div>
   </div>
-  <a href="../websocket/overview/" class="mo-note-link">Explore Market Data APIs &rarr;</a>
+  <a href="../../websocket/overview/" class="mo-note-link">Explore Market Data APIs &rarr;</a>
 </div>
 
 </div>
