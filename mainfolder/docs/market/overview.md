@@ -16,10 +16,10 @@
       <span class="aec-label">BASE URL</span>
     </div>
     <div class="aec-url-row">
-      <span class="aec-base">https://developers.symphonyfintech.in/apibinarymarketdata</span>
+      <span class="aec-base">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata</span>
     </div>
     <div class="aec-footer">
-      <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://developers.symphonyfintech.in/apibinarymarketdata');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+      <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apibinarymarketdata');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
     </div>
   </div>
 </div>
