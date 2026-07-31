@@ -241,7 +241,7 @@
 <span style="color:#9cdcfe">token</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">""</span><br><br>
 <span style="color:#9cdcfe">broadcastMode</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"Full"</span> <span style="color:#6a9955"># "Partial"</span><br>
 <span style="color:#9cdcfe">publishFormat</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"JSON"</span><br>
-<span style="color:#9cdcfe">socketio_path</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"/apibinarymarketdata/socketio"</span><br>
+<span style="color:#9cdcfe">socketio_path</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"/apimarketdata/socketio"</span><br>
 <span style="color:#9cdcfe">logger</span> <span style="color:#d4d4d4">= </span><span style="color:#569cd6">False</span> <span style="color:#6a9955"># True</span><br><br>
 <span style="color:#6a9955"># Create Socket.IO client</span><br>
 <span style="color:#9cdcfe">sio</span> <span style="color:#d4d4d4">= socketio.</span><span style="color:#dcdcaa">Client</span><span style="color:#d4d4d4">()</span><br><br>
@@ -259,9 +259,7 @@
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">error</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
-  <button onclick="var t=this;navigator.clipboard.writeText('import socketio\n\nurl = \"https://xts.rmoneyindia.co.in:3000\"\nuserID = \"\"\ntoken = \"\"\nbroadcastMode = \"Full\"\npublishFormat = \"JSON\"\nsocketio_path = \"/apibinarymarketdata/socketio\"\nlogger = False\nsio = socketio.Client()').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
+  <button onclick="var t=this;navigator.clipboard.writeText('import socketio\n\nurl = \"https://xts.rmoneyindia.co.in:3000\"\nuserID = \"\"\ntoken = \"\"\nbroadcastMode = \"Full\"\npublishFormat = \"JSON\"\nsocketio_path = \"/apimarketdata/socketio\"\nlogger = False\nsio = socketio.Client()').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
 
 ## Listening to Real-Time Streaming
 
@@ -279,9 +277,7 @@
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">():</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Connection Established"</span><span style="color:#d4d4d4">)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"connect\")\ndef connect():\n    print(\"Connection Established\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 ---
 
@@ -294,9 +290,7 @@
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_joined</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Socket Joined"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"joined\")\ndef on_joined(data):\n    print(\"Socket Joined\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 ---
 
@@ -309,9 +303,7 @@
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_error</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"error\")\ndef on_error(data):\n    print(\"Error\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 ---
 
@@ -324,9 +316,7 @@
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_disconnect</span><span style="color:#d4d4d4">():</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Disconnected"</span><span style="color:#d4d4d4">)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"disconnect\")\ndef on_disconnect():\n    print(\"Disconnected\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 ---
 
@@ -340,9 +330,7 @@ Binary data event</p>
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_binary_full</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Binary data Full:"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"xts-binary-packet\")\ndef on_binary_full(data):\n    print(\"Binary data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 <p><strong>Note</strong></p>
 <ul style="font-size:13px;color:#374151;line-height:2.1;margin:0 0 16px 20px;padding:0;">
@@ -519,9 +507,8 @@ Binary data event</p>
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_full</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData data Full:"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:8px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json-full\")\ndef on_1505_json_full(data):\n    print(\"CandleData data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
+
 
 <p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 json-parsed</p>
 
@@ -542,9 +529,8 @@ Binary data event</p>
 &nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
 <span style="color:#d4d4d4">}</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('{\"MessageCode\":1505,\"MessageVersion\":4,\"TokenID\":4,\"ExchangeSegment\":1,\"ExchangeInstrumentID\":2885,\"BarTime\":1737752700,\"BarOpenTime\":1641031502,\"Open\":1288,\"High\":1288,\"Low\":1287.05,\"Close\":1288.05,\"OpenInterest\":0,\"xtsMessageCode\":0}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
+
 
 <p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 Partial Parsed</p>
 
@@ -553,18 +539,14 @@ Binary data event</p>
 <span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_partial</span><span style="color:#d4d4d4">(data):</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData Partial:"</span><span style="color:#d4d4d4">, data)</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:8px;">
   <button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json_partial\")\ndef on_1505_json_partial(data):\n    print(\"CandleData Partial:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 <p style="font-size:13px;color:#374151;">Response for 1505 json-partial</p>
 
 <div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;white-space:nowrap;">
 <span style="color:#ce9178">t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="var t=this;navigator.clipboard.writeText('t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 <div class="site-table-wrap">
   <table class="site-table">

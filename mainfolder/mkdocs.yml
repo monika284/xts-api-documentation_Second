@@ -70,11 +70,11 @@ nav:
       - Enums With Numeric Constants: market/Enums.md
       - Client Config: market/CC.md
       - Search:
-        - Search: market/Search/Search.md
+        - Overview: market/Search/Search.md
         - Instrument By ID: market/Search/instrumentbyid.md
         - Instrument By Search String: market/Search/instrumentbysearchstring.md
       - Instruments:
-        - Instruments: market/Instruments/instruments.md
+        - Overview: market/Instruments/instruments.md
         - Master: market/Instruments/master.md
         - Quote: market/Instruments/quote.md
         - GetIndexList: market/Instruments/GetIndexList.md

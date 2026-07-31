@@ -152,8 +152,8 @@
 <p><strong>URL</strong></p>
 <div style="display:flex;align-items:center;background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:8px 14px;gap:10px;margin:6px 0 18px 0;">
   <span style="flex-shrink:0;background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:700;">PUT</span>
-  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription</code>
-  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
+  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apimarketdata/instruments/subscription</code>
+  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apimarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
 </div>
 
 <p><strong>Request Body Parameters</strong></p>
@@ -208,9 +208,7 @@
 &nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1582</span><br>
 <span style="color:#d4d4d4">}</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="navigator.clipboard.writeText('{\"instruments\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"xtsMessageCode\":1582}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 <p><strong>Response Body JSON</strong></p>
 <div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
@@ -233,9 +231,7 @@
 &nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
 <span style="color:#d4d4d4">}</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="navigator.clipboard.writeText('{\"type\":\"success\",\"code\":\"s-session-0001\",\"description\":\"Instrument subscribed successfully!\",\"result\":{\"mdp\":1501,\"quotesList\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"listQuotes\":[\"...\"],\"Remaining_Subscription_Count\":48}}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 ---
 
@@ -246,8 +242,8 @@
 <p><strong>URL</strong></p>
 <div style="display:flex;align-items:center;background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:8px 14px;gap:10px;margin:6px 0 18px 0;">
   <span style="flex-shrink:0;background:#fff3e0;color:#e65100;border:1px solid #ffcc80;border-radius:4px;padding:3px 10px;font-size:12px;font-weight:700;">PUT</span>
-  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription</code>
-  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apibinarymarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
+  <code style="flex:1;font-size:12px;color:#374151;word-break:break-all;">https://xts.rmoneyindia.co.in:3000/apimarketdata/instruments/subscription</code>
+  <button onclick="var t=this;navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/apimarketdata/instruments/subscription').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="flex-shrink:0;background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">&#128203; Copy</button>
 </div>
 
 <p><strong>Request Body Parameters</strong></p>
@@ -302,9 +298,8 @@
 &nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1502</span><br>
 <span style="color:#d4d4d4">}</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
+
   <button onclick="navigator.clipboard.writeText('{\"instruments\":[{\"exchangeSegment\":1,\"exchangeInstrumentID\":22}],\"xtsMessageCode\":1502}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
 
 <p><strong>Response Body JSON</strong></p>
 <div style="position:relative;background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;margin:6px 0 4px 0;overflow:auto;">
@@ -319,6 +314,4 @@
 &nbsp;&nbsp;<span style="color:#d4d4d4">}</span><br>
 <span style="color:#d4d4d4">]</span>
 </div>
-<div style="display:flex;justify-content:flex-end;gap:8px;background:#2a2a2a;border-radius:0 0 10px 10px;padding:8px 14px;margin-bottom:18px;">
   <button onclick="navigator.clipboard.writeText('[{\"type\":\"success\",\"code\":\"s-response-0001\",\"description\":\"Instrument subscription deleted!\",\"result\":{\"Remaining_Subscription_Count\":4}}]').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
-</div>
