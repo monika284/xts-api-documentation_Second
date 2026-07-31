@@ -204,8 +204,6 @@
     padding: 6px 6px;
     margin-bottom: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-     top: var(--md-header-height);
-    z-index: 10;
 }
 .md-sidebar--primary {
     z-index: 20;
