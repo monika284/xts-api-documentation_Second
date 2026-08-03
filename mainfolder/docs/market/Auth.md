@@ -127,13 +127,13 @@
 
 <div style="margin:8px 0 24px">
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
-    <button onclick="coShowCode('curl',this)" id="co-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
-    <button onclick="coShowCode('python',this)" id="co-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+    <button onclick="coShowCode('login','curl',this)" id="login-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="coShowCode('login','python',this)" id="login-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
   </div>
 
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
 
-    <div id="code-curl">
+    <div id="login-code-curl">
 <span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/apimarketdata/auth/login'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--data </span><span style="color:#ce9178"> "appKey": "YOUR_API_KEY",
@@ -141,7 +141,7 @@
     "source": "YOUR_SOURCE"</span>
 </div>
 
-<div id="code-python" style="display:none">
+<div id="login-code-python" style="display:none">
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
 <span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
 <span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
@@ -169,19 +169,32 @@
 </div>
 
 <div style="display:flex;justify-content:flex-end;margin-top:14px">
-      <button onclick="(function(){var active=document.querySelector('[id^=code-]:not([style*=none])');if(!active)return;navigator.clipboard.writeText(active.innerText).then(function(){var b=document.getElementById('co-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="co-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+      <button onclick="coCopyCode('login', this)" id="login-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
     </div>
   </div>
 </div>
 
 <script>
-function coShowCode(lang, btn) {
+function coShowCode(section, lang, btn) {
   ['curl','python'].forEach(function(l) {
-    document.getElementById('co-code-' + l).style.display = 'none';
-    document.getElementById('co-tab-' + l).style.background = '#374151';
+    var codeEl = document.getElementById(section + '-code-' + l);
+    var tabEl = document.getElementById(section + '-tab-' + l);
+    if (codeEl) codeEl.style.display = 'none';
+    if (tabEl) tabEl.style.background = '#374151';
   });
-  document.getElementById('co-code-' + lang).style.display = 'block';
+  var activeCode = document.getElementById(section + '-code-' + lang);
+  if (activeCode) activeCode.style.display = 'block';
   btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
+}
+function coCopyCode(section, btn) {
+  var curlEl = document.getElementById(section + '-code-curl');
+  var pyEl = document.getElementById(section + '-code-python');
+  var active = (curlEl && curlEl.style.display !== 'none') ? curlEl : pyEl;
+  if (!active) return;
+  navigator.clipboard.writeText(active.innerText).then(function() {
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
 }
 </script>
 <div style="border:1.5px solid #eb820b;border-radius:14px;overflow:hidden;margin:0 0 24px">
@@ -208,13 +221,13 @@ function coShowCode(lang, btn) {
 
 <div style="margin:8px 0 24px">
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
-    <button onclick="coShowCode('curl',this)" id="tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
-    <button onclick="coShowCode('python',this)" id="tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+    <button onclick="coShowCode('logout','curl',this)" id="logout-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="coShowCode('logout','python',this)" id="logout-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
   </div>
 
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
 
-  <div id="co-code-curl">
+  <div id="logout-code-curl">
 <span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/apimarketdata/auth/login'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--data </span><span style="color:#ce9178"> "appKey": "YOUR_API_KEY",
@@ -222,7 +235,7 @@ function coShowCode(lang, btn) {
     "source": "YOUR_SOURCE"</span>
 </div>
 
-<div id="co-code-python" style="display:none">
+<div id="logout-code-python" style="display:none">
   <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
 <span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
 <span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
@@ -250,21 +263,10 @@ function coShowCode(lang, btn) {
 </div>
 
 <div style="display:flex;justify-content:flex-end;margin-top:14px">
-      <button onclick="(function(){var active=document.querySelector('[id^=co-code-]:not([style*=none])');if(!active)return;navigator.clipboard.writeText(active.innerText).then(function(){var b=document.getElementById('co-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="co-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+      <button onclick="coCopyCode('logout', this)" id="logout-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
     </div>
   </div>
 </div>
-
-<script>
-function coShowCode(lang, btn) {
-  ['curl','python'].forEach(function(l) {
-    document.getElementById('co-code-' + l).style.display = 'none';
-    document.getElementById('co-tab-' + l).style.background = '#374151';
-  });
-  document.getElementById('co-code-' + lang).style.display = 'block';
-  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
-}
-</script>
 
 ---
 

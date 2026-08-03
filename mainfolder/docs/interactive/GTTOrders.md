@@ -205,7 +205,8 @@
 
 ---
 
-<h2 id="place-gtt" style="color:#1e293b;font-weight:700;margin:28px 0 10px">Place GTT Order</h2>
+<h3 id="place-GTT-order" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Place GTT Orders</h3>
+
 <p style="color:#6b7280;font-size:13px;margin:-4px 0 16px">Places a Good Till Triggered (GTT) order that remains active until a specified trigger condition is met. Once the trigger price is reached, the system automatically places the corresponding market or limit order on the exchange.</p>
 
 <div class="aec-card">
@@ -340,7 +341,7 @@
 
 ---
 
-<h2 id="modify-gtt" style="color:#1e293b;font-weight:700;margin:28px 0 10px">Modify GTT Order</h2>
+<h3 id="Modify-GTT-order" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Modify GTT Orders</h3>
 <p style="color:#6b7280;font-size:13px;margin:-4px 0 16px">Allows modification of an open existing GTT order by updating trigger price or order parameters.</p>
 
 <div class="aec-card">
@@ -478,7 +479,7 @@
 <span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
 <span style="color:#4ec9b0">MediaType</span><span style="color:#d4d4d4"> mt = MediaType.</span><span style="color:#dcdcaa">parse</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"application/json"</span><span style="color:#d4d4d4">);</span><br>
 <span style="color:#4ec9b0">RequestBody</span><span style="color:#d4d4d4"> body = RequestBody.</span><span style="color:#dcdcaa">create</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"{\"clientID\":\"RM\",\"orderSide\":\"BUY\",\"orderSessionType\":\"GTT\",\"exchangeInstrumentID\":2885,\"exchangeSegment\":\"NSECM\",\"appOrderID\":\"1343000794\",\"modifiedLimitPrice\":1360,\"orderCategoryType\":\"NORMAL\",\"modifiedOrderType\":\"Limit\",\"modifiedProductType\":\"NRML\",\"modifiedOrderQuantity\":75,\"source\":\"Twsapi\",\"modifiedStopPrice\":1310,\"participationCode\":\"NONE\"}"</span><span style="color:#d4d4d4">, mt);</span><br>
-<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/orders/gttorder"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">put</span><span style="color:#d4d4d4">(body).</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">put</span><span style="color:#d4d4d4">(body).</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
 <span style="color:#d4d4d4">System.out.</span><span style="color:#dcdcaa">println</span><span style="color:#d4d4d4">(client.</span><span style="color:#dcdcaa">newCall</span><span style="color:#d4d4d4">(req).</span><span style="color:#dcdcaa">execute</span><span style="color:#d4d4d4">().body().</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">());</span>
     </div>
   </div>
@@ -490,7 +491,8 @@
 
 ---
 
-<h2 id="cancel-gtt" style="color:#1e293b;font-weight:700;margin:28px 0 10px">Cancel GTT Order</h2>
+<h3 id="Exit-GTT-order" style="color: #ff6b00;font-weight:800;margin-bottom:6px">Cancel GTT Order</h3>
+
 <p style="color:#6b7280;font-size:13px;margin:-4px 0 16px">Cancels an active GTT order, preventing it from being triggered even if the trigger condition is met in the future.</p>
 
 <div class="aec-card">
