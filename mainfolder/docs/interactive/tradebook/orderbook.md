@@ -410,77 +410,32 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
     </div>
 
     <div id="ob-code-python" style="display:none">
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook""</span><br>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
 <br>
-<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4"> = {</span><span style="color:#ce9178">'clientID'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'RM1'</span><span style="color:#d4d4d4">}</span><br>
+<span style="color:#c586c0">async def</span><span style="color:#dcdcaa"> main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
 <br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = requests.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(url, headers=headers, params=params)</span><br>
-<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response.text)</span>
-    </div>
-
-    <div id="ob-code-go" style="display:none">
-<span style="color:#c586c0">package</span><span style="color:#d4d4d4"> main</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">get_order_book</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
 <br>
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> (</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"fmt"</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"io/ioutil"</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"net/http"</span><br>
-<span style="color:#d4d4d4">)</span><br>
-<br>
-<span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> := </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook"?clientID=RM1"</span><br>
-<br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"GET"</span><span style="color:#d4d4d4">, url, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">.Header.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
-<br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">client</span><span style="color:#d4d4d4"> := &amp;http.Client{}</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">res</span><span style="color:#d4d4d4">, _ := client.</span><span style="color:#dcdcaa">Do</span><span style="color:#d4d4d4">(req)</span><br>
-&nbsp;&nbsp;<span style="color:#c586c0">defer</span><span style="color:#d4d4d4"> res.Body.</span><span style="color:#dcdcaa">Close</span><span style="color:#d4d4d4">()</span><br>
-<br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">body</span><span style="color:#d4d4d4">, _ := ioutil.</span><span style="color:#dcdcaa">ReadAll</span><span style="color:#d4d4d4">(res.Body)</span><br>
-&nbsp;&nbsp;fmt.<span style="color:#dcdcaa">Println</span><span style="color:#d4d4d4">(</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">(body))</span><br>
-<span style="color:#d4d4d4">}</span>
-    </div>
-
-    <div id="ob-code-nodejs" style="display:none">
-<span style="color:#c586c0">const</span><span style="color:#d4d4d4"> axios = </span><span style="color:#dcdcaa">require</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">'axios'</span><span style="color:#d4d4d4">);</span><br>
-<br>
-<span style="color:#c586c0">const</span><span style="color:#d4d4d4"> config = {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">method</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'get'</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook"'</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">: { </span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4"> },</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">: { </span><span style="color:#9cdcfe">clientID</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'RM1'</span><span style="color:#d4d4d4"> }</span><br>
-<span style="color:#d4d4d4">};</span><br>
-<br>
-<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">(config)</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">then</span><span style="color:#d4d4d4">(response => console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(JSON.</span><span style="color:#dcdcaa">stringify</span><span style="color:#d4d4d4">(response.data)))</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">catch</span><span style="color:#d4d4d4">(error => console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(error));</span>
-    </div>
-
-    <div id="ob-code-csharp" style="display:none">
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
-<span style="color:#d4d4d4">client.DefaultRequestHeaders.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
-<br>
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">GetAsync</span><span style="color:#d4d4d4">(</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook"?clientID=RM1"</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> body = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> response.Content.</span><span style="color:#dcdcaa">ReadAsStringAsync</span><span style="color:#d4d4d4">();</span><br>
-<span style="color:#d4d4d4">Console.</span><span style="color:#dcdcaa">WriteLine</span><span style="color:#d4d4d4">(body);</span>
-    </div>
-
-    <div id="ob-code-java" style="display:none">
-<span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
-<br>
-<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> request = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">()</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook"?clientID=RM1"</span><span style="color:#d4d4d4">)</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">()</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
-&nbsp;&nbsp;.<span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
-<br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = </span><span style="color:#9cdcfe">await</span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_get</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">'order.history'</span><span style="color:#d4d4d4">, params</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#dcdcaa">return </span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_handle_response </span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">,</span><span style="color:#dcdcaa">"Get Order History"</span><span style="color:#d4d4d4">)</span>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">asyncio.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
     </div>
 
   </div>

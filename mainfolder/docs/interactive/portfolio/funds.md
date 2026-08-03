@@ -127,6 +127,332 @@ Loss    = ₹15 per share
     <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/user/balance');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
   </div>
 </div>
+</div>
+## Request Body Parameters
+
+<table class="param-table">
+    <thead>
+        <tr>
+            <th>Parameter Name</th>
+            <th>Type</th>
+            <th>Mandatory</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>clientID</td>
+            <td>
+                ClientID
+                <span class="info-icon"></span>
+            </td>
+            <td>N</td>
+            <td>Client ID Mandatory in case of Dealer</td>
+        </tr>
+    </tbody>
+</table>
+
+## Response Body Parameters
+
+<table class="api-table">
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr><td>BalanceList</td><td>BalanceList</td><td>-</td></tr>
+<tr><td>limitHeader</td><td>LimitHeader</td><td>A pipe (|) separated string, often representing category tags like segment|exchange|product (here "ALL|ALL|ALL" = applies to all).</td></tr>
+<tr><td>limitObject</td><td>limitObject</td><td>Main object holding multiple limit &amp; margin details.</td></tr>
+<tr><td>RMSSubLimits</td><td>RMSSubLimitsList</td><td>Represents RMS (Risk Management System) <strong>sub-limits</strong>.</td></tr>
+<tr><td>cashAvailable</td><td>CashAvailable</td><td>Total free cash available for trading.</td></tr>
+<tr><td>collateral</td><td>Collateral</td><td>Value of pledged securities/collateral.</td></tr>
+<tr><td>marginUtilized</td><td>MarginUtilized</td><td>Margin currently blocked/used for trades.</td></tr>
+<tr><td>netMarginAvailable</td><td>NetMarginAvailable</td><td>Remaining margin after utilization (cashAvailable + collateral - marginUtilized).</td></tr>
+<tr><td>MTM</td><td>MTM</td><td>Mark-to-Market profit/loss.</td></tr>
+<tr><td>UnrealizedMTM</td><td>UnrealizedMTM</td><td>P/L from open positions not yet squared off.</td></tr>
+<tr><td>RealizedMTM</td><td>RealizedMTM</td><td>P/L from closed positions.</td></tr>
+<tr><td>MarginAvailable</td><td>MarginAvailableList</td><td>Represents types of available margins.</td></tr>
+<tr><td>CashMarginAvailable</td><td>CashMarginAvailable</td><td>Actual cash margin balance available.</td></tr>
+<tr><td>AdhocMargin</td><td>AdhocMargin</td><td>Temporary/adhoc margin assigned by broker/RMS.</td></tr>
+<tr><td>NotinalCash</td><td>NotinalCash</td><td>Virtual/notional cash margin (non-cash benefit).</td></tr>
+<tr><td>PayInAmount</td><td>PayInAmount</td><td>Funds incoming from client.</td></tr>
+<tr><td>PayOutAmount</td><td>PayOutAmount</td><td>Funds payable back to client.</td></tr>
+<tr><td>CNCSellBenifit</td><td>CNCSellBenifit</td><td>Margins benefit from CNC (Cash &amp; Carry) sell transactions.</td></tr>
+<tr><td>DirectCollateral</td><td>DirectCollateral</td><td>Margin directly from pledged collateral.</td></tr>
+<tr><td>HoldingCollateral</td><td>HoldingCollateral</td><td>Margins benefit from stock holdings.</td></tr>
+<tr><td>ClientBranchAdhoc</td><td>ClientBranchAdhoc</td><td>Branch-level adhoc margin allocated.</td></tr>
+<tr><td>SellOptionsPremium</td><td>SellOptionsPremium</td><td>Premium received from option selling credited as margin.</td></tr>
+<tr><td>TotalBranchAdhoc</td><td>TotalBranchAdhoc</td><td>Total adhoc margin provided at branch level.</td></tr>
+<tr><td>AdhocFOMargin</td><td>AdhocFOMargin</td><td>Temporary margin for Futures &amp; Options.</td></tr>
+<tr><td>AdhocCurrencyMargin</td><td>AdhocCurrencyMargin</td><td>Temporary margin for currency derivatives.</td></tr>
+<tr><td>AdhocCommodityMargin</td><td>AdhocCommodityMargin</td><td>Temporary margin for commodities.</td></tr>
+<tr><td>marginUtilizedList</td><td>marginUtilizedList</td><td>Represents how margin is being consumed.</td></tr>
+<tr><td>CrossExposureMarginPresent</td><td>CrossExposureMarginPresent</td><td>Margin blocked for gross exposure positions.</td></tr>
+<tr><td>BuyExposureMarginPresent</td><td>BuyExposureMarginPresent</td><td>Margin blocked for buy exposure.</td></tr>
+<tr><td>SellExposureMarginPresent</td><td>SellExposureMarginPresent</td><td>Margin blocked for sell exposure.</td></tr>
+<tr><td>VarELMarginPresent</td><td>VarELMarginPresent</td><td>Margin blocked under VaR + ELM requirement.</td></tr>
+<tr><td>ScripBasketMarginPresent</td><td>ScripBasketMarginPresent</td><td>Margin blocked for scrip basket restrictions.</td></tr>
+<tr><td>CrossExposureLimitPresent</td><td>CrossExposureLimitPresent</td><td>Limit consumed against gross exposure.</td></tr>
+<tr><td>BuyExposureLimitPresent</td><td>BuyExposureLimitPresent</td><td>Limit consumed for buying exposure.</td></tr>
+<tr><td>SellExposureLimitPresent</td><td>SellExposureLimitPresent</td><td>Limit consumed for selling exposure.</td></tr>
+<tr><td>CNCLimitUsed</td><td>CNCLimitUsed</td><td>Limit used under CNC products.</td></tr>
+<tr><td>CNCAamountUsed</td><td>CNCAamountUsed</td><td>Amount utilized under CNC trades.</td></tr>
+<tr><td>MarginUsed</td><td>MarginUsed</td><td>Total margin currently blocked/used.</td></tr>
+<tr><td>LimitUsed</td><td>LimitUsed</td><td>Other limits consumed (if applicable).</td></tr>
+<tr><td>TotalSpanMargin</td><td>TotalSpanMargin</td><td>Margin utilized as SPAN (F&amp;O requirement).</td></tr>
+<tr><td>ExposureMarginPresent</td><td>ExposureMarginPresent</td><td>Exposure margin used (non-SPAN component).</td></tr>
+<tr><td>limitsAssigned</td><td>limitsAssignedList</td><td>Represents maximum limits allocated to accounts.</td></tr>
+<tr><td>CNCLimit</td><td>CNCLimit</td><td>Maximum CNC (delivery) trading limit assigned.</td></tr>
+<tr><td>TurnoverLimitPresent</td><td>TurnoverLimitPresent</td><td>Turnover limit allocated.</td></tr>
+<tr><td>MTMLossLimitPresent</td><td>MTMLossLimitPresent</td><td>Limit on MTM loss allowed.</td></tr>
+<tr><td>BuyExposureLimit</td><td>BuyExposureLimit</td><td>Maximum exposure allowed for buy trades.</td></tr>
+<tr><td>SellExposureLimit</td><td>SellExposureLimit</td><td>Maximum exposure allowed for sell trades.</td></tr>
+<tr><td>CrossExposureLimit</td><td>CrossExposureLimit</td><td>Overall gross exposure limit assigned.</td></tr>
+<tr><td>CrossExposureDerivativesLimit</td><td>CrossExposureDerivativesLimit</td><td>Cross exposure limit for derivatives.</td></tr>
+<tr><td>BuyExposureFuturesLimit</td><td>BuyExposureFuturesLimit</td><td>Exposure limit for futures buy trades.</td></tr>
+<tr><td>BuyExposureOptionsLimit</td><td>BuyExposureOptionsLimit</td><td>Exposure limit for options buy trades.</td></tr>
+<tr><td>SellExposureOptionsLimit</td><td>SellExposureOptionsLimit</td><td>Exposure limit for options sell trades.</td></tr>
+<tr><td>SellExposureFuturesLimit</td><td>SellExposureFuturesLimit</td><td>Exposure limit for futures sell trades.</td></tr>
+<tr><td>AccountID</td><td>AccountID</td><td>User login ID.</td></tr>
+</tbody>
+</table>
+
+## Response Body JSON
+<div style="position:relative;margin:8px 0 24px">
+  <pre id="response-json-balance" style="background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:20px;font-family:Consolas,Menlo,monospace;font-size:13px;line-height:1.6;overflow:auto;max-height:420px;white-space:pre;margin:0">{
+  "type": "success",
+  "code": "s-user-0002",
+  "description": "OK",
+  "result": {
+    "BalanceList": [
+      {
+        "limitHeader": "ALL|ALL|ALL",
+        "limitObject": {
+          "RMSSubLimits": {
+            "cashAvailable": "267.2",
+            "collateral": 0,
+            "marginUtilized": "0",
+            "netMarginAvailable": "267.2",
+            "MTM": "0",
+            "UnrealizedMTM": "0",
+            "RealizedMTM": "0"
+          },
+          "marginAvailable": {
+            "CashMarginAvailable": "267.2",
+            "AdhocMargin": "0",
+            "NotinalCash": "0",
+            "PayInAmount": "0",
+            "PayOutAmount": "0",
+            "CNCSellBenifit": "0",
+            "DirectCollateral": "0",
+            "HoldingCollateral": "0",
+            "ClientBranchAdhoc": "0",
+            "SellOptionsPremium": "0",
+            "NetOptionPremium": "0",
+            "BuyOptionsPremium": "0",
+            "TotalBranchAdhoc": "0",
+            "AdhocFOMargin": "NaN",
+            "AdhocCurrencyMargin": "NaN",
+            "AdhocCommodityMargin": "NaN"
+          },
+          "marginUtilized": {
+            "GrossExposureMarginPresent": "0",
+            "BuyExposureMarginPresent": "0",
+            "SellExposureMarginPresent": "0",
+            "VarELMarginPresent": "0",
+            "ScripBasketMarginPresent": "0",
+            "GrossExposureLimitPresent": "0",
+            "BuyExposureLimitPresent": "0",
+            "SellExposureLimitPresent": "0",
+            "CNCLimitUsed": "0",
+            "CNCAmountUsed": "0",
+            "MarginUsed": "0",
+            "LimitUsed": "NaN",
+            "TotalSpanMargin": "0",
+            "ExposureMarginPresent": "0"
+          },
+          "limitsAssigned": {
+            "CNCLimit": "0",
+            "TurnoverLimitPresent": "0",
+            "MTMLossLimitPresent": "0",
+            "BuyExposureLimit": "0",
+            "SellExposureLimit": "0",
+            "GrossExposureLimit": "0",
+            "GrossExposureDerivativesLimit": "0",
+            "BuyExposureFuturesLimit": "0",
+            "BuyExposureOptionsLimit": "0",
+            "SellExposureOptionsLimit": "0",
+            "SellExposureFuturesLimit": "0",
+            "AdhocOptionsBuy": "0",
+            "AdhocCashCNCMargin": "0"
+          },
+          "AccountID": "DVJ8588"
+        }
+      },
+      {
+        "limitHeader": "CASH|NSE|MTF",
+        "limitObject": {
+          "RMSSubLimits": {
+            "cashAvailable": "0",
+            "collateral": 0,
+            "marginUtilized": "0",
+            "netMarginAvailable": "0",
+            "MTM": "0",
+            "UnrealizedMTM": "0",
+            "RealizedMTM": "0"
+          },
+          "marginAvailable": {
+            "CashMarginAvailable": "0",
+            "AdhocMargin": "0",
+            "NotinalCash": "0",
+            "PayInAmount": "0",
+            "PayOutAmount": "0",
+            "CNCSellBenifit": "0",
+            "DirectCollateral": "0",
+            "HoldingCollateral": "0",
+            "ClientBranchAdhoc": "0",
+            "SellOptionsPremium": "0",
+            "NetOptionPremium": "0",
+            "BuyOptionsPremium": "0",
+            "TotalBranchAdhoc": "0",
+            "AdhocFOMargin": "NaN",
+            "AdhocCurrencyMargin": "NaN",
+            "AdhocCommodityMargin": "NaN"
+          },
+          "marginUtilized": {
+            "GrossExposureMarginPresent": "0",
+            "BuyExposureMarginPresent": "0",
+            "SellExposureMarginPresent": "0",
+            "VarELMarginPresent": "0",
+            "ScripBasketMarginPresent": "0",
+            "GrossExposureLimitPresent": "0",
+            "BuyExposureLimitPresent": "0",
+            "SellExposureLimitPresent": "0",
+            "CNCLimitUsed": "0",
+            "CNCAmountUsed": "0",
+            "MarginUsed": "0",
+            "LimitUsed": "NaN",
+            "TotalSpanMargin": "0",
+            "ExposureMarginPresent": "0"
+          },
+          "limitsAssigned": {
+            "CNCLimit": "0",
+            "TurnoverLimitPresent": "0",
+            "MTMLossLimitPresent": "0",
+            "BuyExposureLimit": "0",
+            "SellExposureLimit": "0",
+            "GrossExposureLimit": "0",
+            "GrossExposureDerivativesLimit": "0",
+            "BuyExposureFuturesLimit": "0",
+            "BuyExposureOptionsLimit": "0",
+            "SellExposureOptionsLimit": "0",
+            "SellExposureFuturesLimit": "0",
+            "AdhocOptionsBuy": "0",
+            "AdhocCashCNCMargin": "0"
+          },
+          "AccountID": "DVJ8588"
+        }
+      }
+    ]
+  }
+}</pre>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){navigator.clipboard.writeText(document.getElementById('response-json-balance').innerText);var b=document.getElementById('balance-json-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})()" id="balance-json-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    <button onclick="(function(){var p=document.getElementById('response-json-balance');var btn=document.getElementById('balance-json-toggle');if(p.style.maxHeight==='none'){p.style.maxHeight='420px';btn.textContent='Show Full'}else{p.style.maxHeight='none';btn.textContent='Show Less'}})()" id="balance-json-toggle" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
+  </div>
+</div>
+
+<h3 style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
+
+<div style="margin:8px 0 24px">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
+    <button onclick="balanceShowCode('curl',this)" id="balance-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="balanceShowCode('python',this)" id="balance-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+  </div>
+  <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="balance-ce-box">
+    <div id="balance-code-curl">
+<span style="color:#d4d4d4">curl --location --request GET </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/balance'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
+    </div>
+    <div id="balance-code-python" style="display:none">
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
+<br>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">get_balance</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">asyncio</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
+    </div>
+    <div id="balance-code-go" style="display:none">
+<span style="color:#c586c0">package</span><span style="color:#d4d4d4"> main</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> (</span><span style="color:#ce9178">"fmt"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"net/http"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"io/ioutil"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">.Header.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">res</span><span style="color:#d4d4d4">, _ := (&amp;http.Client{}).</span><span style="color:#dcdcaa">Do</span><span style="color:#d4d4d4">(req); </span><span style="color:#c586c0">defer</span><span style="color:#d4d4d4"> res.Body.</span><span style="color:#dcdcaa">Close</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">b</span><span style="color:#d4d4d4">, _ := ioutil.</span><span style="color:#dcdcaa">ReadAll</span><span style="color:#d4d4d4">(res.Body); fmt.</span><span style="color:#dcdcaa">Println</span><span style="color:#d4d4d4">(</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">(b))<br>}</span>
+    </div>
+    <div id="balance-code-nodejs" style="display:none">
+<span style="color:#c586c0">const</span><span style="color:#d4d4d4"> axios = </span><span style="color:#dcdcaa">require</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">'axios'</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">:{</span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">:</span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">},</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">:{clientID:</span><span style="color:#ce9178">'RM'</span><span style="color:#d4d4d4">,appOrderID:</span><span style="color:#ce9178">'1343000794'</span><span style="color:#d4d4d4">,exchangeSegment:</span><span style="color:#ce9178">'NSECM'</span><span style="color:#d4d4d4">,exchangeInstrumentID:</span><span style="color:#ce9178">'2885'</span><span style="color:#d4d4d4">}})</span><br>
+<span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">then</span><span style="color:#d4d4d4">(r=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(r.data)).</span><span style="color:#dcdcaa">catch</span><span style="color:#d4d4d4">(e=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(e));</span>
+    </div>
+    <div id="balance-code-csharp" style="display:none">
+<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
+<span style="color:#d4d4d4">client.DefaultRequestHeaders.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#d4d4d4">Console.</span><span style="color:#dcdcaa">WriteLine</span><span style="color:#d4d4d4">(</span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> response.Content.</span><span style="color:#dcdcaa">ReadAsStringAsync</span><span style="color:#d4d4d4">());</span>
+    </div>
+    <div id="balance-code-java" style="display:none">
+<span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#d4d4d4">System.out.</span><span style="color:#dcdcaa">println</span><span style="color:#d4d4d4">(client.</span><span style="color:#dcdcaa">newCall</span><span style="color:#d4d4d4">(req).</span><span style="color:#dcdcaa">execute</span><span style="color:#d4d4d4">().body().</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">());</span>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+    <button onclick="(function(){var a=document.querySelector('[id^=balance-code-]:not([style*=none])');if(!a)return;navigator.clipboard.writeText(a.innerText).then(function(){var b=document.getElementById('balance-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="balance-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    <button onclick="(function(){var b=document.getElementById('balance-ce-box');var btn=document.getElementById('balance-ce-show');if(b.style.maxHeight==='none'){b.style.maxHeight='320px';btn.textContent='Show Full'}else{b.style.maxHeight='none';btn.textContent='Show Less'}})()" id="balance-ce-show" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
+  </div>
+</div>
+
+<script>
+function balanceShowCode(lang, btn) {
+  ['curl','python'].forEach(function(l) {
+    document.getElementById('balance-code-' + l).style.display = 'none';
+    document.getElementById('balance-tab-' + l).style.background = '#374151';
+  });
+  document.getElementById('balance-code-' + lang).style.display = 'block';
+  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
+}
+</script>
+
 
 <h2 id="response" class="auth-section-title">API Response Fields</h2>
 <table class="auth-expiry-table" style="width:100%">
