@@ -3070,33 +3070,36 @@
 &nbsp;&nbsp;<span style="color:#ce9178">"isDayWise": true</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#ce9178">"oldProductType": "NRML"</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#ce9178">"newProductType": "MIS"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"statisticsLevel": "0"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"isInterOpPosition": false</span><br>
+
 <span style="color:#ce9178">'}'</span>
     </div>
     <div id="conv-code-python" style="display:none">
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> json</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/portfolio/positions/convert"</span><br>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
 <br>
-<span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = json.</span><span style="color:#dcdcaa">dumps</span><span style="color:#d4d4d4">({</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"targetQty"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"isDayWise"</span><span style="color:#d4d4d4">: </span><span style="color:#569cd6">True</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"oldProductType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NRML"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"newProductType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"MIS"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"statisticsLevel"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"0"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">"isInterOpPosition"</span><span style="color:#d4d4d4">: </span><span style="color:#569cd6">False</span><br>
-<span style="color:#d4d4d4">})</span><br>
-<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;<span style="color:#ce9178">'Content-Type'</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">'application/json'</span><br>
-<span style="color:#d4d4d4">}</span><br>
+<span style="color:#c586c0">async def</span><span style="color:#dcdcaa"> main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
 <br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = </span><span style="color:#9cdcfe">await</span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_put</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">'portfolio.positions.convert'</span><span style="color:#d4d4d4">, json</span><span style="color:#9cdcfe">.dumps</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">)</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#dcdcaa">return </span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_handle_response </span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">,</span><span style="color:#dcdcaa">"Convert Position"</span><span style="color:#d4d4d4">)</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">convert_position</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">asyncio.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
     </div>
   </div>
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">

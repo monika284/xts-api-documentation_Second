@@ -1303,61 +1303,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How It Works
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#order-status-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order Status Values
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-order-history" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Order History
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#order-history-vs-order-book" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order History vs Order Book
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Use Cases
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2879,61 +2824,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How It Works
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#order-status-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order Status Values
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-order-history" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Order History
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#order-history-vs-order-book" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Order History vs Order Book
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-use-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Use Cases
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3141,37 +3031,38 @@
     </div>
 
     <div id="oh-code-python" style="display:none">
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/1interactive/orders"</span><br>
-<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4"> = {</span><span style="color:#ce9178">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"3727296468"</span><span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">}</span><br>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
 <br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = </span><span style="color:#9cdcfe">await</span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_get</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">'order.history'</span><span style="color:#d4d4d4">, params</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#dcdcaa">return </span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_handle_response </span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">,</span><span style="color:#dcdcaa">"Get Order History"</span><span style="color:#d4d4d4">)</span>
-
-
-    </div>
-
-    <div style="display:flex;justify-content:flex-end;margin-top:14px">
-      <button onclick="(function(){var active=document.querySelector('[id^=oh-code-]:not([style*=none])');if(!active)return;navigator.clipboard.writeText(active.innerText).then(function(){var b=document.getElementById('oh-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="oh-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
-    </div>
-  </div>
-</div>
-
-<script>
-function ohShowCode(lang, btn) {
-  ['curl','python'].forEach(function(l) {
-    document.getElementById('oh-code-' + l).style.display = 'none';
-    document.getElementById('oh-tab-' + l).style.background = '#374151';
-  });
-  document.getElementById('oh-code-' + lang).style.display = 'block';
-  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
-}
+<span style="color:#c586c0">async def</span><span style="color:#dcdcaa"> main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">get_order_history</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">asyncio.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
 </script>
 
-<hr />
-<h2 id="how-it-works">How It Works</h2>
+---
+
+## How It Works
+
 <div class="iov-workflow" style="flex-wrap:wrap">
   <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Order Placed</span></div>
   <div class="iov-wf-arrow">→</div>
@@ -3184,8 +3075,10 @@ function ohShowCode(lang, btn) {
   <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg></div><span>Stored in History</span></div>
 </div>
 
-<hr />
-<h2 id="order-status-values">Order Status Values</h2>
+---
+
+## Order Status Values
+
 <table class="api-table">
   <thead>
     <tr>
@@ -3206,8 +3099,10 @@ function ohShowCode(lang, btn) {
   </tbody>
 </table>
 
-<hr />
-<h2 id="example-order-history">Example Order History</h2>
+---
+
+## Example Order History
+
 <table class="api-table">
   <thead>
     <tr>
@@ -3226,8 +3121,10 @@ function ohShowCode(lang, btn) {
   </tbody>
 </table>
 
-<hr />
-<h2 id="order-history-vs-order-book">Order History vs Order Book</h2>
+---
+
+## Order History vs Order Book
+
 <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin:16px 0 24px;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
   <div style="padding:16px 20px;background:#ffffff">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">ORDER BOOK</div>
@@ -3250,8 +3147,10 @@ function ohShowCode(lang, btn) {
   </div>
 </div>
 
-<hr />
-<h2 id="common-use-cases">Common Use Cases</h2>
+---
+
+## Common Use Cases
+
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📋 Review Past Orders</div>
@@ -3275,8 +3174,8 @@ function ohShowCode(lang, btn) {
   </div>
 </div>
 
-<p>!!! note
-    Order history only shows orders from the <strong>current trading day</strong>. Historical data from previous days is not available through this endpoint.</p>
+!!! note
+    Order history only shows orders from the **current trading day**. Historical data from previous days is not available through this endpoint.
 
 
 
