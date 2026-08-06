@@ -162,25 +162,6 @@
 
 ---
 
-## Example Workflow
-
-<div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2.2;margin:12px 0">
-<span style="color:#6a9955">// Step 1 — Login &amp; get token</span><br>
-<span style="color:#9cdcfe">token</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"eyJhbGci..."</span><br><br>
-<span style="color:#6a9955">// Step 2 — Connect to WebSocket</span><br>
-<span style="color:#4fc3f7">connect</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"wss://marketdata.server"</span><span style="color:#d4d4d4">, token)</span><br><br>
-<span style="color:#6a9955">// Step 3 — Subscribe to instruments</span><br>
-<span style="color:#4fc3f7">subscribe</span><span style="color:#d4d4d4">([</span><span style="color:#ce9178">"NSECM:2885"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"NSECM:11536"</span><span style="color:#d4d4d4">])</span>&nbsp;&nbsp;<span style="color:#6a9955">// RELIANCE, TCS</span><br><br>
-<span style="color:#6a9955">// Step 4 — Server pushes live updates automatically</span><br>
-<span style="color:#dcdcaa">onData</span><span style="color:#d4d4d4">(event → process price update)</span><br><br>
-<span style="color:#6a9955">// Step 5 — Unsubscribe RELIANCE</span><br>
-<span style="color:#4fc3f7">unsubscribe</span><span style="color:#d4d4d4">([</span><span style="color:#ce9178">"NSECM:2885"</span><span style="color:#d4d4d4">])</span><br><br>
-<span style="color:#6a9955">// Step 6 — Disconnect</span><br>
-<span style="color:#4fc3f7">disconnect</span><span style="color:#d4d4d4">()</span>
-</div>
-
----
-
 ## Benefits
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0 24px">
@@ -228,36 +209,237 @@
 
 ---
 
-## Establishment of Socket Connection
+## Complete example of order socket connection
+
 
 <p>You can connect to the server by sending the userID, token, source, and broadcastMode as query parameters. The token is available only after a successful RESTful login request, as described in the RESTful section of the documentation.</p>
 
 <div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;">
-<span style="color:#569cd6">import</span> <span style="color:#d4d4d4">socketio</span><br><br>
-<span style="color:#6a9955"># Base URL of the ApiMarketdata API server</span><br>
-<span style="color:#9cdcfe">url</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000"</span><br><br>
-<span style="color:#6a9955"># Required credentials</span><br>
-<span style="color:#9cdcfe">userID</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">""</span><br>
-<span style="color:#9cdcfe">token</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">""</span><br><br>
-<span style="color:#9cdcfe">broadcastMode</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"Full"</span> <span style="color:#6a9955"># "Partial"</span><br>
-<span style="color:#9cdcfe">publishFormat</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"JSON"</span><br>
-<span style="color:#9cdcfe">socketio_path</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">"/apimarketdata/socketio"</span><br>
-<span style="color:#9cdcfe">logger</span> <span style="color:#d4d4d4">= </span><span style="color:#569cd6">False</span> <span style="color:#6a9955"># True</span><br><br>
-<span style="color:#6a9955"># Create Socket.IO client</span><br>
-<span style="color:#9cdcfe">sio</span> <span style="color:#d4d4d4">= socketio.</span><span style="color:#dcdcaa">Client</span><span style="color:#d4d4d4">()</span><br><br>
-<span style="color:#9cdcfe">connectionString</span> <span style="color:#d4d4d4">= </span><span style="color:#ce9178">f"{url}?token={token}&amp;userID={userID}&amp;publishFormat={publishFormat}&amp;broadcastMode={broadcastMode}"</span><br><br>
-<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"connect"</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">():</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Connection Established"</span><span style="color:#d4d4d4">)</span><br><br>
-<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"disconnect"</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">disconnect</span><span style="color:#d4d4d4">():</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Disconnected"</span><span style="color:#d4d4d4">)</span><br><br>
-<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"joined"</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">joined</span><span style="color:#d4d4d4">(data):</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Socket Joined"</span><span style="color:#d4d4d4">, data)</span><br><br>
-<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"error"</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">error</span><span style="color:#d4d4d4">(data):</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
+<span style="color:#ce9178">"""</span><br>
+<span style="color:#ce9178">Market Data Socket - Continuous streaming with auto-reconnection</span><br>
+<span style="color:#ce9178">"""</span><br>
+<br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> json</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> typing </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> Any</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.market_data_socket </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> MDSocket_io</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.market_data_socket_client </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> MarketDataSocketClient</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<br>
+<br>
+<span style="color:#c586c0">class</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">SimpleMarketDataClient</span><span style="color:#d4d4d4">(MarketDataSocketClient):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"""Handles market data socket events"""</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_connect</span><span style="color:#d4d4d4">(self) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Market Data Socket Connected"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_disconnect</span><span style="color:#d4d4d4">(self) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[DISCONNECTED] Market Data Socket Disconnected"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_error</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[ERROR] Market Data Error: {data}"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_message</span><span style="color:#d4d4d4">(self, data: Any = </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_last_traded_price_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_last_traded_price_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_touchline_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_touchline_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_data_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_data_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_candle_data_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_candle_data_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_status_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_openinterest_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_openinterest_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_instrument_change_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_instrument_change_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data, str):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">data</span><span style="color:#d4d4d4"> = json.</span><span style="color:#dcdcaa">loads</span><span style="color:#d4d4d4">(data)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data, dict):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">touchline</span><span style="color:#d4d4d4"> = data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Touchline"</span><span style="color:#d4d4d4">, {}) </span><span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Touchline"</span><span style="color:#d4d4d4">), dict) </span><span style="color:#c586c0">else</span><span style="color:#d4d4d4"> {}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">instrument_id</span><span style="color:#d4d4d4"> = (</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">ltp</span><span style="color:#d4d4d4"> = (</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ltp"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"LastTradedPrice"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ltp"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"LastTradedPrice"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> ltp </span><span style="color:#c586c0">and</span><span style="color:#d4d4d4"> instrument_id:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[LTP] Instrument: {instrument_id} | LTP: {ltp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+<br>
+<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"""Connect and stream market data"""</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">api_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_API_KEY"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">secret_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_SECRET_KEY"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">api_url</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"WEBAPI"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">not</span><span style="color:#d4d4d4"> all([api_key, secret_key, api_url]):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[FAILED] Missing credentials in .env"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Required: XTS_MARKETDATA_API_KEY, XTS_MARKETDATA_SECRET_KEY, XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">return</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Market Data Socket - Starting Connection"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"API URL: {api_url}\n"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">0</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">max_attempts</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">10</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">retry_delay</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">3</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">while</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">md_socket</span><span style="color:#d4d4d4"> = </span><span style="color:#569cd6">None</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 1/5] Logging in to Market Data API..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xtc</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4">=api_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4">=secret_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4">=source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4">=api_url</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">login_resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xtc.</span><span style="color:#dcdcaa">marketdata_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> login_resp.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"type"</span><span style="color:#d4d4d4">) != </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Login error: {login_resp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Logged in successfully"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"&nbsp;&nbsp;&nbsp;&nbsp;User ID: {xtc.userID}\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 2/5] Creating WebSocket..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">callback</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">SimpleMarketDataClient</span><span style="color:#d4d4d4">()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">md_socket</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">MDSocket_io</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">token</span><span style="color:#d4d4d4">=xtc.token,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">userID</span><span style="color:#d4d4d4">=xtc.userID,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root_url</span><span style="color:#d4d4d4">=xtc.root,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">reconnection</span><span style="color:#d4d4d4">=</span><span style="color:#569cd6">False</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">marketdatasocketclient</span><span style="color:#d4d4d4">=callback</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 3/5] Connecting WebSocket..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> md_socket.</span><span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(</span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">not</span><span style="color:#d4d4d4"> md_socket.connected:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Socket did not connect properly"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[RETRY] Attempt {attempt}/{max_attempts} in {retry_delay}s...\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] WebSocket connected\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 4/5] Subscribing to instruments..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6a9955"># Using RELIANCE (2885) cash equity on Segment 1 (NSECM) as default</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">instruments</span><span style="color:#d4d4d4"> = [{</span><span style="color:#ce9178">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2029</span><span style="color:#d4d4d4">}]</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">sub_resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xtc.</span><span style="color:#dcdcaa">send_subscription</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">Instruments</span><span style="color:#d4d4d4">=instruments,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xtsMessageCode</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">1501</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> sub_resp.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"type"</span><span style="color:#d4d4d4">) != </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Subscription error: {sub_resp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Subscribed to instruments\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 5/5] Streaming data..."</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"="</span><span style="color:#d4d4d4"> * </span><span style="color:#b5cea8">60</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[RUNNING] Market Data Socket is RUNNING"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Press Ctrl+C to stop\n"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">0</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6a9955"># Stream data until disconnected</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">while</span><span style="color:#d4d4d4"> md_socket </span><span style="color:#c586c0">and</span><span style="color:#d4d4d4"> md_socket.connected:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(</span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[DISCONNECTED] Connection lost - attempting reconnect..."</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">1</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4"> KeyboardInterrupt:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"\n\n[STOP] User stopped connection"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">break</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4"> Exception </span><span style="color:#c586c0">as</span><span style="color:#d4d4d4"> e:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[ERROR] {str(e)[:100]}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[RETRY] Attempt {attempt}/{max_attempts} in {retry_delay}s...\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">finally</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> md_socket:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> md_socket.</span><span style="color:#dcdcaa">disconnect</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &gt;= max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Reached max reconnection attempts ({max_attempts})"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Market Data Socket stopped"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">asyncio</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
+
 </div>
   <button onclick="var t=this;navigator.clipboard.writeText('import socketio\n\nurl = \"https://xts.rmoneyindia.co.in:3000\"\nuserID = \"\"\ntoken = \"\"\nbroadcastMode = \"Full\"\npublishFormat = \"JSON\"\nsocketio_path = \"/apimarketdata/socketio\"\nlogger = False\nsio = socketio.Client()').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button>
 

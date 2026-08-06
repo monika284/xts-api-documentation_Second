@@ -2816,21 +2816,41 @@
     <div id="co-code-curl">
 <span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxxxxxx'</span><span style="color:#d4d4d4"> \</span><br>
-<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">''appOrderID': int(apOrpderID), 'orderUniqueIdentifier': orderUniqueIdentifier'</span>
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">"appOrderID": "1210991676",
+    "orderUniqueIdentifier": "order12345"</span>
     </div>
 
-    <div id="co-code-python" style="display:none">
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<div id="co-code-python" style="display:none">
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders"</span><br>
-<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4"> = {</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"1000125345"</span><span style="color:#ce9178">""</span><br>
-<span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"orderUniqueIdentifier"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"orderUniqueIdentifier"</span><br>
-<span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = await self.</span><span style="color:#dcdcaa">_delete</span><span style="color:#d4d4d4">('</span><span style="color:#9cdcfe">order.cancel</span><span style="color:#d4d4d4">, params)</span><br>
-<span style="color:#dcdcaa">return</span><span style="color:#d4d4d4"> </span><span style="color:#9cdcfe">self.</span><span style="color:#dcdcaa">_handle_response</span><span style="color:#dcdcaa">(</span><span style="color:#d4d4d4">response,</span><span style="color:#ce9178">"Cancel Order"</span><span style="color:#dcdcaa">)</span>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">cancel_order</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">appOrderID</span><span style="color:#d4d4d4">=</span><span style="color:#ce9178">"12109916 76"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">orderUniqueIdentifier</span><span style="color:#d4d4d4">=</span><span style="color:#ce9178">"order12345"</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">asyncio</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
     </div>
 
     <div style="display:flex;justify-content:flex-end;margin-top:14px">

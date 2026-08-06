@@ -103,34 +103,54 @@
 
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="mo-ce-box">
 
-    <div id="mo-code-curl">
+  <div id="mo-code-curl">
 <span style="color:#d4d4d4">curl --location --request PUT </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxxxxxx'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
-<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{"appOrderID":"100012534500000041478","modifiedProductType":"NRML","modifiedOrderType":"LIMIT","modifiedOrderQuantity":75,"modifiedDisclosedQuantity":0,"modifiedLimitPrice":28000,"modifiedStopPrice":0,"modifiedTimeInForce":"DAY","orderUniqueIdentifier":"123abc"}'</span>
+<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{
+  "exchangeSegment": "NSECM",<br>
+    "orderID": "*****",<br>
+    "orderQuantity": 2,<br>
+    "limitPrice": 12,<br>
+    "stopPrice": 0,<br>
+    "clientID": "*****"
+  }'</span>
     </div>
 
-    <div id="mo-code-python" style="display:none">
-<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> requests</span><br>
+<div id="mo-code-python" style="display:none">
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
 <br>
-<span style="color:#9cdcfe">url</span><span style="color:#d4d4d4"> = </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders"</span><br>
-<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4"> = {</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"xxxxxxxxxx"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"Content-Type"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"application/json"</span><br>
-<span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">payload</span><span style="color:#d4d4d4"> = {</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"appOrderID"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"100012534500000041478"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedProductType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"NRML"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedOrderType"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"LIMIT"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedOrderQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">75</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedDisclosedQuantity"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedLimitPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">28000</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedStopPrice"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"modifiedTimeInForce"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"DAY"</span><span style="color:#d4d4d4">,</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"orderUniqueIdentifier"</span><span style="color:#d4d4d4">: </span><span style="color:#ce9178">"123abc"</span><br>
-<span style="color:#d4d4d4">}</span><br>
-<span style="color:#9cdcfe">response</span><span style="color:#d4d4d4"> = </span><span style="color:#9cdcfe">await</span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_post</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">'order.modify'</span><span style="color:#d4d4d4">, json</span><span style="color:#9cdcfe">.dumps</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">)</span><span style="color:#d4d4d4">)</span><br>
-<span style="color:#dcdcaa">return </span><span style="color:#d4d4d4"> self.</span><span style="color:#dcdcaa">_handle_response </span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">response</span><span style="color:#d4d4d4">,</span><span style="color:#dcdcaa">"Modify Order"</span><span style="color:#d4d4d4">)</span>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_Interactive_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">xt_interactive_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">response_interactive_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">interactive_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_interactive_login)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_interactive_data.</span><span style="color:#dcdcaa">modify_order</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">exchangeSegment</span><span style="color:#d4d4d4">=</span><span style="color:#ce9178">"NSECM"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">orderID</span><span style="color:#d4d4d4">=</span><span style="color:#ce9178">"*****"</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">orderQuantity</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">2</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">limitPrice</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">12</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">stopPrice</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">clientID</span><span style="color:#d4d4d4">=</span><span style="color:#ce9178">"*****"</span><br>
+&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">asyncio</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
     </div>
 
   </div>
