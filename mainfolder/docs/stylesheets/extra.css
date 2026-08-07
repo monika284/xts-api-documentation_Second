@@ -1,8 +1,15 @@
 ﻿/* =========================
    INTRO PAGE H4 SUB-HEADINGS
 ========================= */
-.hm-hero {
-    zoom: 1.25;
+/* Keep the right TOC visible */
+.md-sidebar--secondary {
+    width: 15rem;
+}
+
+/* Let the main documentation area take remaining space */
+.md-content {
+    min-width: 0;
+    flex: 1;
 }
 .md-content h4 {
     font-size: 13px;
