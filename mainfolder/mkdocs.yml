@@ -99,6 +99,7 @@ nav:
       - Overview: references/overview.md
       - Enums: references/enums.md
       - Constants: references/constants.md
+      - Helper Functions: references/helperfunctions.md
 extra_css:
   - stylesheets/extra.css
 
