@@ -209,7 +209,8 @@
 
 ---
 
-## Complete example of order socket connection
+## complete example of market data socket connection
+
 
 
 <p>You can connect to the server by sending the userID, token, source, and broadcastMode as query parameters. The token is available only after a successful RESTful login request, as described in the RESTful section of the documentation.</p>
