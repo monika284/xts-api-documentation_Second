@@ -1,0 +1,3886 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../depth/">
+      
+      
+        <link rel="next" href="../SSub/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Socket Streaming - RMoney API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <script>
+    /* Force light mode as default for new visitors (runs before Material's palette.js) */
+    (function () {
+      try {
+        if (!localStorage.getItem('__palette')) {
+          localStorage.setItem('__palette', JSON.stringify({ index: 0 }));
+        }
+      } catch (e) {}
+    }());
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-socket-streaming-works" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RMoney API Documentation" class="md-header__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RMoney API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Socket Streaming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RMoney API Documentation" class="md-nav__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    RMoney API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GS/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/user/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/baseurl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base URL & Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/DataTypes%26BussinessRules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Business Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/RateLimit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rate Limit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/EnumsWithNumericConstants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Orders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standard Orders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/place_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Place Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/cancel_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/cancelall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel All Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/modify_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/CoverOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/BracketOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bracket Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/SpreadOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spread Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/holdings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Holdings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Positions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/position_convert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position Convert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/funds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook & Orderbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradebook & Orderbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Order History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/orderbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orderbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/tradebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/GTTOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GTT Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/MarginCalculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Margin Calculator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/MTMCalculation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTM Calculation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Codes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/SocketStreaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/EM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/ES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Data API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Market Data API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Bussiness Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/Search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/instrumentbyid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrument By ID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/instrumentbysearchstring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrument By Search String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/instruments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/quote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quote
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetIndexList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetIndexList
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetSeries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetSeries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetEquitySymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetEquitySymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetExpiryDate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetExpiryDate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetFutureSymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetFutureSymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetOptionType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetOptionType
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetStrikePrice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetStrikePrice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetOptionSymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetOptionSymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ohlc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OHLC Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../depth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-socket-streaming-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Socket Streaming Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-data-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Data Available
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Socket Events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example-of-market-data-socket-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        complete example of market data socket connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listening-to-real-time-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listening to Real-Time Streaming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joined
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disconnect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-marketdata-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Marketdata Event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candle-data-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candle Data Event
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SSub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/helperfunctions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helper Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-socket-streaming-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Socket Streaming Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-data-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Data Available
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Socket Events
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benefits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-example-of-market-data-socket-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        complete example of market data socket connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listening-to-real-time-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listening to Real-Time Streaming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joined" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joined
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disconnect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-marketdata-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Marketdata Event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candle-data-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candle Data Event
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../overview/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Market Data API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 style="color:#ff6b00;font-weight:800;margin-bottom:6px">Socket Streaming</h1>
+<p class="iov-subtitle"><strong>Socket Streaming</strong> creates a live connection between your application and the Market Data server. Once connected, market updates are automatically pushed in real time — no repeated requests needed.</p>
+
+<div class="iov-features">
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Real-time updates</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg></div><span>Low latency</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>No repeated calls</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a5 5 0 0 0-5-5z"/></svg></div><span>WebSocket based</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-yellow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5l6-6 4 4 7-8.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Live price &amp; depth</span></div>
+  <div class="iov-feature"><div class="iov-feat-icon iov-icon-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div><span>Efficient bandwidth</span></div>
+</div>
+
+<hr />
+<h2 id="how-socket-streaming-works">How Socket Streaming Works</h2>
+<div class="iov-workflow" style="flex-wrap:wrap">
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a5 5 0 0 0-5-5z"/></svg></div><span>Connect</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/></svg></div><span>Subscribe</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div><span>Receive Updates</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-purple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div><span>Unsubscribe</span></div>
+  <div class="iov-wf-arrow">→</div>
+  <div class="iov-wf-step"><div class="iov-wf-icon iov-wf-teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><span>Disconnect</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0 8px">
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">1. Connect</div>
+    <p style="font-size:13px;color:#374151;margin:0">Establish a WebSocket connection with the Market Data server using your authentication token.</p>
+  </div>
+  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
+    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px">2. Subscribe</div>
+    <p style="font-size:13px;color:#374151;margin:0">Subscribe to instruments using Exchange Segment and Exchange Instrument ID. Server starts tracking them.</p>
+  </div>
+  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:6px">3. Receive Updates</div>
+    <p style="font-size:13px;color:#374151;margin:0">Server automatically pushes data whenever market changes occur. No additional requests needed.</p>
+  </div>
+  <div style="border:1.5px solid #e9d5ff;border-radius:10px;padding:14px 16px;background:#faf5ff">
+    <div style="font-weight:700;color:#7c3aed;font-size:13px;margin-bottom:6px">4. Unsubscribe</div>
+    <p style="font-size:13px;color:#374151;margin:0">Stop receiving updates for specific instruments at any time without closing the connection.</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f9fafb">
+    <div style="font-weight:700;color:#374151;font-size:13px;margin-bottom:6px">5. Disconnect</div>
+    <p style="font-size:13px;color:#374151;margin:0">Close the WebSocket connection when streaming is no longer required.</p>
+  </div>
+</div>
+
+<hr />
+<h2 id="types-of-data-available">Types of Data Available</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:16px 0 24px">
+
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Touchline Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
+      <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
+        <li>Last Traded Price (LTP)</li>
+        <li>Open / High / Low / Close</li>
+        <li>Volume</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
+    <div style="background:#1d4ed8;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Depth Data</div>
+    <div style="padding:14px 16px;background:#eff6ff">
+      <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
+        <li>Best 5 Buy Prices</li>
+        <li>Best 5 Sell Prices</li>
+        <li>Buy &amp; Sell Quantities</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
+    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Index Data</div>
+    <div style="padding:14px 16px;background:#f0fdf4">
+      <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
+        <li>NIFTY 50</li>
+        <li>SENSEX</li>
+        <li>BANK NIFTY &amp; others</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="border:1.5px solid #e9d5ff;border-radius:12px;overflow:hidden">
+    <div style="background:#7c3aed;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trade Data</div>
+    <div style="padding:14px 16px;background:#faf5ff">
+      <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
+        <li>Trade Price</li>
+        <li>Trade Quantity</li>
+        <li>Trade Time</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<hr />
+<h2 id="socket-events">Socket Events</h2>
+<table class="api-table">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="enum-badge">joined</span></td>
+      <td>- <strong>Socket connection established successfully.</strong><br>- Fired when the client connects to the WebSocket server.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">success</span></td>
+      <td>- <strong>A request or operation completed successfully.</strong><br>- Returned after a valid subscribe or unsubscribe action.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">warning</span></td>
+      <td>- <strong>A non-critical issue that may require attention.</strong><br>- Does not stop the connection but should be noted.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">error</span></td>
+      <td>- <strong>An operation failed or could not be completed.</strong><br>- Check the error message for details and retry if needed.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">trade</span></td>
+      <td>- <strong>Sent when a trade is executed in the market.</strong><br>- Contains trade price, quantity, and time details.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">order</span></td>
+      <td>- <strong>Sent when an order-related update is available.</strong><br>- Includes status changes like filled, partial fill, or cancelled.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">position</span></td>
+      <td>- <strong>Sent when there is a change in positions or holdings.</strong><br>- Helps track live portfolio changes in real time.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">logout</span></td>
+      <td>- <strong>User has been disconnected from the socket session.</strong><br>- Reconnection may be required after this event.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">tradeConversion</span></td>
+      <td>- <strong>Sent when a position is converted from one product type to another.</strong><br>- Example: MIS to NRML or CNC conversion.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">getOrder</span></td>
+      <td>- <strong>Returns details of existing orders.</strong><br>- Use to fetch current order status and information.</td>
+    </tr>
+    <tr>
+      <td><span class="enum-badge">getOrderRejection</span></td>
+      <td>- <strong>Returns information about rejected orders.</strong><br>- Includes the rejection reason for debugging and user notification.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="benefits">Benefits</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0 24px">
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:6px"></div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Real-time Updates</div>
+    <p style="font-size:12px;color:#374151;margin:0">Market data pushed instantly on change</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:6px"></div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Low Latency</div>
+    <p style="font-size:12px;color:#374151;margin:0">Minimal delay between market event and delivery</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:6px"></div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Reduced API Calls</div>
+    <p style="font-size:12px;color:#374151;margin:0">No need to poll repeatedly for updates</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:6px"></div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Efficient Bandwidth</div>
+    <p style="font-size:12px;color:#374151;margin:0">Only changed data is transmitted over the wire</p>
+  </div>
+  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;text-align:center">
+    <div style="font-size:22px;margin-bottom:6px"></div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Better UX</div>
+    <p style="font-size:12px;color:#374151;margin:0">Smooth, responsive trading application experience</p>
+  </div>
+</div>
+
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>To receive streaming Market Data events, you must use the Socket.IO library. For more information, visit: <a href="https://socket.io/" target="_blank">https://socket.io/</a>.</p>
+
+<p><strong>Real-Time Streaming Flow</strong></p>
+<p style="color:#e65100;">Once the connection is established, real-time streaming data can be obtained by listening to the socket on the relevant market data ports. The streaming data will be received on these ports, and upon receiving the data, you are free to process it as required.</p>
+
+<p>Below are the steps to follow to correctly implement the real-time streaming flow:</p>
+<ol style="font-size:14px;color:#374151;line-height:2.2;margin:4px 0 0 20px;padding:0;">
+  <li>Establish the socket connection</li>
+  <li>Listen to real-time streaming events</li>
+</ol>
+
+<hr />
+<h2 id="complete-example-of-market-data-socket-connection">complete example of market data socket connection</h2>
+<p>You can connect to the server by sending the userID, token, source, and broadcastMode as query parameters. The token is available only after a successful RESTful login request, as described in the RESTful section of the documentation.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;">
+<span style="color:#ce9178">"""</span><br>
+<span style="color:#ce9178">Market Data Socket - Continuous streaming with auto-reconnection</span><br>
+<span style="color:#ce9178">"""</span><br>
+<br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> json</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> typing </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> Any</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.market_data_socket </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> MDSocket_io</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.market_data_socket_client </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> MarketDataSocketClient</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<br>
+<br>
+<span style="color:#c586c0">class</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">SimpleMarketDataClient</span><span style="color:#d4d4d4">(MarketDataSocketClient):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ce9178">"""Handles market data socket events"""</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_connect</span><span style="color:#d4d4d4">(self) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Market Data Socket Connected"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_disconnect</span><span style="color:#d4d4d4">(self) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[DISCONNECTED] Market Data Socket Disconnected"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_error</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[ERROR] Market Data Error: {data}"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_message</span><span style="color:#d4d4d4">(self, data: Any = </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_last_traded_price_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_last_traded_price_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_touchline_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_touchline_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">self</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(data)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_data_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_data_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_candle_data_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_candle_data_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_market_status_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_openinterest_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_openinterest_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_instrument_change_full</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">on_event_instrument_change_partial</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">_print_ltp</span><span style="color:#d4d4d4">(self, data: Any) -&gt; </span><span style="color:#569cd6">None</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data, str):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">data</span><span style="color:#d4d4d4"> = json.</span><span style="color:#dcdcaa">loads</span><span style="color:#d4d4d4">(data)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data, dict):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">touchline</span><span style="color:#d4d4d4"> = data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Touchline"</span><span style="color:#d4d4d4">, {}) </span><span style="color:#c586c0">if</span><span style="color:#d4d4d4"> isinstance(data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Touchline"</span><span style="color:#d4d4d4">), dict) </span><span style="color:#c586c0">else</span><span style="color:#d4d4d4"> {}</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">instrument_id</span><span style="color:#d4d4d4"> = (</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">ltp</span><span style="color:#d4d4d4"> = (</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ltp"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> data.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"LastTradedPrice"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"ltp"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">or</span><span style="color:#d4d4d4"> touchline.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"LastTradedPrice"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> ltp </span><span style="color:#c586c0">and</span><span style="color:#d4d4d4"> instrument_id:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[LTP] Instrument: {instrument_id} | LTP: {ltp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+<br>
+<span style="color:#c586c0">async</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">def</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;<span style="color:#ce9178">"""Connect and stream market data"""</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">api_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_API_KEY"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">secret_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_SECRET_KEY"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">api_url</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">""</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"WEBAPI"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">strip</span><span style="color:#d4d4d4">()</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">not</span><span style="color:#d4d4d4"> all([api_key, secret_key, api_url]):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[FAILED] Missing credentials in .env"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Required: XTS_MARKETDATA_API_KEY, XTS_MARKETDATA_SECRET_KEY, XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">return</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Market Data Socket - Starting Connection"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"API URL: {api_url}\n"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">0</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">max_attempts</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">10</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">retry_delay</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">3</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">while</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">md_socket</span><span style="color:#d4d4d4"> = </span><span style="color:#569cd6">None</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 1/5] Logging in to Market Data API..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xtc</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4">=api_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4">=secret_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4">=source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4">=api_url</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">login_resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xtc.</span><span style="color:#dcdcaa">marketdata_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> login_resp.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"type"</span><span style="color:#d4d4d4">) != </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Login error: {login_resp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Logged in successfully"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"&nbsp;&nbsp;&nbsp;&nbsp;User ID: {xtc.userID}\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 2/5] Creating WebSocket..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">callback</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">SimpleMarketDataClient</span><span style="color:#d4d4d4">()</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">md_socket</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">MDSocket_io</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">token</span><span style="color:#d4d4d4">=xtc.token,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">userID</span><span style="color:#d4d4d4">=xtc.userID,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root_url</span><span style="color:#d4d4d4">=xtc.root,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">reconnection</span><span style="color:#d4d4d4">=</span><span style="color:#569cd6">False</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">marketdatasocketclient</span><span style="color:#d4d4d4">=callback</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 3/5] Connecting WebSocket..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> md_socket.</span><span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(</span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> </span><span style="color:#c586c0">not</span><span style="color:#d4d4d4"> md_socket.connected:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Socket did not connect properly"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[RETRY] Attempt {attempt}/{max_attempts} in {retry_delay}s...\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] WebSocket connected\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 4/5] Subscribing to instruments..."</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6a9955"># Using RELIANCE (2885) cash equity on Segment 1 (NSECM) as default</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">instruments</span><span style="color:#d4d4d4"> = [{</span><span style="color:#ce9178">"exchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"exchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2029</span><span style="color:#d4d4d4">}]</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">sub_resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xtc.</span><span style="color:#dcdcaa">send_subscription</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">Instruments</span><span style="color:#d4d4d4">=instruments,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xtsMessageCode</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">1501</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> sub_resp.</span><span style="color:#dcdcaa">get</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"type"</span><span style="color:#d4d4d4">) != </span><span style="color:#ce9178">"success"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Subscription error: {sub_resp}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">continue</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt == </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Subscribed to instruments\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[STEP 5/5] Streaming data..."</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"="</span><span style="color:#d4d4d4"> * </span><span style="color:#b5cea8">60</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[RUNNING] Market Data Socket is RUNNING"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Press Ctrl+C to stop\n"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">0</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#6a9955"># Stream data until disconnected</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">while</span><span style="color:#d4d4d4"> md_socket </span><span style="color:#c586c0">and</span><span style="color:#d4d4d4"> md_socket.connected:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(</span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[DISCONNECTED] Connection lost - attempting reconnect..."</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> = </span><span style="color:#b5cea8">1</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4"> KeyboardInterrupt:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"\n\n[STOP] User stopped connection"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">break</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4"> Exception </span><span style="color:#c586c0">as</span><span style="color:#d4d4d4"> e:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[ERROR] {str(e)[:100]}"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">attempt</span><span style="color:#d4d4d4"> += </span><span style="color:#b5cea8">1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &lt; max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[RETRY] Attempt {attempt}/{max_attempts} in {retry_delay}s...\n"</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> asyncio.</span><span style="color:#dcdcaa">sleep</span><span style="color:#d4d4d4">(retry_delay)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">finally</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> md_socket:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">try</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">await</span><span style="color:#d4d4d4"> md_socket.</span><span style="color:#dcdcaa">disconnect</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">except</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c586c0">pass</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> attempt &gt;= max_attempts:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">f"[FAILED] Reached max reconnection attempts ({max_attempts})"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"[OK] Market Data Socket stopped"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<br>
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">asyncio</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
+
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('import socketio\n\nurl = \"https://xts.rmoneyindia.co.in:3000\"\nuserID = \"\"\ntoken = \"\"\nbroadcastMode = \"Full\"\npublishFormat = \"JSON\"\nsocketio_path = \"/apimarketdata/socketio\"\nlogger = False\nsio = socketio.Client()').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<h2 id="listening-to-real-time-streaming">Listening to Real-Time Streaming</h2>
+<p>Once the socket connection is successfully established, you can listen to real-time streaming data by subscribing to the attached market data ports. The complete market data will be received as a string.</p>
+
+<hr />
+<h2 id="connect">Connect</h2>
+<p>The user needs to connect to the server via a socket (i.e., WebSocket). It is important to set the path parameter value as <code>/socket.io</code> during the connection. The token will only be available after a successful login, so make sure you log in first before connecting to the server via socket.</p>
+<p>Here, the URL is the REST API address used to connect to the interactive server (e.g., www.test.example.com). Once connected to the server, you can listen to the following events: SocketEvents. An example of a connect event is given below</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"connect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Connection Established"</span><span style="color:#d4d4d4">)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"connect\")\ndef connect():\n    print(\"Connection Established\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<hr />
+<h2 id="joined">Joined</h2>
+<p>If a successful connection is established with the server, this event will be raised to indicate that the user has been connected.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"joined"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_joined</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Socket Joined"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"joined\")\ndef on_joined(data):\n    print(\"Socket Joined\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<hr />
+<h2 id="error">Error</h2>
+<p>In case of any error with the server, this event will be raised along with the cause of the error. For example, if you send an incorrect token while connecting, the server will raise this event and disconnect your socket connection.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"error"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_error</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Error"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"error\")\ndef on_error(data):\n    print(\"Error\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<hr />
+<h2 id="disconnect">Disconnect</h2>
+<p>In case a socket disconnection occurs with the server, this event will be raised to indicate the disconnection.</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"disconnect"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_disconnect</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Disconnected"</span><span style="color:#d4d4d4">)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"disconnect\")\ndef on_disconnect():\n    print(\"Disconnected\")').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<hr />
+<h2 id="binary-marketdata-event">Binary Marketdata Event</h2>
+<p><strong style="color:#1a73e8;">BinaryData</strong><br>
+Binary data event</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"xts-binary-packet"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_binary_full</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Binary data Full:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"xts-binary-packet\")\ndef on_binary_full(data):\n    print(\"Binary data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<p><strong>Note</strong></p>
+<ul style="font-size:13px;color:#374151;line-height:2.1;margin:0 0 16px 20px;padding:0;">
+  <li>If the packet is compressed, decompress it using <strong>zlib</strong>, and then deserialize the final packet.</li>
+  <li>If the packet is not compressed, you can directly deserialize the packet.</li>
+  <li>The <strong>isGzipCompressed</strong> flag is present in the parent header of the received packet. The final packet must be iterated accordingly.</li>
+  <li>Further deserialization should be performed based on the <strong>message code</strong>.</li>
+</ul>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Header</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">isGzipCompressed</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Indicates whether the packet is gzip compressed. (1 = compressed, 2 = not compressed)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">messageCode</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Header frame message code</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique identifier of the instrument within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">isInstrumentType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">marketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market Type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">uncompressedPacketSize</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Size of the packet after decompression</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">compressedPacketSize</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Size of the compressed packet</td></tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-size:12px;color:#374151;margin:4px 0 16px 0;">If <strong>isGzipCompressed</strong> is 1 (one) it is a compressed packet — deserialize using zlib. If <strong>isGzipCompressed</strong> is 0 (zero) it is a non-compressed packet.</p>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Touchline event (1501)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">publisherType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Application type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">A sequential response number used for ordering messages</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Number of bytes reserved for forward compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by the exchange for live updates</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Bid &amp; Ask)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Bid)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Bid quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Bid)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Bid total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Bid)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of buy orders at the last bid level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Bid)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the bid side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Ask quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Ask)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Ask total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total number of sell orders at the last ask level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Ask)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the ask side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastUpdatedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the latest market data update</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Price at which the last trade occurred</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Quantity traded in the last transaction</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalBuyQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total buy quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalSellQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total sell quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total quantity traded for the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">AverageTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Weighted average traded price</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Time/timestamp of the last trade</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">perCentChange</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Percent change compared to the previous close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Open</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Opening price of the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">High</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Highest traded price of the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Low</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Lowest traded price of the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Close</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Closing price of the previous trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalValueTraded</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Total trade value for the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalQuantityTraded</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total trade quantity from the previous session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">initialDebt</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total debt quantity from the previous session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">BasicType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Event (1502)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">applicationType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Identifies the application type generating the message</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Required sequence number used to maintain message ordering</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Reserved memory bytes for future compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by exchange for live updates</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">askCount</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Total number of bids &amp; asks in message</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Bid)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Bid)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Bid quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Bid)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Bid total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Bid)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of buy orders at the last bid level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Bid)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the bid side</td></tr>
+      <tr style="background:#dbeafe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">Marketdepth Row (Ask)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">size (Ask)</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Ask quantity available at the current price level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">totalOrders (Ask)</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Ask total orders</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalOrdersCount (Ask)</td><td style="padding:9px 14px;">uint32</td><td style="padding:9px 14px;">Total number of sell orders at the last ask level</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isAccumInvestFlag (Ask)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Indicates market maker presence on the ask side</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastUpdatedPrice</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the latest market data available</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Price at which the most recent market data event occurred</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">LastTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Quantity traded in the last transaction</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalBuyQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total buy quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">TotalSellQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total sell quantity available in the order book</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalTradedQuantity</td><td style="padding:9px 14px;">long</td><td style="padding:9px 14px;">Total quantity traded during the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">AverageTradedPrice</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Weighted average price of all shares traded in the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">LastTradedTime</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp of the last traded data details</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">perCentChange</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Percentage change compared to the previous close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Open</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Opening price of the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">High</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Highest traded price during the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">Low</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Lowest traded price during the session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Close</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Closing price of the current trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">TotalValueTraded</td><td style="padding:9px 14px;">double</td><td style="padding:9px 14px;">Total trade value for the trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">VolatilityBuy</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Selling quantity from the previous market session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">VolatilitySell</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Total sell quantity from the previous trading session</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">BasicType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Order user type</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Field Name</th>
+        <th style="padding:10px 14px;text-align:left;">Data Type</th>
+        <th style="padding:10px 14px;text-align:left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#e8f0fe;"><td colspan="3" style="padding:8px 14px;font-weight:700;color:#1a3a6e;">OpenInterest Event (1512)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">messageVersion</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Version of the message format</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">applicationType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Application type generating the message</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">tokenID</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Unique token identifier for the instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">sequenceNumber (if messageVersion &gt;= 2)</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Required sequence number used to maintain message ordering</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">Reserved (if messageVersion &gt;= 4)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Bytes reserved for forward compatibility</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeSegment</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">exchangeInstrumentID</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique instrument identifier within the exchange</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">exchangeTimestamp</td><td style="padding:9px 14px;">int64</td><td style="padding:9px 14px;">Timestamp generated by exchange for live updates</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">MarketType</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Market type identifier</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">underlyingInstrumentSegment (if padding = 0)</td><td style="padding:9px 14px;">int16</td><td style="padding:9px 14px;">Exchange segment of the underlying instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">underlyingInstrumentID (if padding = 0)</td><td style="padding:9px 14px;">int32</td><td style="padding:9px 14px;">Unique identifier of the underlying instrument</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">isGzipIndex (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Indicates whether the underlying index name is streaming (0 = yes, 2 = no)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">stringLength (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">int8</td><td style="padding:9px 14px;">Length of the underlying index string</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;">UnderlyingIndexName (if isGzipIndex &gt;= 1)</td><td style="padding:9px 14px;">string</td><td style="padding:9px 14px;">Name of the underlying index</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;">totalComponents (if totalComponents &gt; 0)</td><td style="padding:9px 14px;">uint64</td><td style="padding:9px 14px;">Total number of elements/components in the message</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr />
+<h2 id="candle-data-event">Candle Data Event</h2>
+<p>Candle Data Event message for 1505 Full Parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"1505_json-full"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_full</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData data Full:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json-full\")\ndef on_1505_json_full(data):\n    print(\"CandleData data Full:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 json-parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.9;">
+<span style="color:#d4d4d4">{</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1505</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"MessageVersion"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"TokenID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">4</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeSegment"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"ExchangeInstrumentID"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">2885</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"BarTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1737752700</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"BarOpenTime"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1641031502</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Open"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"High"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Low"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1287.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"Close"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">1288.05</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"OpenInterest"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><span style="color:#d4d4d4">,</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">"xtsMessageCode"</span><span style="color:#d4d4d4">: </span><span style="color:#b5cea8">0</span><br>
+<span style="color:#d4d4d4">}</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('{\"MessageCode\":1505,\"MessageVersion\":4,\"TokenID\":4,\"ExchangeSegment\":1,\"ExchangeInstrumentID\":2885,\"BarTime\":1737752700,\"BarOpenTime\":1641031502,\"Open\":1288,\"High\":1288,\"Low\":1287.05,\"Close\":1288.05,\"OpenInterest\":0,\"xtsMessageCode\":0}').then(function(){var t=event.target;t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<p style="font-size:13px;color:#374151;">Candle Data Event message for 1505 Partial Parsed</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">
+<span style="color:#dcdcaa">@sio.on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"1505_json_partial"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#569cd6">def</span> <span style="color:#dcdcaa">on_1505_json_partial</span><span style="color:#d4d4d4">(data):</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"CandleData Partial:"</span><span style="color:#d4d4d4">, data)</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('@sio.on(\"1505_json_partial\")\ndef on_1505_json_partial(data):\n    print(\"CandleData Partial:\", data)').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<p style="font-size:13px;color:#374151;">Response for 1505 json-partial</p>
+
+<div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;overflow-x:auto;white-space:nowrap;">
+<span style="color:#ce9178">t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0</span>
+</div>
+<p><button onclick="var t=this;navigator.clipboard.writeText('t=1_2885_s=1348_l=1348_h=1348.95_s=1348_w=1348.1522_oe=1348501323_oi=0').then(function(){t.innerHTML='&#10003; Copied!';setTimeout(function(){t.innerHTML='&#128203; Copy';},1500);});" style="background:#1a73e8;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:600;cursor:pointer;">&#128203; Copy</button></p>
+<div class="site-table-wrap">
+  <table class="site-table">
+    <thead>
+      <tr>
+        <th style="padding:10px 14px;text-align:left;">Symbol</th>
+        <th style="padding:10px 14px;text-align:left;">Explanation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">t</td><td style="padding:9px 14px;">ExchangeSegment_InstrumentID (the exchangeSegment along with InstrumentID are combined and separated by _ followed by the InstrumentID)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">s</td><td style="padding:9px 14px;">Open</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">h</td><td style="padding:9px 14px;">High</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">l</td><td style="padding:9px 14px;">Low</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">c</td><td style="padding:9px 14px;">Close</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">w</td><td style="padding:9px 14px;">Weighted Average Traded Price (VWAP)</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:9px 14px;font-weight:600;">oe</td><td style="padding:9px 14px;">Bar Volume</td></tr>
+      <tr style="border-bottom:1px solid #e5e7eb;background:#fafafa;"><td style="padding:9px 14px;font-weight:600;">oi</td><td style="padding:9px 14px;">OpenInterest (Futures/Options)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "toc.follow", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/home.js"></script>
+      
+        <script src="../../javascripts/lightbox.js"></script>
+      
+        <script src="../../javascripts/toc-highlight.js"></script>
+      
+        <script src="../../javascripts/float-cards.js"></script>
+      
+        <script src="../../javascripts/toc-orange.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3388 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Instruments/GetOptionSymbol/">
+      
+      
+        <link rel="next" href="../depth/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>OHLC Data - RMoney API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <script>
+    /* Force light mode as default for new visitors (runs before Material's palette.js) */
+    (function () {
+      try {
+        if (!localStorage.getItem('__palette')) {
+          localStorage.setItem('__palette', JSON.stringify({ index: 0 }));
+        }
+      } catch (e) {}
+    }());
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="RMoney API Documentation" class="md-header__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RMoney API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OHLC Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RMoney API Documentation" class="md-nav__button md-logo" aria-label="RMoney API Documentation" data-md-component="logo">
+      
+  <img src="../../images/logo.png" alt="logo">
+
+    </a>
+    RMoney API Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GS/intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/user/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/Authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/baseurl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base URL & Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/DataTypes%26BussinessRules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Business Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/RateLimit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rate Limit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/EnumsWithNumericConstants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Orders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Standard Orders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/place_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Place Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/cancel_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/cancelall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel All Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/orders/modify_order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify Order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/CoverOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cover Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/BracketOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bracket Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/SpreadOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spread Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portfolio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Portfolio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/holdings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Holdings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/positions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Positions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/position_convert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Position Convert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/portfolio/funds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Funds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook & Orderbook
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradebook & Orderbook
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Order History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/orderbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orderbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/tradebook/tradebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tradebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/GTTOrders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GTT Orders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/MarginCalculator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Margin Calculator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/MTMCalculation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTM Calculation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Codes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/SocketStreaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/EM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interactive/ES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exchange Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Data API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Market Data API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Types & Bussiness Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums With Numeric Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/Search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/instrumentbyid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrument By ID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Search/instrumentbysearchstring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instrument By Search String
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instruments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/instruments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/quote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quote
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetIndexList/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetIndexList
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetSeries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetSeries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetEquitySymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetEquitySymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetExpiryDate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetExpiryDate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetFutureSymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetFutureSymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetOptionType/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetOptionType
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetStrikePrice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetStrikePrice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instruments/GetOptionSymbol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GetOptionSymbol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OHLC Data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../depth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market Depth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SSub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Socket Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebSocket
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    WebSocket
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websocket/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/helperfunctions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helper Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../overview/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Market Data API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div class="ohlc-wrap">
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="ohlc-hero">
+  <h1 class="ohlc-hero-title">OHLC Data</h1>
+  <p class="ohlc-hero-sub">The OHLC API provides <strong>historical candlestick price data</strong> for any tradable instrument — the foundation of every charting system, technical indicator, and backtesting engine. Each candle encodes four prices (Open, High, Low, Close) over a specific time interval.</p>
+  <div class="ohlc-use-chips">
+    <span>Candlestick Charts</span>
+    <span>Technical Indicators</span>
+    <span>Backtesting</span>
+    <span>Market Trend Analysis</span>
+    <span>Price Performance</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ BASIC ═══════════════════ -->
+
+
+<h2 id="what-is-ohlc" class="ohlc-section-title">What is OHLC?</h2>
+<p class="ohlc-text">OHLC stands for <strong>Open, High, Low, Close</strong>. Each value describes a different price point within a fixed time window — whether that window is 1 minute or 1 day.</p>
+<div class="ohlc-ohlc-grid">
+  <div class="ohlc-ohlc-card">
+    <div class="ohlc-ohlc-letter">O</div>
+    <div class="ohlc-ohlc-body">
+      <div class="ohlc-ohlc-name">Open</div>
+      <div class="ohlc-ohlc-desc">The first traded price when the candle interval began. For a daily candle this is the market open price.</div>
+      <div class="ohlc-ohlc-value">&#8377;2940.00</div>
+    </div>
+  </div>
+  <div class="ohlc-ohlc-card">
+    <div class="ohlc-ohlc-letter ohlc-letter-h">H</div>
+    <div class="ohlc-ohlc-body">
+      <div class="ohlc-ohlc-name">High</div>
+      <div class="ohlc-ohlc-desc">The maximum price reached during the entire candle interval. Represents the top of the upper wick.</div>
+      <div class="ohlc-ohlc-value">&#8377;2975.25</div>
+    </div>
+  </div>
+  <div class="ohlc-ohlc-card">
+    <div class="ohlc-ohlc-letter ohlc-letter-l">L</div>
+    <div class="ohlc-ohlc-body">
+      <div class="ohlc-ohlc-name">Low</div>
+      <div class="ohlc-ohlc-desc">The minimum price reached during the entire candle interval. Represents the bottom of the lower wick.</div>
+      <div class="ohlc-ohlc-value">&#8377;2935.80</div>
+    </div>
+  </div>
+  <div class="ohlc-ohlc-card">
+    <div class="ohlc-ohlc-letter ohlc-letter-c">C</div>
+    <div class="ohlc-ohlc-body">
+      <div class="ohlc-ohlc-name">Close</div>
+      <div class="ohlc-ohlc-desc">The last traded price when the candle interval ended. This is the most important price for most indicators.</div>
+      <div class="ohlc-ohlc-value">&#8377;2965.50</div>
+    </div>
+  </div>
+</div>
+
+<h2 id="candle-structure" class="ohlc-section-title">Candlestick Structure</h2>
+<div class="ohlc-candle-explainer">
+  <div class="ohlc-candle-diagram">
+    <div class="ohlc-cd-row ohlc-cd-high">
+      <div class="ohlc-cd-label-left ohlc-cl-high">High<br><span>&#8377;2975.25</span></div>
+      <div class="ohlc-cd-center">
+        <div class="ohlc-wick-top"></div>
+      </div>
+      <div class="ohlc-cd-label-right"></div>
+    </div>
+    <div class="ohlc-cd-row ohlc-cd-close">
+      <div class="ohlc-cd-label-left ohlc-cl-close">Close<br><span>&#8377;2965.50</span></div>
+      <div class="ohlc-cd-center">
+        <div class="ohlc-body-top"></div>
+      </div>
+      <div class="ohlc-cd-label-right ohlc-cr-bull">Bullish</div>
+    </div>
+    <div class="ohlc-cd-row ohlc-cd-body">
+      <div class="ohlc-cd-label-left"></div>
+      <div class="ohlc-cd-center">
+        <div class="ohlc-candle-body"></div>
+      </div>
+      <div class="ohlc-cd-label-right ohlc-cr-body">Close &gt; Open</div>
+    </div>
+    <div class="ohlc-cd-row ohlc-cd-open">
+      <div class="ohlc-cd-label-left ohlc-cl-open">Open<br><span>&#8377;2940.00</span></div>
+      <div class="ohlc-cd-center">
+        <div class="ohlc-body-bottom"></div>
+      </div>
+      <div class="ohlc-cd-label-right"></div>
+    </div>
+    <div class="ohlc-cd-row ohlc-cd-low">
+      <div class="ohlc-cd-label-left ohlc-cl-low">Low<br><span>&#8377;2935.80</span></div>
+      <div class="ohlc-cd-center">
+        <div class="ohlc-wick-bottom"></div>
+      </div>
+      <div class="ohlc-cd-label-right"></div>
+    </div>
+  </div>
+  <div class="ohlc-candle-legend">
+    <div class="ohlc-cl-item">
+      <div class="ohlc-cli-line ohlc-line-wick"></div>
+      <div class="ohlc-cli-text">
+        <strong>Wick (Shadow)</strong>
+        <span>Thin vertical lines showing the full High-to-Low range for the interval</span>
+      </div>
+    </div>
+    <div class="ohlc-cl-item">
+      <div class="ohlc-cli-box ohlc-box-bull"></div>
+      <div class="ohlc-cli-text">
+        <strong>Green Body (Bullish)</strong>
+        <span>Close is higher than Open — price moved up during this interval</span>
+      </div>
+    </div>
+    <div class="ohlc-cl-item">
+      <div class="ohlc-cli-box ohlc-box-bear"></div>
+      <div class="ohlc-cli-text">
+        <strong>Red Body (Bearish)</strong>
+        <span>Close is lower than Open — price moved down during this interval</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ INTERMEDIATE ════════════════ -->
+
+
+<div style="margin:18px 0 20px">
+  <p style="font-weight:700;font-size:13px;color:#374151;border-left:3px solid #ff6b00;padding-left:8px;margin-bottom:8px">Endpoint</p>
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#e6f4ea;color:#1a7f37;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #bbf7d0;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="inst-optsym-url">https://xts.rmoneyindia.co.in:3000//apimarketdata/instruments/ohlc</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('inst-optsym-url').innerText).then(function(){var b=document.getElementById('inst-optsym-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="inst-optsym-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280">Copy</button>
+  </div>
+</div>
+
+<h2 id="request-response" class="ohlc-section-title">Request and Response</h2>
+<div class="ohlc-req-row">
+  <div class="ohlc-req-block">
+    <div class="ohlc-req-label">Request Body</div>
+    <div class="ohlc-code-block"><pre>POST /apimarketdata/instruments/ohlc
+Authorization: &lt;market-token&gt;
+
+{
+  "exchangeSegment":      1,
+  "exchangeInstrumentID": 2885,
+  "startTime":  "Jun 14 2026 090000",
+  "endTime":    "Jun 15 2026 153000",
+  "compressionValue": 1
+}</pre></div>
+  </div>
+  <div class="ohlc-req-block">
+    <div class="ohlc-req-label">Response</div>
+    <div class="ohlc-code-block"><pre>{
+  "type": "success",
+  "result": {
+    "dataReponse": "1718342400|2940.00|2975.25|2935.80|2965.50|1254789|0||
+1718428800|2910.00|2945.00|2895.00|2930.00|987654|0||"
+  }
+}</pre></div>
+  </div>
+</div>
+<div class="ohlc-pipe-note">
+  <div class="ohlc-pn-icon"></div>
+  <div>The response is <strong>pipe-separated</strong>: <code>timestamp | open | high | low | close | volume | OI | | </code> — each candle on its own line.</div>
+</div>
+
+<h2 id="parameters" class="ohlc-section-title">Request Parameters</h2>
+<div class="ohlc-params-wrap">
+  <table class="ohlc-params-table">
+    <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>exchangeSegment</code></td><td>Integer</td><td><span class="ohlc-req-yes">Yes</span></td><td>Exchange segment code (1=NSECM, 2=NSEFO, etc.)</td></tr>
+      <tr><td><code>exchangeInstrumentID</code></td><td>Integer</td><td><span class="ohlc-req-yes">Yes</span></td><td>Unique instrument token from the master file</td></tr>
+      <tr><td><code>startTime</code></td><td>String</td><td><span class="ohlc-req-yes">Yes</span></td><td>Start of the historical range — format: <code>Mmm DD YYYY HHMMSS</code></td></tr>
+      <tr><td><code>endTime</code></td><td>String</td><td><span class="ohlc-req-yes">Yes</span></td><td>End of the historical range — same format as startTime</td></tr>
+      <tr><td><code>compressionValue</code></td><td>Integer</td><td><span class="ohlc-req-yes">Yes</span></td><td>Candle interval in minutes (see table below)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="intervals" class="ohlc-section-title">Supported Intervals (compressionValue)</h2>
+<div class="ohlc-intervals-grid">
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">1</div>
+    <div class="ohlc-ic-label">1 Minute</div>
+    <div class="ohlc-ic-use">Intraday scalping, HFT signals</div>
+    <div class="ohlc-ic-bar" style="width:8%"></div>
+  </div>
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">5</div>
+    <div class="ohlc-ic-label">5 Minutes</div>
+    <div class="ohlc-ic-use">Intraday momentum strategies</div>
+    <div class="ohlc-ic-bar" style="width:18%"></div>
+  </div>
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">15</div>
+    <div class="ohlc-ic-label">15 Minutes</div>
+    <div class="ohlc-ic-use">Short-term trend following</div>
+    <div class="ohlc-ic-bar" style="width:33%"></div>
+  </div>
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">30</div>
+    <div class="ohlc-ic-label">30 Minutes</div>
+    <div class="ohlc-ic-use">Intraday support and resistance</div>
+    <div class="ohlc-ic-bar" style="width:50%"></div>
+  </div>
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">60</div>
+    <div class="ohlc-ic-label">1 Hour</div>
+    <div class="ohlc-ic-use">Swing trading, multi-day trends</div>
+    <div class="ohlc-ic-bar" style="width:70%"></div>
+  </div>
+  <div class="ohlc-interval-card">
+    <div class="ohlc-ic-value">1440</div>
+    <div class="ohlc-ic-label">1 Day</div>
+    <div class="ohlc-ic-use">Long-term analysis, EOD charts</div>
+    <div class="ohlc-ic-bar" style="width:100%"></div>
+  </div>
+</div>
+
+<h2 id="response-format" class="ohlc-section-title">Response Format — Parsed</h2>
+<p class="ohlc-text">Split the pipe-separated string on <code>||</code> to get candles, then split each candle on <code>|</code> to get the 7 fields:</p>
+<div class="ohlc-parse-grid">
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">0</div>
+    <div class="ohlc-pc-name">Timestamp</div>
+    <div class="ohlc-pc-val">1718342400</div>
+    <div class="ohlc-pc-note">Unix epoch seconds — convert to datetime</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">1</div>
+    <div class="ohlc-pc-name">Open</div>
+    <div class="ohlc-pc-val">2940.00</div>
+    <div class="ohlc-pc-note">First traded price in interval</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">2</div>
+    <div class="ohlc-pc-name">High</div>
+    <div class="ohlc-pc-val">2975.25</div>
+    <div class="ohlc-pc-note">Highest price in interval</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">3</div>
+    <div class="ohlc-pc-name">Low</div>
+    <div class="ohlc-pc-val">2935.80</div>
+    <div class="ohlc-pc-note">Lowest price in interval</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">4</div>
+    <div class="ohlc-pc-name">Close</div>
+    <div class="ohlc-pc-val">2965.50</div>
+    <div class="ohlc-pc-note">Last traded price in interval</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">5</div>
+    <div class="ohlc-pc-name">Volume</div>
+    <div class="ohlc-pc-val">1254789</div>
+    <div class="ohlc-pc-note">Total quantity traded</div>
+  </div>
+  <div class="ohlc-parse-card">
+    <div class="ohlc-pc-index">6</div>
+    <div class="ohlc-pc-name">Open Interest</div>
+    <div class="ohlc-pc-val">0</div>
+    <div class="ohlc-pc-note">Outstanding contracts (F&amp;O only)</div>
+  </div>
+</div>
+
+<!-- ═══════════════ INTRADAY CANDLE OHLC (GET) ═══════════════ -->
+<h2 id="intraday-candle-ohlc" class="ohlc-section-title">Intraday Candle OHLC</h2>
+
+<p class="ohlc-text">The XTS Front-end API provides intraday archived OHLC (candlestick) data from the date of access for Equity segments of NSECM and BSECM. For FO segments, OHLC data is available only for currently traded contracts, and expired contracts are not supported.</p>
+<p class="ohlc-text">The response is delivered in candle format, including timestamp (epoch time since 1970), <strong>Open, High, Low, Close, Volume, and Open Interest (OI)</strong>. The minimum supported interval is <strong>60 seconds (1 minute)</strong>, with additional supported intervals for the GET OHLC request detailed in the table below.</p>
+
+<p class="ohlc-text"><strong>Compression Value Table</strong></p>
+<div class="ohlc-params-wrap">
+  <table class="ohlc-params-table">
+    <thead><tr><th>Expected Timeframe</th><th>Compression</th></tr></thead>
+    <tbody>
+      <tr><td>1 minute</td><td>60</td></tr>
+      <tr><td>2 minutes</td><td>120</td></tr>
+      <tr><td>3 minutes</td><td>180</td></tr>
+      <tr><td>4 minutes</td><td>240</td></tr>
+      <tr><td>5 minutes</td><td>300</td></tr>
+      <tr><td>7 minutes</td><td>420</td></tr>
+      <tr><td>10 minutes</td><td>600</td></tr>
+      <tr><td>15 minutes</td><td>900</td></tr>
+      <tr><td>30 minutes</td><td>1800</td></tr>
+      <tr><td>1 hour</td><td>3600</td></tr>
+      <tr><td>2 hours</td><td>7200</td></tr>
+      <tr><td>3 hours</td><td>10800</td></tr>
+      <tr><td>4 hours</td><td>14400</td></tr>
+      <tr><td>1 day</td><td>D</td></tr>
+      <tr><td>1 week</td><td>W</td></tr>
+      <tr><td>1 month</td><td>M</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin:8px 0 18px">
+  <div style="display:flex;align-items:center;gap:0;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden">
+    <span style="background:#fff7ed;color:#c2410c;font-weight:700;font-size:12px;padding:9px 14px;border-right:1.5px solid #fed7aa;white-space:nowrap">GET</span>
+    <span style="flex:1;padding:9px 14px;font-family:Consolas,monospace;font-size:12.5px;color:#374151;word-break:break-all" id="ohlc-intraday-url">https://xts.rmoneyindia.co.in:3000/apimarketdata/instruments/ohlc?exchangeSegment=1&amp;exchangeInstrumentID=2885&amp;startTime=Jan 27 2025 090000&amp;endTime=Jan 28 2025 153000&amp;compressionValue=D</span>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('ohlc-intraday-url').innerText).then(function(){var b=document.getElementById('ohlc-intraday-url-c');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})" id="ohlc-intraday-url-c" style="background:none;border:none;border-left:1.5px solid #e5e7eb;padding:9px 12px;cursor:pointer;color:#6b7280;font-size:13px;font-weight:600">Copy</button>
+  </div>
+</div>
+
+<p class="ohlc-text"><strong>Request Body Parameters</strong></p>
+<div class="ohlc-params-wrap">
+  <table class="ohlc-params-table">
+    <thead><tr><th>Parameter Name</th><th>Type</th><th>Mandatory</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><code>exchangeSegment</code></td><td>ExchangeSegment</td><td><span class="ohlc-req-yes">Y</span></td><td>Exchange segment.</td></tr>
+      <tr><td><code>exchangeInstrumentID</code></td><td>ExchangeInstrumentID</td><td><span class="ohlc-req-yes">Y</span></td><td>Exchange Scrip code or Symbol Token is unique identifier.</td></tr>
+      <tr><td><code>startTime</code></td><td>StartTime</td><td><span class="ohlc-req-yes">Y</span></td><td>Date and time in MMM DD YYYY HHMMSS format. Default value is Jan 27 2025 090000</td></tr>
+      <tr><td><code>endTime</code></td><td>EndTime</td><td><span class="ohlc-req-yes">Y</span></td><td>Date and time in MMM DD YYYY HHMMSS format. Default value is Jan 28 2025 153000</td></tr>
+      <tr><td><code>compressionValue</code></td><td>CompressionValue</td><td><span class="ohlc-req-yes">Y</span></td><td>String value representing time interval. Default value is D. Allowed values are In1Minute (60), In2Minute (120), In3Minute (180), In5Minute (300), In10Minute (600), In15Minute (900), In30Minute (1800), In60Minute (3600)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="ohlc-text"><strong>Response Body JSON</strong></p>
+<div class="ohlc-code-block"><pre>[
+  {
+    "type": "success",
+    "code": "s-instrument-0002",
+    "description": "Data found",
+    "result": {
+      "exchangeSegment": 1,
+      "exchangeInstrumentID": "22",
+      "dataResponse": "1737331200|1316|1316|1300.25|1305.45|14040244|0|"
+    }
+  }
+]</pre></div>
+<div style="margin:8px 0 24px">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
+    <button onclick="coShowCode('curl',this)" id="co-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="coShowCode('python',this)" id="co-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
+  </div>
+
+  <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8">
+
+  <div id="co-code-curl">
+<span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">https://xts.rmoneyindia.co.in:3000//apimarketdata/instruments/ohlc?exchangeSegment=1&exchangeInstrumentID=22&startTime=Jan%2001%202026%20091500&endTime=Jan%2010%202026%20153000&compressionValue=60'</span><span style="color:#d4d4d4"> \</span><br>
+
+<span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: YOUR_ACCESS_TOKEN'</span>
+</div>
+
+<div id="co-code-python" style="display:none">
+  <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> os</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> dotenv </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> load_dotenv</span><br>
+<span style="color:#dcdcaa">load_dotenv</span><span style="color:#d4d4d4">()</span><br>
+<span style="color:#c586c0">from</span><span style="color:#d4d4d4"> xts_api_client.xts_connect_async </span><span style="color:#c586c0">import</span><span style="color:#d4d4d4"> XTSConnect</span><br>
+<span style="color:#c586c0">import</span><span style="color:#d4d4d4"> asyncio</span><br>
+<br>
+<span style="color:#9cdcfe">API_key</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_API_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_secret</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_MARKETDATA_SECRET_KEY"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_source</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_SOURCE"</span><span style="color:#d4d4d4">)</span><br>
+<span style="color:#9cdcfe">API_root</span><span style="color:#d4d4d4"> = os.</span><span style="color:#dcdcaa">getenv</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"XTS_API_URL"</span><span style="color:#d4d4d4">)</span><br>
+<br>
+<span style="color:#c586c0">async def</span><span style="color:#dcdcaa"> main</span><span style="color:#d4d4d4">():</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">xt_market_data</span><span style="color:#d4d4d4"> = </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">apiKey</span><span style="color:#d4d4d4"> = API_key,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">secretKey</span><span style="color:#d4d4d4"> = API_secret,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">source</span><span style="color:#d4d4d4"> = API_source,</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">root</span><span style="color:#d4d4d4"> = API_root</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">)</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">response_marketdata_login</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_market_data.</span><span style="color:#dcdcaa">marketdata_login</span><span style="color:#d4d4d4">()</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(response_marketdata_login)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe">resp</span><span style="color:#d4d4d4"> = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> xt_market_data.</span><span style="color:#dcdcaa">get_ohlc</span><span style="color:#d4d4d4">(exchangeSegment=1,exchangeInstrumentID=22,startTime="Jan 01 2026 091500",endTime="Jan 10 2026 153000", compressionValue=60)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dcdcaa">print</span><span style="color:#d4d4d4">(resp)</span><br>
+
+<span style="color:#c586c0">if</span><span style="color:#d4d4d4"> __name__ == </span><span style="color:#ce9178">"__main__"</span><span style="color:#d4d4d4">:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d4d4d4">asyncio.</span><span style="color:#dcdcaa">run</span><span style="color:#d4d4d4">(main())</span>
+</div>
+
+<div style="display:flex;justify-content:flex-end;margin-top:14px">
+      <button onclick="(function(){var active=document.querySelector('[id^=co-code-]:not([style*=none])');if(!active)return;navigator.clipboard.writeText(active.innerText).then(function(){var b=document.getElementById('co-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="co-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function coShowCode(lang, btn) {
+  ['curl','python'].forEach(function(l) {
+    document.getElementById('co-code-' + l).style.display = 'none';
+    document.getElementById('co-tab-' + l).style.background = '#374151';
+  });
+  document.getElementById('co-code-' + lang).style.display = 'block';
+  btn.style.background = 'linear-gradient(135deg,#ff7b00,#ff9500)';
+}
+</script>
+
+<!-- ═══════════════════ ADVANCED ════════════════ -->
+
+
+<h2 id="technical-analysis" class="ohlc-section-title">Technical Analysis with OHLC</h2>
+<p class="ohlc-text">Every major technical indicator is derived from OHLC values. Here are the most commonly computed using this data:</p>
+<div class="ohlc-ta-grid">
+  <div class="ohlc-ta-group">
+    <div class="ohlc-ta-group-label">Trend Indicators</div>
+    <div class="ohlc-ta-chips">
+      <span>Moving Average (MA)</span>
+      <span>Exponential MA (EMA)</span>
+      <span>MACD</span>
+      <span>SuperTrend</span>
+      <span>Parabolic SAR</span>
+    </div>
+  </div>
+  <div class="ohlc-ta-group">
+    <div class="ohlc-ta-group-label">Momentum Indicators</div>
+    <div class="ohlc-ta-chips">
+      <span>RSI</span>
+      <span>Stochastic Oscillator</span>
+      <span>CCI</span>
+      <span>Williams %R</span>
+      <span>MFI</span>
+    </div>
+  </div>
+  <div class="ohlc-ta-group">
+    <div class="ohlc-ta-group-label">Volatility Indicators</div>
+    <div class="ohlc-ta-chips">
+      <span>Bollinger Bands</span>
+      <span>ATR</span>
+      <span>Keltner Channel</span>
+      <span>Donchian Channel</span>
+    </div>
+  </div>
+  <div class="ohlc-ta-group">
+    <div class="ohlc-ta-group-label">Volume &amp; Price</div>
+    <div class="ohlc-ta-chips">
+      <span>VWAP</span>
+      <span>OBV</span>
+      <span>Support Levels</span>
+      <span>Resistance Levels</span>
+      <span>Pivot Points</span>
+    </div>
+  </div>
+</div>
+
+<h2 id="data-flow" class="ohlc-section-title">Data Flow</h2>
+<div class="ohlc-flow-wrap">
+  <div class="ohlc-flow-step">
+    <div class="ohlc-flow-num">1</div>
+    <div class="ohlc-flow-body">
+      <strong>Client Application</strong>
+      <span>Sends instrument token, time range, and compression interval</span>
+    </div>
+  </div>
+  <div class="ohlc-flow-arrow"></div>
+  <div class="ohlc-flow-step">
+    <div class="ohlc-flow-num">2</div>
+    <div class="ohlc-flow-body">
+      <strong>OHLC API</strong>
+      <span>Validates request parameters and routes to historical data store</span>
+    </div>
+  </div>
+  <div class="ohlc-flow-arrow"></div>
+  <div class="ohlc-flow-step">
+    <div class="ohlc-flow-num">3</div>
+    <div class="ohlc-flow-body">
+      <strong>Historical Market Data</strong>
+      <span>Fetches tick data, aggregates into OHLC candles by interval</span>
+    </div>
+  </div>
+  <div class="ohlc-flow-arrow"></div>
+  <div class="ohlc-flow-step">
+    <div class="ohlc-flow-num">4</div>
+    <div class="ohlc-flow-body">
+      <strong>OHLC Response</strong>
+      <span>Pipe-delimited candle data returned in chronological order</span>
+    </div>
+  </div>
+  <div class="ohlc-flow-arrow"></div>
+  <div class="ohlc-flow-step">
+    <div class="ohlc-flow-num">5</div>
+    <div class="ohlc-flow-body">
+      <strong>Charts and Analytics</strong>
+      <span>Parse, render, and compute indicators on the candle array</span>
+    </div>
+  </div>
+</div>
+
+<h2 id="best-practices" class="ohlc-section-title">Best Practices</h2>
+<div class="ohlc-practices-grid">
+  <div class="ohlc-practice">
+    <h4>Match Interval to Strategy</h4>
+    <p>Use 1-min candles for intraday scalping, 1-day candles for swing trading. Fetching daily candles for a 1-min strategy wastes data resolution.</p>
+  </div>
+  <div class="ohlc-practice">
+    <h4>Request Only What You Need</h4>
+    <p>Narrow the date range to the minimum required. Fetching years of 1-min data is slow and expensive — paginate if you need large historical ranges.</p>
+  </div>
+  <div class="ohlc-practice">
+    <h4>Cache Historical Data</h4>
+    <p>Past candles never change. Once fetched, store them locally and only request the most recent candles on subsequent calls.</p>
+  </div>
+  <div class="ohlc-practice">
+    <h4>Use WebSocket for Live Candles</h4>
+    <p>For the current (in-progress) candle, use WebSocket message code <code>1505</code> instead of polling the OHLC endpoint every second.</p>
+  </div>
+</div>
+
+<h2 id="common-errors" class="ohlc-section-title">Common Errors</h2>
+<div class="ohlc-errors-row">
+  <div class="ohlc-error-card">
+    <div class="ohlc-err-pill ohlc-err-amber">400</div>
+    <strong>Invalid Interval</strong>
+    <span>The compressionValue is not a supported minute value.</span>
+  </div>
+  <div class="ohlc-error-card">
+    <div class="ohlc-err-pill ohlc-err-amber">400</div>
+    <strong>Invalid Date Range</strong>
+    <span>startTime is after endTime, or the format is incorrect.</span>
+  </div>
+  <div class="ohlc-error-card">
+    <div class="ohlc-err-pill ohlc-err-amber">404</div>
+    <strong>Instrument Not Found</strong>
+    <span>The exchangeInstrumentID does not exist in the given segment.</span>
+  </div>
+  <div class="ohlc-error-card">
+    <div class="ohlc-err-pill ohlc-err-red">401</div>
+    <strong>Unauthorized</strong>
+    <span>Market data token is missing, expired, or invalid.</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ SUMMARY ════════════════ -->
+<h2 id="summary" class="ohlc-section-title">Summary</h2>
+<div class="ohlc-summary-wrap">
+  <table class="ohlc-sum-table">
+    <thead><tr><th>Term</th><th>Meaning</th><th>Used For</th></tr></thead>
+    <tbody>
+      <tr><td>Open</td><td>First price in the interval</td><td>Candle body start</td></tr>
+      <tr><td>High</td><td>Maximum price in the interval</td><td>Upper wick, range analysis</td></tr>
+      <tr><td>Low</td><td>Minimum price in the interval</td><td>Lower wick, support levels</td></tr>
+      <tr><td>Close</td><td>Last price in the interval</td><td>Most indicators, body end</td></tr>
+      <tr><td>compressionValue</td><td>Candle duration in minutes</td><td>Chart timeframe selection</td></tr>
+      <tr><td>Bullish candle</td><td>Close &gt; Open (green)</td><td>Price moved up in interval</td></tr>
+      <tr><td>Bearish candle</td><td>Close &lt; Open (red)</td><td>Price moved down in interval</td></tr>
+    </tbody>
+  </table>
+  <div class="ohlc-related">
+    <div class="ohlc-related-label">Related APIs</div>
+    <div class="ohlc-related-chips">
+      <span>Instruments API</span>
+      <span>Quotes API</span>
+      <span>Market Depth API</span>
+      <span>WebSocket API</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "navigation.path", "navigation.expand", "search.suggest", "search.highlight", "toc.follow", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/home.js"></script>
+      
+        <script src="../../javascripts/lightbox.js"></script>
+      
+        <script src="../../javascripts/toc-highlight.js"></script>
+      
+        <script src="../../javascripts/float-cards.js"></script>
+      
+        <script src="../../javascripts/toc-orange.js"></script>
+      
+    
+  </body>
+</html>
