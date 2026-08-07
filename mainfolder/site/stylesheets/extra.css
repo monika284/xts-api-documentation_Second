@@ -1,6 +1,9 @@
 ﻿/* =========================
    INTRO PAGE H4 SUB-HEADINGS
 ========================= */
+.md-container {
+    zoom: 1.25;
+}
 .md-content h4 {
     font-size: 13px;
     font-weight: 700;
