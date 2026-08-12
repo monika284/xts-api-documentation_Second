@@ -339,7 +339,7 @@
 <img src="../imgs/xts_flow.png" alt="XTS file Architecture">
 </div>
 <div style="text-align: center">
-<img src="../imgs/4th.png" alt="XTS Architecture">
+<img src="../imgs/1st.png" alt="XTS Architecture">
 <img src="../imgs/9th.png" alt="XTS Architecture">
 </div>
 <ul>
