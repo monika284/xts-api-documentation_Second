@@ -31,20 +31,20 @@
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">1. Connect</div>
     <p style="font-size:13px;color:#374151;margin:0">Establish a WebSocket connection with the Market Data server using your authentication token.</p>
   </div>
-  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px">2. Subscribe</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">2. Subscribe</div>
     <p style="font-size:13px;color:#374151;margin:0">Subscribe to instruments using Exchange Segment and Exchange Instrument ID. Server starts tracking them.</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:6px">3. Receive Updates</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">3. Receive Updates</div>
     <p style="font-size:13px;color:#374151;margin:0">Server automatically pushes data whenever market changes occur. No additional requests needed.</p>
   </div>
-  <div style="border:1.5px solid #e9d5ff;border-radius:10px;padding:14px 16px;background:#faf5ff">
-    <div style="font-weight:700;color:#7c3aed;font-size:13px;margin-bottom:6px">4. Unsubscribe</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">4. Unsubscribe</div>
     <p style="font-size:13px;color:#374151;margin:0">Stop receiving updates for specific instruments at any time without closing the connection.</p>
   </div>
-  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f9fafb">
-    <div style="font-weight:700;color:#374151;font-size:13px;margin-bottom:6px">5. Disconnect</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">5. Disconnect</div>
     <p style="font-size:13px;color:#374151;margin:0">Close the WebSocket connection when streaming is no longer required.</p>
   </div>
 </div>
@@ -66,9 +66,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
-    <div style="background:#1d4ed8;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Depth Data</div>
-    <div style="padding:14px 16px;background:#eff6ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Depth Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Best 5 Buy Prices</li>
         <li>Best 5 Sell Prices</li>
@@ -77,9 +77,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Index Data</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Index Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>NIFTY 50</li>
         <li>SENSEX</li>
@@ -88,9 +88,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #e9d5ff;border-radius:12px;overflow:hidden">
-    <div style="background:#7c3aed;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trade Data</div>
-    <div style="padding:14px 16px;background:#faf5ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trade Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Trade Price</li>
         <li>Trade Quantity</li>
@@ -505,7 +505,7 @@
 
 ## Binary Marketdata Event
 
-<p><strong style="color:#1a73e8;">BinaryData</strong><br>
+<p><strong style="color:#ff6b00;">BinaryData</strong><br>
 Binary data event</p>
 
 <div style="background:#1e1e1e;border-radius:10px 10px 0 0;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;">

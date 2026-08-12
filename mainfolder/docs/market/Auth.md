@@ -287,17 +287,17 @@ The user provides credentials:
 ## Step 2 — Server Validates Credentials
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ App Key valid?</div>
+  <div style="border:1.5px solid #f7ddbb;border-radius:10px;padding:14px 16px;background: #fdf8f0">
+    <div style="font-weight:700;color: #f77b07;font-size:13px;margin-bottom:4px">✔ App Key valid?</div>
     <p style="font-size:12px;color:#374151;margin:0">Checks if the App Key exists and is active.</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ Secret Key valid?</div>
-    <p style="font-size:12px;color:#374151;margin:0">Matches the Secret Key against stored records.</p>
+  <div style="border:1.5px solid #f7ddbb;border-radius:10px;padding:14px 16px;background:#fdf8f0">
+    <div style="font-weight:700;color: #f77b07;font-size:13px;margin-bottom:4px">✔ Secret Key valid?</div>
+    <p style="font-size:12px;color: #374151;margin:0">Matches the Secret Key against stored records.</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#166534;font-size:13px;margin-bottom:4px">✔ Access rights?</div>
-    <p style="font-size:12px;color:#374151;margin:0">Confirms the user has permission to access data.</p>
+  <div style="border:1.5px solid #f7ddbb;border-radius:10px;padding:14px 16px;background:#fdf8f0">
+    <div style="font-weight:700;color: #f77b07;font-size:13px;margin-bottom:4px">✔ Access rights?</div>
+    <p style="font-size:12px;color: #374151;margin:0">Confirms the user has permission to access data.</p>
   </div>
 </div>
 
@@ -332,10 +332,10 @@ Include the token in every API request header:
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:6px">WITHOUT TOKEN</div>
     <code style="font-size:13px;color:#9a3412">Login every single API call</code>
   </div>
-  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;align-self:stretch;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
-    <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:6px">WITH TOKEN</div>
-    <code style="font-size:13px;color:#166534">Login once → use token for all calls</code>
+  <div style="padding:16px 10px;background: #f3f4f6;text-align:center;font-size:20px;color: #6b7280;align-self:stretch;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background: #ffffff">
+    <div style="font-size:11px;font-weight:700;color: #9ca3af;letter-spacing:.06em;margin-bottom:6px">WITH TOKEN</div>
+    <code style="font-size:13px;color: #9a3412">Login once → use token for all calls</code>
   </div>
 </div>
 
@@ -421,8 +421,8 @@ Authentication is the **first API call** before accessing any of these:
       </ul>
     </div>
   </div>
-  <div style="border:2px solid #bbf7d0;border-radius:14px;overflow:hidden">
-    <div style="background: #16a34a;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">✔ Key Takeaway</div>
+  <div style="border:2px solid #fed7aa;border-radius:14px;overflow:hidden">
+    <div style="background: #ff6b00;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">✔ Key Takeaway</div>
     <div style="padding:14px 18px;background: #fff;font-size:13px;color:#374151;line-height:2">
       Without the ID card, you cannot enter the building.<br><br>
       Similarly, without authentication, you <strong>cannot access market data</strong>.

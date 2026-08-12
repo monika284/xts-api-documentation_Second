@@ -25,6 +25,7 @@
       <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000/interactive/user/session');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
   </div>
 </div>
+
 ## Request Body Parameters
 
 <table class="param-table">
@@ -37,7 +38,7 @@
         </tr>
     </thead>
 
-    <tbody>
+  <tbody>
         <tr>
             <td>secretKey</td>
             <td>
@@ -48,7 +49,7 @@
             <td>The predefined secret key assigned to the client.</td>
         </tr>
 
-        <tr>
+  <tr>
             <td>appKey</td>
             <td>
                 AppKey
@@ -58,7 +59,7 @@
             <td>The application key used for authentication.</td>
         </tr>
 
-        <tr>
+  <tr>
             <td>source</td>
             <td>
                 String
@@ -137,12 +138,13 @@ These values contain user information, authentication token, and other details r
 
 </tbody>
 </table>
+
 ## Response Body JSON
 <div class="response-container">
 
-    <pre id="response-json" class="json-box"></pre>
+  <pre id="response-json" class="json-box"></pre>
 
-    <div class="json-actions">
+  <div class="json-actions">
         <button onclick="copyJSON()">Copy</button>
         <button id="toggle-btn" onclick="toggleJSON()" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
     </div>
@@ -235,9 +237,6 @@ function toggleJSON() {
 </div>  
     </div>
   </div>
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
-    <button onclick="(function(){var a=document.querySelector('[id^=uc-code-]:not([style*=none])');if(!a)return;navigator.clipboard.writeText(a.innerText).then(function(){var b=document.getElementById('uc-ce-copy');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)})})()" id="uc-ce-copy" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Copy</button>  </div>
-
 <script>
 function ucShowCode(lang, btn) {
   ['curl','python'].forEach(function(l) {
@@ -271,12 +270,11 @@ function ucShowCode(lang, btn) {
 ## Response Body Parameters
 <div class="response-container">
 
-    <pre id="response-json-logout" class="json-box"></pre>
+  <pre id="response-json-logout" class="json-box"></pre>
 
-    <div class="json-actions">
+  <div class="json-actions">
         <button onclick="copyJSONLogout()">Copy</button>
-        <button id="toggle-btn-logout" onclick="toggleJSONLogout()" style="background:#374151;color:#fff;border:none;border-radius:7px;padding:6px 18px;font-size:13px;font-weight:600;cursor:pointer">Show Full</button>
-    </div>
+  </div>
 
 </div>
 
@@ -310,16 +308,16 @@ function toggleJSONLogout() {
 }
 </script>
 
-<h3 style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
+<h3 style="color: #1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
 
 <div style="margin:8px 0 24px">
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
-    <button onclick="logoutShowCode('curl',this)" id="logout-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
+    <button onclick="logoutShowCode('curl',this)" id="logout-tab-curl" style="background:linear-gradient(135deg,#ff7b00,#ff9500);color: #fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">CURL</button>
     <button onclick="logoutShowCode('python',this)" id="logout-tab-python" style="background:#374151;color:#fff;border:none;border-radius:6px 6px 0 0;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer">Python</button>
   </div>
-  <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="logout-ce-box">
+  <div style="background: #1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="logout-ce-box">
     <div id="logout-code-curl">
-<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/session'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
     </div>
     <div id="logout-code-python" style="display:none">
@@ -338,14 +336,14 @@ function toggleJSONLogout() {
 <span style="color:#c586c0">package</span><span style="color:#d4d4d4"> main</span><br>
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> (</span><span style="color:#ce9178">"fmt"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"net/http"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"io/ioutil"</span><span style="color:#d4d4d4">)</span><br>
 <span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/session"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">.Header.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">res</span><span style="color:#d4d4d4">, _ := (&amp;http.Client{}).</span><span style="color:#dcdcaa">Do</span><span style="color:#d4d4d4">(req); </span><span style="color:#c586c0">defer</span><span style="color:#d4d4d4"> res.Body.</span><span style="color:#dcdcaa">Close</span><span style="color:#d4d4d4">()</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">b</span><span style="color:#d4d4d4">, _ := ioutil.</span><span style="color:#dcdcaa">ReadAll</span><span style="color:#d4d4d4">(res.Body); fmt.</span><span style="color:#dcdcaa">Println</span><span style="color:#d4d4d4">(</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">(b))<br>}</span>
     </div>
     <div id="logout-code-nodejs" style="display:none">
 <span style="color:#c586c0">const</span><span style="color:#d4d4d4"> axios = </span><span style="color:#dcdcaa">require</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">'axios'</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4">,</span><br>
+<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/session'</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">:{</span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">:</span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">},</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">:{clientID:</span><span style="color:#ce9178">'RM'</span><span style="color:#d4d4d4">,appOrderID:</span><span style="color:#ce9178">'1343000794'</span><span style="color:#d4d4d4">,exchangeSegment:</span><span style="color:#ce9178">'NSECM'</span><span style="color:#d4d4d4">,exchangeInstrumentID:</span><span style="color:#ce9178">'2885'</span><span style="color:#d4d4d4">}})</span><br>
 <span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">then</span><span style="color:#d4d4d4">(r=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(r.data)).</span><span style="color:#dcdcaa">catch</span><span style="color:#d4d4d4">(e=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(e));</span>
@@ -353,12 +351,12 @@ function toggleJSONLogout() {
     <div id="logout-code-csharp" style="display:none">
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
 <span style="color:#d4d4d4">client.DefaultRequestHeaders.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/session?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
 <span style="color:#d4d4d4">Console.</span><span style="color:#dcdcaa">WriteLine</span><span style="color:#d4d4d4">(</span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> response.Content.</span><span style="color:#dcdcaa">ReadAsStringAsync</span><span style="color:#d4d4d4">());</span>
     </div>
     <div id="logout-code-java" style="display:none">
 <span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
-<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/session?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
 <span style="color:#d4d4d4">System.out.</span><span style="color:#dcdcaa">println</span><span style="color:#d4d4d4">(client.</span><span style="color:#dcdcaa">newCall</span><span style="color:#d4d4d4">(req).</span><span style="color:#dcdcaa">execute</span><span style="color:#d4d4d4">().body().</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">());</span>
     </div>
   </div>
@@ -583,7 +581,7 @@ function toggleJSONHostlookupFail() {
   </div>
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="hlu-ce-box">
     <div id="hlu-code-curl">
-<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/hostlookup'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
     </div>
     <div id="hlu-code-python" style="display:none">
@@ -608,14 +606,14 @@ function toggleJSONHostlookupFail() {
 <span style="color:#c586c0">package</span><span style="color:#d4d4d4"> main</span><br>
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> (</span><span style="color:#ce9178">"fmt"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"net/http"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"io/ioutil"</span><span style="color:#d4d4d4">)</span><br>
 <span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/hostlookup"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">.Header.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">res</span><span style="color:#d4d4d4">, _ := (&amp;http.Client{}).</span><span style="color:#dcdcaa">Do</span><span style="color:#d4d4d4">(req); </span><span style="color:#c586c0">defer</span><span style="color:#d4d4d4"> res.Body.</span><span style="color:#dcdcaa">Close</span><span style="color:#d4d4d4">()</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">b</span><span style="color:#d4d4d4">, _ := ioutil.</span><span style="color:#dcdcaa">ReadAll</span><span style="color:#d4d4d4">(res.Body); fmt.</span><span style="color:#dcdcaa">Println</span><span style="color:#d4d4d4">(</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">(b))<br>}</span>
     </div>
     <div id="hlu-code-nodejs" style="display:none">
 <span style="color:#c586c0">const</span><span style="color:#d4d4d4"> axios = </span><span style="color:#dcdcaa">require</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">'axios'</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4">,</span><br>
+<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/hostlookup'</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">:{</span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">:</span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">},</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">:{clientID:</span><span style="color:#ce9178">'RM'</span><span style="color:#d4d4d4">,appOrderID:</span><span style="color:#ce9178">'1343000794'</span><span style="color:#d4d4d4">,exchangeSegment:</span><span style="color:#ce9178">'NSECM'</span><span style="color:#d4d4d4">,exchangeInstrumentID:</span><span style="color:#ce9178">'2885'</span><span style="color:#d4d4d4">}})</span><br>
 <span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">then</span><span style="color:#d4d4d4">(r=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(r.data)).</span><span style="color:#dcdcaa">catch</span><span style="color:#d4d4d4">(e=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(e));</span>
@@ -623,12 +621,12 @@ function toggleJSONHostlookupFail() {
     <div id="hlu-code-csharp" style="display:none">
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
 <span style="color:#d4d4d4">client.DefaultRequestHeaders.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/hostlookup?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
 <span style="color:#d4d4d4">Console.</span><span style="color:#dcdcaa">WriteLine</span><span style="color:#d4d4d4">(</span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> response.Content.</span><span style="color:#dcdcaa">ReadAsStringAsync</span><span style="color:#d4d4d4">());</span>
     </div>
     <div id="hlu-code-java" style="display:none">
 <span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
-<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/hostlookup?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
 <span style="color:#d4d4d4">System.out.</span><span style="color:#dcdcaa">println</span><span style="color:#d4d4d4">(client.</span><span style="color:#dcdcaa">newCall</span><span style="color:#d4d4d4">(req).</span><span style="color:#dcdcaa">execute</span><span style="color:#d4d4d4">().body().</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">());</span>
     </div>
   </div>
@@ -791,7 +789,7 @@ function toggleJSONProfile() {
   </div>
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="profile-ce-box">
     <div id="profile-code-curl">
-<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/profile'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
     </div>
     <div id="profile-code-python" style="display:none">
@@ -873,7 +871,7 @@ function profileShowCode(lang, btn) {
         </tr>
     </thead>
 
-    <tbody>
+  <tbody>
         <tr><td>clientID</td><td>ClientID<span class="info-icon"></span></td><td><strong>Y</strong></td><td>CLIENT ID</td></tr>
         <tr><td>exchangeSegment</td><td>ExchangeSegment<span class="info-icon"></span></td><td><strong>Y</strong></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
         <tr><td>exchangeInstrumentID</td><td>ExchangeInstrumentID<span class="info-icon"></span></td><td><strong>Y</strong></td><td>Exchange Scrip code or Symbol Token is unique identifier</td></tr>
@@ -994,7 +992,7 @@ function toggleJSONBrokerage() {
   </div>
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="brokerage-ce-box">
     <div id="brokerage-code-curl">
-<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">curl --location --request DELETE </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/calculatebrokerage'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
     </div>
     <div id="brokerage-code-python" style="display:none">
@@ -1029,14 +1027,14 @@ function toggleJSONBrokerage() {
 <span style="color:#c586c0">package</span><span style="color:#d4d4d4"> main</span><br>
 <span style="color:#c586c0">import</span><span style="color:#d4d4d4"> (</span><span style="color:#ce9178">"fmt"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"net/http"</span><span style="color:#d4d4d4">;</span><span style="color:#ce9178">"io/ioutil"</span><span style="color:#d4d4d4">)</span><br>
 <span style="color:#c586c0">func</span><span style="color:#d4d4d4"> </span><span style="color:#dcdcaa">main</span><span style="color:#d4d4d4">() {</span><br>
-&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
+&nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">, _ := http.</span><span style="color:#dcdcaa">NewRequest</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"DELETE"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/calculatebrokerage"</span><span style="color:#d4d4d4">, </span><span style="color:#569cd6">nil</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">req</span><span style="color:#d4d4d4">.Header.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">)</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">res</span><span style="color:#d4d4d4">, _ := (&amp;http.Client{}).</span><span style="color:#dcdcaa">Do</span><span style="color:#d4d4d4">(req); </span><span style="color:#c586c0">defer</span><span style="color:#d4d4d4"> res.Body.</span><span style="color:#dcdcaa">Close</span><span style="color:#d4d4d4">()</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">b</span><span style="color:#d4d4d4">, _ := ioutil.</span><span style="color:#dcdcaa">ReadAll</span><span style="color:#d4d4d4">(res.Body); fmt.</span><span style="color:#dcdcaa">Println</span><span style="color:#d4d4d4">(</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">(b))<br>}</span>
     </div>
     <div id="brokerage-code-nodejs" style="display:none">
 <span style="color:#c586c0">const</span><span style="color:#d4d4d4"> axios = </span><span style="color:#dcdcaa">require</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">'axios'</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder'</span><span style="color:#d4d4d4">,</span><br>
+<span style="color:#dcdcaa">axios</span><span style="color:#d4d4d4">({method:</span><span style="color:#ce9178">'delete'</span><span style="color:#d4d4d4">,url:</span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/user/calculatebrokerage'</span><span style="color:#d4d4d4">,</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">headers</span><span style="color:#d4d4d4">:{</span><span style="color:#ce9178">'Authorization'</span><span style="color:#d4d4d4">:</span><span style="color:#ce9178">'xxxxxx'</span><span style="color:#d4d4d4">},</span><br>
 &nbsp;&nbsp;<span style="color:#9cdcfe">params</span><span style="color:#d4d4d4">:{clientID:</span><span style="color:#ce9178">'RM'</span><span style="color:#d4d4d4">,appOrderID:</span><span style="color:#ce9178">'1343000794'</span><span style="color:#d4d4d4">,exchangeSegment:</span><span style="color:#ce9178">'NSECM'</span><span style="color:#d4d4d4">,exchangeInstrumentID:</span><span style="color:#ce9178">'2885'</span><span style="color:#d4d4d4">}})</span><br>
 <span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">then</span><span style="color:#d4d4d4">(r=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(r.data)).</span><span style="color:#dcdcaa">catch</span><span style="color:#d4d4d4">(e=>console.</span><span style="color:#dcdcaa">log</span><span style="color:#d4d4d4">(e));</span>
@@ -1044,12 +1042,12 @@ function toggleJSONBrokerage() {
     <div id="brokerage-code-csharp" style="display:none">
 <span style="color:#c586c0">var</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> HttpClient();</span><br>
 <span style="color:#d4d4d4">client.DefaultRequestHeaders.</span><span style="color:#dcdcaa">Add</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">, </span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">);</span><br>
-<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
+<span style="color:#c586c0">var</span><span style="color:#d4d4d4"> response = </span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> client.</span><span style="color:#dcdcaa">DeleteAsync</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/calculatebrokerage?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">);</span><br>
 <span style="color:#d4d4d4">Console.</span><span style="color:#dcdcaa">WriteLine</span><span style="color:#d4d4d4">(</span><span style="color:#c586c0">await</span><span style="color:#d4d4d4"> response.Content.</span><span style="color:#dcdcaa">ReadAsStringAsync</span><span style="color:#d4d4d4">());</span>
     </div>
     <div id="brokerage-code-java" style="display:none">
 <span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4"> client = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> </span><span style="color:#4ec9b0">OkHttpClient</span><span style="color:#d4d4d4">();</span><br>
-<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/orders/gttorder?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
+<span style="color:#4ec9b0">Request</span><span style="color:#d4d4d4"> req = </span><span style="color:#c586c0">new</span><span style="color:#d4d4d4"> Request.</span><span style="color:#4ec9b0">Builder</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">url</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"https://xts.rmoneyindia.co.in:3000/interactive/user/calculatebrokerage?clientID=RM&amp;appOrderID=1343000794&amp;exchangeSegment=NSECM&amp;exchangeInstrumentID=2885"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">delete</span><span style="color:#d4d4d4">().</span><span style="color:#dcdcaa">addHeader</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"Authorization"</span><span style="color:#d4d4d4">,</span><span style="color:#ce9178">"xxxxxx"</span><span style="color:#d4d4d4">).</span><span style="color:#dcdcaa">build</span><span style="color:#d4d4d4">();</span><br>
 <span style="color:#d4d4d4">System.out.</span><span style="color:#dcdcaa">println</span><span style="color:#d4d4d4">(client.</span><span style="color:#dcdcaa">newCall</span><span style="color:#d4d4d4">(req).</span><span style="color:#dcdcaa">execute</span><span style="color:#d4d4d4">().body().</span><span style="color:#dcdcaa">string</span><span style="color:#d4d4d4">());</span>
     </div>
   </div>

@@ -15,11 +15,11 @@
 ## Two Legs of a Spread Order
 
 <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin:16px 0 24px;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
-  <div style="padding:20px 24px;background:#f0fdf4">
+  <div style="padding:20px 24px;background: #fdf9f0">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:8px">BUY LEG</div>
-    <div style="font-weight:700;color:#16a34a;font-size:15px;margin-bottom:6px">Buy Leg</div>
+    <div style="font-weight:700;color: #be781c;font-size:15px;margin-bottom:6px">Buy Leg</div>
     <p style="font-size:13px;color:#374151;margin:0">The instrument you want to buy.</p>
-    <code style="font-size:12px;color:#166534;display:block;margin-top:8px">Buy NIFTY July Future</code>
+    <code style="font-size:12px;color:#be781c;display:block;margin-top:8px">Buy NIFTY July Future</code>
   </div>
   <div style="padding:16px 14px;background:#f3f4f6;text-align:center;font-size:22px;color:#6b7280;align-self:stretch;display:flex;align-items:center">⇄</div>
   <div style="padding:20px 24px;background:#ffffff">
@@ -83,17 +83,17 @@
 <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin:16px 0 24px;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
   <div style="padding:16px 20px;background:#ffffff">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">NORMAL ORDER</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#9a3412;line-height:2.2">
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #9a3412;line-height:2.2">
       <li>Single buy or sell order</li>
       <li>Trades one instrument</li>
       <li>Higher market exposure</li>
       <li>Regular equity &amp; derivative trading</li>
     </ul>
   </div>
-  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
-    <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">SPREAD ORDER</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#166534;line-height:2.2">
+  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color: #6b7280;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background: #fdf7f0">
+    <div style="font-size:11px;font-weight:700;color: #9ca3af;letter-spacing:.06em;margin-bottom:10px">SPREAD ORDER</div>
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #654516;line-height:2.2">
       <li>Two linked orders (buy + sell)</li>
       <li>Trades price difference between two instruments</li>
       <li>Lower market risk</li>
@@ -108,8 +108,8 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 24px">
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:8px">Advantages</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background: #ffff">
+    <div style="font-weight:700;color: #ea580c;font-size:13px;margin-bottom:8px">Advantages</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Reduces overall market risk</li>
       <li>Both legs executed together</li>
@@ -120,7 +120,7 @@
   </div>
 
   <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
-    <div style="font-weight:700;color:#ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
+    <div style="font-weight:700;color: #ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Supported on select exchanges only</li>
       <li>Both instruments must be related</li>
@@ -137,19 +137,19 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📅 Calendar Spread</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Calendar Spread</div>
     <p style="font-size:12px;color:#374151;margin:0">Buy one month's futures and sell another month's futures contract.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🏭 Commodity Spread</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Commodity Spread</div>
     <p style="font-size:12px;color:#374151;margin:0">Trade the price difference between two related commodity contracts.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📊 Options Spread</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Options Spread</div>
     <p style="font-size:12px;color:#374151;margin:0">Combine multiple option contracts to manage risk and potential profit.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">⚖️ Arbitrage Trading</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Arbitrage Trading</div>
     <p style="font-size:12px;color:#374151;margin:0">Take advantage of price differences between related instruments or markets.</p>
   </div>
 </div>

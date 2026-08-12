@@ -2910,7 +2910,7 @@ function coShowCode(lang, btn) {
   <div class="po-flow-arrow">↓</div>
   <div class="po-flow-step"><div class="po-flow-icon"></div><div class="po-flow-label">Stock Exchange</div></div>
   <div class="po-flow-arrow">↓</div>
-  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon">✅</div><div class="po-flow-label">Order Cancelled</div></div>
+  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon"></div><div class="po-flow-label">Order Cancelled</div></div>
 </div>
 <!-- ═══════════════════ INTERMEDIATE ═══════════════════ -->
 <h2 id="which-can-be-cancelled" class="auth-section-title">Which Orders Can Be Cancelled?</h2>
@@ -2964,14 +2964,14 @@ function coShowCode(lang, btn) {
 <h2 id="partial-fill" class="auth-section-title">Partial Fill Scenario</h2>
 <div class="auth-req-row">
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#3b82f6">Original Order</div>
+    <div class="auth-req-label" >Original Order</div>
     <div class="auth-code-block"><pre>BUY 100 Shares of RELIANCE
 Status = Partially Filled
 Executed = 60 Shares
 Remaining = 40 Shares</pre></div>
   </div>
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#22c55e">After Cancel Request</div>
+    <div class="auth-req-label" >After Cancel Request</div>
     <div class="auth-code-block"><pre>Executed 60 shares → Remain valid
 Remaining 40 shares → Cancelled
 
@@ -3061,9 +3061,9 @@ Margin for 40 shares released back</pre></div>
 
 <style>
 .co-status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
-.co-can-card { background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px; padding: 16px; text-align: center; }
+.co-can-card { background: #ffffff; border: 1.5px solid #fdba74; border-radius: 10px; padding: 16px; text-align: center; }
 .co-can-icon { font-size: 24px; margin-bottom: 6px; }
-.co-can-label { font-weight: 700; font-size: 14px; color: #15803d; margin-bottom: 6px; }
+.co-can-label { font-weight: 700; font-size: 14px; color: #9a3412; margin-bottom: 6px; }
 .co-can-example { font-family: monospace; font-size: 12px; background: rgba(0,0,0,0.05); padding: 5px 10px; border-radius: 5px; margin-bottom: 6px; }
 .co-can-note { font-size: 12px; color: #374151; }
 .co-cannot-card { background: #ffffff; border: 1.5px solid #fdba74; border-radius: 10px; padding: 16px; text-align: center; }

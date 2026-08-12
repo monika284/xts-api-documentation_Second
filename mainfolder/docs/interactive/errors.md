@@ -270,7 +270,6 @@
 <h2 id="trading-errors" class="err-section-title">Common Trading API Errors</h2>
 <div class="err-trading-grid">
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-funds"></div>
     <div class="err-trade-body">
       <strong>Insufficient Funds</strong>
       <span>Not enough balance or margin to place the order.</span>
@@ -278,7 +277,6 @@
     </div>
   </div>
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-symbol"></div>
     <div class="err-trade-body">
       <strong>Invalid Symbol</strong>
       <span>Trading symbol not found in the exchange segment.</span>
@@ -286,7 +284,6 @@
     </div>
   </div>
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-market"></div>
     <div class="err-trade-body">
       <strong>Market Closed</strong>
       <span>Request sent outside trading hours. Exchange is closed.</span>
@@ -294,7 +291,6 @@
     </div>
   </div>
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-qty"></div>
     <div class="err-trade-body">
       <strong>Invalid Quantity</strong>
       <span>Order quantity is zero, negative, or not a valid lot size.</span>
@@ -302,7 +298,6 @@
     </div>
   </div>
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-reject"></div>
     <div class="err-trade-body">
       <strong>Order Rejected</strong>
       <span>Exchange or RMS rejected the order after it was sent.</span>
@@ -310,7 +305,6 @@
     </div>
   </div>
   <div class="err-trade-card">
-    <div class="err-trade-icon err-ti-token"></div>
     <div class="err-trade-body">
       <strong>Token Expired</strong>
       <span>Login session expired. Re-authenticate to continue.</span>
@@ -323,7 +317,6 @@
 <div class="err-practices-col">
 
   <div class="err-practice-card">
-    <div class="err-pc-icon err-pc-validate"></div>
     <div class="err-pc-body">
       <h4>Validate Inputs Before Calling</h4>
       <p>Check all required fields, types, and quantity values before sending the request. A 400 error means the problem is in your request, not the server.</p>
@@ -336,7 +329,6 @@
   </div>
 
   <div class="err-practice-card">
-    <div class="err-pc-icon err-pc-auth"></div>
     <div class="err-pc-body">
       <h4>Handle 401 Proactively</h4>
       <p>Don't wait for a 401 response. Track your token's issue time and refresh it before the 24-hour window expires.</p>
@@ -351,7 +343,6 @@
   </div>
 
   <div class="err-practice-card">
-    <div class="err-pc-icon err-pc-retry"></div>
     <div class="err-pc-body">
       <h4>Retry Temporary Failures with Backoff</h4>
       <p>Server errors (429, 500, 502, 503, 504) are usually temporary. Use exponential backoff to avoid overwhelming the server.</p>

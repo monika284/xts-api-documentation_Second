@@ -3149,7 +3149,8 @@
 <span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.coin:3000/interactive/orders/cancelall'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxxxxxx'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Content-Type: application/json'</span><span style="color:#d4d4d4"> \</span><br>
-<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{"exchangeSegment":"NSECM","exchangeInstrumentID": 3045}'</span>
+<span style="color:#d4d4d4">--data </span><span style="color:#ce9178">'{"exchangeSegment":"NSECM",<br>
+"exchangeInstrumentID": 0}'</span>
     </div>
 
   <div id="cao-code-python" style="display:none">
@@ -3219,9 +3220,9 @@ function caoShowCode(lang, btn) {
 <h2 id="which-orders-are-affected">Which Orders Are Affected?</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 24px">
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Can Be Cancelled</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Can Be Cancelled</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.2">
         <li>Open Orders</li>
         <li>Pending / New Orders</li>
@@ -3262,18 +3263,18 @@ function caoShowCode(lang, btn) {
 <hr />
 <h2 id="cancel-all-orders-vs-cancel-order">Cancel All Orders vs Cancel Order</h2>
 <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin:16px 0 24px;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden">
-  <div style="padding:16px 20px;background:#ffffff">
+  <div style="padding:16px 20px;background: #ffffff">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">CANCEL ORDER</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#92400e;line-height:2.2">
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #92400e;line-height:2.2">
       <li>Cancels one specific order</li>
       <li>Requires individual Order ID</li>
       <li>Best for single order removal</li>
     </ul>
   </div>
-  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
+  <div style="padding:16px 10px;background: #f3f4f6;text-align:center;font-size:20px;color: #f5f5f3;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background: #fce4c0">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">CANCEL ALL ORDERS</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#166534;line-height:2.2">
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #92400e;line-height:2.2">
       <li>Cancels all active orders at once</li>
       <li>No need to specify Order IDs</li>
       <li>Best for fast exits &amp; risk control</li>
@@ -3285,8 +3286,8 @@ function caoShowCode(lang, btn) {
 <h2 id="advantages-limitations">Advantages &amp; Limitations</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 24px">
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:8px">Advantages</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ea580c;font-size:13px;margin-bottom:8px">Advantages</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Cancel multiple orders instantly</li>
       <li>Saves time in busy sessions</li>
@@ -3297,7 +3298,7 @@ function caoShowCode(lang, btn) {
   </div>
 
   <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
-    <div style="font-weight:700;color:#ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
+    <div style="font-weight:700;color: #ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Filled orders cannot be cancelled</li>
       <li>Orders mid-execution may still fill</li>

@@ -21,9 +21,9 @@
     <p style="font-size:12px;color:#6b7280;margin:6px 0 0">Long text — error-prone, inconsistent</p>
   </div>
   <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;align-self:stretch;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
+  <div style="padding:16px 20px;background:#ffffff">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:8px">WITH ENUMS</div>
-    <code style="font-size:13px;color:#166534;display:block;line-height:1.8">"exchangeSegment": 1</code>
+    <code style="font-size:13px;color:#9a3412;display:block;line-height:1.8">"exchangeSegment": 1</code>
     <p style="font-size:12px;color:#6b7280;margin:6px 0 0">Compact numeric — fast, accurate, consistent</p>
   </div>
 </div>
@@ -144,8 +144,8 @@
     <code style="font-size:13px;color:#ff6b00">exchangeSegment = 1</code>
     <p style="font-size:12px;color:#374151;margin:6px 0 0">→ NSECM (NSE Cash Market)</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:12px 16px;background:#f0fdf4">
-    <code style="font-size:13px;color:#16a34a">instrumentType = 8</code>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:12px 16px;background:#ffffff">
+    <code style="font-size:13px;color:#ff6b00">instrumentType = 8</code>
     <p style="font-size:12px;color:#374151;margin:6px 0 0">→ Equity</p>
   </div>
 </div>

@@ -31,20 +31,20 @@
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">1. Login via REST</div>
     <p style="font-size:13px;color:#374151;margin:0">Login through the REST API to receive a Market Data token and userID.</p>
   </div>
-  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px">2. Initiate Connection</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">2. Initiate Connection</div>
     <p style="font-size:13px;color:#374151;margin:0">Client sends a connection request to the WebSocket server endpoint.</p>
   </div>
-  <div style="border:1.5px solid #e9d5ff;border-radius:10px;padding:14px 16px;background:#faf5ff">
-    <div style="font-weight:700;color:#7c3aed;font-size:13px;margin-bottom:6px">3. Authenticate</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">3. Authenticate</div>
     <p style="font-size:13px;color:#374151;margin:0">Server validates the token. If valid, the WebSocket connection is established.</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:6px">4. joined Event</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">4. joined Event</div>
     <p style="font-size:13px;color:#374151;margin:0">Server fires the <code>joined</code> event confirming the connection is active.</p>
   </div>
-  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f9fafb">
-    <div style="font-weight:700;color:#374151;font-size:13px;margin-bottom:6px">5. Subscribe &amp; Stream</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">5. Subscribe &amp; Stream</div>
     <p style="font-size:13px;color:#374151;margin:0">Client subscribes to instruments and live data starts streaming automatically.</p>
   </div>
 </div>
@@ -82,8 +82,9 @@
 
 ---
 
-## Step 1 — Login via REST
+## market data api login and market socket connection
 
+<div style="border:1.5px solid #f78d23;border-radius:14px;overflow:hidden;margin:16px 0px 20px;padding: 20px">
 <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;margin:12px 0">
 <span style="color:#c586c0">from</span> <span style="color:#4ec9b0">xts_api_client.xts_connect_async</span> <span style="color:#c586c0">import</span> <span style="color:#4ec9b0">XTSConnect</span><br><br>
 <span style="color:#9cdcfe">client</span> <span style="color:#d4d4d4">= </span><span style="color:#4ec9b0">XTSConnect</span><span style="color:#d4d4d4">(</span><br>
@@ -95,11 +96,6 @@
 <span style="color:#c586c0">await</span> <span style="color:#9cdcfe">client</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">marketdata_login</span><span style="color:#d4d4d4">()</span><br>
 <span style="color:#6a9955"># client.token and client.userID are now set</span>
 </div>
-
----
-
-## Step 2 — Connect Market Data WebSocket
-
 <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;margin:12px 0">
 <span style="color:#c586c0">from</span> <span style="color:#4ec9b0">xts_api_client.market_data_socket</span> <span style="color:#c586c0">import</span> <span style="color:#4ec9b0">MDSocket_io</span><br>
 <span style="color:#c586c0">from</span> <span style="color:#4ec9b0">xts_api_client.market_data_socket_client</span> <span style="color:#c586c0">import</span> <span style="color:#4ec9b0">MarketDataSocketClient</span><br><br>
@@ -115,6 +111,7 @@
 &nbsp;&nbsp;<span style="color:#9cdcfe">marketdatasocketclient</span><span style="color:#d4d4d4">=</span><span style="color:#4ec9b0">MyPriceFeed</span><span style="color:#d4d4d4">()</span><br>
 <span style="color:#d4d4d4">)</span><br>
 <span style="color:#c586c0">await</span> <span style="color:#9cdcfe">socket</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">()</span>
+</div>
 </div>
 
 
@@ -351,8 +348,9 @@
 
 ---
 
-## Step 3 — Connect Interactive WebSocket
+## interactive api login and order socket connection
 
+<div style="border:1.5px solid #f78d23;border-radius:14px;overflow:hidden;margin:16px 0px 20px;padding: 20px">
 <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;margin:12px 0">
 <span style="color:#c586c0">from</span> <span style="color:#4ec9b0">xts_api_client.interactive_socket</span> <span style="color:#c586c0">import</span> <span style="color:#4ec9b0">OrderSocket_io</span><br>
 <span style="color:#c586c0">from</span> <span style="color:#4ec9b0">xts_api_client.interactive_socket_client</span> <span style="color:#c586c0">import</span> <span style="color:#4ec9b0">InteractiveSocketClient</span><br><br>
@@ -367,7 +365,7 @@
 <span style="color:#d4d4d4">)</span><br>
 <span style="color:#c586c0">await</span> <span style="color:#9cdcfe">order_socket</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">connect</span><span style="color:#d4d4d4">()</span>
 </div>
-
+</div>
 
 ## Complete example of order socket connection
 
@@ -579,7 +577,7 @@
   </div>
 ---
 
-## Step 4 — Subscribe to Instruments
+## Subscribe to Instruments
 
 <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;margin:12px 0">
 <span style="color:#9cdcfe">instruments</span> <span style="color:#d4d4d4">= [</span><br>
@@ -591,7 +589,7 @@
 
 ---
 
-## Step 5 — Unsubscribe and Disconnect
+## Unsubscribe and Disconnect
 
 <div style="background:#1e1e1e;border-radius:10px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:2;margin:12px 0">
 <span style="color:#c586c0">await</span> <span style="color:#9cdcfe">client</span><span style="color:#d4d4d4">.</span><span style="color:#dcdcaa">send_unsubscription</span><span style="color:#d4d4d4">(</span><span style="color:#9cdcfe">Instruments</span><span style="color:#d4d4d4">=</span><span style="color:#9cdcfe">instruments</span><span style="color:#d4d4d4">, </span><span style="color:#9cdcfe">xtsMessageCode</span><span style="color:#d4d4d4">=</span><span style="color:#b5cea8">1512</span><span style="color:#d4d4d4">)</span><br>

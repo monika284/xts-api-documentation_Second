@@ -16,18 +16,18 @@
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:16px 0 24px">
 
   <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
-    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">1. Entry Order</div>
+    <div style="background: #ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">1. Entry Order</div>
     <div style="padding:14px 16px;background:#ffffff">
       <p style="font-size:13px;color:#374151;margin:0 0 8px">The first order used to enter the trade.</p>
       <code style="font-size:12px;color:#b45309">Buy RELIANCE at ₹2,850</code>
     </div>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">2. Target Order</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #ec9e38;border-radius:12px;overflow:hidden">
+    <div style="background: #f36411;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">2. Target Order</div>
+    <div style="padding:14px 16px;background: #ffff">
       <p style="font-size:13px;color:#374151;margin:0 0 8px">Profit booking — closes position when target price is reached.</p>
-      <code style="font-size:12px;color:#166534">Target Price = ₹2,900</code>
+      <code style="font-size:12px;color: #e47106">Target Price = ₹2,900</code>
     </div>
   </div>
 
@@ -77,9 +77,9 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 24px">
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Scenario 1 — Profit</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background: #ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Scenario 1 — Profit</div>
+    <div style="padding:14px 16px;background: #fffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Buy at ₹2,850</li>
         <li>Price rises to ₹2,900</li>
@@ -91,7 +91,7 @@
   </div>
 
   <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
-    <div style="background:#ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Scenario 2 — Loss Limited</div>
+    <div style="background: #ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Scenario 2 — Loss Limited</div>
     <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Buy at ₹2,850</li>
@@ -119,10 +119,10 @@
       <li>Best for mandatory stop-loss traders</li>
     </ul>
   </div>
-  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
-    <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">BRACKET ORDER</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#166534;line-height:2.2">
+  <div style="padding:16px 10px;background: #f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background: #faefe2">
+    <div style="font-size:11px;font-weight:700;color: #9ca3af;letter-spacing:.06em;margin-bottom:10px">BRACKET ORDER</div>
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #bd7e0b;line-height:2.2">
       <li>Entry + Target + Stop-Loss</li>
       <li>Auto profit booking at target</li>
       <li>Both profit &amp; risk protection</li>
@@ -137,8 +137,8 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 24px">
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:8px">Advantages</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background: #ffff">
+    <div style="font-weight:700;color: #ea580c;font-size:13px;margin-bottom:8px">Advantages</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Automatic profit booking</li>
       <li>Automatic stop-loss protection</li>
@@ -150,7 +150,7 @@
   </div>
 
   <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
-    <div style="font-weight:700;color:#ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
+    <div style="font-weight:700;color: #ea580c;font-size:13px;margin-bottom:8px">Limitations</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Mostly for intraday trading only</li>
       <li>Entry, target &amp; SL are linked</li>
@@ -168,19 +168,19 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 24px">
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">📈 Intraday Trading</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Intraday Trading</div>
     <p style="font-size:12px;color:#374151;margin:0">Open and close positions within the same trading day with automatic exits.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🛡️ Risk Management</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Risk Management</div>
     <p style="font-size:12px;color:#374151;margin:0">Automatically limit losses using a predefined stop-loss.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">💰 Profit Booking</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Profit Booking</div>
     <p style="font-size:12px;color:#374151;margin:0">Close the trade automatically when the target price is reached.</p>
   </div>
   <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:12px 16px">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">🤖 Automated Trading</div>
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:4px">Automated Trading</div>
     <p style="font-size:12px;color:#374151;margin:0">Manage positions without continuously watching the market.</p>
   </div>
 </div>

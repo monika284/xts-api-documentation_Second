@@ -2836,7 +2836,7 @@
   <div class="po-flow-arrow">↓</div>
   <div class="po-flow-step"><div class="po-flow-icon"></div><div class="po-flow-label">P&amp;L Calculated</div></div>
   <div class="po-flow-arrow">↓</div>
-  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon">✅</div><div class="po-flow-label">Portfolio Data Returned</div></div>
+  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon"></div><div class="po-flow-label">Portfolio Data Returned</div></div>
 </div>
 
 <!-- ═══ INTERMEDIATE ═══ -->
@@ -2927,32 +2927,32 @@
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">
 
   <!-- Realized P&L -->
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden;background:#fff">
-    <div style="background:#16a34a;padding:12px 18px;display:flex;align-items:center;gap:10px">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden;background:#fff">
+    <div style="background: #f97316;padding:12px 18px;display:flex;align-items:center;gap:10px">
       <span style="font-size:20px"></span>
       <div>
-        <div style="color:#fff;font-weight:700;font-size:15px">Realized P&amp;L</div>
-        <div style="color:#bbf7d0;font-size:12px">Profit / loss from closed trades</div>
+        <div style="color: #fff;font-weight:700;font-size:15px">Realized P&amp;L</div>
+        <div style="color: #ffedd5;font-size:12px">Profit / loss from closed trades</div>
       </div>
     </div>
     <div style="padding:16px 18px">
       <p style="font-size:13px;color:#374151;margin:0 0 12px">Locked in when you <strong>complete a trade</strong> — Buy + Sell same stock.</p>
-      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 14px;margin-bottom:12px">
-        <div style="font-size:11px;font-weight:700;color:#16a34a;margin-bottom:6px;letter-spacing:.05em">FORMULA</div>
-        <code style="font-size:13px;color:#111827;display:block">Realized P&amp;L = (Sell Price − Buy Price) × Qty</code>
+      <div style="background: #ffff;border:1px solid #fed7aa;border-radius:8px;padding:12px 14px;margin-bottom:12px">
+        <div style="font-size:11px;font-weight:700;color: #f97316;margin-bottom:6px;letter-spacing:.05em">FORMULA</div>
+        <code style="font-size:13px;color: #111827;display:block">Realized P&amp;L = (Sell Price − Buy Price) × Qty</code>
       </div>
       <div style="background:#f9fafb;border-radius:8px;padding:12px 14px">
         <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;letter-spacing:.05em">EXAMPLE</div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid #e5e7eb"><span style="color:#6b7280">Bought @</span><span style="font-weight:600">₹100</span></div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid #e5e7eb"><span style="color:#6b7280">Sold @</span><span style="font-weight:600">₹120</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;margin-top:2px"><span style="color:#16a34a;font-weight:700">Profit</span><span style="color:#16a34a;font-weight:700">+₹20 per share</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;margin-top:2px"><span style="color: #f97316;font-weight:700">Profit</span><span style="color: #f97316;font-weight:700">+₹20 per share</span></div>
       </div>
     </div>
   </div>
 
   <!-- Unrealized P&L -->
   <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden;background:#fff">
-    <div style="background:#f97316;padding:12px 18px;display:flex;align-items:center;gap:10px">
+    <div style="background: #f97316;padding:12px 18px;display:flex;align-items:center;gap:10px">
       <span style="font-size:20px"></span>
       <div>
         <div style="color:#fff;font-weight:700;font-size:15px">Unrealized P&amp;L</div>
@@ -2962,15 +2962,15 @@
     <div style="padding:16px 18px">
       <p style="font-size:13px;color:#374151;margin:0 0 12px">Fluctuates with market price. <strong>Not in funds</strong> until position is closed.</p>
       <div style="background:#ffffff;border:1px solid #fed7aa;border-radius:8px;padding:12px 14px;margin-bottom:12px">
-        <div style="font-size:11px;font-weight:700;color:#f97316;margin-bottom:6px;letter-spacing:.05em">FORMULA</div>
-        <code style="font-size:12px;color:#111827;display:block;margin-bottom:4px">Long &nbsp;: P&amp;L = (LTP − Avg Buy Price) × Open Qty</code>
-        <code style="font-size:12px;color:#111827;display:block">Short : P&amp;L = (Avg Sell Price − LTP) × Open Qty</code>
+        <div style="font-size:11px;font-weight:700;color: #f97316;margin-bottom:6px;letter-spacing:.05em">FORMULA</div>
+        <code style="font-size:12px;color: #111827;display:block;margin-bottom:4px">Long &nbsp;: P&amp;L = (LTP − Avg Buy Price) × Open Qty</code>
+        <code style="font-size:12px;color: #111827;display:block">Short : P&amp;L = (Avg Sell Price − LTP) × Open Qty</code>
       </div>
       <div style="background:#f9fafb;border-radius:8px;padding:12px 14px">
         <div style="font-size:11px;font-weight:700;color:#6b7280;margin-bottom:8px;letter-spacing:.05em">EXAMPLE (LONG)</div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid #e5e7eb"><span style="color:#6b7280">Bought Reliance @</span><span style="font-weight:600">₹2,800</span></div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid #e5e7eb"><span style="color:#6b7280">Current LTP</span><span style="font-weight:600">₹2,900</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;margin-top:2px"><span style="color:#f97316;font-weight:700">Unrealized</span><span style="color:#f97316;font-weight:700">+₹100 per share</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;margin-top:2px"><span style="color: #f97316;font-weight:700">Unrealized</span><span style="color: #f97316;font-weight:700">+₹100 per share</span></div>
       </div>
     </div>
   </div>
@@ -3004,12 +3004,12 @@
 <h2 id="diversification" class="auth-section-title">Diversification Example</h2>
 <div class="po-tif-grid">
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#1e40af">Concentrated Risk</div>
+    <div class="po-tif-badge" style="background: #f97316">Concentrated Risk</div>
     <p><strong>100% in one sector</strong> — if that sector crashes, your entire portfolio suffers.</p>
     <div class="po-type-example">₹1,00,000 → All in IT stocks</div>
   </div>
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#16a34a">Diversified</div>
+    <div class="po-tif-badge" style="background: #f97316">Diversified</div>
     <p><strong>Spread across sectors</strong> — one sector falls but others can offset the loss.</p>
     <div class="po-type-example">Banking 25% | IT 25% | Pharma 25% | FMCG 25%</div>
   </div>

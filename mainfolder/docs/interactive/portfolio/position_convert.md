@@ -2,19 +2,19 @@
 <p style="color:#6b7280;font-size:15px;margin-bottom:18px">Change the product type of an open position without closing the trade — for example, convert Intraday (MIS) to Delivery (CNC) to hold overnight.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
-  <div style="display:flex;align-items:center;gap:7px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
     No Re-entry Needed
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#15803d">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
     MIS → CNC / NRML
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#1d4ed8">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     Avoid Auto Square-off
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#fdf4ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#7c3aed">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     Qty &amp; P&amp;L Preserved
   </div>
@@ -99,23 +99,23 @@
 <h2 id="conv-what-changes" style="color:#1e293b;font-weight:700;margin:28px 0 12px">What Changes During Conversion?</h2>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
-  <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:10px;padding:16px 18px">
-    <div style="font-size:12px;font-weight:700;color:#15803d;margin-bottom:10px;letter-spacing:.04em">✔ STAYS THE SAME</div>
+  <div style="background: #fceee6;border:1.5px solid #eb6d07;border-radius:10px;padding:16px 18px">
+    <div style="font-size:12px;font-weight:700;color: #eb640b;margin-bottom:10px;letter-spacing:.04em">✔ STAYS THE SAME</div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:5px 0;border-bottom:1px solid #dcfce7;display:flex;gap:8px"><span style="color:#15803d">●</span> Stock or contract</li>
-      <li style="padding:5px 0;border-bottom:1px solid #dcfce7;display:flex;gap:8px"><span style="color:#15803d">●</span> Quantity</li>
-      <li style="padding:5px 0;border-bottom:1px solid #dcfce7;display:flex;gap:8px"><span style="color:#15803d">●</span> Buy / Sell price</li>
-      <li style="padding:5px 0;border-bottom:1px solid #dcfce7;display:flex;gap:8px"><span style="color:#15803d">●</span> Average price</li>
-      <li style="padding:5px 0;display:flex;gap:8px"><span style="color:#15803d">●</span> P&amp;L (based on market)</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color: #e2630e">●</span> Stock or contract</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color: #e2630e">●</span> Quantity</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color: #e2630e">●</span> Buy / Sell price</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color: #e2630e">●</span> Average price</li>
+      <li style="padding:5px 0;display:flex;gap:8px"><span style="color: #e2630e">●</span> P&amp;L (based on market)</li>
     </ul>
   </div>
-  <div style="background:#fff1f2;border:1.5px solid #fca5a5;border-radius:10px;padding:16px 18px">
-    <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:10px;letter-spacing:.04em">✦ WHAT CHANGES</div>
+  <div style="background: #fceee6;border:1.5px solid #eb6d07;border-radius:10px;padding:16px 18px">
+    <div style="font-size:12px;font-weight:700;color: #eb640b;margin-bottom:10px;letter-spacing:.04em">✦ WHAT CHANGES</div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:5px 0;border-bottom:1px solid #fecdd3;display:flex;gap:8px"><span style="color:#dc2626">●</span> Product type (MIS / CNC / NRML)</li>
-      <li style="padding:5px 0;border-bottom:1px solid #fecdd3;display:flex;gap:8px"><span style="color:#dc2626">●</span> Margin requirement</li>
-      <li style="padding:5px 0;border-bottom:1px solid #fecdd3;display:flex;gap:8px"><span style="color:#dc2626">●</span> Square-off behavior</li>
-      <li style="padding:5px 0;display:flex;gap:8px"><span style="color:#dc2626">●</span> Settlement treatment</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color:#e2630e">●</span> Product type (MIS / CNC / NRML)</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color:#e2630e">●</span> Margin requirement</li>
+      <li style="padding:5px 0;border-bottom:1px solid #fac09f;display:flex;gap:8px"><span style="color:#e2630e">●</span> Square-off behavior</li>
+      <li style="padding:5px 0;display:flex;gap:8px"><span style="color: #e2630e">●</span> Settlement treatment</li>
     </ul>
   </div>
 </div>
@@ -125,10 +125,10 @@
 <h2 id="conv-when" style="color:#1e293b;font-weight:700;margin:28px 0 12px">When Can You Convert?</h2>
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:24px">
-  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #15803d;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color:#15803d">✔</strong> Position is still open</div>
-  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #15803d;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color:#15803d">✔</strong> Market is open (within conversion window)</div>
-  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #15803d;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color:#15803d">✔</strong> Sufficient funds or margin available</div>
-  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #15803d;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color:#15803d">✔</strong> Exchange and broker support the conversion</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #e2630e;border-radius:8px;padding:12px 14px;font-size:13px;color: #374151"><strong style="color: #e2630e">✔</strong> Position is still open</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #e2630e;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color: #e2630e">✔</strong> Market is open (within conversion window)</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #e2630e;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color: #e2630e">✔</strong> Sufficient funds or margin available</div>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-left:3px solid #e2630e;border-radius:8px;padding:12px 14px;font-size:13px;color:#374151"><strong style="color: #e2630e">✔</strong> Exchange and broker support the conversion</div>
 </div>
 
 ---
@@ -142,11 +142,11 @@
   <div style="margin-left:22px;color:#ff6b00;font-size:18px;line-height:1.2">↓</div>
   <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color:#374151">Need to Change Product Type?</div>
   <div style="margin-left:22px;color:#ff6b00;font-size:18px;line-height:1.2">↓</div>
-  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color:#c2410c">Submit Position Conversion Request via API</div>
+  <div style="background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color: #c2410c">Submit Position Conversion Request via API</div>
   <div style="margin-left:22px;color:#ff6b00;font-size:18px;line-height:1.2">↓</div>
   <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:600;color:#374151">Broker Validates Funds, Margin &amp; Rules</div>
   <div style="margin-left:22px;color:#ff6b00;font-size:18px;line-height:1.2">↓</div>
-  <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:700;color:#15803d">Position Continues with New Product Type ✔</div>
+  <div style="background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:10px 18px;font-size:12px;font-weight:700;color: #c2410c">Position Continues with New Product Type ✔</div>
 </div>
 
 ---
@@ -185,8 +185,8 @@
   <div style="background:#fff7ed;border:1px solid #fed7aa;border-left:3px solid #ff6b00;border-radius:8px;padding:12px 14px;font-size:13px;color:#c2410c;font-weight:600">Save time &amp; brokerage on re-entry</div>
 </div>
 
-<div style="background:#fef9c3;border:1.5px solid #fde047;border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;margin:8px 0 24px">
-  <span style="font-size:18px;flex-shrink:0">⚠️</span>
+<div style="background: #fee6c3;border:1.5px solid #fd9f47;border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;margin:8px 0 24px">
+  <span style="font-size:18px;flex-shrink:0"></span>
   <div style="font-size:13px;color:#713f12;line-height:1.7">
     <strong>Things to Remember:</strong><br>
     Not every position can be converted. Some brokers charge additional fees or require extra margin. Derivative positions (Futures &amp; Options) may have different conversion rules. Once a position is <strong>fully closed</strong>, it cannot be converted.

@@ -210,7 +210,7 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
   <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
-    <div style="font-size:13px;font-weight:800;color:#c2410c;margin-bottom:12px;border-bottom:1px solid #fed7aa;padding-bottom:8px">📊 MTM (Mark-to-Market)</div>
+    <div style="font-size:13px;font-weight:800;color:#c2410c;margin-bottom:12px;border-bottom:1px solid #fed7aa;padding-bottom:8px">MTM (Mark-to-Market)</div>
     <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2">
       <li>Calculated on <strong>open positions</strong></li>
       <li>Changes with every market price movement</li>
@@ -219,7 +219,7 @@
     </ul>
   </div>
   <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
-    <div style="font-size:13px;font-weight:800;color:#c2410c;margin-bottom:12px;border-bottom:1px solid #fed7aa;padding-bottom:8px">✅ Realized P&amp;L</div>
+    <div style="font-size:13px;font-weight:800;color:#c2410c;margin-bottom:12px;border-bottom:1px solid #fed7aa;padding-bottom:8px">Realized P&amp;L</div>
     <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2">
       <li>Calculated after position is <strong>closed</strong></li>
       <li>Fixed once the trade is completed</li>

@@ -123,7 +123,7 @@
     <div style="color:#ff6b00;font-size:16px;font-weight:700">▼</div>
     <div style="width:2px;height:20px;background:#e5e7eb"></div>
 
-    <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;color:#15803d;text-align:center">Application Updates Screen Instantly</div>
+    <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;color:#374151;text-align:center">Application Updates Screen Instantly</div>
   </div>
 </div>
 
@@ -337,7 +337,7 @@
     <div style="color:#ff6b00;font-size:16px;font-weight:700">▼</div>
     <div style="width:2px;height:20px;background:#e5e7eb"></div>
 
-    <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;color:#15803d;text-align:center">Unsubscribe or Disconnect</div>
+    <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;color:#374151;text-align:center">Unsubscribe or Disconnect</div>
   </div>
 </div>
 
@@ -556,8 +556,8 @@
   </div>
 </div>
 
-<div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 18px;margin:16px 0 24px;font-size:13px;color:#374151;line-height:1.9">
-  <strong style="color:#1e40af">Note:</strong>
+<div style="border:1.5px solid #fed3bf;border-radius:10px;padding:14px 18px;margin:16px 0 24px;font-size:13px;color:#374151;line-height:1.9">
+  <strong style="color: #f77205">Note:</strong>
   <ul style="margin:6px 0 0;padding-left:20px">
     <li>XTS uses <strong>Socket.io</strong> protocol for the Interactive order related data.</li>
     <li>Users must note that some programming languages does not support socket.io protocol directly, so they need to find compatible websocket libraries.</li>
@@ -567,7 +567,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-connect" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Connect</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">This event triggers when socket connection is successfull.</p>
+<p style="color: #fa5e04;font-size:13px;margin:0 0 10px">This event triggers when socket connection is successfull.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-conn-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"connect"</span><span style="color:#d4d4d4">)</span><br>
@@ -582,7 +582,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-joined" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Joined</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">If a successful connection is established with the server, this event will be raised to indicate that the user has been connected.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">If a successful connection is established with the server, this event will be raised to indicate that the user has been connected.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-joined-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"joined"</span><span style="color:#d4d4d4">)</span><br>
@@ -597,7 +597,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-error" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Error</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">In case of any error with the server, this event will be raised along with the cause of the error. For example, if you send an incorrect token while connecting, the server will raise this event and disconnect your socket connection.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">In case of any error with the server, this event will be raised along with the cause of the error. For example, if you send an incorrect token while connecting, the server will raise this event and disconnect your socket connection.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-err-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"error"</span><span style="color:#d4d4d4">)</span><br>
@@ -612,7 +612,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-disconnect" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Disconnect</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">In case a socket disconnection occurs with the server, this event will be raised to indicate the disconnection.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">In case a socket disconnection occurs with the server, this event will be raised to indicate the disconnection.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-disc-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"disconnect"</span><span style="color:#d4d4d4">)</span><br>
@@ -627,7 +627,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-orders" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Orders</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">To listen for order state change events such as New, Filled, Partially Filled, etc., register for this event.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">To listen for order state change events such as New, Filled, Partially Filled, etc., register for this event.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-ord-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"order"</span><span style="color:#d4d4d4">)</span><br>
@@ -686,7 +686,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-trade" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Trade</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">When any order gets executed (fully or partially filled), a new trade event will be generated. The server will raise trade events, and you can listen to these events by registering for them.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">When any order gets executed (fully or partially filled), a new trade event will be generated. The server will raise trade events, and you can listen to these events by registering for them.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-trade-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"trade"</span><span style="color:#d4d4d4">)</span><br>
@@ -748,7 +748,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-position" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Position</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">If any position change occurs in your account, the server will raise this event to indicate the updated position. By registering for this event, you can track position changes.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">If any position change occurs in your account, the server will raise this event to indicate the updated position. By registering for this event, you can track position changes.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-pos-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"position"</span><span style="color:#d4d4d4">)</span><br>
@@ -804,7 +804,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-trconv" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Trade conversion</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">If any trade conversion occurs in your account, the server will raise this event to indicate the trade conversion status. By registering for this event, you can track the trade conversion status.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">If any trade conversion occurs in your account, the server will raise this event to indicate the trade conversion status. By registering for this event, you can track the trade conversion status.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-trconv-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"tradeConversion"</span><span style="color:#d4d4d4">)</span><br>
@@ -855,7 +855,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-gttorder" style="color:#1e40af;font-weight:700;margin:20px 0 6px">GTT Order</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">When any GTT order gets executed, a new trade event will be generated. The server will raise trade events &amp; you can listen to this event by registering it.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">When any GTT order gets executed, a new trade event will be generated. The server will raise trade events &amp; you can listen to this event by registering it.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-gttord-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"gttOrder"</span><span style="color:#d4d4d4">)</span><br>
@@ -915,10 +915,10 @@
   </div>
 </div>
 
-<hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
+<hr style="border:none;border-top:1.5px dashed #feddbf;margin:20px 0">
 
 <h2 id="ss-ev-gttrej" style="color:#1e40af;font-weight:700;margin:20px 0 6px">GTT Order Rejection</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">When any GTT order gets rejected, a new trade event will be generated. The server will raise trade events &amp; you can listen to this event by registering it.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">When any GTT order gets rejected, a new trade event will be generated. The server will raise trade events &amp; you can listen to this event by registering it.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-gttrej-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"gttOrderRejection"</span><span style="color:#d4d4d4">)</span><br>
@@ -991,7 +991,7 @@
 <hr style="border:none;border-top:1.5px dashed #bfdbfe;margin:20px 0">
 
 <h2 id="ss-ev-logout" style="color:#1e40af;font-weight:700;margin:20px 0 6px">Logout</h2>
-<p style="color:#2563eb;font-size:13px;margin:0 0 10px">When your session is logged out by the server, it will raise this event. By registering for this event, you can track your session state.</p>
+<p style="color:#fa5e04;font-size:13px;margin:0 0 10px">When your session is logged out by the server, it will raise this event. By registering for this event, you can track your session state.</p>
 <div style="position:relative;margin:0 0 6px">
   <div style="background:#1e1e1e;border-radius:10px;padding:18px 24px;font-family:Consolas,monospace;font-size:13px;line-height:1.9" id="ss-ev-logout-box">
 <span style="color:#d4d4d4">@sio.</span><span style="color:#dcdcaa">on</span><span style="color:#d4d4d4">(</span><span style="color:#ce9178">"logout"</span><span style="color:#d4d4d4">)</span><br>

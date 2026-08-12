@@ -327,7 +327,7 @@
 <p>Once authenticated, you can build trading applications, analytics platforms, investment tools, and automated trading systems using the RMoney API ecosystem.</p>
 <div class="qsn">
 <h3 id="exit-bracket-order" style="color:#ff6b00;font-weight:800;margin-bottom:6px">Reference Manual</h3>
-<h2><bold>📘 The Complete Reference Manual: Symphony XTS API v2 & Python Client Library</h2>
+<h2><bold>The Complete Reference Manual: Symphony XTS API v2 & Python Client Library</h2>
 <p>Welcome! This is a comprehensive, standalone guide designed for new users and programmers to master the Symphony XTS Front-End API (v2.0) and its official Python client library, xts-api-client.</p>
 <p>No prior experience with trading APIs is required. We explain everything from high-level architecture to low-level parameters, supplemented by visual diagrams and code examples.<p>
 <h3 id="ref-1-concepts" style="display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding:10px 16px;background:#fff7ed;border-left:4px solid #ff6b00;border-radius:0 8px 8px 0"><span style="background:#ff6b00;color:#fff;border-radius:50%;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</span><span style="color:#1e293b;font-weight:700;font-size:18px">High-Level Concepts &amp; Mental Models</span></h3>
@@ -616,7 +616,7 @@ async def query_market_data(market_client):
 <img src="../imgs/8th.png" alt="XTS file Architecture">
 </div>
 
-<h4>Step 3: Complete WebSocket Listener Implementation</h4>
+<h4>Step 3: Complete market data Implementation</h4>
 <p>To catch these events, you subclass <code>MarketDataSocketClient</code> (for prices) or <code>InteractiveSocketClient</code> (for trading updates) and assign it to the socket managers:</p>
 
 ```python
@@ -703,99 +703,3 @@ if __name__ == "__main__":
     <div class="qsn-formula">Unrealized PnL = (Average Sell Price &minus; Current LTP) &times; Open Quantity (Absolute)</div>
   </li>
 </ul>
-
-<h3 id="ref-9-helpers" style="display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding:10px 16px;background:#fff7ed;border-left:4px solid #ff6b00;border-radius:0 8px 8px 0"><span style="background:#ff6b00;color:#fff;border-radius:50%;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">9</span><span style="color:#1e293b;font-weight:700;font-size:18px">Helper Library Utilities</span></h3>
-<p>The client library includes <code>xts_api_client.helper.helper</code> to parse and manage incoming data structures automatically.</p>
-
-<h4>1. Master List Parser (Pandas DataFrame)</h4>
-<p>Symphony sends large stock master files as pipeline-separated string streams. The helper converts them to clean Pandas dataframes:</p>
-
-```python
-from xts_api_client.helper.helper import cm_master_string_to_df, fo_master_string_to_df
-
-# Assume 'raw_csv_response' is retrieved from get_master() call
-df_equities = cm_master_string_to_df(raw_csv_response)
-# You can now run pandas queries
-print(df_equities[df_equities['Name'] == 'RELIANCE'])
-```
-
-<h4>2. MS-DOS Time Zone Converter</h4>
-<p>Exchange times are given as seconds elapsed since the MS-DOS Epoch (1980-01-01). The helper translates this to standard Unix nanoseconds:</p>
-
-```python
-from xts_api_client.helper.helper import dostime_secomds_to_unixtime
-
-unix_nanoseconds = dostime_secomds_to_unixtime(1464972900)
-print("Standard Unix timestamp:", unix_nanoseconds)
-```
-
-<h4>3. Account-Wide Squareoff Helper</h4>
-<p>The helper provides a routine to retrieve all your open positions and instantly exit them at market price to protect capital in emergencies:</p>
-
-```python
-from xts_api_client.helper.helper import async_squareoff_all_positions_
-
-# Retrieve all positions and close them out
-sq_off_ids = await async_squareoff_all_positions_(interactive_client)
-print("Emergency Squared off Order IDs:", sq_off_ids)
-```
-
-<h3 id="ref-10-robust" style="display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding:10px 16px;background:#fff7ed;border-left:4px solid #ff6b00;border-radius:0 8px 8px 0"><span style="background:#ff6b00;color:#fff;border-radius:50%;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">10</span><span style="color:#1e293b;font-weight:700;font-size:18px">Robust Code Design: Reconnections &amp; Retries</span></h3>
-<p>To deploy algorithms safely, you must handle network disconnects or API timeouts. Here is a production-grade template for a <code>Gateway</code> wrapper that you can copy to build your systems:</p>
-
-```python
-import asyncio
-import logging
-from xts_api_client.xts_connect_async import XTSConnect
-from xts_api_client.interactive_socket import OrderSocket_io
-from xts_api_client.interactive_socket_client import InteractiveSocketClient
-from httpx import PoolTimeout, ConnectTimeout, ReadTimeout
-
-class OrderCallbackHandler(InteractiveSocketClient):
-    def __init__(self, gateway):
-        self.gateway = gateway
-
-    async def on_connect(self):
-        self.gateway.connected = True
-        logging.info("WebSocket connected!")
-
-    async def on_disconnect(self):
-        self.gateway.connected = False
-        logging.warning("WebSocket lost! Reconnecting...")
-        asyncio.create_task(self.gateway.reconnect())
-
-class XTSGateway:
-    def __init__(self, api_url, key, secret):
-        self.api_url = api_url
-        self.key = key
-        self.secret = secret
-        self.client = None
-        self.socket = None
-        self.connected = False
-
-    async def connect(self):
-        # 1. Login REST API
-        self.client = XTSConnect(self.key, self.secret, "WEBAPI", self.api_url)
-        await self.client.interactive_login()
-
-        # 2. Start WebSocket Connection
-        self.socket = OrderSocket_io(
-            token=self.client.token,
-            userID=self.client.userID,
-            root_url=self.client.root,
-            reconnection=True,
-            interactiveSocketClient=OrderCallbackHandler(self)
-        )
-        await self.socket.connect()
-
-    async def place_order_safe(self, params: dict, retries=4):
-        """Places orders with auto-retry on HTTP timeouts"""
-        for attempt in range(retries):
-            try:
-                response = await self.client.place_order(**params)
-                return response
-            except (PoolTimeout, ConnectTimeout, ReadTimeout) as timeout_exc:
-                logging.warning(f"Timeout on attempt {attempt+1}/{retries}. Retrying...")
-                await asyncio.sleep(0.5)
-        raise RuntimeError("Failed to place order: Connection Timed Out")
-```

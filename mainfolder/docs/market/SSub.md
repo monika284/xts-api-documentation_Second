@@ -53,9 +53,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
-    <div style="background:#1d4ed8;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Depth Data</div>
-    <div style="padding:14px 16px;background:#eff6ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Depth Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Best Buy Prices</li>
         <li>Best Sell Prices</li>
@@ -64,9 +64,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Index Data</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Index Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Live Index Values</li>
         <li>Change</li>
@@ -75,9 +75,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #e9d5ff;border-radius:12px;overflow:hidden">
-    <div style="background:#7c3aed;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trade Data</div>
-    <div style="padding:14px 16px;background:#faf5ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trade Data</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Trade Price</li>
         <li>Trade Quantity</li>

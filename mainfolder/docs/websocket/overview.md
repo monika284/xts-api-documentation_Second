@@ -24,9 +24,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
-    <div style="background:#1d4ed8;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">Interactive Socket</div>
-    <div style="padding:16px 18px;background:#eff6ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:12px 18px;color:#fff;font-weight:700;font-size:14px">Interactive Socket</div>
+    <div style="padding:16px 18px;background:#ffffff">
       <p style="font-size:13px;color:#374151;margin:0 0 10px">Order updates, trade confirmations, position changes</p>
       <div style="background:#1e1e1e;border-radius:8px;padding:10px 14px;font-family:Consolas,monospace;font-size:12px;color:#ce9178;word-break:break-all">{root}/?token=...&amp;userID=...&amp;apiType=INTERACTIVE</div>
     </div>
@@ -55,24 +55,24 @@
     <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">1. Connect</div>
     <p style="font-size:13px;color:#374151;margin:0">Client establishes a WebSocket connection with the RMoney server.</p>
   </div>
-  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px">2. Authenticate</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">2. Authenticate</div>
     <p style="font-size:13px;color:#374151;margin:0">Validates the session using the token received from the Login API.</p>
   </div>
-  <div style="border:1.5px solid #e9d5ff;border-radius:10px;padding:14px 16px;background:#faf5ff">
-    <div style="font-weight:700;color:#7c3aed;font-size:13px;margin-bottom:6px">3. Subscribe</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">3. Subscribe</div>
     <p style="font-size:13px;color:#374151;margin:0">Register instruments or data streams with an event code to start receiving updates.</p>
   </div>
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:6px">4. Stream Data</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">4. Stream Data</div>
     <p style="font-size:13px;color:#374151;margin:0">Server continuously pushes market updates whenever data changes.</p>
   </div>
-  <div style="border:1.5px solid #fde68a;border-radius:10px;padding:14px 16px;background:#fffbeb">
-    <div style="font-weight:700;color:#d97706;font-size:13px;margin-bottom:6px">5. Unsubscribe</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">5. Unsubscribe</div>
     <p style="font-size:13px;color:#374151;margin:0">Stop updates for selected instruments without closing the connection.</p>
   </div>
-  <div style="border:1.5px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f9fafb">
-    <div style="font-weight:700;color:#374151;font-size:13px;margin-bottom:6px">6. Disconnect</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px">6. Disconnect</div>
     <p style="font-size:13px;color:#374151;margin:0">Close the WebSocket connection when streaming is no longer needed.</p>
   </div>
 </div>
@@ -137,10 +137,10 @@
       <li>Not suitable for real-time feeds</li>
     </ul>
   </div>
-  <div style="padding:16px 10px;background:#f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
-  <div style="padding:16px 20px;background:#f0fdf4">
+  <div style="padding:16px 10px;background: #f3f4f6;text-align:center;font-size:20px;color:#6b7280;display:flex;align-items:center">→</div>
+  <div style="padding:16px 20px;background:#ffffff">
     <div style="font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.06em;margin-bottom:10px">WebSocket</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#166534;line-height:2.2">
+    <ul style="margin:0;padding-left:16px;font-size:13px;color:#9a3412;line-height:2.2">
       <li>Data pushed automatically on change</li>
       <li>Ultra-low latency</li>
       <li>Minimal network overhead</li>

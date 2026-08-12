@@ -113,9 +113,9 @@
 ## Advantages vs Limitations
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px">
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Advantages</div>
-    <div style="padding:14px 18px;background:#f0fdf4">
+  <div style="border:1.5px solid #fdba74;border-radius:12px;overflow:hidden">
+    <div style="background: #ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Advantages</div>
+    <div style="padding:14px 18px;background:#ffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>Reduced risk with automatic protection</li>
         <li>Higher leverage from broker</li>
@@ -126,7 +126,7 @@
     </div>
   </div>
   <div style="border:1.5px solid #fdba74;border-radius:12px;overflow:hidden">
-    <div style="background:#ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Limitations</div>
+    <div style="background: #ea580c;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Limitations</div>
     <div style="padding:14px 18px;background:#ffffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>Stop-loss is mandatory — cannot skip</li>

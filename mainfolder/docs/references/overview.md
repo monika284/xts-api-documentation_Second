@@ -27,9 +27,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
-    <div style="background:#1d4ed8;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Instrument Information</div>
-    <div style="padding:14px 16px;background:#eff6ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Instrument Information</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Instrument Name &amp; Trading Symbol</li>
         <li>Exchange Instrument ID</li>
@@ -38,9 +38,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Derivative Information</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Derivative Information</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Expiry Date &amp; Strike Price</li>
         <li>Option Type (CE/PE)</li>
@@ -49,9 +49,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #e9d5ff;border-radius:12px;overflow:hidden">
-    <div style="background:#7c3aed;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Information</div>
-    <div style="padding:14px 16px;background:#faf5ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Market Information</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
         <li>Lot Size &amp; Tick Size</li>
         <li>Price Limits</li>
@@ -72,10 +72,10 @@
     <p style="font-size:13px;color:#374151;margin:0">Exchange segments, product types, order types, and validity values used across all API calls.</p>
     <a href="constants.md" style="font-size:12px;color:#ff6b00;text-decoration:none;font-weight:600;display:inline-block;margin-top:8px">View Constants →</a>
   </div>
-  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:6px"> Enums</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:6px"> Enums</div>
     <p style="font-size:13px;color:#374151;margin:0">Status values, event codes, and enumeration definitions for interpreting API responses.</p>
-    <a href="enums.md" style="font-size:12px;color:#1d4ed8;text-decoration:none;font-weight:600;display:inline-block;margin-top:8px">View Enums →</a>
+    <a href="enums.md" style="font-size:12px;color:#ff6b00;text-decoration:none;font-weight:600;display:inline-block;margin-top:8px">View Enums →</a>
   </div>
 </div>
 

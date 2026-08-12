@@ -183,7 +183,7 @@ function moShowCode(lang, btn) {
   <div class="po-flow-arrow">↓</div>
   <div class="po-flow-step"><div class="po-flow-icon"></div><div class="po-flow-label">Stock Exchange</div></div>
   <div class="po-flow-arrow">↓</div>
-  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon">✅</div><div class="po-flow-label">Updated Order</div></div>
+  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon"></div><div class="po-flow-label">Updated Order</div></div>
 </div>
 
 <!-- ═══════════════════ INTERMEDIATE ═══════════════════ -->
@@ -248,14 +248,14 @@ function moShowCode(lang, btn) {
 <h2 id="before-after" class="auth-section-title">Before vs After</h2>
 <div class="auth-req-row">
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#3b82f6">Original Order</div>
+    <div class="auth-req-label" >Original Order</div>
     <div class="auth-code-block"><pre>BUY RELIANCE
 Quantity  = 10
 Price     = ₹2850
 Status    = Open</pre></div>
   </div>
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#22c55e">Modified Order</div>
+    <div class="auth-req-label" >Modified Order</div>
     <div class="auth-code-block"><pre>BUY RELIANCE
 Quantity  = 15
 Price     = ₹2860

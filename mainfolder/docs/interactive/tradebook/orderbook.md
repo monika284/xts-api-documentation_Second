@@ -2,19 +2,19 @@
 <p style="color:#6b7280;font-size:15px;margin-bottom:18px">A complete record of all buy and sell orders placed in your trading account — including their current status, execution details, and full order lifecycle.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
-  <div style="display:flex;align-items:center;gap:7px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
     All Order Statuses
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#15803d">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
     Real-time Updates
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#1d4ed8">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
     Modify &amp; Cancel
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#fdf4ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#7c3aed">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
     All Segments
   </div>
@@ -80,19 +80,19 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
   </div>
   <div style="display:flex;align-items:stretch;gap:0">
     <div style="display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0">
-      <div style="width:32px;height:32px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px">✓</div>
+      <div style="width:32px;height:32px;border-radius:50%;background: #f7900b;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px">✓</div>
     </div>
-    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;margin:0 0 0 12px;flex:1;font-size:13px;color:#15803d;font-weight:700;margin-bottom:6px">Order Executed → Appears in Trade Book &amp; Position</div>
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:0 0 0 12px;flex:1;font-size:13px;color: #374151;font-weight:700;margin-bottom:6px">Order Executed → Appears in Trade Book &amp; Position</div>
   </div>
 </div>
 
 <p style="font-size:13px;color:#6b7280;margin-bottom:8px">If the order cannot be executed, it may instead become:</p>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
-  <div style="background:#fff1f2;border:1.5px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:13px;font-weight:600;color:#b91c1c;display:flex;align-items:center;gap:8px">
+  <div style="background: #ffe1c0;border:1.5px solid #fcc8a5;border-radius:8px;padding:14px 16px;font-size:13px;font-weight:600;color: #eb7608;display:flex;align-items:center;gap:8px">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
     Cancelled — user or broker cancelled before execution
   </div>
-  <div style="background:#fef2f2;border:1.5px solid #fca5a5;border-radius:8px;padding:14px 16px;font-size:13px;font-weight:600;color:#dc2626;display:flex;align-items:center;gap:8px">
+  <div style="background: #ffe1c0;border:1.5px solid #fcc8a5;border-radius:8px;padding:14px 16px;font-size:13px;font-weight:600;color: #eb7608;display:flex;align-items:center;gap:8px">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
     Rejected — exchange or broker rejected the order
   </div>
@@ -117,34 +117,34 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
     <tr>
       <td>10001</td>
       <td>ABC Ltd.</td>
-      <td><span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">BUY</span></td>
+      <td><span style="background:#f0fdf4;color: #15803d;border:1px solid #bbf7d0;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">BUY</span></td>
       <td style="text-align:right;font-weight:600">100</td>
       <td style="text-align:right;font-weight:600">₹500</td>
-      <td><span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Filled</span></td>
+      <td><span style="background: #fff7ed;color: #fc9004f8;border:1px solid #f7dbbb;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Filled</span></td>
     </tr>
     <tr>
       <td>10002</td>
       <td>XYZ Ltd.</td>
-      <td><span style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">SELL</span></td>
+      <td><span style="background:#fff1f2;color: #be123c;border:1px solid #fee9cd;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">SELL</span></td>
       <td style="text-align:right;font-weight:600">50</td>
       <td style="text-align:right;font-weight:600">₹700</td>
-      <td><span style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Pending</span></td>
+      <td><span style="background: #fff7ed;color: #fc9004f8;border:1px solid #fed7aa;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Pending</span></td>
     </tr>
     <tr>
       <td>10003</td>
       <td>PQR Ltd.</td>
-      <td><span style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">BUY</span></td>
+      <td><span style="background:#f0fdf4;color: #15803d;border:1px solid #f7ddbb;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">BUY</span></td>
       <td style="text-align:right;font-weight:600">200</td>
       <td style="text-align:right;font-weight:600">₹150</td>
-      <td><span style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Partially Filled</span></td>
+      <td><span style="background: #fff7ed;color: #fc9004f8;border:1px solid #fed7aa;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Partially Filled</span></td>
     </tr>
     <tr>
       <td>10004</td>
       <td>LMN Ltd.</td>
-      <td><span style="background:#fff1f2;color:#be123c;border:1px solid #fecdd3;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">SELL</span></td>
+      <td><span style="background:#fff1f2;color: #be123c;border:1px solid #fecdd3;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">SELL</span></td>
       <td style="text-align:right;font-weight:600">100</td>
       <td style="text-align:right;font-weight:600">₹400</td>
-      <td><span style="background:#f1f5f9;color:#475569;border:1px solid #cbd5e1;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Cancelled</span></td>
+      <td><span style="background: #fff7ed;color:#fc9004f8;border:1px solid #fed7aa;border-radius:5px;padding:2px 8px;font-size:12px;font-weight:700">Cancelled</span></td>
     </tr>
   </tbody>
 </table>
@@ -155,48 +155,48 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
 
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:24px">
 
-  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
+  <div style="background: #fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="background:#ff6b00;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">PENDING</div>
+      <div style="background: #ff6b00;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">PENDING</div>
     </div>
-    <p style="font-size:13px;color:#374151;margin:0 0 10px;line-height:1.7">The order has been accepted but not yet executed.</p>
-    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #fed7aa">
+    <p style="font-size:13px;color: #374151;margin:0 0 10px;line-height:1.7">The order has been accepted but not yet executed.</p>
+    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color: #374151;line-height:1.8;border:1px solid #fed7aa">
       Buy 100 shares @ ₹500<br>Current Market Price = ₹505<br>
       <strong style="color:#ff6b00">Status: Pending</strong>
     </div>
   </div>
 
-  <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;padding:18px 20px">
+  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="background:#16a34a;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">FILLED</div>
+      <div style="background:#ff6b00;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">FILLED</div>
     </div>
     <p style="font-size:13px;color:#374151;margin:0 0 10px;line-height:1.7">The entire order has been successfully executed.</p>
-    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #86efac">
+    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #fed7aa">
       Buy 100 shares @ ₹500<br>Filled Quantity = 100<br>
-      <strong style="color:#16a34a">Status: Filled</strong>
+      <strong style="color:#ff6b00">Status: Filled</strong>
     </div>
   </div>
 
-  <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:18px 20px">
+  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="background:#1d4ed8;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">PARTIALLY FILLED</div>
+      <div style="background:#ff6b00;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">PARTIALLY FILLED</div>
     </div>
     <p style="font-size:13px;color:#374151;margin:0 0 10px;line-height:1.7">Only part of the requested quantity has been executed.</p>
-    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #bfdbfe">
+    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #fed7aa">
       Buy Quantity = 100 &nbsp;|&nbsp; Executed = 60<br>Remaining = 40<br>
-      <strong style="color:#1d4ed8">Status: Partially Filled</strong>
+      <strong style="color:#ff6b00">Status: Partially Filled</strong>
     </div>
   </div>
 
-  <div style="background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:12px;padding:18px 20px">
+  <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:18px 20px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="background:#475569;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">CANCELLED / REJECTED</div>
+      <div style="background:#ff6b00;color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.05em">CANCELLED / REJECTED</div>
     </div>
     <p style="font-size:13px;color:#374151;margin:0 0 10px;line-height:1.7">Cancelled by user/broker, or rejected by exchange due to invalid price, quantity, or insufficient funds.</p>
-    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #cbd5e1">
+    <div style="background:#fff;border-radius:7px;padding:10px 14px;font-size:12px;color:#374151;line-height:1.8;border:1px solid #fed7aa">
       Buy 100 shares — cancelled before execution<br>
       Reasons: Insufficient funds · Invalid price · Market closed<br>
-      <strong style="color:#475569">Status: Cancelled / Rejected</strong>
+      <strong style="color:#ff6b00">Status: Cancelled / Rejected</strong>
     </div>
   </div>
 
@@ -206,29 +206,29 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
 
 <h2 id="ob-vs" style="color:#1e293b;font-weight:700;margin:28px 0 16px">Order Book vs Trade Book vs Position</h2>
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;margin-bottom:24px">
-  <div style="background:linear-gradient(135deg,#fff7ed,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
-    <div style="font-size:13px;font-weight:700;color:#ff6b00;margin-bottom:12px">ORDER BOOK</div>
-    <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Shows all placed orders</li>
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Includes pending, cancelled &amp; filled</li>
-      <li style="padding:6px 0;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Tracks order lifecycle</li>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid #eb9c09;border-radius:12px;overflow:hidden;margin-bottom:24px">
+  <div style="background:linear-gradient(135deg, #fff7ed,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
+    <div style="font-size:13px;font-weight:700;color: #ff6b00;margin-bottom:12px">ORDER BOOK</div>
+    <ul style="margin:0;padding:0;list-style:none;font-size:13px;color: #374151">
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span>Shows all placed orders</li>
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span>Includes pending, cancelled &amp; filled</li>
+      <li style="padding:6px 0;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span>Tracks order lifecycle</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#f0fdf4,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
-    <div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:12px">TRADE BOOK</div>
+  <div style="background:linear-gradient(135deg, #fff7ed,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
+    <div style="font-size:13px;font-weight:700;color:#ff6b00;margin-bottom:12px">TRADE BOOK</div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span>Shows only executed trades</li>
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span>Only completed executions</li>
-      <li style="padding:6px 0;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span>Confirms completed trades</li>
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Shows only executed trades</li>
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Only completed executions</li>
+      <li style="padding:6px 0;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Confirms completed trades</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#eff6ff,#fff);padding:18px 20px">
-    <div style="font-size:13px;font-weight:700;color:#1d4ed8;margin-bottom:12px">POSITION</div>
+  <div style="background:linear-gradient(135deg,#fff7ed,#fff);padding:18px 20px">
+    <div style="font-size:13px;font-weight:700;color:#ff6b00;margin-bottom:12px">POSITION</div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#1d4ed8;flex-shrink:0">▸</span>Current open quantity</li>
-      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#1d4ed8;flex-shrink:0">▸</span>Only executed quantities</li>
-      <li style="padding:6px 0;display:flex;gap:8px"><span style="color:#1d4ed8;flex-shrink:0">▸</span>Tracks current holdings</li>
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Current open quantity</li>
+      <li style="padding:6px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Only executed quantities</li>
+      <li style="padding:6px 0;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span>Tracks current holdings</li>
     </ul>
   </div>
 </div>
@@ -242,18 +242,18 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
   <div style="display:flex;flex-direction:column;gap:8px">
     <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#374151">
       <div style="background:#ff6b00;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0">1</div>
-      Order appears in <strong>Order Book</strong> — Status: <span style="color:#ff6b00;font-weight:700">Pending</span>
+      Order appears in <strong>Order Book</strong> — Status: <span style="color: #ff6b00;font-weight:700">Pending</span>
     </div>
     <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#374151">
       <div style="background:#ff6b00;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0">2</div>
-      Exchange executes <strong>60 shares</strong> — Status: <span style="color:#1d4ed8;font-weight:700">Partially Filled</span>
+      Exchange executes <strong>60 shares</strong> — Status: <span style="color:#ff6b00;font-weight:700">Partially Filled</span>
     </div>
     <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#374151">
       <div style="background:#ff6b00;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0">3</div>
-      Remaining <strong>40 shares</strong> are executed — Status: <span style="color:#16a34a;font-weight:700">Filled</span>
+      Remaining <strong>40 shares</strong> are executed — Status: <span style="color: #ff6b00;font-weight:700">Filled</span>
     </div>
     <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#374151">
-      <div style="background:#16a34a;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0">✓</div>
+      <div style="background: #fa6d0f;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0">✓</div>
       Trade appears in <strong>Trade Book</strong> and Rahul's <strong>Position</strong> shows 100 shares
     </div>
   </div>
@@ -274,11 +274,11 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
     <span class="aec-badge-post" style="background:#f0fdf4;color:#16a34a;border:1.5px solid #bbf7d0">GET</span>
   </div>
   <div class="aec-url-row">
-    <span class="aec-base">https://xts.rmoneyindia.co.in:3000</span><span class="aec-path">/interactive/orders/dealerorderbook"</span>
+    <span class="aec-base">https://xts.rmoneyindia.co.in:3000</span><span class="aec-path">/interactive/orders"</span>
   </div>
   <div class="aec-footer">
     <span class="aec-auth">Requires: valid <code>Authorization</code> token</span>
-    <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000//interactive/orders/dealerorderbook');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
+    <button class="aec-copy-btn" onclick="navigator.clipboard.writeText('https://xts.rmoneyindia.co.in:3000///interactive/orders');this.textContent='✔ Copied';setTimeout(()=>this.textContent='Copy URL',2000)">Copy URL</button>
   </div>
 </div>
 
@@ -395,7 +395,7 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
   </div>
 </div>
 
-<h3 id="ob-code-ex" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
+<h3 id="ob-co-ex" style="color:#1e293b;font-weight:700;margin:24px 0 10px;font-size:15px">Code Examples</h3>
 
 <div style="margin:8px 0 24px">
   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0">
@@ -405,7 +405,7 @@ The <strong>Order Book</strong> is a record of <strong>all the orders you have p
   <div style="background:#1e1e1e;border-radius:0 6px 6px 6px;padding:20px;font-family:Consolas,monospace;font-size:13px;line-height:1.8;max-height:320px;overflow:hidden;transition:max-height .4s ease" id="ob-ce-box">
 
   <div id="ob-code-curl">
-<span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000/interactive/orders/dealerorderbook"?clientID=RM1'</span><span style="color:#d4d4d4"> \</span><br>
+<span style="color:#d4d4d4">curl --location </span><span style="color:#ce9178">'https://xts.rmoneyindia.co.in:3000//interactive/orders'</span><span style="color:#d4d4d4"> \</span><br>
 <span style="color:#d4d4d4">--header </span><span style="color:#ce9178">'Authorization: xxxxxx'</span>
     </div>
 

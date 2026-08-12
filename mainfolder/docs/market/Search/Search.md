@@ -55,16 +55,16 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0 24px">
 
-  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
-    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:8px">Exchange Info</div>
-    <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background: #ffffff">
+    <div style="font-weight:700;color: #ff6b00;font-size:13px;margin-bottom:8px">Exchange Info</div>
+    <ul style="margin:0;padding-left:16px;font-size:13px;color: #374151;line-height:2.1">
       <li>Exchange Segment</li>
       <li>Exchange Instrument ID</li>
     </ul>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:10px;padding:14px 16px;background:#eff6ff">
-    <div style="font-weight:700;color:#1d4ed8;font-size:13px;margin-bottom:8px">Instrument Info</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:8px">Instrument Info</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Trading Symbol</li>
       <li>Instrument Name</li>
@@ -72,8 +72,8 @@
     </ul>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:10px;padding:14px 16px;background:#f0fdf4">
-    <div style="font-weight:700;color:#16a34a;font-size:13px;margin-bottom:8px">Derivatives Info</div>
+  <div style="border:1.5px solid #fed7aa;border-radius:10px;padding:14px 16px;background:#ffffff">
+    <div style="font-weight:700;color:#ff6b00;font-size:13px;margin-bottom:8px">Derivatives Info</div>
     <ul style="margin:0;padding-left:16px;font-size:13px;color:#374151;line-height:2.1">
       <li>Expiry Date</li>
       <li>Strike Price</li>

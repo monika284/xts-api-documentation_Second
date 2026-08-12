@@ -2,19 +2,19 @@
 <p style="color:#6b7280;font-size:15px;margin-bottom:18px">Holdings are the stocks or securities that belong to you and are stored in your demat/investment account. These are your long-term investments and remain until you sell them.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
-  <div style="display:flex;align-items:center;gap:7px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#c2410c">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
     Demat Account Stocks
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#15803d">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     Live P&amp;L Tracking
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#1d4ed8">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     Delivery Only
   </div>
-  <div style="display:flex;align-items:center;gap:7px;background:#fdf4ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color:#7c3aed">
+  <div style="display:flex;align-items:center;gap:7px;background: #fff7ed;border:1.5px solid #fed7aa;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:600;color: #c2410c">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     Long-term Investment
   </div>
@@ -218,7 +218,7 @@
     <div style="color:#ff6b00;font-size:18px;font-weight:700;padding:2px 0">↓</div>
     <div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;text-align:center;white-space:nowrap">Appear in Holdings</div>
     <div style="color:#ff6b00;font-size:18px;font-weight:700;padding:2px 0">↓</div>
-    <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:700;color:#15803d;text-align:center;white-space:nowrap">Keep or Sell Anytime</div>
+    <div style="background: #fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:700;text-align:center;white-space:nowrap">Keep or Sell Anytime</div>
   </div>
 </div>
 
@@ -227,29 +227,29 @@
 <h2 id="hld-vs-positions" style="color:#1e293b;font-weight:700;margin:28px 0 16px">Holdings vs Positions</h2>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;margin-bottom:24px">
-  <div style="background:linear-gradient(135deg,#fff7ed,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
-    <div style="font-size:13px;font-weight:700;color:#ff6b00;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+  <div style="background:linear-gradient(135deg, #fff7ed,#fff);padding:18px 20px;border-right:1px solid #e5e7eb">
+    <div style="font-size:13px;font-weight:700;color: #ff6b00;margin-bottom:12px;display:flex;align-items:center;gap:8px">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
       HOLDINGS
     </div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span> Shows stocks owned in the Demat account</li>
+      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span> Shows stocks owned in the Demat account</li>
       <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span> Only delivery shares are displayed</li>
       <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span> Shares remain until sold</li>
       <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span> Used mainly for investing</li>
       <li style="padding:7px 0;display:flex;gap:8px"><span style="color:#ff6b00;flex-shrink:0">▸</span> Cannot have a negative quantity</li>
     </ul>
   </div>
-  <div style="background:linear-gradient(135deg,#f0fdf4,#fff);padding:18px 20px">
-    <div style="font-size:13px;font-weight:700;color:#16a34a;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+  <div style="background:linear-gradient(135deg, #fff7ed,#fff);padding:18px 20px">
+    <div style="font-size:13px;font-weight:700;color:#ff6b00;margin-bottom:12px;display:flex;align-items:center;gap:8px">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       POSITIONS
     </div>
     <ul style="margin:0;padding:0;list-style:none;font-size:13px;color:#374151">
-      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span> Shows active trading positions</li>
-      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span> Includes intraday, delivery, futures, options</li>
-      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span> May close on the same day or remain open</li>
-      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span> Used for tracking trading activity</li>
+      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span> Shows active trading positions</li>
+      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span> Includes intraday, delivery, futures, options</li>
+      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span> May close on the same day or remain open</li>
+      <li style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:8px"><span style="color: #ff6b00;flex-shrink:0">▸</span> Used for tracking trading activity</li>
       <li style="padding:7px 0;display:flex;gap:8px"><span style="color:#16a34a;flex-shrink:0">▸</span> Can be long (positive) or short (negative)</li>
     </ul>
   </div>

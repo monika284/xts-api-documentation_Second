@@ -55,7 +55,7 @@
   <div class="po-flow-arrow">↓</div>
   <div class="po-flow-step"><div class="po-flow-icon"></div><div class="po-flow-label">Trades Execute</div></div>
   <div class="po-flow-arrow">↓</div>
-  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon">✅</div><div class="po-flow-label">Funds Updated with P&amp;L</div></div>
+  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon"></div><div class="po-flow-label">Funds Updated with P&amp;L</div></div>
 </div>
 
 <!-- ═══ INTERMEDIATE ═══ -->
@@ -96,7 +96,7 @@
 <h2 id="pnl-effect" class="auth-section-title">How P&amp;L Affects Funds</h2>
 <div class="auth-req-row">
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#16a34a">Profit Adds to Funds</div>
+    <div class="auth-req-label">Profit Adds to Funds</div>
     <div class="auth-code-block"><pre>Bought  @ ₹100
 Sold    @ ₹120
 Profit  = ₹20 per share
@@ -104,7 +104,7 @@ Profit  = ₹20 per share
 → ₹20 gets ADDED to available balance</pre></div>
   </div>
   <div class="auth-req-block">
-    <div class="auth-req-label" style="background:#ea580c">Loss Reduces Funds</div>
+    <div class="auth-req-label">Loss Reduces Funds</div>
     <div class="auth-code-block"><pre>Bought  @ ₹100
 Sold    @ ₹85
 Loss    = ₹15 per share
@@ -128,6 +128,7 @@ Loss    = ₹15 per share
   </div>
 </div>
 </div>
+
 ## Request Body Parameters
 
 <table class="param-table">
@@ -224,7 +225,7 @@ Loss    = ₹15 per share
 
 ## Response Body JSON
 <div style="position:relative;margin:8px 0 24px">
-  <pre id="response-json-balance" style="background:#1e1e1e;color:#d4d4d4;border-radius:8px;padding:20px;font-family:Consolas,Menlo,monospace;font-size:13px;line-height:1.6;overflow:auto;max-height:420px;white-space:pre;margin:0">{
+  <pre id="response-json-balance" style="background: #1e1e1e;color:#d4d4d4;border-radius:8px;padding:20px;font-family:Consolas,Menlo,monospace;font-size:13px;line-height:1.6;overflow:auto;max-height:420px;white-space:pre;margin:0">{
   "type": "success",
   "code": "s-user-0002",
   "description": "OK",
@@ -503,19 +504,19 @@ function balanceShowCode(lang, btn) {
 <h2 id="use-cases" class="auth-section-title">Common Use Cases</h2>
 <div class="po-tif-grid">
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#ff6b00">Before Placing Orders</div>
+    <div class="po-tif-badge" style="background: #ff6b00">Before Placing Orders</div>
     <p>Always check available balance before placing large orders to avoid rejection due to insufficient margin.</p>
   </div>
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#1e40af">Risk Management</div>
+    <div class="po-tif-badge" style="background: #ff6b00">Risk Management</div>
     <p>Monitor margin utilisation and set alerts when available balance falls below a safe threshold.</p>
   </div>
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#16a34a">Withdrawals</div>
+    <div class="po-tif-badge" style="background: #ff6b00">Withdrawals</div>
     <p>Use Pay-Out field to know the withdrawable balance without disturbing active positions.</p>
   </div>
   <div class="po-tif-card">
-    <div class="po-tif-badge" style="background:#7c3aed">Margin Trading</div>
+    <div class="po-tif-badge" style="background: #ff6b00">Margin Trading</div>
     <p>Track leveraged positions — ensure enough buffer so broker does not square off positions automatically.</p>
   </div>
 </div>

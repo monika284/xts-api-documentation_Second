@@ -33,9 +33,9 @@
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0 24px">
 
   <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
-    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Client Details</div>
-    <div style="padding:14px 16px;background:#ffffff">
-      <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
+    <div style="background: #ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Client Details</div>
+    <div style="padding:14px 16px;background: #ffffff">
+      <ul style="margin:0;padding-left:18px;font-size:13px;color: #374151;line-height:2.2">
         <li>User ID</li>
         <li>Client Code</li>
         <li>Account Type</li>
@@ -43,9 +43,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bfdbfe;border-radius:12px;overflow:hidden">
-    <div style="background:#1d4ed8;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Exchange Access</div>
-    <div style="padding:14px 16px;background:#eff6ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Exchange Access</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>NSECM, NSEFO</li>
         <li>BSECM, MCXFO</li>
@@ -54,9 +54,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #bbf7d0;border-radius:12px;overflow:hidden">
-    <div style="background:#16a34a;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Product Types</div>
-    <div style="padding:14px 16px;background:#f0fdf4">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Product Types</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>MIS, NRML, CNC</li>
         <li>BO, CO, MTF</li>
@@ -64,9 +64,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #e9d5ff;border-radius:12px;overflow:hidden">
-    <div style="background:#7c3aed;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trading Permissions</div>
-    <div style="padding:14px 16px;background:#faf5ff">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">Trading Permissions</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>Equity Trading</li>
         <li>F&amp;O Trading</li>
@@ -75,9 +75,9 @@
     </div>
   </div>
 
-  <div style="border:1.5px solid #fde68a;border-radius:12px;overflow:hidden">
-    <div style="background:#d97706;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">API Settings</div>
-    <div style="padding:14px 16px;background:#fffbeb">
+  <div style="border:1.5px solid #fed7aa;border-radius:12px;overflow:hidden">
+    <div style="background:#ff6b00;padding:10px 16px;color:#fff;font-weight:700;font-size:13px">API Settings</div>
+    <div style="padding:14px 16px;background:#ffffff">
       <ul style="margin:0;padding-left:18px;font-size:13px;color:#374151;line-height:2.2">
         <li>API Access Enabled</li>
         <li>WebSocket Access</li>

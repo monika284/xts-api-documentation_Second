@@ -204,7 +204,7 @@ function poShowCode(lang, btn) {
   <div class="po-flow-arrow">↓</div>
   <div class="po-flow-step"><div class="po-flow-icon"></div><div class="po-flow-label">Stock Exchange</div></div>
   <div class="po-flow-arrow">↓</div>
-  <div class="po-flow-step po-flow-step--success"><div class="po-flow-icon"></div><div class="po-flow-label">Order Confirmation</div></div>
+  <div class="po-flow-step po-flow-step--success"><div class="po-flow-label">Order Confirmation</div></div>
 </div>
 <!-- ═══════════════════ INTERMEDIATE ═══════════════════ -->
 <h2 id="order-sides" class="auth-section-title">Order Sides</h2>
