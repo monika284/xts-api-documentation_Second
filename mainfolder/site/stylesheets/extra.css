@@ -3694,7 +3694,7 @@ body.hm-no-sidebar .md-content {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 14px !important;
 
-    width: calc(220% + 14px) !important;
+    width: calc(280% + 14px) !important;
     max-width: none !important;
 
     box-sizing: border-box !important;
