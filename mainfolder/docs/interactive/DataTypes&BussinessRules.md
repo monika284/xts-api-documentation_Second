@@ -29,48 +29,48 @@
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0 24px">
 
-  <div style="border:1.5px solid #f7982b;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">String</div>
-    <div style="padding:14px 16px;background: #f9fafb">
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffffff;font-weight:700;font-size:13px">String</div>
+    <div style="padding:14px 16px;background: #fbfaf9">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Stores text values — exchange names, symbols, order sides.</p>
       <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "exchangeSegment": "NSECM" }</pre>
     </div>
   </div>
 
-  <div style="border:1.5px solid #f78821;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Integer</div>
-    <div style="padding:14px 16px;background:#f9fafb">
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Integer</div>
+    <div style="padding:14px 16px;background: #fbfaf9">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Stores whole numbers — quantities, instrument IDs.</p>
-      <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "quantity": 100 }</pre>
+      <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #ebe8e5;border-radius:6px;padding:10px;color:#374151">{ "quantity": 100 }</pre>
     </div>
   </div>
 
-  <div style="border:1.5px solid #fdb530;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Double</div>
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Double</div>
     <div style="padding:14px 16px;background:#f9fafb">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Stores decimal values — prices, stop loss levels.</p>
       <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "price": 2500.50 }</pre>
     </div>
   </div>
 
-  <div style="border:1.5px solid #fdb530;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Boolean</div>
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Boolean</div>
     <div style="padding:14px 16px;background:#f9fafb">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Stores true/false flags — investor type, spread orders.</p>
       <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "isInvestorClient": true }</pre>
     </div>
   </div>
 
-  <div style="border:1.5px solid #fdb530;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Array</div>
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Array</div>
     <div style="padding:14px 16px;background:#f9fafb">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Stores multiple values — order sides, segments.</p>
       <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "orderSide": ["BUY","SELL"] }</pre>
     </div>
   </div>
 
-  <div style="border:1.5px solid #fdb530;border-radius:12px;overflow:hidden">
-    <div style="background: #f8b45a;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Object</div>
+  <div style="border:1.5px solid #f77d2b;border-radius:12px;overflow:hidden">
+    <div style="background: #ee680f;padding:9px 16px;color: #ffff;font-weight:700;font-size:13px">Object</div>
     <div style="padding:14px 16px;background:#f9fafb">
       <p style="font-size:13px;color:#6b7280;margin:0 0 8px">Groups related fields — exchange info, nested configs.</p>
       <pre style="margin:0;font-size:12px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;color:#374151">{ "exchangeInfo": {
@@ -92,27 +92,27 @@ Business rules are predefined validations that every request must satisfy before
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 20px">
 
   <div style="border:1.5px solid #fa8703;border-radius:10px;overflow:hidden">
-    <div style="background: #fcb96e;padding:8px 14px;color:#0e0b01;font-weight:700;font-size:12px"> Quantity Must Be Positive</div>
-    <div style="padding:12px 14px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#166534">Quantity = 10 &nbsp;→ Accepted</div>
-    <div style="padding:8px 14px 12px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#9a3412;border-top:1px solid #fdba74">Quantity = -5 → Rejected</div>
+    <div style="background: #e24d09;padding:8px 14px;color: #fff;font-weight:700;font-size:12px"> Quantity Must Be Positive</div>
+    <div style="padding:12px 14px;background: #f3eee9;font-family:monospace;font-size:13px;color: #050505">Quantity = 10 &nbsp;→ Accepted</div>
+    <div style="padding:8px 14px 12px;background: #f3eee9;font-family:monospace;font-size:13px;color: #070606;border-top:1px solid #fa7304">Quantity = -5 → Rejected</div>
   </div>
 
   <div style="border:1.5px solid #fcb86b;border-radius:10px;overflow:hidden">
-    <div style="background: #fcb96e;padding:8px 14px;color:#0e0b01;font-weight:700;font-size:12px"> Price Must Be Greater Than Zero</div>
-    <div style="padding:12px 14px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#166534">Price = 2500 &nbsp;→ Accepted</div>
-    <div style="padding:8px 14px 12px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#9a3412;border-top:1px solid #fdba74">Price = 0 &nbsp;&nbsp;&nbsp;&nbsp;→ Rejected</div>
+    <div style="background: #e24d09;padding:8px 14px;color:#fff;font-weight:700;font-size:12px"> Price Must Be Greater Than Zero</div>
+    <div style="padding:12px 14px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505">Price = 2500 &nbsp;→ Accepted</div>
+    <div style="padding:8px 14px 12px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505;border-top:1px solid #fa7304">Price = 0 &nbsp;&nbsp;&nbsp;&nbsp;→ Rejected</div>
   </div>
 
   <div style="border:1.5px solid #fcb86b;border-radius:10px;overflow:hidden">
-    <div style="background: #fcb96e;padding:8px 14px;color:#0e0b01;font-weight:700;font-size:12px"> Order Side Must Be BUY or SELL</div>
-    <div style="padding:12px 14px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#166534">BUY / SELL &nbsp;→ Accepted</div>
-    <div style="padding:8px 14px 12px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#9a3412;border-top:1px solid #fdba74">PURCHASE &nbsp;&nbsp;&nbsp;→ Rejected</div>
+    <div style="background: #e24d09;padding:8px 14px;color:#fff;font-weight:700;font-size:12px"> Order Side Must Be BUY or SELL</div>
+    <div style="padding:12px 14px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505">BUY / SELL &nbsp;→ Accepted</div>
+    <div style="padding:8px 14px 12px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505;border-top:1px solid #fa7304">PURCHASE &nbsp;&nbsp;&nbsp;→ Rejected</div>
   </div>
 
   <div style="border:1.5px solid #fcb86b;border-radius:10px;overflow:hidden">
-    <div style="background: #fcb96e;padding:8px 14px;color:#0e0b01;font-weight:700;font-size:12px"> Stop Loss Logic (BUY order)</div>
-    <div style="padding:12px 14px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#166534;line-height:1.8">SL Price &lt; Trigger &lt; Limit</div>
-    <div style="padding:8px 14px 12px;background: #f8e3c7;font-family:monospace;font-size:13px;color:#9a3412;border-top:1px solid #fdba74">Any other order → Rejected</div>
+    <div style="background: #e24d09;padding:8px 14px;color:#fff;font-weight:700;font-size:12px"> Stop Loss Logic (BUY order)</div>
+    <div style="padding:12px 14px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505;line-height:1.8">SL Price &lt; Trigger &lt; Limit</div>
+    <div style="padding:8px 14px 12px;background: #f3eee9;font-family:monospace;font-size:13px;color:#050505;border-top:1px solid #fa7304">Any other order → Rejected</div>
   </div>
 
 </div>

@@ -3306,11 +3306,11 @@ body.hm-no-sidebar .md-content {
 }
 
 .iov-icon-orange { background: #fff4ec; color: #ff6b00; }
-.iov-icon-blue   { background: #eff6ff; color: #3b82f6; }
-.iov-icon-green  { background: #f0fdf4; color: #22c55e; }
-.iov-icon-purple { background: #f5f3ff; color: #8b5cf6; }
-.iov-icon-yellow { background: #fffbeb; color: #f59e0b; }
-.iov-icon-teal   { background: #f0fdfa; color: #14b8a6; }
+.iov-icon-blue   { background: #fff4ec; color: #ff6b00; }
+.iov-icon-green  { background: #fff4ec; color: #ff6b00; }
+.iov-icon-purple { background: #fff4ec; color: #ff6b00; }
+.iov-icon-yellow { background: #fff4ec; color: #ff6b00; }
+.iov-icon-teal   { background: #fff4ec; color: #ff6b00; }
 
 /* API Modules */
 .iov-modules {
@@ -3322,7 +3322,7 @@ body.hm-no-sidebar .md-content {
 
 .iov-module-card {
     background: #fff;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #ebe8e5;
     border-radius: 14px;
     padding: 24px;
     transition: all 0.25s;
@@ -3354,8 +3354,8 @@ body.hm-no-sidebar .md-content {
 .iov-module-icon svg { width: 100%; height: 100%; }
 
 .iov-mod-orange { background: #fff4ec; color: #ff6b00; }
-.iov-mod-blue   { background: #eff6ff; color: #3b82f6; }
-.iov-mod-green  { background: #f0fdf4; color: #22c55e; }
+.iov-mod-blue   { background: #fff4ec; color: #ff6b00; }
+.iov-mod-green  { background: #fff4ec; color: #ff6b00; }
 
 .iov-module-card h3 {
     margin: 0;
@@ -3364,8 +3364,8 @@ body.hm-no-sidebar .md-content {
 }
 
 .iov-mod-orange-text { color: #ff6b00 !important; }
-.iov-mod-blue-text   { color: #3b82f6 !important; }
-.iov-mod-green-text  { color: #22c55e !important; }
+.iov-mod-blue-text   { color: #ff6b00 !important; }
+.iov-mod-green-text  { color: #ff6b00 !important; }
 
 .iov-module-card > p {
     font-size: 13px;
@@ -3396,8 +3396,8 @@ body.hm-no-sidebar .md-content {
 }
 
 .iov-module-card:nth-child(1) .iov-mod-list li::before { color: #ff6b00; }
-.iov-module-card:nth-child(2) .iov-mod-list li::before { color: #3b82f6; }
-.iov-module-card:nth-child(3) .iov-mod-list li::before { color: #22c55e; }
+.iov-module-card:nth-child(2) .iov-mod-list li::before { color: #ff6b00; }
+.iov-module-card:nth-child(3) .iov-mod-list li::before { color: #ff6b00; }
 
 .iov-mod-link {
     font-size: 13px;
@@ -3406,8 +3406,8 @@ body.hm-no-sidebar .md-content {
 }
 .iov-mod-link:hover { text-decoration: underline; }
 .iov-link-orange { color: #ff6b00 !important; }
-.iov-link-blue   { color: #3b82f6 !important; }
-.iov-link-green  { color: #22c55e !important; }
+.iov-link-blue   { color: #ff6b00 !important; }
+.iov-link-green  { color: #ff6b00 !important; }
 
 /* Workflow */
 .iov-workflow {
@@ -3440,10 +3440,10 @@ body.hm-no-sidebar .md-content {
 .iov-wf-icon svg { width: 100%; height: 100%; }
 
 .iov-wf-orange { background: #fff4ec; color: #ff6b00; }
-.iov-wf-blue   { background: #eff6ff; color: #ff6b00; }
-.iov-wf-green  { background: #eff6ff; color: #ff6b00; }
-.iov-wf-purple { background: #eff6ff; color: #ff6b00; }
-.iov-wf-teal   { background: #eff6ff; color: #ff6b00; }
+.iov-wf-blue   { background: #fff4ec; color: #ff6b00; }
+.iov-wf-green  { background: #fff4ec; color: #ff6b00; }
+.iov-wf-purple { background: #fff4ec; color: #ff6b00; }
+.iov-wf-teal   { background: #fff4ec; color: #ff6b00; }
 
 .iov-wf-step span {
     font-size: 11px;
@@ -3497,11 +3497,11 @@ body.hm-no-sidebar .md-content {
 
 .iov-uc-icon svg { width: 100%; height: 100%; }
 
-.iov-uc-blue   { background: #eff6ff; color: #3b82f6; }
-.iov-uc-green  { background: #f0fdf4; color: #22c55e; }
+.iov-uc-blue   { background: #fff4ec; color: #ff6b00; }
+.iov-uc-green  { background: #fff4ec; color: #ff6b00; }
 .iov-uc-orange { background: #fff4ec; color: #ff6b00; }
-.iov-uc-purple { background: #f5f3ff; color: #8b5cf6; }
-.iov-uc-teal   { background: #f0fdfa; color: #14b8a6; }
+.iov-uc-purple { background: #fff4ec; color: #ff6b00; }
+.iov-uc-teal   { background: #fff4ec; color: #ff6b00; }
 
 .iov-uc-card h4 {
     font-size: 13px;
@@ -3522,9 +3522,9 @@ body.hm-no-sidebar .md-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-left: 4px solid #3b82f6;
+    background: #fff4ec;
+    border: 1px solid #ff6b00;
+    border-left: 4px solid #ff6b00;
     border-radius: 12px;
     padding: 20px 24px;
     margin: 20px 0;
@@ -3539,7 +3539,7 @@ body.hm-no-sidebar .md-content {
 }
 
 .iov-note-icon-left {
-    background: #3b82f6;
+    background: #ff6b00;
     color: #fff;
     width: 28px;
     height: 28px;
@@ -3558,21 +3558,21 @@ body.hm-no-sidebar .md-content {
     display: block;
     font-size: 14px;
     font-weight: 700;
-    color: #1e40af;
+    color: #6b7280;
     margin-bottom: 4px;
 }
 
 .iov-note-body p {
     margin: 0;
     font-size: 13px;
-    color: #1e40af;
+    color: #6b7280;
     line-height: 1.6;
 }
 
 .iov-note-shield {
     width: 48px;
     height: 48px;
-    color: #3b82f6;
+    color: #ff6b00;
     opacity: 0.3;
     flex-shrink: 0;
 }
@@ -5044,7 +5044,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     margin: 0 !important;
     font-size: 13px !important;
     font-family: 'Fira Code', 'Consolas', monospace !important;
-    color: #a6e3a1 !important;
+    color: #ff6b00 !important;
     line-height: 1.75 !important;
     background: transparent !important;
     border: none !important;
@@ -5092,12 +5092,12 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     padding: 16px;
 }
 
-.burl-practice:nth-child(1) { border-top: 2px solid #22c55e; }
-.burl-practice:nth-child(2) { border-top: 2px solid #3b82f6; }
-.burl-practice:nth-child(3) { border-top: 2px solid #8b5cf6; }
+.burl-practice:nth-child(1) { border-top: 2px solid #f97316; }
+.burl-practice:nth-child(2) { border-top: 2px solid #f97316; }
+.burl-practice:nth-child(3) { border-top: 2px solid #f97316; }
 .burl-practice:nth-child(4) { border-top: 2px solid #f97316; }
 .burl-practice:nth-child(5) { border-top: 2px solid #f97316; }
-.burl-practice:nth-child(6) { border-top: 2px solid #06b6d4; }
+.burl-practice:nth-child(6) { border-top: 2px solid #f97316; }
 
 .burl-practice h4 {
     font-size: 13px !important;
