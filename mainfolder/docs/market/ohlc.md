@@ -148,9 +148,11 @@ Authorization: &lt;market-token&gt;
     <div class="ohlc-req-label">Response</div>
     <div class="ohlc-code-block"><pre>{
   "type": "success",
-  "result": {
-    "dataReponse": "1718342400|2940.00|2975.25|2935.80|2965.50|1254789|0||
-1718428800|2910.00|2945.00|2895.00|2930.00|987654|0||"
+  "code": "s-instrument-0002",
+  "description": "Data found",
+  "result": { "exchangeSegment": 1,
+  "exchangeInstrumentID": "2885",
+    "dataReponse": " "
   }
 }</pre></div>
   </div>
